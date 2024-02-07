@@ -8,10 +8,14 @@
 import Foundation
 
 
-class EntryViewModel {
+class EntryVM {
      var coordinator: AppCoordinator!
     
     func goToLogin() {
         coordinator.goToLoginPage()
+    }
+    
+    func goToRegister() {
+        coordinator.goTORegisterPage()
     }
 }

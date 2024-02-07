@@ -20,29 +20,31 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-//        let vc: UIViewController = EntryController()
-//        
-//        guard var vcCoordinating = vc as? Coordinating  else {
-//            print("Failed")
-//            return
-//        }
-//        vcCoordinating.coordinator = self
-//        navigationController?.setViewControllers([vc], animated: true)
         print("App Coordinator Start")
         goToEntryPage()
     }
     
     func goToEntryPage() {
         let entryController = EntryController()
-        let vm = EntryViewModel()
+        let vm = EntryVM()
         vm.coordinator = self
-        entryController.entryVM = vm
+        entryController.vm = vm
         navigationController!.pushViewController(entryController, animated: true)
     }
     
     func goToLoginPage() {
-        let loginPage = LoginController()
-        
-        navigationController?.pushViewController(loginPage, animated: true)
+        let loginController = LoginController()
+        let vm = LoginVM()
+        vm.coordinator = self
+        loginController.vm = vm
+        navigationController?.pushViewController(loginController, animated: true)
+    }
+    
+    func goTORegisterPage() {
+        let registerController = RegisterController()
+        let vm = RegisterVM()
+        vm.coordinator = self
+        registerController.vm = vm
+        navigationController?.pushViewController(registerController, animated: true)
     }
 }

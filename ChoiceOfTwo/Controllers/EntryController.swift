@@ -11,7 +11,7 @@ class EntryController: UIViewController {
     
     
     //MARK: - Variables
-    var entryVM: EntryViewModel!
+    var vm: EntryVM!
     
     //MARK: - UI Components
     private let loginButton = CustomButton(text: "Login", type: .medium)
@@ -41,6 +41,7 @@ class EntryController: UIViewController {
         view.backgroundColor = .mainPurple
         setupUI()
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        createAccButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
     
     //MARK: - Setup Ui
@@ -80,9 +81,14 @@ class EntryController: UIViewController {
         ])
     }
     
-    
     //MARK: Selectors
     @objc private func loginButtonTapped(_ sender: UIButton) {
-        entryVM.goToLogin()
+        vm.goToLogin()
     }
+    
+    @objc private func registerButtonTapped(_ sender: UIButton) {
+        vm.goToRegister()
+    }
+    
+    
 }

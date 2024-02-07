@@ -10,7 +10,7 @@ import UIKit
 class LoginController: UIViewController {
     
     //MARK: - Variables
-    
+    var vm = LoginVM()
     
     //MARK: - UI Components
     private let emailField = CustomTextField(textFieldType: .email)
