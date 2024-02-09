@@ -2,7 +2,7 @@
 //  AppCoordinator.swift
 //  ChoiceOfTwo
 //
-//  Created by Yaroslav Sokolov on 06/02/2024.
+//  Created by Yaroslav Sokolov on 09/02/2024.
 //
 
 import Foundation
@@ -10,19 +10,30 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     
-    
     var parent: Coordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController?
+    private let launchInstruction = LaunchInstructor.configure()
+    
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func start() {
         print("App Coordinator Start")
-        goToEntryPage()
+        
+        switch launchInstruction {
+        case .auth:
+            goToEntryPage()
+            return
+        case .home:
+            goToEntryPage()
+            return
+        }
     }
+    
     
     func goToEntryPage() {
         let entryController = EntryController()
@@ -40,11 +51,12 @@ class AppCoordinator: Coordinator {
         navigationController?.pushViewController(loginController, animated: true)
     }
     
-    func goTORegisterPage() {
+    func goToRegisterPage() {
         let registerController = RegisterController()
         let vm = RegisterVM()
         vm.coordinator = self
         registerController.vm = vm
         navigationController?.pushViewController(registerController, animated: true)
     }
+    
 }

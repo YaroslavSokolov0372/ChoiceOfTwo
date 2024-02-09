@@ -16,6 +16,6 @@ class EntryVM {
     }
     
     func goToRegister() {
-        coordinator.goTORegisterPage()
+        coordinator.goToRegisterPage()
     }
 }
