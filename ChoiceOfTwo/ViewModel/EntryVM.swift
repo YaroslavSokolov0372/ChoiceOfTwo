@@ -9,13 +9,14 @@ import Foundation
 
 
 class EntryVM {
-     var coordinator: AppCoordinator!
+    
+    weak var coordinator: EntryCoordinator!
     
     func goToLogin() {
-        coordinator.goToLoginPage()
+        coordinator.login()
     }
     
     func goToRegister() {
-        coordinator.goToRegisterPage()
+        coordinator.register()
     }
 }

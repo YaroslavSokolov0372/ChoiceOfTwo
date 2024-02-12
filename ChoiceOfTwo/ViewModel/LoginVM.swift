@@ -10,6 +10,22 @@ import Combine
 
 class LoginVM {
     
-   var coordinator: AppCoordinator!
-   
+    weak var coordinator: LoginCoordinator!
+    
+    @Published var email = TextValidationPublished()
+    @Published var password = TextValidationPublished()
+    
+    var subscriptions = Set<AnyCancellable>()
+    
+    //    @Published var email: String = ""
+    //    @Published var emailState: FieldState = .idle
+    //    @Published var password: String = ""
+    //    @Published var passwordState: FieldState = .idle
+    
+    func dismiss() {
+        coordinator.dismissScreen()
+    }
 }
+
+
+

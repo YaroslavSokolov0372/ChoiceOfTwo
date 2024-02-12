@@ -12,6 +12,8 @@ class LoginController: UIViewController {
     //MARK: - Variables
     var vm = LoginVM()
     
+
+    
     //MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Please sign in to continue")
     private let emailField = CustomTextField(textFieldType: .email)
@@ -25,7 +27,18 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .mainPurple
         setupUI()
+        bindEmail()
+        bindPassword()
+        backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+        emailField.delegate = self
+        passwordField.delegate = self
+//        vm.email.startValidation()
+//        vm.email.$textState
+//            .sink { [weak self] state in
+//                self?.emailField.validationStateChanged(state: state)
+//            }.store(in: &vm.subscriptions)
     }
+
     
     //MARK: - Setup UI
     private func setupUI() {
@@ -75,5 +88,30 @@ class LoginController: UIViewController {
 //            self.backButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 40),
 
         ])
+    }
+    
+    
+    //MARK: - Bind
+    private func bindEmail() {
+        emailField
+            .textPublisher()
+            .assign(to: \.email.text, on: vm)
+            .store(in: &vm.subscriptions)
+    }
+    
+    private func bindPassword() {
+        passwordField
+            .textPublisher()
+            .assign(to: \.password.text, on: vm)
+            .store(in: &vm.subscriptions)
+    }
+    
+    //MARK: Selectors
+    @objc private func dismissButtonTapped() {
+        vm.dismiss()
+    }
+    
+    deinit {
+        ConsoleLogger.classDeInitialized()
     }
 }

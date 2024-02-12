@@ -30,6 +30,23 @@ class RegisterController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .mainPurple
         setupUI()
+        usernameField.delegate = self
+        emailField.delegate = self
+        passwordField.delegate = self
+        backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+        
+        
+        vm.username.startValidation()
+        vm.username.$textState
+            .sink { [weak self] state in
+                self?.usernameField.validationStateChanged(state: state)
+            }.store(in: &vm.subscriptions)
+        
+        vm.email.startValidation()
+        vm.email.$textState
+            .sink { [weak self] state in
+                self?.emailField.validationStateChanged(state: state)
+            }.store(in: &vm.subscriptions)
     }
     
     //MARK: - Setup UI
@@ -83,5 +100,37 @@ class RegisterController: UIViewController {
             self.signUpButton.heightAnchor.constraint(equalToConstant: 50),
             self.signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
+    }
+    
+    //MARK: - Binding
+    private func bindEmail() {
+        emailField
+            .textPublisher()
+            .assign(to: \.email.text, on: vm)
+            .store(in: &vm.subscriptions)
+    }
+    
+    private func bindPassword() {
+        passwordField
+            .textPublisher()
+            .assign(to: \.password.text, on: vm)
+            .store(in: &vm.subscriptions)
+    }
+    
+    private func bindUsername() {
+        usernameField
+            .textPublisher()
+            .assign(to: \.username.text, on: vm)
+            .store(in: &vm.subscriptions)
+    }
+    
+    
+    //MARK: Selectors
+    @objc private func dismissButtonTapped() {
+        vm.dismiss()
+    }
+    
+    deinit {
+        ConsoleLogger.classDeInitialized()
     }
 }

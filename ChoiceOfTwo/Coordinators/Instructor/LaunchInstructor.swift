@@ -2,7 +2,7 @@
 //  LaunchInstructor.swift
 //  ChoiceOfTwo
 //
-//  Created by Yaroslav Sokolov on 09/02/2024.
+//  Created by Yaroslav Sokolov on 11/02/2024.
 //
 
 import Foundation
