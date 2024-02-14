@@ -21,7 +21,10 @@ extension String {
 //            of: ".*[^A-Za-z0-9].*", // 1
 //            options: .regularExpression) != nil
         return stringFulfillsRegex(regex: ".*[^A-Za-z0-9].*") // ^ means not
-
+    }
+    
+    func isValidEmail() -> Bool {
+        return stringFulfillsRegex(regex: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
     }
     
     private func stringFulfillsRegex(regex: String) -> Bool {
@@ -31,4 +34,6 @@ extension String {
         }
         return true
     }
+    
+
 }

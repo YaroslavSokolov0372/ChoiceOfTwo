@@ -114,11 +114,12 @@ class EntryController: UIViewController {
     }
     
     @objc private func registerWithGoogle() {
-        AuthService.shared.registerWithGoogle(viewController: self) { bool, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
+        vm.signInWithGoogle(viewController: self)
+//        AuthService.shared.registerWithGoogle(viewController: self) { bool, error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }
     }
        
 }

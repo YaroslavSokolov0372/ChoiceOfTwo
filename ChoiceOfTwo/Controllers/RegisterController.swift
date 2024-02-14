@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class RegisterController: UIViewController {
     
@@ -15,15 +16,14 @@ class RegisterController: UIViewController {
     var vm = RegisterVM()
     private let authService = AuthService()
     
-    
     //MARK: - UI Components
-    
     private let headerView = AuthHeaderView(title: "Register Now", subTitle: "Register to continue")
     private let usernameField = CustomTextField(textFieldType: .username)
     private let emailField = CustomTextField(textFieldType: .email)
     private let passwordField = CustomTextField(textFieldType: .password)
     private let signUpButton = CustomButton(text: "Register", type: .medium)
     private let backButton = CustomBackButton()
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,17 +36,7 @@ class RegisterController: UIViewController {
         backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         
         
-        vm.username.startValidation()
-        vm.username.$textState
-            .sink { [weak self] state in
-                self?.usernameField.validationStateChanged(state: state)
-            }.store(in: &vm.subscriptions)
         
-        vm.email.startValidation()
-        vm.email.$textState
-            .sink { [weak self] state in
-                self?.emailField.validationStateChanged(state: state)
-            }.store(in: &vm.subscriptions)
     }
     
     //MARK: - Setup UI
@@ -103,33 +93,81 @@ class RegisterController: UIViewController {
     }
     
     //MARK: - Binding
+    private func bindUsername() {
+        vm.username.$textState
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                self?.usernameField.validationStateChanged(state: state) { hasError, error in }
+            }.store(in: &vm.subscriptions)
+    }
+    
+    private func usernameListener() {
+        vm.username.validate(publisher: usernameField.textPublisher())
+            .assign(to: \.username.textState, on: vm)
+            .store(in: &vm.subscriptions)
+        
+        NotificationCenter.default.post(
+            name:UITextField.textDidChangeNotification, object: usernameField)
+        
+        print(vm.username.textState)
+            
+    }
+    
     private func bindEmail() {
-        emailField
-            .textPublisher()
-            .assign(to: \.email.text, on: vm)
+        vm.email.$textState
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                self?.emailField.validationStateChanged(state: state, complition: { hasError, error in
+                    
+                })
+            }.store(in: &vm.subscriptions)
+    }
+    
+    private func emailListener() {
+        vm.email.validate(publisher: emailField.textPublisher())
+            .assign(to: \.email.textState, on: vm)
             .store(in: &vm.subscriptions)
     }
     
     private func bindPassword() {
-        passwordField
-            .textPublisher()
-            .assign(to: \.password.text, on: vm)
-            .store(in: &vm.subscriptions)
+        vm.password.validate(publisher: passwordField.textPublisher())
+            .sink { [weak self] state in
+                self?.passwordField.validationStateChanged(state: state, complition: { hasError, error in
+                    
+                })
+            }.store(in: &vm.subscriptions)
     }
     
-    private func bindUsername() {
-        usernameField
-            .textPublisher()
-            .assign(to: \.username.text, on: vm)
+    private func passwordListener() {
+        vm.password.$textState
+            .receive(on: RunLoop.main)
+            .assign(to: \.password.textState, on: vm)
             .store(in: &vm.subscriptions)
     }
-    
-    
+     
     //MARK: Selectors
     @objc private func dismissButtonTapped() {
         vm.dismiss()
     }
     
+    @objc private func signUpButtonTapped() {
+        
+        usernameListener()
+        bindUsername()
+        emailListener()
+        bindEmail()
+        passwordListener()
+        bindPassword()
+        
+        if vm.email.textState == .success 
+        || vm.username.textState == .success
+        || vm.password.textState == .success {
+            vm.signUp { authorized, error in
+                
+            }
+        }
+    }
+     
     deinit {
         ConsoleLogger.classDeInitialized()
     }

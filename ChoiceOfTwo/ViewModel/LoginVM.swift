@@ -12,8 +12,8 @@ class LoginVM {
     
     weak var coordinator: LoginCoordinator!
     
-    @Published var email = TextValidationPublished()
-    @Published var password = TextValidationPublished()
+    @Published var email = TextFieldValidation(textFieldType: .email)
+    @Published var password = TextFieldValidation(textFieldType: .password)
     
     var subscriptions = Set<AnyCancellable>()
     

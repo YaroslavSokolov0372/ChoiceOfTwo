@@ -58,10 +58,12 @@
 		D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754192B7979A100ADF274 /* AuthCoordinator.swift */; };
 		D1D7541C2B7A518D00ADF274 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7541B2B7A518D00ADF274 /* ConsoleLogger.swift */; };
 		D1D7541E2B7A69C300ADF274 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7541D2B7A69C300ADF274 /* String+Ext.swift */; };
-		D1D754202B7A69EE00ADF274 /* TextValidationPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7541F2B7A69EE00ADF274 /* TextValidationPublished.swift */; };
+		D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7541F2B7A69EE00ADF274 /* TextFieldValidation.swift */; };
 		D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754212B7A6A9300ADF274 /* UITextField+Ext.swift */; };
 		D1D754242B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754232B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift */; };
 		D1D754262B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */; };
+		D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */; };
+		D1D754312B7BFD9000ADF274 /* CustomErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754302B7BFD9000ADF274 /* CustomErrorLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,10 +134,12 @@
 		D1D754192B7979A100ADF274 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		D1D7541B2B7A518D00ADF274 /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		D1D7541D2B7A69C300ADF274 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		D1D7541F2B7A69EE00ADF274 /* TextValidationPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidationPublished.swift; sourceTree = "<group>"; };
+		D1D7541F2B7A69EE00ADF274 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		D1D754212B7A6A9300ADF274 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		D1D754232B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateProtocol+Ext.swift"; sourceTree = "<group>"; };
+		D1D754302B7BFD9000ADF274 /* CustomErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,8 +256,9 @@
 		D17807912B6AB126003B84F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D7542D2B7BE94500ADF274 /* Protocol */,
 				D1D753CF2B73F2FF00ADF274 /* RegisterUserRequest.swift */,
-				D1D7541F2B7A69EE00ADF274 /* TextValidationPublished.swift */,
+				D1D7541F2B7A69EE00ADF274 /* TextFieldValidation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				D1D753D52B73F77300ADF274 /* AuthHeaderView.swift */,
 				D1D753D92B74297700ADF274 /* CustomBackButton.swift */,
 				D1D753E22B766F8F00ADF274 /* CustomImageAuthButton.swift */,
+				D1D754302B7BFD9000ADF274 /* CustomErrorLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,6 +376,14 @@
 				D1D754152B7976EE00ADF274 /* RegisterCoordinator.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		D1D7542D2B7BE94500ADF274 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,6 +556,8 @@
 				D1D753A02B72856800ADF274 /* EntryVM.swift in Sources */,
 				D1D753CE2B73F2BE00ADF274 /* AuthService.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
+				D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */,
+				D1D754312B7BFD9000ADF274 /* CustomErrorLabel.swift in Sources */,
 				D17807622B6AB0FA003B84F7 /* SceneDelegate.swift in Sources */,
 				D1D753BF2B73EE5B00ADF274 /* LoginVM.swift in Sources */,
 				D1D7541E2B7A69C300ADF274 /* String+Ext.swift in Sources */,
@@ -551,7 +567,7 @@
 				D1D754092B79708600ADF274 /* ParentCoordinatorProtocol+Ex.swift in Sources */,
 				D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */,
 				D1D753E32B766F8F00ADF274 /* CustomImageAuthButton.swift in Sources */,
-				D1D754202B7A69EE00ADF274 /* TextValidationPublished.swift in Sources */,
+				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
 				D1D753DA2B74297700ADF274 /* CustomBackButton.swift in Sources */,
 				D1D754122B79753600ADF274 /* AuthCoordinator+Ext.swift in Sources */,
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,

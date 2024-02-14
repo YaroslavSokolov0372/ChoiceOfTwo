@@ -10,8 +10,6 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-
-    
     enum CustomTextFieldType {
         case email
         case password
@@ -22,7 +20,6 @@ class CustomTextField: UITextField {
     
     //MARK: - Variables
     private let textFieldType: CustomTextFieldType
-    
     
     //MARK: - Lifecycle
     init(textFieldType: CustomTextFieldType) {

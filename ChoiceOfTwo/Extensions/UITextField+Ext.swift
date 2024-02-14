@@ -18,19 +18,19 @@ extension UITextField {
             .eraseToAnyPublisher()
     }
     
-    func validationStateChanged(state: TextValidationPublished.FieldState) {
+    func validationStateChanged(state: FieldState, complition: @escaping (_ hasError: Bool, _ error: FieldState.ErrorState?) -> Void) {
         print(state)
         switch state {
         case .idle:
             break
         case .error(let errorState):
+            //MARK: - show error in UI
+            complition(true, errorState)
             return
-//            errorLabel.text = errorState.description
-//            errorLabel.isHidden = false
         case .success:
+            //MARK: - show error in UI
+            complition(false, nil)
             return
-//            errorLabel.text = nil
-//            errorLabel.isHidden = true
         }
      }
 }

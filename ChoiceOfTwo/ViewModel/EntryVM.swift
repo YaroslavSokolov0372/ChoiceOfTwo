@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
+import UIKit
 
 class EntryVM {
     
+    private let authService = AuthService()
     weak var coordinator: EntryCoordinator!
     
     func goToLogin() {
@@ -18,5 +19,11 @@ class EntryVM {
     
     func goToRegister() {
         coordinator.register()
+    }
+    
+    func signInWithGoogle(viewController: UIViewController) {
+        authService.registerWithGoogle(viewController: viewController) { bool, error in
+            
+        }
     }
 }
