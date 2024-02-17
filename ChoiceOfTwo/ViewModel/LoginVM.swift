@@ -11,6 +11,7 @@ import Combine
 class LoginVM {
     
     weak var coordinator: LoginCoordinator!
+    private var authService = AuthService()
     
     @Published var email = TextFieldValidation(textFieldType: .email)
     @Published var password = TextFieldValidation(textFieldType: .password)
@@ -24,6 +25,20 @@ class LoginVM {
     
     func dismiss() {
         coordinator.dismissScreen()
+    }
+    
+    func goToHome() {
+        coordinator.parent?.home()
+    }
+    
+    func signIn(completion: @escaping (_ error: Error?) -> Void) {
+        authService.signIn(with: RegisterUserRequest(name: nil, email: email.text, password: password.text)) { error in
+            if let error = error {
+                completion(error)
+            } else {
+                self.goToHome()
+            }
+        }
     }
 }
 

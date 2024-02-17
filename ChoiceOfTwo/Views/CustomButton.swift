@@ -19,14 +19,24 @@ class CustomButton: UIButton {
     private let type: CustomButtonType
     
     //MARK: - Lifecycle
-    init(text: String, type: CustomButtonType) {
+    init(text: String, type: CustomButtonType, backgroundColor: UIColor? = nil, textColor: UIColor? = nil) {
         self.type = type
         super.init(frame: .zero)
-        self.backgroundColor = .white
+        
+        if backgroundColor != nil {
+            self.backgroundColor = backgroundColor
+        } else {
+            self.backgroundColor = .white
+        }
         self.clipsToBounds = true
         self.layer.cornerRadius = 12
         self.setTitle(text, for: .normal)
-        self.setTitleColor(.mainPurple, for: .normal)
+        
+        if textColor != nil {
+            self.setTitleColor(textColor, for: .normal)
+        } else {
+            self.setTitleColor(.mainPurple, for: .normal)
+        }
         
         switch type {
         case .small:

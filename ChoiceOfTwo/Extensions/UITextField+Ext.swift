@@ -18,19 +18,29 @@ extension UITextField {
             .eraseToAnyPublisher()
     }
     
-    func validationStateChanged(state: FieldState, complition: @escaping (_ hasError: Bool, _ error: FieldState.ErrorState?) -> Void) {
+    func validationStateChanged(state: FieldState, completion: @escaping (_ hasError: Bool, _ error: FieldState.ErrorState?) -> Void) {
         print(state)
         switch state {
         case .idle:
             break
         case .error(let errorState):
             //MARK: - show error in UI
-            complition(true, errorState)
+            completion(true, errorState)
             return
         case .success:
             //MARK: - show error in UI
-            complition(false, nil)
+            completion(false, nil)
             return
         }
      }
+    
+    
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool, animationObject: @escaping (_ movement: CGFloat) -> ()) {
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+
+        UIView.animate(withDuration: 0.3) {
+            animationObject(movement)
+            
+        }
+    }
 }

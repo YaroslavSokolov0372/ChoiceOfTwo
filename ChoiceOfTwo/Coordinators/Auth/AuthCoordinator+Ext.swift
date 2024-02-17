@@ -32,4 +32,9 @@ extension AuthCoordinator {
         addChild(registerCoordinator)
         registerCoordinator.start()
     }
+    
+    
+    func home() {
+        parent?.home()
+    }
 }

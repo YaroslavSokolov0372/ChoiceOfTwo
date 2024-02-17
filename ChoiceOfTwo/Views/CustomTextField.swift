@@ -19,7 +19,7 @@ class CustomTextField: UITextField {
 
     
     //MARK: - Variables
-    private let textFieldType: CustomTextFieldType
+    let textFieldType: CustomTextFieldType
     
     //MARK: - Lifecycle
     init(textFieldType: CustomTextFieldType) {

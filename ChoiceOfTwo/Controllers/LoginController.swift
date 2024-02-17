@@ -19,7 +19,7 @@ class LoginController: UIViewController {
     private let emailField = CustomTextField(textFieldType: .email)
     private let passwordField = CustomTextField(textFieldType: .password)
     private let signInButton = CustomButton(text: "Sign In", type: .medium)
-    private let backButton = CustomBackButton()
+    private let backButton = CustomCircleButton(rotate: 1)
     
     
     //MARK: - Lifecycle
@@ -30,6 +30,7 @@ class LoginController: UIViewController {
         bindEmail()
         bindPassword()
         backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         emailField.delegate = self
         passwordField.delegate = self
 //        vm.email.startValidation()
@@ -69,7 +70,6 @@ class LoginController: UIViewController {
             self.headerView.heightAnchor.constraint(equalToConstant: 210),
             self.headerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -165),
 
-            
             self.emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
             self.emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             self.emailField.heightAnchor.constraint(equalToConstant: 50),
@@ -109,6 +109,14 @@ class LoginController: UIViewController {
     //MARK: Selectors
     @objc private func dismissButtonTapped() {
         vm.dismiss()
+    }
+    
+    @objc private func signInButtonTapped() {
+        vm.signIn { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     deinit {

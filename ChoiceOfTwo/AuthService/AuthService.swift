@@ -96,8 +96,8 @@ class AuthService {
                 db.collection("users")
                     .document(userResult.uid)
                     .setData([
-                        "username": fullName ?? givenName,
-                        "email": emailAddress
+                        "username": fullName == nil ? givenName! : fullName!,
+                        "email": emailAddress!
                     ]) { error in
                         if let error = error {
                             completion(false, error)
@@ -106,6 +106,25 @@ class AuthService {
                     }
                 completion(true, nil)
             }
+        }
+    }
+    
+    public func signIn(with request: RegisterUserRequest, completion: @escaping (Error?) -> Void) {
+        Auth.auth().signIn(withEmail: request.email, password: request.password) { result, error in
+            if let error = error {
+                completion(error)
+                return
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    public func signOut(completion: @escaping (Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            completion(error)
         }
     }
 }

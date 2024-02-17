@@ -25,7 +25,7 @@ class AuthCoordinator: ParentCoordinator {
         /// Making sure BaseTabBarViewController's navigation controller is hidden
 //        parent?.hideNavigationController()
         
-        let lastCoordinator = children.popLast()
+//        let lastCoordinator = children.popLast()
         for item in children.reversed() {
             if item is ChildCoordinator {
                 let childCoordinator = item as! ChildCoordinator

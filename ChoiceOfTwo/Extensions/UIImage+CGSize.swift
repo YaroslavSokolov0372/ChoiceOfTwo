@@ -34,4 +34,21 @@ extension UIImage {
         
         return newImage!
     }
+    
+    
+    func resizeUI(size:CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, true, self.scale)
+        self.draw(in: (CGRect(origin: CGPointZero, size: size)))
+        
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage
+    }
+    
+    func resize(targetSize: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size:targetSize).image { _ in
+            self.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+    }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomErrorLabel: UIView {
+class CustomErrorLabelView: UIView {
     
     
     //MARK: - Varibales
@@ -29,7 +29,7 @@ class CustomErrorLabel: UIView {
         label.alpha = 0.0
         label.clipsToBounds = true
         label.layer.cornerRadius = 12
-      return label
+        return label
     }()
     
     //MARK: Lifecycle

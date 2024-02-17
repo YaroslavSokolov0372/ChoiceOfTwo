@@ -21,9 +21,18 @@ class EntryVM {
         coordinator.register()
     }
     
-    func signInWithGoogle(viewController: UIViewController) {
-        authService.registerWithGoogle(viewController: viewController) { bool, error in
-            
+    func goToHome() {
+        coordinator.parent?.home()
+    }
+    
+    func signInWithGoogle(viewController: UIViewController, completion: @escaping (_ error: Error) -> Void) {
+        authService.registerWithGoogle(viewController: viewController) { authorized, error in
+            if let error = error {
+                completion(error)
+            }
+            if authorized {
+                self.goToHome()
+            }
         }
     }
 }

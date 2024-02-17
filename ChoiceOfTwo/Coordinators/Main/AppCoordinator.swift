@@ -27,13 +27,11 @@ class AppCoordinator: ParentCoordinator {
         print("App Coordinator Start")
         switch launchInstruction {
         case .auth:
-
-//            login()
             auth()
             return
         case .home:
-//            login()
             auth()
+            home()
             return
         }
     }

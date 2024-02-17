@@ -22,7 +22,7 @@ class RegisterController: UIViewController {
     private let emailField = CustomTextField(textFieldType: .email)
     private let passwordField = CustomTextField(textFieldType: .password)
     private let signUpButton = CustomButton(text: "Register", type: .medium)
-    private let backButton = CustomBackButton()
+    private let backButton = CustomCircleButton(rotate: 1)
     
     
     //MARK: - Lifecycle
@@ -34,9 +34,7 @@ class RegisterController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
-        
-        
-        
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     //MARK: - Setup UI
@@ -117,7 +115,7 @@ class RegisterController: UIViewController {
         vm.email.$textState
             .receive(on: RunLoop.main)
             .sink { [weak self] state in
-                self?.emailField.validationStateChanged(state: state, complition: { hasError, error in
+                self?.emailField.validationStateChanged(state: state, completion: { hasError, error in
                     
                 })
             }.store(in: &vm.subscriptions)
@@ -132,7 +130,7 @@ class RegisterController: UIViewController {
     private func bindPassword() {
         vm.password.validate(publisher: passwordField.textPublisher())
             .sink { [weak self] state in
-                self?.passwordField.validationStateChanged(state: state, complition: { hasError, error in
+                self?.passwordField.validationStateChanged(state: state, completion: { hasError, error in
                     
                 })
             }.store(in: &vm.subscriptions)
@@ -152,20 +150,25 @@ class RegisterController: UIViewController {
     
     @objc private func signUpButtonTapped() {
         
-        usernameListener()
-        bindUsername()
-        emailListener()
-        bindEmail()
-        passwordListener()
-        bindPassword()
+        print("Pressed Button finish")
         
-        if vm.email.textState == .success 
-        || vm.username.textState == .success
-        || vm.password.textState == .success {
-            vm.signUp { authorized, error in
-                
+//        usernameListener()
+//        bindUsername()
+//        emailListener()
+//        bindEmail()
+//        passwordListener()
+//        bindPassword()
+//        
+//        if vm.email.textState == .success 
+//        || vm.username.textState == .success
+//        || vm.password.textState == .success {
+        vm.signUp {error in
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
+        print("Pressed Button finish")
+//        }
     }
      
     deinit {

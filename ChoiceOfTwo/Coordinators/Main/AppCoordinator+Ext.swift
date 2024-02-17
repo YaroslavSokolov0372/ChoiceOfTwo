@@ -12,9 +12,17 @@ extension AppCoordinator {
     func auth() {
         let authCoordinator = AuthCoordinator(navigationController: self.navigationController)
         authCoordinator.parent = self
-        navigationController.setNavigationBarHidden(false, animated: false)
+        navigationController.setNavigationBarHidden(true, animated: false)
 //        authCoordinator.login(navigationController: navigationController, animated: true)
 
         authCoordinator.entry(navigationController: navigationController, animated: true)
+    }
+    
+    
+    func home() {
+        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+        homeCoordinator.parent = self
+        navigationController.setNavigationBarHidden(true, animated: false)
+        homeCoordinator.menu(navigationController: navigationController, animated: true)
     }
 }

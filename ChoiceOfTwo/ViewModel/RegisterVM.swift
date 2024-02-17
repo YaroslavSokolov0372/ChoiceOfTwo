@@ -23,10 +23,20 @@ class RegisterVM  {
         coordinator.dismissScreen()
     }
     
-    func signUp(complition: @escaping (_ authorized: Bool, _ error: Error?) -> Void) {
+    func goToHome() {
+        coordinator.parent?.home()
+    }
+    
+    func signUp(completion: @escaping (_ error: Error?) -> Void) {
         let registerUser = RegisterUserRequest(name: username.text, email: email.text, password: password.text)
         authService.regusterUser(with: registerUser) { authrized, error in
-            
+            if let error = error {
+                completion(error)
+            }
+             
+            if authrized {
+                self.goToHome()
+            }
         }
     }
 }

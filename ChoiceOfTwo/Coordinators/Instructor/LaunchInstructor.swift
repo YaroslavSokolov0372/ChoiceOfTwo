@@ -21,11 +21,6 @@ enum LaunchInstructor {
         } else {
             return .auth
         }
-//        if isAuthorized {
-//            return .home
-//        } else {
-//            return .auth
-//        }
     }
 }
 
