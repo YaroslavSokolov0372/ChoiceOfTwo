@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddFriendsPlusButton: UIButton {
+class friendProfileImageButton: UIButton {
 
     
     //MARK: -Lifecycle

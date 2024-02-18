@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 class HomeCoordinator: ParentCoordinator {
-        
+    
     var parent: AppCoordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

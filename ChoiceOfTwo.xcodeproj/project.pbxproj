@@ -19,9 +19,16 @@
 		D17807812B6AB0FB003B84F7 /* ChoiceOfTwoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17807802B6AB0FB003B84F7 /* ChoiceOfTwoUITests.swift */; };
 		D17807832B6AB0FB003B84F7 /* ChoiceOfTwoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17807822B6AB0FB003B84F7 /* ChoiceOfTwoUITestsLaunchTests.swift */; };
 		D199BE512B7FD7BE000EBA02 /* CustomSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE502B7FD7BE000EBA02 /* CustomSectionHeaderView.swift */; };
-		D199BE532B80F364000EBA02 /* AddFriendsPlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE522B80F364000EBA02 /* AddFriendsPlusButton.swift */; };
+		D199BE532B80F364000EBA02 /* friendProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE522B80F364000EBA02 /* friendProfileImageButton.swift */; };
 		D199BE552B8102AA000EBA02 /* MenuController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE542B8102AA000EBA02 /* MenuController+UICollectionView.swift */; };
 		D199BE572B810A7E000EBA02 /* FriendCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE562B810A7E000EBA02 /* FriendCellView.swift */; };
+		D199BE592B81267D000EBA02 /* Devider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE582B81267D000EBA02 /* Devider.swift */; };
+		D199BE5B2B81289A000EBA02 /* HistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */; };
+		D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */; };
+		D199BE5F2B8155C3000EBA02 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */; };
+		D199BE632B824C8F000EBA02 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE622B824C8F000EBA02 /* ProfileController.swift */; };
+		D199BE652B824CD1000EBA02 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE642B824CD1000EBA02 /* ProfileVM.swift */; };
+		D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE662B829809000EBA02 /* CustomTabBar.swift */; };
 		D1A7415E2B6C179D005B81BC /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7415D2B6C179D005B81BC /* ApiClient.swift */; };
 		D1D753912B7265EF00ADF274 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753902B7265EF00ADF274 /* LoginController.swift */; };
 		D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753942B72677C00ADF274 /* CustomTextField.swift */; };
@@ -108,9 +115,16 @@
 		D17807802B6AB0FB003B84F7 /* ChoiceOfTwoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceOfTwoUITests.swift; sourceTree = "<group>"; };
 		D17807822B6AB0FB003B84F7 /* ChoiceOfTwoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceOfTwoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D199BE502B7FD7BE000EBA02 /* CustomSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionHeaderView.swift; sourceTree = "<group>"; };
-		D199BE522B80F364000EBA02 /* AddFriendsPlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsPlusButton.swift; sourceTree = "<group>"; };
+		D199BE522B80F364000EBA02 /* friendProfileImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendProfileImageButton.swift; sourceTree = "<group>"; };
 		D199BE542B8102AA000EBA02 /* MenuController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuController+UICollectionView.swift"; sourceTree = "<group>"; };
 		D199BE562B810A7E000EBA02 /* FriendCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCellView.swift; sourceTree = "<group>"; };
+		D199BE582B81267D000EBA02 /* Devider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devider.swift; sourceTree = "<group>"; };
+		D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellView.swift; sourceTree = "<group>"; };
+		D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHistoryCard.swift; sourceTree = "<group>"; };
+		D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		D199BE622B824C8F000EBA02 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		D199BE642B824CD1000EBA02 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		D199BE662B829809000EBA02 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		D1A7415D2B6C179D005B81BC /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D1D753902B7265EF00ADF274 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D1D753942B72677C00ADF274 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -269,6 +283,7 @@
 		D17807902B6AB11F003B84F7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */,
 				D1D753E72B7689FD00ADF274 /* MenuController.swift */,
 				D199BE542B8102AA000EBA02 /* MenuController+UICollectionView.swift */,
 				D1D753962B726A6900ADF274 /* EntryController.swift */,
@@ -276,6 +291,7 @@
 				D1D754232B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift */,
 				D1D753D32B73F68D00ADF274 /* RegisterController.swift */,
 				D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */,
+				D199BE622B824C8F000EBA02 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,8 +316,12 @@
 				D1D753E22B766F8F00ADF274 /* CustomImageAuthButton.swift */,
 				D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */,
 				D199BE502B7FD7BE000EBA02 /* CustomSectionHeaderView.swift */,
-				D199BE522B80F364000EBA02 /* AddFriendsPlusButton.swift */,
+				D199BE522B80F364000EBA02 /* friendProfileImageButton.swift */,
 				D199BE562B810A7E000EBA02 /* FriendCellView.swift */,
+				D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */,
+				D199BE582B81267D000EBA02 /* Devider.swift */,
+				D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */,
+				D199BE662B829809000EBA02 /* CustomTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +341,7 @@
 				D1D753BE2B73EE5B00ADF274 /* LoginVM.swift */,
 				D1D753D72B73FDFB00ADF274 /* RegisterVM.swift */,
 				D12AE7E42B7E7C0F004511B5 /* MenuVM.swift */,
+				D199BE642B824CD1000EBA02 /* ProfileVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -571,6 +592,7 @@
 				D199BE512B7FD7BE000EBA02 /* CustomSectionHeaderView.swift in Sources */,
 				D1D7541C2B7A518D00ADF274 /* ConsoleLogger.swift in Sources */,
 				D1D754102B79736D00ADF274 /* ChildrenCoordinatorProtocool.swift in Sources */,
+				D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */,
 				D1D754162B7976EE00ADF274 /* RegisterCoordinator.swift in Sources */,
 				D1D754142B7975BA00ADF274 /* LoginCoordinator.swift in Sources */,
 				D1D753F62B79526F00ADF274 /* UINavigationController+Ext.swift in Sources */,
@@ -582,21 +604,27 @@
 				D1D753E62B76750100ADF274 /* UIImage+CGSize.swift in Sources */,
 				D1D7540E2B7972BF00ADF274 /* EntryCoordinator.swift in Sources */,
 				D1D753972B726A6900ADF274 /* EntryController.swift in Sources */,
+				D199BE5B2B81289A000EBA02 /* HistoryCellView.swift in Sources */,
 				D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */,
 				D199BE572B810A7E000EBA02 /* FriendCellView.swift in Sources */,
 				D1D754022B795BD900ADF274 /* AppCoordinator.swift in Sources */,
 				D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */,
 				D1D753D42B73F68D00ADF274 /* RegisterController.swift in Sources */,
-				D199BE532B80F364000EBA02 /* AddFriendsPlusButton.swift in Sources */,
+				D199BE532B80F364000EBA02 /* friendProfileImageButton.swift in Sources */,
 				D1D753D62B73F77300ADF274 /* AuthHeaderView.swift in Sources */,
 				D1D753A02B72856800ADF274 /* EntryVM.swift in Sources */,
 				D1D753CE2B73F2BE00ADF274 /* AuthService.swift in Sources */,
+				D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
 				D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */,
+				D199BE5F2B8155C3000EBA02 /* BaseTabBarController.swift in Sources */,
 				D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */,
+				D199BE592B81267D000EBA02 /* Devider.swift in Sources */,
+				D199BE632B824C8F000EBA02 /* ProfileController.swift in Sources */,
 				D17807622B6AB0FA003B84F7 /* SceneDelegate.swift in Sources */,
 				D1D753BF2B73EE5B00ADF274 /* LoginVM.swift in Sources */,
 				D1D7541E2B7A69C300ADF274 /* String+Ext.swift in Sources */,
+				D199BE652B824CD1000EBA02 /* ProfileVM.swift in Sources */,
 				D1D753D82B73FDFB00ADF274 /* RegisterVM.swift in Sources */,
 				D1A7415E2B6C179D005B81BC /* ApiClient.swift in Sources */,
 				D1D754062B795C0500ADF274 /* CoordinatorProtocol.swift in Sources */,

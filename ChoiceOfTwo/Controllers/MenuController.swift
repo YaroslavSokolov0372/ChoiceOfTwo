@@ -25,18 +25,31 @@ class MenuController: UIViewController {
         button.setImage(im, for: .normal)
         return button
     }()
-    private let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
-    private let startGameButton = CustomButton(text: "Start Game", type: .medium, backgroundColor: .mainPurple, textColor: .white)
+    private let startGameButton = CustomButton(
+        text: "Start Game",
+        type: .medium,
+        backgroundColor: .mainPurple,
+        textColor: .white)
     private let infoButton = CustomCircleButton(customImage: "Info", resized: CGSize(width: 60, height: 60))
-    private let addFriendsButton = AddFriendsPlusButton(image: "Plus")
-    private let historyHeaderLabel = CustomSectionHeaderView(headerName: "History")
-    let friendsCollView: UICollectionView = {
+    
+    private let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
+    public let friendsCollView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.showsHorizontalScrollIndicator = false
 //        collectionV.backgroundColor = .mainPurple
         collectionV.register(FriendCellView.self, forCellWithReuseIdentifier: "Cell")
+        return collectionV
+    }()
+    private let friendsDevider = Devider(color: .mainPurple)
+    private let historyHeaderLabel = CustomSectionHeaderView(headerName: "History")
+    public let historyCollView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionV.register(HistoryCellView.self, forCellWithReuseIdentifier: "Cell")
+        collectionV.showsVerticalScrollIndicator = false
         return collectionV
     }()
     
@@ -46,9 +59,10 @@ class MenuController: UIViewController {
         view.backgroundColor = .white
         setupUI()
         logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
+        historyCollView.dataSource = self
+        historyCollView.delegate = self
     }
     
     //MARK: Setup UI
@@ -65,14 +79,17 @@ class MenuController: UIViewController {
         view.addSubview(friendsHeaderLabel)
         friendsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(addFriendsButton)
-        addFriendsButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(friendsCollView)
+        friendsCollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(friendsDevider)
+        friendsDevider.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(historyHeaderLabel)
         historyHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(friendsCollView)
-        friendsCollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(historyCollView)
+        historyCollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
@@ -97,20 +114,25 @@ class MenuController: UIViewController {
             self.friendsHeaderLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.friendsHeaderLabel.heightAnchor.constraint(equalToConstant: 30),
             
-            self.addFriendsButton.topAnchor.constraint(equalTo: self.friendsHeaderLabel.bottomAnchor, constant: 10),
-            self.addFriendsButton.heightAnchor.constraint(equalToConstant: 60),
-            self.addFriendsButton.widthAnchor.constraint(equalToConstant: 60),
-            self.addFriendsButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             
             self.friendsCollView.topAnchor.constraint(equalTo: self.friendsHeaderLabel.bottomAnchor, constant: 10),
-            self.friendsCollView.heightAnchor.constraint(equalToConstant: 85),
-//            self.friendsCollView.widthAnchor.constraint(equalToConstant: 60),
-            self.friendsCollView.leadingAnchor.constraint(equalTo: self.addFriendsButton.trailingAnchor, constant: 20),
+            self.friendsCollView.heightAnchor.constraint(equalToConstant: 95),
+            self.friendsCollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.friendsCollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
+            self.friendsDevider.topAnchor.constraint(equalTo: friendsCollView.bottomAnchor, constant: 10),
+            self.friendsDevider.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.93),
+            self.friendsDevider.heightAnchor.constraint(equalToConstant: 1),
+            self.friendsDevider.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
             self.historyHeaderLabel.topAnchor.constraint(equalTo: self.friendsCollView.bottomAnchor, constant: 20),
             self.historyHeaderLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.historyHeaderLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            self.historyCollView.topAnchor.constraint(equalTo: historyHeaderLabel.bottomAnchor, constant: 10),
+            self.historyCollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.historyCollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.historyCollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
     }
     
@@ -128,3 +150,5 @@ class MenuController: UIViewController {
         ConsoleLogger.classDeInitialized()
     }
 }
+
+
