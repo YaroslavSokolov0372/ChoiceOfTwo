@@ -18,6 +18,8 @@ protocol ParentCoordinator: Coordinator {
     func childDidFinish(_ child: Coordinator?)
     
     func popLastChildren()
+    
+    func popLastAsSheet()
 }
 
 
@@ -42,6 +44,14 @@ extension ParentCoordinator {
         if !children.isEmpty {
             let lastCoordinator = children.last as! ChildCoordinator
             lastCoordinator.viewControllerRef?.navigationController?.popViewController(animated: true)
+            self.childDidFinish(lastCoordinator)
+        }
+    }
+    
+    func popLastAsSheet() {
+        if !children.isEmpty {
+            let lastCoordinator = children.last as! ChildCoordinator
+            lastCoordinator.viewControllerRef?.dismiss(animated: true)
             self.childDidFinish(lastCoordinator)
         }
     }

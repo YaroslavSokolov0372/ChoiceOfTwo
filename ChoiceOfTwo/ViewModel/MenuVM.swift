@@ -10,16 +10,53 @@ import Foundation
 class MenuVM {
     
     
+    var onFriendsUpdated: (() -> Void)?
+    var onFriendsError: ((Error) -> Void)?
+    
     weak var coordinator: MenuCoordiantor!
-    private var authService = AuthService()
+    private let authService = AuthService()
+    private let dBManager = DataBaseManager()
     
+    private (set) var friends = [Friend]() {
+        didSet {
+            onFriendsUpdated?()
+        }
+    }
     
+    public func getFriends() {
+        Task {
+            await dBManager.fetchFriends { friends, error in
+                if let error = error {
+                    (onFriendsError)?(error)
+                    print("DEBUG:", error)
+                } else {
+                    if let friends = friends {
+                        self.friends = friends
+                        onFriendsUpdated?()
+                        print("DEBUG: Found Friends:", friends.count)
+                    }
+                }
+            }
+        }
+    }
     
-    func dismissHomeScreens() {
+    init() {
+        self.getFriends()
+    }
+    
+    //MARK: - Coordination
+    public func searchFirends() {
+        coordinator.searchFriends()
+    }
+    public func profile() {
+        coordinator.profile()
+    }
+    
+    public func dismissHomeScreens() {
         self.coordinator.dismissHomeScreens()
     }
     
-    func signOut(completion: @escaping (_ error: Error?) -> Void) {
+    public func signOut(completion: @escaping (_ error: Error?) -> Void) {
         authService.signOut { error in
             if let error = error {
                 completion(error)

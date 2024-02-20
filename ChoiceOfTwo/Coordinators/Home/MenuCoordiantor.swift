@@ -31,11 +31,20 @@ class MenuCoordiantor: ChildCoordinator {
         navigationController.pushViewController(menuController, animated: true)
     }
     
+    func searchFriends() {
+        parent?.searchFriends(navigationController: navigationController, animated: true)
+    }
+    
+    func profile() {
+        parent?.profile(navigationController: navigationController, animated: true)
+    }
+    
     func coordinatorDidFinish() {
         parent?.childDidFinish(self)
     }
     
     func dismissHomeScreens() {
-            parent?.dismissHomeScreens()
+        parent?.dismissHomeScreens()
     }
 }
+

@@ -7,30 +7,34 @@
 
 import UIKit
 
-class MenuController: UIViewController {
+class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
+    
     
     
     //MARK: - Variable
     var vm: MenuVM!
-
+    
     
     //MARK: - UI Components
-    private let logoutButton: UIButton = {
-        let button = UIButton()
-        let im = UIImage(named: "Logout")!
-            .resize(targetSize: CGSize(width: 27, height: 27))
-            .withRenderingMode(.alwaysTemplate)
-        button.tintColor = .mainPurple
-        button.transform = CGAffineTransformMakeRotation(CGFloat(Double.pi / 1))
-        button.setImage(im, for: .normal)
-        return button
-    }()
-    private let startGameButton = CustomButton(
-        text: "Start Game",
-        type: .medium,
-        backgroundColor: .mainPurple,
-        textColor: .white)
-    private let infoButton = CustomCircleButton(customImage: "Info", resized: CGSize(width: 60, height: 60))
+    //    private let logoutButton: UIButton = {
+    //        let button = UIButton()
+    //        let im = UIImage(named: "Logout")!
+    //            .resize(targetSize: CGSize(width: 27, height: 27))
+    //            .withRenderingMode(.alwaysTemplate)
+    //        button.tintColor = .mainPurple
+    //        button.transform = CGAffineTransformMakeRotation(CGFloat(Double.pi / 1))
+    //        button.setImage(im, for: .normal)
+    //        return button
+    //    }()
+    //    private let startGameButton = CustomButton(
+    //        text: "Start Game",
+    //        type: .medium,
+    //        backgroundColor: .mainPurple,
+    //        textColor: .white)
+    //    private let infoButton = CustomCircleButton(customImage: "Info", resized: CGSize(width: 60, height: 60))
+    
+    
+    let profileImageButton = CustomCircleButton(customImage: "Profile")
     
     private let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
     public let friendsCollView: UICollectionView = {
@@ -38,7 +42,7 @@ class MenuController: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.showsHorizontalScrollIndicator = false
-//        collectionV.backgroundColor = .mainPurple
+        //        collectionV.backgroundColor = .mainPurple
         collectionV.register(FriendCellView.self, forCellWithReuseIdentifier: "Cell")
         return collectionV
     }()
@@ -58,23 +62,29 @@ class MenuController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
+        //        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
         historyCollView.dataSource = self
         historyCollView.delegate = self
+        
+        vm.onFriendsUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.friendsCollView.reloadData()
+            }
+        }
+        
+//        vm.onFriendsError = { [weak self] error in
+//            
+//        }
     }
     
     //MARK: Setup UI
     private func setupUI() {
-        view.addSubview(logoutButton)
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(startGameButton)
-        startGameButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(infoButton)
-        infoButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(profileImageButton)
+        profileImageButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(friendsHeaderLabel)
         friendsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,28 +102,14 @@ class MenuController: UIViewController {
         historyCollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            self.profileImageButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+            self.profileImageButton.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
+            self.profileImageButton.heightAnchor.constraint(equalToConstant: 50),
+            self.profileImageButton.widthAnchor.constraint(equalToConstant: 50),
             
-            self.logoutButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
-            self.logoutButton.heightAnchor.constraint(equalToConstant: 27),
-            self.logoutButton.widthAnchor.constraint(equalToConstant: 27),
-            self.logoutButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-
-            
-            self.startGameButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            self.startGameButton.heightAnchor.constraint(equalToConstant: 40),
-            self.startGameButton.widthAnchor.constraint(equalToConstant: 110),
-            self.startGameButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
-            
-            self.infoButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
-            self.infoButton.heightAnchor.constraint(equalToConstant: 40),
-            self.infoButton.widthAnchor.constraint(equalToConstant: 40),
-            self.infoButton.trailingAnchor.constraint(equalTo: self.startGameButton.leadingAnchor, constant: -10),
-            
-            
-            self.friendsHeaderLabel.topAnchor.constraint(equalTo: self.logoutButton.bottomAnchor, constant: 20),
+            self.friendsHeaderLabel.topAnchor.constraint(equalTo: self.profileImageButton.bottomAnchor, constant: 10),
             self.friendsHeaderLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.friendsHeaderLabel.heightAnchor.constraint(equalToConstant: 30),
-            
             
             self.friendsCollView.topAnchor.constraint(equalTo: self.friendsHeaderLabel.bottomAnchor, constant: 10),
             self.friendsCollView.heightAnchor.constraint(equalToConstant: 95),
@@ -144,6 +140,18 @@ class MenuController: UIViewController {
             }
         }
         vm.dismissHomeScreens()
+    }
+    
+    @objc private func profileButtonTapped() {
+        vm.profile()
+    }
+    
+    func friendProfileTapped() {
+        print("Profile tapped")
+    }
+    
+    func plusButtonTapped() {
+        vm.searchFirends()
     }
     
     deinit {

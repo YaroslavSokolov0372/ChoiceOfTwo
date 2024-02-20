@@ -10,4 +10,10 @@ import UIKit
 
 class ProfileVM {
     
+     weak var coordinator: ProfileCoordinator!
+     
+     
+    func dismiss() {
+        coordinator.dismissScreen()
+    }
 }

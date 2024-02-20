@@ -42,7 +42,12 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         if collectionView == self.historyCollView {
             return 6
         } else {
-            return 4
+            if self.vm.friends.isEmpty {
+                return 1
+            } else {
+                return self.vm.friends.count
+            }
+//            return 4
         }
     }
     
@@ -63,10 +68,16 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             }
             if indexPath.row == 0 {
                 cell.configure(isFirst: true)
+                cell.addFriendsDelegate = self
             } else {
                 cell.configure(isFirst: false)
+                cell.friendsDelegate = self
             }
+            
             return cell
         }
     }
 }
+
+
+

@@ -8,6 +8,8 @@
 import UIKit
 
 class ProfileController: UIViewController {
+    //MARK: - Varibales
+    var vm: ProfileVM!
 
     override func viewDidLoad() {
         super.viewDidLoad()

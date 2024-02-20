@@ -7,8 +7,20 @@
 
 import UIKit
 
+protocol FriendCellDelegate {
+    
+    func friendProfileTapped()
+}
+
+protocol AddFriendDelegate {
+    func plusButtonTapped()
+}
+
 class FriendCellView: UICollectionViewCell {
- 
+    
+    //MARK: - Variables
+    var friendsDelegate: FriendCellDelegate?
+    var addFriendsDelegate: AddFriendDelegate?
     
     //MARK: UI Components
 //    private let image: UIImageView = {
@@ -57,8 +69,10 @@ class FriendCellView: UICollectionViewCell {
     //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 30
+//        self.layer.cornerRadius = 30
         setupUI()
+        profileImageButton.addTarget(self, action: #selector(profilleImageTapped), for: .touchUpInside)
+        profileImageButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +99,14 @@ class FriendCellView: UICollectionViewCell {
         ])
     }
     
+    //MARK: - Selectors
+    @objc private func profilleImageTapped() {
+        friendsDelegate?.friendProfileTapped()
+    }
+    
+    @objc private func plusButtonTapped() {
+        addFriendsDelegate?.plusButtonTapped()
+    }
     
     //MARK: Configure
     public func configure(isFirst: Bool) {
