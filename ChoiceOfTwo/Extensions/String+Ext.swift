@@ -34,6 +34,16 @@ extension String {
         }
         return true
     }
-    
+}
 
+
+extension String {
+    func generateStringSequence() -> [String] {
+        guard self.count > 0 else { return [] }
+        var sequence: [String] = []
+        for i in 1...self.count {
+            sequence.append(String(self.prefix(i)))
+        }
+        return sequence
+    }
 }

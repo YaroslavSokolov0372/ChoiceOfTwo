@@ -37,8 +37,10 @@ class AuthService {
             db.collection("users")
                 .document(userResult.uid)
                 .setData([
+                    "uid": userResult.uid,
                     "username": username,
-                    "email": email
+                    "email": email,
+                    "keywordsForLookUp": username?.generateStringSequence()
                 ]) { error in
                     if let error = error {
                         completion(false, error)
@@ -96,8 +98,10 @@ class AuthService {
                 db.collection("users")
                     .document(userResult.uid)
                     .setData([
+                        "uid": userResult.uid,
                         "username": fullName == nil ? givenName! : fullName!,
-                        "email": emailAddress!
+                        "email": emailAddress!,
+                        "keywordsForLookUp": fullName == nil ? givenName!.generateStringSequence() : fullName!.generateStringSequence()
                     ]) { error in
                         if let error = error {
                             completion(false, error)
@@ -125,6 +129,32 @@ class AuthService {
             try Auth.auth().signOut()
         } catch {
             completion(error)
+        }
+    }
+    
+    public func getCurrentUserData(completion: @escaping (User?, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        
+        Firestore.firestore().collection("users").document(currentUser.uid).getDocument { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+            }
+                
+            guard let snapshot = snapshot else {
+                completion(nil, nil)
+                return
+            }
+            
+            do {
+                let user = try snapshot.data(as: User.self)
+                completion(user, nil)
+            } catch {
+                completion(nil, error)
+                return
+            }
+            
         }
     }
 }

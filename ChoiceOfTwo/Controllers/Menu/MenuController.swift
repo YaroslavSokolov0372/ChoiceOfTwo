@@ -16,26 +16,7 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
     
     
     //MARK: - UI Components
-    //    private let logoutButton: UIButton = {
-    //        let button = UIButton()
-    //        let im = UIImage(named: "Logout")!
-    //            .resize(targetSize: CGSize(width: 27, height: 27))
-    //            .withRenderingMode(.alwaysTemplate)
-    //        button.tintColor = .mainPurple
-    //        button.transform = CGAffineTransformMakeRotation(CGFloat(Double.pi / 1))
-    //        button.setImage(im, for: .normal)
-    //        return button
-    //    }()
-    //    private let startGameButton = CustomButton(
-    //        text: "Start Game",
-    //        type: .medium,
-    //        backgroundColor: .mainPurple,
-    //        textColor: .white)
-    //    private let infoButton = CustomCircleButton(customImage: "Info", resized: CGSize(width: 60, height: 60))
-    
-    
-    let profileImageButton = CustomCircleButton(customImage: "Profile")
-    
+    private let profileImageButton = CustomCircleButton(customImage: "Profile")
     private let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
     public let friendsCollView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,14 +37,18 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
         collectionV.showsVerticalScrollIndicator = false
         return collectionV
     }()
+    private let scrollView: UIScrollView = {
+      let scrollV = UIScrollView()
+        return scrollV
+    }()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
-        //        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        //        profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
+        profileImageButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
         historyCollView.dataSource = self
@@ -74,10 +59,6 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
                 self?.friendsCollView.reloadData()
             }
         }
-        
-//        vm.onFriendsError = { [weak self] error in
-//            
-//        }
     }
     
     //MARK: Setup UI
@@ -102,6 +83,7 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
         historyCollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            
             self.profileImageButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
             self.profileImageButton.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
             self.profileImageButton.heightAnchor.constraint(equalToConstant: 50),

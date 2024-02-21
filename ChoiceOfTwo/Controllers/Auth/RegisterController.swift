@@ -108,7 +108,6 @@ class RegisterController: UIViewController {
             name:UITextField.textDidChangeNotification, object: usernameField)
         
         print(vm.username.textState)
-            
     }
     
     private func bindEmail() {

@@ -19,7 +19,7 @@ class CustomButton: UIButton {
     private let type: CustomButtonType
     
     //MARK: - Lifecycle
-    init(text: String, type: CustomButtonType, backgroundColor: UIColor? = nil, textColor: UIColor? = nil) {
+    init(text: String, type: CustomButtonType, backgroundColor: UIColor? = nil, textColor: UIColor? = nil, strokeColor: UIColor? = nil) {
         self.type = type
         super.init(frame: .zero)
         
@@ -38,6 +38,11 @@ class CustomButton: UIButton {
             self.setTitleColor(.mainPurple, for: .normal)
         }
         
+        if strokeColor != nil {
+            self.layer.borderWidth = 1
+            self.layer.borderColor = strokeColor!.cgColor
+        }
+        
         switch type {
         case .small:
             self.titleLabel?.font = .nunitoFont(size: 16, type: .light)
@@ -49,6 +54,8 @@ class CustomButton: UIButton {
             self.titleLabel?.font = .nunitoFont(size: 18, type: .medium)
             return
         }
+        
+
     }
     
     required init?(coder: NSCoder) {

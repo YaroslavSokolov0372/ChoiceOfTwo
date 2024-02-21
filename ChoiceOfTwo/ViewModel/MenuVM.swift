@@ -17,24 +17,22 @@ class MenuVM {
     private let authService = AuthService()
     private let dBManager = DataBaseManager()
     
-    private (set) var friends = [Friend]() {
+    private (set) var friends = [User]() {
         didSet {
             onFriendsUpdated?()
         }
     }
     
     public func getFriends() {
-        Task {
-            await dBManager.fetchFriends { friends, error in
-                if let error = error {
-                    (onFriendsError)?(error)
-                    print("DEBUG:", error)
-                } else {
-                    if let friends = friends {
-                        self.friends = friends
-                        onFriendsUpdated?()
-                        print("DEBUG: Found Friends:", friends.count)
-                    }
+        dBManager.fetchFriends { friends, error in
+            if let error = error {
+                (self.onFriendsError)?(error)
+                print("DEBUG:", error)
+            } else {
+                if let friends = friends {
+                    self.friends = friends
+                    self.onFriendsUpdated?()
+                    print("DEBUG: Found Friends:", friends.count)
                 }
             }
         }
