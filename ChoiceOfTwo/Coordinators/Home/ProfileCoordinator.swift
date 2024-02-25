@@ -27,6 +27,7 @@ class ProfileCoordinator: ChildCoordinator {
         searchFController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.present(searchFController, animated: true)
+        
     }
     
     func coordinatorDidFinish() {
@@ -35,5 +36,9 @@ class ProfileCoordinator: ChildCoordinator {
     
     func dismissScreen() {
         parent?.popLastAsSheet()
+    }
+    
+    func dismissHomeScreens() {
+        parent?.dismissHomeScreens()
     }
 }

@@ -27,7 +27,7 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         if collectionView == historyCollView {
             return CGSize(width: self.view.frame.width * 0.93, height: self.view.frame.height * 0.3)
-//            return CGSize(width: 100, height: 100)
+            //            return CGSize(width: 100, height: 100)
         } else {
             
             if indexPath.row == 0 {
@@ -45,9 +45,8 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             if self.vm.friends.isEmpty {
                 return 1
             } else {
-                return self.vm.friends.count
+                return self.vm.friends.count + 1
             }
-//            return 4
         }
     }
     
@@ -70,7 +69,7 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                 cell.configure(isFirst: true)
                 cell.addFriendsDelegate = self
             } else {
-                cell.configure(isFirst: false)
+                cell.configure(isFirst: false, with: vm.friends[indexPath.row - 1])
                 cell.friendsDelegate = self
             }
             

@@ -41,14 +41,15 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
       let scrollV = UIScrollView()
         return scrollV
     }()
+
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        //        profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
-        profileImageButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+                profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
+//        profileImageButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
         historyCollView.dataSource = self
@@ -115,21 +116,22 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate {
     }
     
     //MARK: - Selectors
-    @objc private func logoutButtonTapped() {
-        vm.signOut { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-        vm.dismissHomeScreens()
-    }
+//    @objc private func logoutButtonTapped() {
+//        vm.signOut { error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        vm.dismissHomeScreens()
+//    }
     
     @objc private func profileButtonTapped() {
         vm.profile()
     }
     
     func friendProfileTapped() {
-        print("Profile tapped")
+//        print("Profile tapped")
+        vm.profile()
     }
     
     func plusButtonTapped() {

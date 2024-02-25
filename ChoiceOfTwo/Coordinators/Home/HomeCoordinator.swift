@@ -32,8 +32,13 @@ class HomeCoordinator: ParentCoordinator {
         for item in children.reversed() {
             if item is ChildCoordinator {
                 let childCoordinator = item as! ChildCoordinator
-                childCoordinator.viewControllerRef?.navigationController?.popViewController(animated: true)
-                self.childDidFinish(childCoordinator)
+                if childCoordinator is ProfileCoordinator {
+                    childCoordinator.viewControllerRef?.dismiss(animated: true)
+                    self.childDidFinish(childCoordinator)
+                } else {
+                    childCoordinator.viewControllerRef?.navigationController?.popViewController(animated: true)
+                    self.childDidFinish(childCoordinator)
+                }
             }
         }
     }

@@ -109,11 +109,16 @@ class FriendCellView: UICollectionViewCell {
     }
     
     //MARK: Configure
-    public func configure(isFirst: Bool) {
+    public func configure(isFirst: Bool, with user: User? = nil) {
         if isFirst {
             let im = UIImage(named: "Plus")!.withRenderingMode(.alwaysTemplate)
             profileImageButton.setImage(im, for: .normal)
             name.text = "Add Friend"
+        }
+        if let user = user {
+            let im = UIImage(named: "Profile")!.withRenderingMode(.alwaysTemplate)
+            profileImageButton.setImage(im, for: .normal)
+            name.text = user.username
         }
     }
     

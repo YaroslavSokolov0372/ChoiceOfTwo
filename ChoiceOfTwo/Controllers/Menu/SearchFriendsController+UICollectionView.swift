@@ -11,25 +11,37 @@ import UIKit
 
 extension SearchFriendsController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.vm.users.count
+        if collectionView == self.usersSearchCollView {
+            return self.vm.searchUsers.count
+        } else {
+            return self.vm.sentInvUsers.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? UserSearchCellView else {
-            fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
+        if collectionView == self.usersSearchCollView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? UserSearchCellView else {
+                fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
+            }
+            
+            cell.configure(with: vm.searchUsers[indexPath.row], asType: .search)
+            cell.delegate = self
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? UserSearchCellView else {
+                fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
+            }
+            cell.configure(with: vm.sentInvUsers[indexPath.row], asType: .recieved)
+            cell.delegate = self
+            return cell
         }
-        
-        cell.configure(with: vm.users[indexPath.row])
-        cell.delegate = self
-        return cell
     }
+    
 }
 
 

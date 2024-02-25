@@ -13,19 +13,17 @@ class CustomCircleButton: UIButton {
     
         
     //MARK: - Lifecycle
-    init(customImage: String? = nil, rotate: CGFloat? = nil, resized: CGSize? = nil, imageColor: UIColor? = nil) {
+    init(customImage: String? = nil, rotate: CGFloat? = nil, resized: CGSize? = nil, imageColor: UIColor? = nil, stroke: Bool = false, cornerRadius: CGFloat? = nil) {
         super.init(frame: .zero)
         
-        self.contentMode = .scaleAspectFill
+//        self.contentMode = .scaleAspectFill
         
-        if rotate != nil {
-            self.transform = CGAffineTransformMakeRotation(CGFloat(Double.pi / rotate!))
-        }
+
         if resized != nil {
             let image = UIImage(
                 named: customImage == nil ? "ArrowImage" : customImage!
-            )?.withRenderingMode(.alwaysTemplate).resize(targetSize: resized!)
-            image?.withTintColor(.mainPurple)
+            )?.resize(targetSize: resized!).withRenderingMode(.alwaysTemplate)
+//            image?.withTintColor(.mainPurple)
             self.setImage(image, for: .normal)
             self.imageView?.contentMode = .scaleAspectFill
             
@@ -37,11 +35,31 @@ class CustomCircleButton: UIButton {
             self.imageView?.contentMode = .scaleAspectFill
         }
         
-        self.imageView?.tintColor = .mainPurple
-        self.tintColor = .mainPurple
+        if imageColor != nil {
+            if stroke {
+                self.layer.borderWidth = 1
+                self.layer.borderColor = imageColor!.cgColor
+            }
+            self.tintColor = imageColor
+        } else {
+            if stroke {
+                self.layer.borderWidth = 1
+                self.layer.borderColor = UIColor(named: "MainPurple")?.cgColor
+            }
+            self.tintColor = .mainPurple
+        }
+        
         self.backgroundColor = .white
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 20
+//        self.clipsToBounds = true
+        if cornerRadius != nil {
+            self.layer.cornerRadius = cornerRadius!
+        } else {
+            self.layer.cornerRadius = 20
+        }
+        
+        if rotate != nil {
+            self.transform = CGAffineTransformMakeRotation(CGFloat(Double.pi / rotate!))
+        }
     }
     
     required init?(coder: NSCoder) {

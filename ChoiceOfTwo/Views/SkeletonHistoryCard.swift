@@ -15,7 +15,7 @@ class SkeletonHistoryCard: UIView {
         super.init(frame: .zero)
         self.layer.cornerRadius = 12
 //        self.backgroundColor = .lightGray
-        self.backgroundColor = .mainGray
+        self.backgroundColor = .mainLightGray
         self.layer.borderColor = UIColor.mainPurple.cgColor
         self.layer.borderWidth = 1
     }

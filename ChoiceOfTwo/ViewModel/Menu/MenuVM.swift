@@ -54,13 +54,5 @@ class MenuVM {
         self.coordinator.dismissHomeScreens()
     }
     
-    public func signOut(completion: @escaping (_ error: Error?) -> Void) {
-        authService.signOut { error in
-            if let error = error {
-                completion(error)
-            } else {
-                self.coordinator.dismissHomeScreens()
-            }
-        }
-    }
+    
 }

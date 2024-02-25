@@ -31,6 +31,7 @@ class CustomButton: UIButton {
         self.clipsToBounds = true
         self.layer.cornerRadius = 12
         self.setTitle(text, for: .normal)
+        self.titleLabel?.textAlignment = .center
         
         if textColor != nil {
             self.setTitleColor(textColor, for: .normal)
