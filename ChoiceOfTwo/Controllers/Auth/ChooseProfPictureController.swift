@@ -29,7 +29,8 @@ class ChooseProfPictureController: UIViewController, UINavigationControllerDeleg
         self.view.backgroundColor = .white
         setupUI()
         
-        profileImage.addTarget(self, action: #selector(profileImageTapped), for: .touchUpInside)
+//        profileImage.addTarget(self, action: #selector(profileImageTapped), for: .touchUpInside)
+        profileImage.addTarget(self, action: #selector(showCrop1), for: .touchUpInside)
         skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
     }
     
@@ -73,6 +74,24 @@ class ChooseProfPictureController: UIViewController, UINavigationControllerDeleg
         picker.sourceType = .photoLibrary
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @objc func showCrop1() {
+        let image = UIImage(named: "CropTest")!
+        let vc = CropViewController(croppingStyle: .circular, image: image)
+        vc.aspectRatioPreset = .presetOriginal
+        vc.aspectRatioLockEnabled = false
+        vc.toolbarPosition = .bottom
+        vc.doneButtonColor = .mainPurple
+        vc.doneButtonTitle = "Continue"
+        vc.cancelButtonTitle = "Quit"
+        vc.cancelButtonColor = .mainRed
+        vc.view.backgroundColor = .white
+        
+        vc.delegate = self
+        present(vc, animated: true)
+        
+//        let newVC = TOCropViewController()
     }
     
     

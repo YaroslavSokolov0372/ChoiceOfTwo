@@ -46,6 +46,7 @@
 		D19D6F332B8BBA1800E2B907 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = D19D6F322B8BBA1800E2B907 /* TOCropViewController */; };
 		D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F342B8BBB9900E2B907 /* ChooseProfPictureVM.swift */; };
 		D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */; };
+		D19D6F392B8D029800E2B907 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */; };
 		D1D753912B7265EF00ADF274 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753902B7265EF00ADF274 /* LoginController.swift */; };
 		D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753942B72677C00ADF274 /* CustomTextField.swift */; };
 		D1D753972B726A6900ADF274 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753962B726A6900ADF274 /* EntryController.swift */; };
@@ -156,6 +157,7 @@
 		D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfPictureController.swift; sourceTree = "<group>"; };
 		D19D6F342B8BBB9900E2B907 /* ChooseProfPictureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfPictureVM.swift; sourceTree = "<group>"; };
 		D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageController.swift; sourceTree = "<group>"; };
+		D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D1D753902B7265EF00ADF274 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D1D753942B72677C00ADF274 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D1D753962B726A6900ADF274 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				D1D754212B7A6A9300ADF274 /* UITextField+Ext.swift */,
 				D19D6F292B8B8CF700E2B907 /* UIScrollView+Extension.swift */,
 				D19D6F2B2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift */,
+				D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				D1D753D42B73F68D00ADF274 /* RegisterController.swift in Sources */,
 				D199BE532B80F364000EBA02 /* friendProfileImageButton.swift in Sources */,
 				D19D6F2C2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift in Sources */,
+				D19D6F392B8D029800E2B907 /* UIImageView+Extension.swift in Sources */,
 				D1332AE12B8515B700F34C51 /* SearchFriendsCoordinator.swift in Sources */,
 				D1D753D62B73F77300ADF274 /* AuthHeaderView.swift in Sources */,
 				D1D753A02B72856800ADF274 /* EntryVM.swift in Sources */,
