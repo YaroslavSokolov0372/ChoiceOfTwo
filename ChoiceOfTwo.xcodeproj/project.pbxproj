@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */; };
 		D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */; };
 		D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */; };
 		D12AE7E32B7E7B74004511B5 /* MenuCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E22B7E7B74004511B5 /* MenuCoordiantor.swift */; };
@@ -34,7 +35,6 @@
 		D199BE592B81267D000EBA02 /* Devider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE582B81267D000EBA02 /* Devider.swift */; };
 		D199BE5B2B81289A000EBA02 /* HistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */; };
 		D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */; };
-		D199BE5F2B8155C3000EBA02 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */; };
 		D199BE632B824C8F000EBA02 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE622B824C8F000EBA02 /* ProfileController.swift */; };
 		D199BE652B824CD1000EBA02 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE642B824CD1000EBA02 /* ProfileVM.swift */; };
 		D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199BE662B829809000EBA02 /* CustomTabBar.swift */; };
@@ -116,6 +116,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCropImageController.swift; sourceTree = "<group>"; };
 		D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Ext.swift"; sourceTree = "<group>"; };
 		D12AE7E22B7E7B74004511B5 /* MenuCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordiantor.swift; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 		D199BE582B81267D000EBA02 /* Devider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devider.swift; sourceTree = "<group>"; };
 		D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellView.swift; sourceTree = "<group>"; };
 		D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonHistoryCard.swift; sourceTree = "<group>"; };
-		D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		D199BE622B824C8F000EBA02 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D199BE642B824CD1000EBA02 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		D199BE662B829809000EBA02 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -339,8 +339,8 @@
 			children = (
 				D199BE692B829FC3000EBA02 /* Menu */,
 				D199BE682B829FB8000EBA02 /* Auth */,
-				D199BE5E2B8155C3000EBA02 /* BaseTabBarController.swift */,
 				D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */,
+				D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -719,7 +719,6 @@
 				D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
 				D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */,
-				D199BE5F2B8155C3000EBA02 /* BaseTabBarController.swift in Sources */,
 				D1332AEC2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift in Sources */,
 				D1332ADF2B8514E000F34C51 /* SearchFriendsVM.swift in Sources */,
 				D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */,
@@ -732,6 +731,7 @@
 				D1D753D82B73FDFB00ADF274 /* RegisterVM.swift in Sources */,
 				D1D754062B795C0500ADF274 /* CoordinatorProtocol.swift in Sources */,
 				D1D754092B79708600ADF274 /* ParentCoordinatorProtocol+Ex.swift in Sources */,
+				D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */,
 				D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */,
 				D1D753E32B766F8F00ADF274 /* CustomImageAuthButton.swift in Sources */,
 				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
