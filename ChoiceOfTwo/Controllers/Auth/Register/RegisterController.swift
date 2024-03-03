@@ -373,8 +373,8 @@ class RegisterController: UIViewController {
             .assign(to: \.username.textState, on: vm)
             .store(in: &vm.subscriptions)
         
-        NotificationCenter.default.post(
-            name:UITextField.textDidChangeNotification, object: usernameField)
+//        NotificationCenter.default.post(
+//            name:UITextField.textDidChangeNotification, object: usernameField)
     }
     
      func bindEmail() {
@@ -525,7 +525,6 @@ class RegisterController: UIViewController {
             circleImage?.alpha = 0.0
         }
     }
-    
     
     deinit {
         ConsoleLogger.classDeInitialized()

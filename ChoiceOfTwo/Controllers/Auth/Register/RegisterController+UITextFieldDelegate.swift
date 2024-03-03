@@ -71,8 +71,8 @@ extension RegisterController: UITextFieldDelegate {
         switch textField.textFieldType {
         case .email:
             if !madeBindingForEmail {
-                self.bindEmail()
                 self.emailListener()
+                self.bindEmail()
                 self.bindEmailForIndicator()
                 madeBindingForEmail = true
                 print("DEBUG:", "Binded email")
@@ -80,16 +80,16 @@ extension RegisterController: UITextFieldDelegate {
             
         case .password:
             if !madeBindingForPassword {
-                self.bindPassword()
                 self.passwordListener()
+                self.bindPassword()
                 self.bindPasswordForIndicator()
                 madeBindingForPassword = true
                 print("DEBUG:", "Binded password")
             }
         case .username:
             if !madeBindingForUsername {
-                self.bindUsername()
                 self.usernameListener()
+                self.bindUsername()
                 self.bindUsernameForIndicator()
                 madeBindingForUsername = true
                 print("DEBUG:", "Binded username")

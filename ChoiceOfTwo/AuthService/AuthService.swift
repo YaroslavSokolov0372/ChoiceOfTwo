@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import GoogleSignIn
 import FirebaseCore
+import Combine
 
 class AuthService {
     
@@ -77,8 +78,8 @@ class AuthService {
             let emailAddress = user.profile?.email
             let fullName = user.profile?.name
             let givenName = user.profile?.givenName
-
-
+            
+            
             
             Auth.auth().signIn(with: credential) { result, error in
                 
@@ -132,6 +133,19 @@ class AuthService {
         }
     }
     
+    public func isAvailable(_ string: String, inField: String, completionHandler: @escaping (Bool, Error?) -> Void) {
+        Firestore.firestore().collection("users").whereField(inField, isEqualTo: string).getDocuments { snapshot, error in
+            if let error = error, snapshot == nil {
+                completionHandler(false, error)
+            }
+            if snapshot!.documents.count == 0 {
+                completionHandler(true, nil)
+            } else {
+                completionHandler(false, nil)
+            }
+        }
+    }
+    
     public func getCurrentUserData(completion: @escaping (User?, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             return
@@ -141,7 +155,7 @@ class AuthService {
             if let error = error {
                 completion(nil, error)
             }
-                
+            
             guard let snapshot = snapshot else {
                 completion(nil, nil)
                 return
