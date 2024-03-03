@@ -22,7 +22,7 @@ class CustomTextField: UITextField {
     let textFieldType: CustomTextFieldType
     
     //MARK: - Lifecycle
-    init(textFieldType: CustomTextFieldType) {
+    init(textFieldType: CustomTextFieldType, strokeColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         self.textFieldType = textFieldType
         super.init(frame: .zero)
         
@@ -51,6 +51,15 @@ class CustomTextField: UITextField {
             self.placeholder = "Password"
             self.textContentType = .password
             self.isSecureTextEntry = true
+        }
+        
+        if strokeColor != nil {
+            self.layer.borderColor = strokeColor!.cgColor
+            self.layer.borderWidth = 1
+        }
+        
+        if backgroundColor != nil {
+            self.backgroundColor = backgroundColor!
         }
         
     }

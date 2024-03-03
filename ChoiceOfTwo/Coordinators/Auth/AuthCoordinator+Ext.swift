@@ -33,6 +33,19 @@ extension AuthCoordinator {
         registerCoordinator.start()
     }
     
+    func registerProfImage(navigationController: UINavigationController, animater: Bool) {
+        let profImageCoordinator = RegisterProfImageCoordinator(navigationController: navigationController)
+        profImageCoordinator.parent = self
+        addChild(profImageCoordinator)
+        profImageCoordinator.start()
+    }
+    
+    func cropImage(navigationController: UINavigationController, animater: Bool, image: UIImage) {
+        let profImageCoordinator = CropImageCoordinator(navigationController: navigationController)
+        profImageCoordinator.parent = self
+        addChild(profImageCoordinator)
+        profImageCoordinator.start(image: image)
+    }
     
     func home() {
         parent?.home()

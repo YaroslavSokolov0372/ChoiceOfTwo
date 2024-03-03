@@ -96,6 +96,13 @@
 		D1D754262B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */; };
 		D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */; };
 		D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */; };
+		D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */; };
+		D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */; };
+		D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */; };
+		D1F587502B927CE10072CFAA /* RegisterProfImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */; };
+		D1F587522B927EAF0072CFAA /* CropImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F587512B927EAF0072CFAA /* CropImageCoordinator.swift */; };
+		D1F587582B9281120072CFAA /* CropImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F587572B9281120072CFAA /* CropImageVM.swift */; };
+		D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F587592B928B0B0072CFAA /* RegisterProfImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +209,13 @@
 		D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateProtocol+Ext.swift"; sourceTree = "<group>"; };
 		D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorLabelView.swift; sourceTree = "<group>"; };
+		D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageCoordinator.swift; sourceTree = "<group>"; };
+		D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageVM.swift; sourceTree = "<group>"; };
+		D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageController.swift; sourceTree = "<group>"; };
+		D1F587512B927EAF0072CFAA /* CropImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageCoordinator.swift; sourceTree = "<group>"; };
+		D1F587572B9281120072CFAA /* CropImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageVM.swift; sourceTree = "<group>"; };
+		D1F587592B928B0B0072CFAA /* RegisterProfImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterProfImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,10 +351,10 @@
 		D17807902B6AB11F003B84F7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D1F587552B927F350072CFAA /* Other */,
 				D199BE692B829FC3000EBA02 /* Menu */,
 				D199BE682B829FB8000EBA02 /* Auth */,
-				D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */,
-				D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */,
+				D1F587542B927F190072CFAA /* Test */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -378,12 +392,11 @@
 		D199BE682B829FB8000EBA02 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				D1E687DB2B93F8C0006BD6CD /* RegisterProfileImage */,
+				D1E687DA2B93F89E006BD6CD /* Register */,
 				D1D753962B726A6900ADF274 /* EntryController.swift */,
 				D1D753902B7265EF00ADF274 /* LoginController.swift */,
 				D1D754232B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift */,
-				D1D753D32B73F68D00ADF274 /* RegisterController.swift */,
-				D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */,
-				D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -405,6 +418,7 @@
 		D1D7538E2B7264C400ADF274 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D1F587562B9281090072CFAA /* Other */,
 				D1D9A3B32B86AE5B00D8DE25 /* Menu */,
 				D1D9A3B22B86AE4A00D8DE25 /* Auth */,
 			);
@@ -451,6 +465,7 @@
 		D1D754002B795BC600ADF274 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				D1F587532B927EE80072CFAA /* Other */,
 				D12AE7DD2B7E7A89004511B5 /* Home */,
 				D1D7540C2B7972A000ADF274 /* Auth */,
 				D1D7540B2B79726300ADF274 /* Instructor */,
@@ -495,6 +510,7 @@
 				D1D7540D2B7972BF00ADF274 /* EntryCoordinator.swift */,
 				D1D754132B7975BA00ADF274 /* LoginCoordinator.swift */,
 				D1D754152B7976EE00ADF274 /* RegisterCoordinator.swift */,
+				D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -514,6 +530,7 @@
 				D1D753BE2B73EE5B00ADF274 /* LoginVM.swift */,
 				D1D753D72B73FDFB00ADF274 /* RegisterVM.swift */,
 				D19D6F342B8BBB9900E2B907 /* ChooseProfPictureVM.swift */,
+				D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -526,6 +543,58 @@
 				D1332ADE2B8514E000F34C51 /* SearchFriendsVM.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		D1E687DA2B93F89E006BD6CD /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D1D753D32B73F68D00ADF274 /* RegisterController.swift */,
+				D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */,
+				D1D754252B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		D1E687DB2B93F8C0006BD6CD /* RegisterProfileImage */ = {
+			isa = PBXGroup;
+			children = (
+				D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */,
+				D1F587592B928B0B0072CFAA /* RegisterProfImage+Extension.swift */,
+			);
+			path = RegisterProfileImage;
+			sourceTree = "<group>";
+		};
+		D1F587532B927EE80072CFAA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D1F587512B927EAF0072CFAA /* CropImageCoordinator.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		D1F587542B927F190072CFAA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */,
+				D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		D1F587552B927F350072CFAA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		D1F587562B9281090072CFAA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D1F587572B9281120072CFAA /* CropImageVM.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,10 +766,12 @@
 				D1332AE32B85267300F34C51 /* ProfileCoordinator.swift in Sources */,
 				D1332AEA2B855CE600F34C51 /* UserSearchCellView.swift in Sources */,
 				D1D753E62B76750100ADF274 /* UIImage+CGSize.swift in Sources */,
+				D1F587522B927EAF0072CFAA /* CropImageCoordinator.swift in Sources */,
 				D1D7540E2B7972BF00ADF274 /* EntryCoordinator.swift in Sources */,
 				D1D753972B726A6900ADF274 /* EntryController.swift in Sources */,
 				D199BE5B2B81289A000EBA02 /* HistoryCellView.swift in Sources */,
 				D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */,
+				D1F587502B927CE10072CFAA /* RegisterProfImageController.swift in Sources */,
 				D199BE572B810A7E000EBA02 /* FriendCellView.swift in Sources */,
 				D1D754022B795BD900ADF274 /* AppCoordinator.swift in Sources */,
 				D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */,
@@ -715,12 +786,14 @@
 				D1D753CE2B73F2BE00ADF274 /* AuthService.swift in Sources */,
 				D19D6F282B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift in Sources */,
 				D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */,
+				D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */,
 				D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */,
 				D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
 				D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */,
 				D1332AEC2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift in Sources */,
 				D1332ADF2B8514E000F34C51 /* SearchFriendsVM.swift in Sources */,
+				D1F587582B9281120072CFAA /* CropImageVM.swift in Sources */,
 				D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */,
 				D199BE592B81267D000EBA02 /* Devider.swift in Sources */,
 				D199BE632B824C8F000EBA02 /* ProfileController.swift in Sources */,
@@ -737,10 +810,12 @@
 				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
+				D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */,
 				D1D753DA2B74297700ADF274 /* CustomCircleButton.swift in Sources */,
 				D1D754122B79753600ADF274 /* AuthCoordinator+Ext.swift in Sources */,
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,
 				D12AE7E52B7E7C0F004511B5 /* MenuVM.swift in Sources */,
+				D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */,
 				D1D754042B795BF300ADF274 /* LaunchInstructor.swift in Sources */,
 				D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */,
 				D1D753912B7265EF00ADF274 /* LoginController.swift in Sources */,
@@ -749,6 +824,7 @@
 				D199BE552B8102AA000EBA02 /* MenuController+UICollectionView.swift in Sources */,
 				D19D6F2E2B8BB97700E2B907 /* ChooseProfPictureController.swift in Sources */,
 				D1332AE82B852C8400F34C51 /* UserModel.swift in Sources */,
+				D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

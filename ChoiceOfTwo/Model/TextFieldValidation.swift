@@ -79,6 +79,9 @@ enum FieldState: Equatable {
         case nameCantContainNumbers
         case nameCantContainSpecialChars
         case tooShortName
+        case nicknameAlreadyExist
+        case emailAlreadyExist
+        case isTooLong
         case custom(String)
         
         var description: String {
@@ -97,6 +100,12 @@ enum FieldState: Equatable {
                 return "Name is to short"
             case .custom(let string):
                 return string
+            case .nicknameAlreadyExist:
+                return "Account with this name already exist"
+            case .emailAlreadyExist:
+                return "Account with this email already exist"
+            case .isTooLong:
+                return "Is too long"
             }
         }
     }

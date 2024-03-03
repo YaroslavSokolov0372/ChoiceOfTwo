@@ -19,27 +19,30 @@ class EntryController: UIViewController {
       let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(named: "LogoImage")
+//        ?.resize(targetSize: CGSize(width: 160, height: 160))
         iv.backgroundColor = .white
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 30
         return iv
     }()
-    private let loginButton = CustomButton(text: "Login", type: .medium)
-    private let createAccButton = CustomButton(text: "Create Account", type: .medium)
+    private let loginButton = CustomButton(text: "Login", type: .medium, strokeColor: .mainPurple)
+    private let createAccButton = CustomButton(text: "Create Account", type: .medium, strokeColor: .mainPurple)
     private let bridgeLabel: UILabel = {
         let label = UILabel()
         label.text = "or"
-        label.textColor = .white
+//        label.textColor = .white
+        label.textColor = .mainPurple
         label.font = .nunitoFont(size: 18, type: .medium)
         return label
     }()
-    private let googleSignButton = CustomImageAuthButton(image: "Google", title: "Sign Up with Google")
-    private let appleSignButton = CustomImageAuthButton(image: "Apple", title: "Sign Up with Google")
+    private let googleSignButton = CustomImageAuthButton(image: "Google", title: "Sign Up with Google", strokeColor: .mainPurple)
+    private let appleSignButton = CustomImageAuthButton(image: "Apple", title: "Sign Up with Google", strokeColor: .mainPurple)
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .mainPurple
+//        view.backgroundColor = .mainPurple
+        view.backgroundColor = .white
         setupUI()
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         createAccButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
@@ -70,11 +73,13 @@ class EntryController: UIViewController {
         NSLayoutConstraint.activate([
             
             imageLogoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageLogoView.widthAnchor.constraint(equalToConstant: 100),
-            imageLogoView.heightAnchor.constraint(equalToConstant: 100),
-            imageLogoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -220),
+//            imageLogoView.widthAnchor.constraint(equalToConstant: 100),
+//            imageLogoView.heightAnchor.constraint(equalToConstant: 100),
+            imageLogoView.widthAnchor.constraint(equalToConstant: 140),
+            imageLogoView.heightAnchor.constraint(equalToConstant: 140),
+            imageLogoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200),
             
-            createAccButton.topAnchor.constraint(equalTo: imageLogoView.bottomAnchor, constant: 70),
+            createAccButton.topAnchor.constraint(equalTo: imageLogoView.bottomAnchor, constant: 50),
             createAccButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            createAccButton.heightAnchor.constraint(equalToConstant: 50),
             createAccButton.heightAnchor.constraint(equalToConstant: 55),

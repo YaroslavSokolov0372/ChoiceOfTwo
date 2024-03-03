@@ -17,7 +17,7 @@ class RegisterVM  {
     @Published var password = TextFieldValidation(textFieldType: .password)
     @Published var username = TextFieldValidation(textFieldType: .username)
     
-    var subscriptions = Set<AnyCancellable>()
+    var subscriptions = Set<AnyCancellable>()    
     
     func dismiss() {
         coordinator.dismissScreen()
@@ -25,6 +25,10 @@ class RegisterVM  {
     
     func goToHome() {
         coordinator.parent?.home()
+    }
+    
+    func goToRegisterProImage() {
+        coordinator.gotToRegisterProfImage()
     }
     
     func signUp(completion: @escaping (_ error: Error?) -> Void) {
@@ -40,3 +44,6 @@ class RegisterVM  {
         }
     }
 }
+
+
+

@@ -14,7 +14,6 @@ class EntryCoordinator: ChildCoordinator {
     var parent: AuthCoordinator?
     var navigationController: UINavigationController
     
-    var children: [Coordinator] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

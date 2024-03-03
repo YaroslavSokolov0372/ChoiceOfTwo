@@ -12,6 +12,13 @@ protocol Coordinator: AnyObject {
     
     var navigationController: UINavigationController { get set }
     
-    func start()
+    func start(image: UIImage?)
+    
 }
 
+
+extension Coordinator {
+    func start(image: UIImage? = nil) {
+        
+    }
+}

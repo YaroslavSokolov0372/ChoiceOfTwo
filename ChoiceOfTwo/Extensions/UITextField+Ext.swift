@@ -24,13 +24,9 @@ extension UITextField {
         case .idle:
             break
         case .error(let errorState):
-            //MARK: - show error in UI
             completion(true, errorState)
-            return
         case .success:
-            //MARK: - show error in UI
             completion(false, nil)
-            return
         }
      }
     

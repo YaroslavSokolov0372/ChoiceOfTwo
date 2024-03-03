@@ -10,7 +10,7 @@ import UIKit
 class CustomImageAuthButton: UIButton {
 
     
-    init(image: String, title: String) {
+    init(image: String, title: String, strokeColor: UIColor? = nil) {
         super.init(frame: .zero)
         
         let im = UIImage(named: image)!.resizeImage(targetSize: CGSize(width: 35, height: 35))
@@ -24,6 +24,10 @@ class CustomImageAuthButton: UIButton {
         configuration.imagePadding = 20
         self.configuration = configuration
         self.clipsToBounds = true
+        if strokeColor != nil {
+            self.layer.borderColor = strokeColor?.cgColor
+            self.layer.borderWidth = 1
+        }
         self.layer.cornerRadius = 12
         self.titleLabel?.font = .nunitoFont(size: 18, type: .medium)
         

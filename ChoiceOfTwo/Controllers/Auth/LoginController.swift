@@ -16,16 +16,17 @@ class LoginController: UIViewController {
     
     //MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Please sign in to continue")
-    private let emailField = CustomTextField(textFieldType: .email)
-    private let passwordField = CustomTextField(textFieldType: .password)
-    private let signInButton = CustomButton(text: "Sign In", type: .medium)
-    private let backButton = CustomCircleButton(rotate: 1)
+    private let emailField = CustomTextField(textFieldType: .email, strokeColor: .mainPurple, backgroundColor: .white)
+    private let passwordField = CustomTextField(textFieldType: .password, strokeColor: .mainPurple, backgroundColor: .white)
+    private let signInButton = CustomButton(text: "Sign In", type: .medium, strokeColor: .mainPurple)
+    private let backButton = CustomCircleButton(rotate: 1, stroke: true)
     
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .mainPurple
+//        view.backgroundColor = .mainPurple
+        view.backgroundColor = .white
         setupUI()
         bindEmail()
         bindPassword()
@@ -38,6 +39,7 @@ class LoginController: UIViewController {
 //            .sink { [weak self] state in
 //                self?.emailField.validationStateChanged(state: state)
 //            }.store(in: &vm.subscriptions)
+        
     }
 
     
@@ -57,7 +59,7 @@ class LoginController: UIViewController {
         
         self.view.addSubview(signInButton)
         signInButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         
         NSLayoutConstraint.activate([
             self.backButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
@@ -69,24 +71,22 @@ class LoginController: UIViewController {
             self.headerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.headerView.heightAnchor.constraint(equalToConstant: 210),
             self.headerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -165),
-
+            
             self.emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
             self.emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.emailField.heightAnchor.constraint(equalToConstant: 50),
+            self.emailField.heightAnchor.constraint(equalToConstant: 55),
             self.emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
             self.passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             self.passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            self.passwordField.heightAnchor.constraint(equalToConstant: 50),
+            self.passwordField.heightAnchor.constraint(equalToConstant: 55),
             self.passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            self.signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 20),
+            self.signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
             self.signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.signInButton.heightAnchor.constraint(equalToConstant: 50),
+            self.signInButton.heightAnchor.constraint(equalToConstant: 55),
             self.signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-//            self.backButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 40),
-
         ])
     }
     

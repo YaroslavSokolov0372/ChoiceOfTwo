@@ -1,20 +1,18 @@
 //
-//  RegisterCoordinator.swift
+//  ChooseProfileImageCoordinator.swift
 //  ChoiceOfTwo
 //
-//  Created by Yaroslav Sokolov on 11/02/2024.
+//  Created by Yaroslav Sokolov on 01/03/2024.
 //
 
 import Foundation
 import UIKit
 
-
-class RegisterCoordinator: ChildCoordinator {
+class RegisterProfImageCoordinator: ChildCoordinator {
     
     var viewControllerRef: UIViewController?
     var parent: AuthCoordinator?
     var navigationController: UINavigationController
-    
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -22,9 +20,9 @@ class RegisterCoordinator: ChildCoordinator {
     
     
     func start() {
-        let registerController = RegisterController()
+        let registerController = RegisterProfImageController()
         viewControllerRef = registerController
-        let vm = RegisterVM()
+        let vm = RegisterProfImageVM()
         vm.coordinator = self
         registerController.vm = vm
         navigationController.pushViewController(registerController, animated: true)
@@ -38,7 +36,7 @@ class RegisterCoordinator: ChildCoordinator {
         parent?.popLastChildren()
     }
     
-    func gotToRegisterProfImage() {
-        parent?.registerProfImage(navigationController: navigationController, animater: true)
+    func goToCropImage(image: UIImage) {
+        parent?.cropImage(navigationController: navigationController, animater: true, image: image)
     }
 }
