@@ -22,6 +22,7 @@
 		D1332AEA2B855CE600F34C51 /* UserSearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1332AE92B855CE600F34C51 /* UserSearchCellView.swift */; };
 		D1332AEC2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1332AEB2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift */; };
 		D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D167422B2B94A6B100730962 /* LoginController+NotificationCenter.swift */; };
+		D167422F2B95266D00730962 /* CustomAnimatedMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D167422E2B95266D00730962 /* CustomAnimatedMessageLabel.swift */; };
 		D17807602B6AB0FA003B84F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D178075F2B6AB0FA003B84F7 /* AppDelegate.swift */; };
 		D17807622B6AB0FA003B84F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17807612B6AB0FA003B84F7 /* SceneDelegate.swift */; };
 		D17807692B6AB0FB003B84F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17807682B6AB0FB003B84F7 /* Assets.xcassets */; };
@@ -139,6 +140,7 @@
 		D1332AE92B855CE600F34C51 /* UserSearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCellView.swift; sourceTree = "<group>"; };
 		D1332AEB2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFriendsController+UICollectionView.swift"; sourceTree = "<group>"; };
 		D167422B2B94A6B100730962 /* LoginController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		D167422E2B95266D00730962 /* CustomAnimatedMessageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatedMessageLabel.swift; sourceTree = "<group>"; };
 		D178075C2B6AB0FA003B84F7 /* ChoiceOfTwo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoiceOfTwo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D178075F2B6AB0FA003B84F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17807612B6AB0FA003B84F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +294,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		D16742302B95275C00730962 /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				D1D753962B726A6900ADF274 /* EntryController.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
 		D17807532B6AB0FA003B84F7 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +407,7 @@
 				D199BE582B81267D000EBA02 /* Devider.swift */,
 				D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */,
 				D199BE662B829809000EBA02 /* CustomTabBar.swift */,
+				D167422E2B95266D00730962 /* CustomAnimatedMessageLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,10 +415,10 @@
 		D199BE682B829FB8000EBA02 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				D16742302B95275C00730962 /* Entry */,
 				D167422D2B94AAAF00730962 /* Login */,
 				D1E687DB2B93F8C0006BD6CD /* RegisterProfileImage */,
 				D1E687DA2B93F89E006BD6CD /* Register */,
-				D1D753962B726A6900ADF274 /* EntryController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -834,6 +845,7 @@
 				D1D753D02B73F2FF00ADF274 /* RegisterUserRequest.swift in Sources */,
 				D12AE7E32B7E7B74004511B5 /* MenuCoordiantor.swift in Sources */,
 				D199BE552B8102AA000EBA02 /* MenuController+UICollectionView.swift in Sources */,
+				D167422F2B95266D00730962 /* CustomAnimatedMessageLabel.swift in Sources */,
 				D19D6F2E2B8BB97700E2B907 /* ChooseProfPictureController.swift in Sources */,
 				D1332AE82B852C8400F34C51 /* UserModel.swift in Sources */,
 				D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */,

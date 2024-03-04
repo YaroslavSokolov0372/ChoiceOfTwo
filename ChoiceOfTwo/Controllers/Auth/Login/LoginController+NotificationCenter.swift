@@ -52,7 +52,7 @@ extension LoginController {
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-//        scrollView.setContentOffset(.zero, animated: true)
+        scrollView.setContentOffset(.zero, animated: true)
     }
     
 }

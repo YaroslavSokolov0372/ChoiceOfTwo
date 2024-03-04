@@ -118,6 +118,10 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
     @objc private func backButtonTapped() {
         vm.dismiss()
     }
+    
+    deinit {
+        ConsoleLogger.classDeInitialized()
+    }
 
 }
 

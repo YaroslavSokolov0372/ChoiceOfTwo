@@ -15,6 +15,13 @@ class LoginController: UIViewController {
 
     
     //MARK: - UI Components
+    lazy var messageLabel = CustomAnimatedMessageLabel(frame: CGRect(
+        x: (view.frame.width * 0.07),
+//        y: (view.frame.maxY - 200),
+        y: view.frame.maxY,
+        width: (view.frame.width * 0.85),
+        height: 65)
+    )
     let scrollView: UIScrollView = {
         let scrollV = UIScrollView()
         scrollV.isScrollEnabled = false
@@ -27,17 +34,16 @@ class LoginController: UIViewController {
         view.backgroundColor = .white
         return view
     }()
-    private let headerView = AuthHeaderView(title: "Sign In", subTitle: "Please sign in to continue")
+     let headerView = AuthHeaderView(title: "Sign In", subTitle: "Please sign in to continue")
      let emailField = CustomTextField(textFieldType: .email, strokeColor: .mainPurple, backgroundColor: .white)
      let passwordField = CustomTextField(textFieldType: .password, strokeColor: .mainPurple, backgroundColor: .white)
-    private let signInButton = CustomButton(text: "Sign In", type: .medium, strokeColor: .mainPurple)
-    private let backButton = CustomCircleButton(rotate: 1, stroke: true)
+     let signInButton = CustomButton(text: "Sign In", type: .medium, strokeColor: .mainPurple)
+     let backButton = CustomCircleButton(rotate: 1, stroke: true)
     
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .mainPurple
         view.backgroundColor = .white
         setupUI()
         bindEmail()
@@ -47,6 +53,11 @@ class LoginController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         registerKeyboardNotifications()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        contentView.addSubview(messageLabel)
+        messageLabel.configure(message: "Error", strokeColor: .mainRed)
     }
 
     
@@ -144,7 +155,8 @@ class LoginController: UIViewController {
     @objc private func signInButtonTapped() {
         vm.signIn { error in
             if let error = error {
-                print(error.localizedDescription)
+                self.messageLabel.configure(message: error.localizedDescription, strokeColor: .mainRed)
+                self.messageLabel.playAnimation()
             }
         }
     }

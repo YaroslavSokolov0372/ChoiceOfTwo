@@ -473,16 +473,16 @@ class RegisterController: UIViewController {
     
     @objc private func signUpButtonTapped() {
         
-        if vm.email.textState == .success
-        && vm.username.textState == .success
-        && vm.password.textState == .success {
+//        if vm.email.textState == .success
+//        && vm.username.textState == .success
+//        && vm.password.textState == .success {
 //            vm.signUp {error in
 //                if let error = error {
 //                    print(error.localizedDescription)
 //                }
 //            }
             vm.goToRegisterProImage()
-        }
+//        }
         
 
         
@@ -530,3 +530,4 @@ class RegisterController: UIViewController {
         ConsoleLogger.classDeInitialized()
     }
 }
+

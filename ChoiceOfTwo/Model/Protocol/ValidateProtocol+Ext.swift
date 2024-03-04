@@ -88,7 +88,6 @@ extension Validatable {
             }).eraseToAnyPublisher()
     }
     
-    
     func hasSpecialCharacters(publisher: AnyPublisher<String, Never>) -> AnyPublisher<Bool, Never> {
         publisher
             .map({ $0.hasSpecialCharacters() })
