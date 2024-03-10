@@ -31,11 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        window = UIWindow(windowScene: windowScene)
 //        window?.windowScene = windowScene
-//        let viewController = ChooseProfPictureController()
 //        let viewController = CropImageController()
-//        let viewController = FinalCropImageController()
 //        window?.rootViewController = viewController
 //        window?.makeKeyAndVisible()
+        //        let viewController = ChooseProfPictureController()
+        //        let viewController = FinalCropImageController()
+        //        let viewController = RegisterProfImageController()
         
         
 //        window = UIWindow(windowScene: windowScene)

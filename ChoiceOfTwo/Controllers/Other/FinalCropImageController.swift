@@ -14,14 +14,9 @@ class FinalCropImageController: UIViewController {
     
     private var originalImageSize: CGSize = .zero
     private var centrOverlayRelToImage: CGPoint = .zero
-    private lazy var center: CGPoint = self.view.center
+//    private lazy var center: CGPoint = self.view.center
     private lazy var radius: CGFloat = min(view.bounds.width, view.bounds.height) * 0.45
     private lazy var rect = CGRectMake(
-//        CGRectGetMidX(self.frontImageView.bounds) - radius,
-//        CGRectGetMidY(self.frontImageView.bounds) - radius,
-//            2 * radius,
-//            2 * radius)
-        
         CGRectGetMidX(self.view.bounds) - radius,
         CGRectGetMidY(self.view.bounds) - radius,
             2 * radius,
@@ -30,7 +25,6 @@ class FinalCropImageController: UIViewController {
     //MARK: - UI Components
     private let frontImageView: UIImageView = {
         let imageV = UIImageView()
-          imageV.contentMode = .scaleAspectFit
           return imageV
     }()
     private let blurView: UIVisualEffectView = {
@@ -43,9 +37,6 @@ class FinalCropImageController: UIViewController {
         view.backgroundColor = .mainLightGray.withAlphaComponent(0.65)
         return view
     }()
-    
-//    private lazy var overlay = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-    
     private let tabBar: UIView = {
         let view = UIView()
         view.backgroundColor = .mainLightGray
@@ -54,15 +45,18 @@ class FinalCropImageController: UIViewController {
     private let continueButton: UIButton = CustomCircleButton(customImage: "CheckMark", imageColor: .mainPurple, stroke: true)
     private let cancelButton: UIButton = CustomCircleButton(customImage: "Plus", imageColor: .mainPurple, stroke: true)
     
-    
 
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         frontImageView.image = vm.image
         view.backgroundColor = .mainDarkGray
         frontImageView.isUserInteractionEnabled = true
         overlay.isUserInteractionEnabled = true
+        blurView.isUserInteractionEnabled = true
         overlay.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(wasDragged)))
+        frontImageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(wasZoomed)))
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
     }
     
@@ -71,10 +65,6 @@ class FinalCropImageController: UIViewController {
         setupUI()
         newMask(viewToMask: blurView, rect: rect, invert: true)
         newMask(viewToMask: overlay, rect: rect, invert: true)
-        //        configureFrontImageView()
-        //        configureOverlay()
-        //        configureBlurView()
-        //        configureTabBar()
     }
     
     
@@ -126,9 +116,6 @@ class FinalCropImageController: UIViewController {
         ])
     }
     
-    
-
-    
     private func configureTabBar() {
         view.addSubview(tabBar)
         tabBar.translatesAutoresizingMaskIntoConstraints = false
@@ -164,66 +151,14 @@ class FinalCropImageController: UIViewController {
     }
     
     private func configureFrontImageView() {
-//        frontImageView.image = UIImage(named: "CropTest")
         frontImageView.image = vm.image
         frontImageView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height * 0.9)
-//        originalImageSize = frontImageView.image!.size
+        originalImageSize = frontImageView.image!.size
         view.addSubview(frontImageView)
-        frontImageView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: frontImageView.frameForImageInImageViewAspectFit().size.width,
-            height: frontImageView.frameForImageInImageViewAspectFit().size.height
-        )
-        frontImageView.center = view.center
-//        frontImageView.center = view.center
-        
-        
+        setupFrontImageSize(image: frontImageView, rect: rect, center: view.center)
     }
         
-    func newMask(viewToMask: UIView, rect: CGRect, invert: Bool = false) {
-        let maskLayer = CAShapeLayer()
-        let path = UIBezierPath()
-        
-        if invert {
-            path.append(UIBezierPath(rect: viewToMask.bounds))
-        }
-        path.append(UIBezierPath(ovalIn: rect))
-        
-        maskLayer.path = path.cgPath
-        if invert {
-            maskLayer.fillRule = .evenOdd
-        }
-        
-        viewToMask.layer.mask = maskLayer
-    }
     
-    //    private func configureBlurView() {
-    //
-    ////        blurView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.9)
-    //
-    //        // Choose the style of the blur effect to regular.
-    //        // You can choose dark, light, or extraLight if you wants
-    //        blurView.effect = UIBlurEffect(style: .light)
-    //        blurView.translatesAutoresizingMaskIntoConstraints = false
-    //
-    //        NSLayoutConstraint.activate([
-    //            blurView.topAnchor.constraint(equalTo: view.topAnchor),
-    //            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-    //            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-    //            blurView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
-    //        ])
-    //
-    //        view.addSubview(blurView)
-    //    }
-    //
-    //    private func configureOverlay() {
-    //        view.addSubview(overlay)
-    //        overlay.backgroundColor = .mainLightGray
-    //
-    //
-    ////        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
-    //    }
     
     //MARK: - Selecrors
     @objc private func wasDragged(gesture: UIPanGestureRecognizer) {
@@ -241,31 +176,33 @@ class FinalCropImageController: UIViewController {
             
             frontImageView.center = CGPoint(x: changeX, y: changeY)
             gesture.setTranslation(CGPoint.zero, in: frontImageView)
-        } else if gesture.state == .ended {
+        } 
+        else if gesture.state == .ended {
 //            let p = frontImageView.convert(frontImageView.center, to: overlay)
             //MARK: - Це те що потрбно. Тут даться інфа сентру кола відносно картинки. Тобто потрібно взяти ці данні і вирізати по ним картунку.
-            let p = overlay.convert(overlay.center, to: frontImageView)
+            let p = view.convert(view.center, to: frontImageView)
             centrOverlayRelToImage = p
+            print(p)
+//            print("I am here")
 //            let p = overlay.convert(overlay.center, to: overlay)
             //MARK: - Тут мається на увазі те, що водносно центра овелрею сам оверлей має такі координати які вказуються в прінті(типу якзо взяти x та y з прінту, то це є центр)
-            print(p)
             
             let maxY = frontImageView.frame.maxY
             let minY = frontImageView.frame.minY
             let minX = frontImageView.frame.minX
             let maxX = frontImageView.frame.maxX
 //            let halfOfScreenH = self.view.frame.height / 2
-            let halfOfScreenH = frontImageView.frame.height / 2
-            let halfOfScreenW = self.view.frame.width / 2
+            let halfOfScreenH = view.frame.height / 2
+            let halfOfScreenW = view.frame.width / 2
             let circleMaxY = halfOfScreenH + (rect.width / 2)
             let circleMinY = halfOfScreenH - (rect.width / 2)
             let circleMaxX = halfOfScreenW + (rect.width / 2)
             let circleMinX = halfOfScreenW - (rect.width / 2)
-            
             if circleMaxY > maxY {
-
                 let difference = maxY - circleMaxY
                 UIView.animate(withDuration: 0.2) {
+//                    print(difference)
+//                    print(maxY)
                     self.frontImageView.center = CGPoint(x: self.frontImageView.center.x, y: self.frontImageView.center.y - difference)
                 }
             }
@@ -294,6 +231,28 @@ class FinalCropImageController: UIViewController {
         }
     }
     
+    @objc private func wasZoomed(gesture: UIPinchGestureRecognizer) {
+        if gesture.state == .began || gesture.state == .changed {
+
+//            let scale = gesture.scale
+//            
+//            print(gesture.scale)
+//            
+//            frontImageView.transform = frontImageView.transform.scaledBy(x: scale, y: scale)
+            
+//            print(gesture.scale)
+            let currentScale = self.frontImageView.frame.size.width / self.frontImageView.bounds.size.width
+            let newScale = currentScale * gesture.scale
+            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+            
+//            UIView.animate(withDuration: 0.3) {
+                self.frontImageView.transform = transform
+//                
+//            }
+            gesture.scale = 1
+        }
+    }
+    
     @objc private func continueTapped() {
         
 //        let newRect = CGRect(
@@ -303,72 +262,111 @@ class FinalCropImageController: UIViewController {
 //            height: rect.height
 //        )
         
+        let imageMinX = frontImageView.frame.minX
+        let imageMinY = frontImageView.frame.minY
+        let halfOfScreenH = view.frame.height / 2
+        let halfOfScreenW = view.frame.width / 2
+        let circleMinY = halfOfScreenH - (rect.width / 2)
+        let circleMinX = halfOfScreenW - (rect.width / 2)
+        
+        let difference = imageMinY - circleMinY
+        
+        
+        let p = view.convert(view.center, to: frontImageView)
+        centrOverlayRelToImage = p
+
         var newRect: CGRect = .zero
-        
-        if frontImageView.frame.width == view.frame.width {
-            let calculateMultiply = originalImageSize.width / view.frame.width
+//        if frontImageView.frame.width == view.frame.width {
+//            let calculateMultiply = originalImageSize.width / rect.width
+//            newRect = CGRect(
+//                x: rect.minX,
+//                y: rect.minY,
+//                x: centrOverlayRelToImage.x,
+//                y: centrOverlayRelToImage.y,
+//                width: rect.width * calculateMultiply,
+//                height: rect.height * calculateMultiply)
+//        } else {
+            let calculateMultiply = originalImageSize.height / rect.height
+            print("Calculated multiply", calculateMultiply, "The height - :", (rect.height * calculateMultiply))
             newRect = CGRect(
-                x: rect.minX + centrOverlayRelToImage.x,
-                y: rect.minY + centrOverlayRelToImage.y,
+//                x: rect.minX + centrOverlayRelToImage.x,
+//                y: rect.minY + centrOverlayRelToImage.y,
+                x: centrOverlayRelToImage.x * calculateMultiply,
+                y: centrOverlayRelToImage.y * calculateMultiply,
                 width: rect.width * calculateMultiply,
                 height: rect.height * calculateMultiply)
-        } else {
-            let calculateMultiply = originalImageSize.height / view.frame.height
-            newRect = CGRect(
-                x: rect.minX + centrOverlayRelToImage.x,
-                y: rect.minY + centrOverlayRelToImage.y,
-                width: rect.width * calculateMultiply,
-                height: rect.height * calculateMultiply)
-        }
+//        }
+        
+//        newRect = CGRect(
+//            x: rect.minX,
+//            y: rect.minY,
+//            width: rect.width,
+//            height: rect.height)
+        
+        print(frontImageView.image?.cgImage)
+        let croppedImage = frontImageView.image?.cgImage?.cropping(to: newRect)
         
         
-        
-//        let newImage = frontImageView.image?.cgImage?.cropping(to: newRect)
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.image = UIImage(cgImage: newImage!)
-        
-//        let newImage = frontImageView.image?.cgImage?.cropping(to: newRect)
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 350))
         imageView.contentMode = .scaleAspectFit
-        imageView.image = imageWithImage(image: frontImageView.image!, croppedTo: newRect)
-        view.addSubview(imageView)
+        imageView.image = UIImage(cgImage: croppedImage!)
+//        imageView.image = imageWithImage(image: frontImageView.image!, croppedTo: newRect)
+        
+        
+        overlay.addSubview(imageView)
+    }
+    
+    //MARK: - Side Func
+    func newMask(viewToMask: UIView, rect: CGRect, invert: Bool = false) {
+        let maskLayer = CAShapeLayer()
+        let path = UIBezierPath()
+        
+        if invert {
+            path.append(UIBezierPath(rect: viewToMask.bounds))
+        }
+        path.append(UIBezierPath(ovalIn: rect))
+        
+        maskLayer.path = path.cgPath
+        if invert {
+            maskLayer.fillRule = .evenOdd
+        }
+        viewToMask.layer.mask = maskLayer
+    }
+    
+    func imageWithImage(image: UIImage, croppedTo rect: CGRect) -> UIImage {
+
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+
+        let drawRect = CGRect(x: -rect.origin.x, y: -rect.origin.y,
+                              width: image.size.width, height: image.size.height)
+
+        context?.clip(to: CGRect(x: 0, y: 0,
+                                 width: rect.size.width, height: rect.size.height))
+
+        image.draw(in: drawRect)
+
+        let subImage = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        return subImage!
+    }
+    
+    func setupFrontImageSize(image: UIImageView, rect: CGRect, center: CGPoint) {
+        if rect.height > image.frameForImageInImageViewAspectFit().height {
+//            print(image.frameForImageInImageViewAspectFit().height)
+            let difference = rect.height - image.frameForImageInImageViewAspectFit().height
+            image.frame = CGRect(x: 0, y: 0, width: image.frameForImageInImageViewAspectFit().width + difference, height: image.frameForImageInImageViewAspectFit().height + difference)
+            image.center = center
+        }
+        if rect.width > image.frameForImageInImageViewAspectFit().width {
+            let difference = rect.width - image.frameForImageInImageViewAspectFit().width
+            image.frame = CGRect(x: 0, y: 0, width: image.frameForImageInImageViewAspectFit().width + difference, height: image.frameForImageInImageViewAspectFit().height + difference)
+            image.center = center
+        }
     }
 }
 
-//func mask(viewToMask: UIView, maskRect: CGRect, invert: Bool = false) {
-//    let maskLayer = CAShapeLayer()
-//    let path = CGMutablePath()
-//    if (invert) {
-//        path.addRect(viewToMask.bounds)
-//    }
-////    path.append(UIBezierPath(ovalIn: rect))
-//    path.addRect(maskRect)
-//
-//    maskLayer.path = path
-//    if (invert) {
-//        maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
-//    }
-//
-//    // Set the mask of the view.
-//    viewToMask.layer.mask = maskLayer;
-//}
 
-func imageWithImage(image: UIImage, croppedTo rect: CGRect) -> UIImage {
 
-    UIGraphicsBeginImageContext(rect.size)
-    let context = UIGraphicsGetCurrentContext()
 
-    let drawRect = CGRect(x: -rect.origin.x, y: -rect.origin.y,
-                          width: image.size.width, height: image.size.height)
-
-    context?.clip(to: CGRect(x: 0, y: 0,
-                             width: rect.size.width, height: rect.size.height))
-
-    image.draw(in: drawRect)
-
-    let subImage = UIGraphicsGetImageFromCurrentImageContext()
-
-    UIGraphicsEndImageContext()
-    return subImage!
-}

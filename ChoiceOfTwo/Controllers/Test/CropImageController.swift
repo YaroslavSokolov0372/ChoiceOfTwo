@@ -44,7 +44,7 @@ class CropImageController: UIViewController, UIGestureRecognizerDelegate {
         self.view.backgroundColor = .black
         
         imageView.image = UIImage(named: "CropTest")
-        imageView.contentMode = .scaleAspectFit
+//        imageView.contentMode = .scaleAspectFit
         
         imageView.isUserInteractionEnabled = true
         overlay.isUserInteractionEnabled = true
@@ -155,7 +155,6 @@ class CropImageController: UIViewController, UIGestureRecognizerDelegate {
                 }
 //                print("MaxY: -", maxY)
 //                print("Cycrle MaxY: -", circleMaxY)
-                
             }
             if circleMinY < minY {
                 let difference = minY - circleMinY
@@ -200,7 +199,6 @@ class CropImageController: UIViewController, UIGestureRecognizerDelegate {
             
             if imageView.frame.width < 360 || imageView.frame.height < 360 {
                 print("Image too small")
-                
                 UIView.animate(withDuration: 0.3) {
                     self.imageView.frame.size = self.imageViewSize
                     self.imageView.center = self.lastCenterOnEndPinch
@@ -285,9 +283,4 @@ class CropImageController: UIViewController, UIGestureRecognizerDelegate {
 //        maskLayer.path = path.cgPath
 //        pathLayer.path = path.cgPath
 //    }
-}
-
-
-extension UIImage {
-    
 }
