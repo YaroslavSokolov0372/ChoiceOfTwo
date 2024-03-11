@@ -31,8 +31,8 @@ class MenuCoordiantor: ChildCoordinator {
         navigationController.pushViewController(menuController, animated: true)
     }
     
-    func searchFriends() {
-        parent?.searchFriends(navigationController: navigationController, animated: true)
+    func searchFriends(friends: [User]) {
+        parent?.searchFriends(navigationController: navigationController, animated: true, friends: friends)
     }
     
     func profile() {

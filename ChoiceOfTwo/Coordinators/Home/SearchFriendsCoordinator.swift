@@ -24,10 +24,12 @@ class SearchFriendsCoordinator: ChildCoordinator {
         parent?.childDidFinish(self)
     }
     
-    func start() {
+    func start(friends: [User]) {
         let searchFController = SearchFriendsController()
         viewControllerRef = searchFController
         let vm = SearchFriendsVM()
+        
+        vm.friends = friends
         vm.coordinator = self
         searchFController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)

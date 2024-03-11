@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB5D2B9F90C10048330C /* RecievedCellView.swift */; };
 		D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */; };
 		D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */; };
 		D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */; };
@@ -125,6 +126,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D100BB5D2B9F90C10048330C /* RecievedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedCellView.swift; sourceTree = "<group>"; };
 		D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCropImageController.swift; sourceTree = "<group>"; };
 		D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Ext.swift"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				D199BE562B810A7E000EBA02 /* FriendCellView.swift */,
 				D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */,
 				D1332AE92B855CE600F34C51 /* UserSearchCellView.swift */,
+				D100BB5D2B9F90C10048330C /* RecievedCellView.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */,
 				D1D754162B7976EE00ADF274 /* RegisterCoordinator.swift in Sources */,
 				D1D754142B7975BA00ADF274 /* LoginCoordinator.swift in Sources */,
+				D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */,
 				D1D753F62B79526F00ADF274 /* UINavigationController+Ext.swift in Sources */,
 				D1D754242B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				D1D753E82B7689FD00ADF274 /* MenuController.swift in Sources */,

@@ -11,7 +11,6 @@ import UIKit
 class MyCollectionFlowLayout: UICollectionViewFlowLayout {
     
     override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        
         var attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath)
         if ((attributes == nil)){
             attributes = self.layoutAttributesForItem(at: itemIndexPath)

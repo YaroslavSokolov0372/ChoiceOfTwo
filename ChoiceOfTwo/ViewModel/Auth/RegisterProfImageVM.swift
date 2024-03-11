@@ -21,4 +21,10 @@ class RegisterProfImageVM {
     func dismiss() {
         coordinator.dismissScreen()
     }
+    
+    
+    
+    func goToHomePage() {
+        coordinator.parent?.home()
+    }
 }

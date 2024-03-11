@@ -24,10 +24,10 @@ extension HomeCoordinator {
         profileCoordinator.start()
     }
     
-    func searchFriends(navigationController: UINavigationController, animated: Bool) {
+    func searchFriends(navigationController: UINavigationController, animated: Bool, friends: [User]) {
         let searchFriendsCoordinator = SearchFriendsCoordinator(navigationController: navigationController)
         searchFriendsCoordinator.parent = self
         addChild(searchFriendsCoordinator)
-        searchFriendsCoordinator.start()
+        searchFriendsCoordinator.start(friends: friends)
     }
 }

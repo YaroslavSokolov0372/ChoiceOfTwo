@@ -48,6 +48,31 @@ class DataBaseManager {
         }
     }
     
+    func fetchWhomSentFriendship(completion: @escaping([User]?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        dataBase.collection("users").document(userId).collection("friendshipRequestsTo").getDocuments { snapshot, error in
+            
+            if let _ = error {
+                completion(nil, FireBaseError.couldntGetDocument(""))
+            }
+            guard let snapshot = snapshot  else {
+                completion(nil, FireBaseError.couldntGetDocument(""))
+                return
+            }
+            
+            do {
+                let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
+                completion(friends, nil)
+            } catch {
+                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+            }
+        }
+    }
+    
     func fetchUsersWhoSentFriendship(completion: @escaping ([User]?, Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
@@ -122,6 +147,35 @@ class DataBaseManager {
         }
     }
     
+    func declineSentFriendShipReq(from user: User, completion: @escaping (Bool, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            completion(false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+            return
+        }
+        
+        dataBase
+            .collection("users")
+            .document(currentUser.uid)
+            .collection("friendshipRequestsTo")
+            .document(user.uid)
+            .delete { error in
+                if let error = error {
+                    completion(false, error)
+                }
+            }
+        
+        dataBase
+            .collection("users")
+            .document(user.uid)
+            .collection("friendshipRequestFrom")
+            .document(currentUser.uid)
+            .delete { error in
+                if let error = error {
+                    completion(false, error)
+                }
+            }
+        completion(true, nil)
+    }
     
     func sendFriendRequest(to user: User, completion: @escaping (Bool, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
@@ -181,7 +235,7 @@ class DataBaseManager {
         dataBase
             .collection("users")
             .document(currentUser.uid)
-            .collection("friendshipRequestFrom")
+            .collection("friendshipRequestsTo")
             .document(user.uid)
             .delete { error in
                 if let error = error {
@@ -192,7 +246,7 @@ class DataBaseManager {
         dataBase
             .collection("users")
             .document(user.uid)
-            .collection("friendshipRequestsTo")
+            .collection("friendshipRequestFrom")
             .document(currentUser.uid)
             .delete { error in
                 if let error = error {

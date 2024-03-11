@@ -23,20 +23,29 @@ extension SearchFriendsController: UICollectionViewDataSource, UICollectionViewD
         }
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.usersSearchCollView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? UserSearchCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
             }
             
-            cell.configure(with: vm.searchUsers[indexPath.row], asType: .search)
+            if vm.whomSentInvUsers.contains(where: { $0.uid == vm.searchUsers[indexPath.row].uid }) {
+                cell.configure(with: vm.searchUsers[indexPath.row], alrdSentInv: true)
+            } else {
+                cell.configure(with: vm.searchUsers[indexPath.row], alrdSentInv: false)
+            }
             cell.delegate = self
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? UserSearchCellView else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? RecievedCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
             }
-            cell.configure(with: vm.sentInvUsers[indexPath.row], asType: .recieved)
+            cell.configure(with: vm.sentInvUsers[indexPath.row], index: indexPath.row)
             cell.delegate = self
             return cell
         }

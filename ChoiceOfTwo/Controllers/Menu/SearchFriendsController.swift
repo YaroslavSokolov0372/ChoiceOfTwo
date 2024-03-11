@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class SearchFriendsController: UIViewController, UserSearchCellDelegate {
+class SearchFriendsController: UIViewController, UserSearchCellDelegate, RecievedIntCellDelegate {
     
     //MARK: - Variables
     var vm: SearchFriendsVM!
@@ -59,12 +59,12 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate {
         return cv
     }()
     private (set) var recievedInvUsersCollView: UICollectionView = {
-      let layout = UICollectionViewFlowLayout()
+      let layout = MyCollectionFlowLayout()
 //        let layout = MyCollectionFlowLayout()
         layout.scrollDirection = .vertical
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.showsVerticalScrollIndicator = false
-        collectionV.register(UserSearchCellView.self, forCellWithReuseIdentifier: "Cell")
+        collectionV.register(RecievedCellView.self, forCellWithReuseIdentifier: "Cell")
         return collectionV
     }()
     private let usersSearchTabButton = CustomButton(text: "SEARCH FRIENDS", type: .medium, textColor: .mainPurple)
@@ -77,6 +77,7 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate {
         self.view.backgroundColor = .white
         self.isModalInPresentation = true
 
+        vm.fetchWhomSentFriendship()
         vm.fetchUsersSentFriendship()
         vm.onUsersWhoSentFriendshipAction = { [weak self] in
             DispatchQueue.main.async {
@@ -88,6 +89,7 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate {
                 self?.usersSearchCollView.reloadData()
             }
         }
+        
         
         setupUI()
         listenForSearchTextChanges()
@@ -230,6 +232,7 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate {
     //MARK: - Selectors
     @objc private func backButtonTapped() {
         vm.dismiss()
+        
     }
     
     @objc private func userSearchButtonTapped() {
@@ -255,19 +258,45 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate {
     
     
     //MARK: - Delegate
-    func sendFriendshipReq(to user: User) {
-        vm.sendFriendShipReq(to: user)
+    func sendFriendshipReq(to user: User, completion: @escaping (Bool) -> Void) {
+        vm.sendFriendShipReq(to: user) { success in
+            completion(success)
+        }
     }
     
-    func acceptFriendShipReq(from user: User) {
+    func declineWhomSentReq(from user: User, completion: @escaping (Bool) -> Void) {
+        vm.declineWhomSentReq(from: user) { success in
+            completion(success)
+        }
+    }
+    
+    func acceptFriendShipReq(from user: User, index: Int) {
         print("DEBUG: Tapped accept")
-//        vm.acceptFriendship(user: user)
+        
+        vm.acceptFriendship(user: user) { success in
+            let indexPath = IndexPath(row: index, section: 0)
+            self.recievedInvUsersCollView.performBatchUpdates {
+                self.vm.removeSentInvUsers(at: index)
+                self.recievedInvUsersCollView.deleteItems(at: [indexPath])
+            } completion: { (finished: Bool) in
+                self.recievedInvUsersCollView.reloadItems(at: self.recievedInvUsersCollView.indexPathsForVisibleItems)
+            }
+        }
     }
     
-    func declineFriendShipReq(from user: User) {
-        print("DEBUG: Tapped decline")
-//        vm.declineFriendship(user: user)
-    }
+        func declineFriendShipReq(from user: User, index: Int) {
+            print("DEBUG: Tapped decline")
+            vm.declineFriendship(user: user) { success in
+                let indexPath = IndexPath(row: index, section: 0)
+                self.recievedInvUsersCollView.performBatchUpdates {
+                    self.vm.removeSentInvUsers(at: index)
+                    self.recievedInvUsersCollView.deleteItems(at: [indexPath])
+                } completion: { (finished: Bool) in
+                    self.recievedInvUsersCollView.reloadItems(at: self.recievedInvUsersCollView.indexPathsForVisibleItems)
+                }
+            }
+        }
+        
     
     deinit {
         ConsoleLogger.classDeInitialized()

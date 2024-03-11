@@ -44,7 +44,7 @@ class MenuVM {
     
     //MARK: - Coordination
     public func searchFirends() {
-        coordinator.searchFriends()
+        coordinator.searchFriends(friends: friends)
     }
     public func profile() {
         coordinator.profile()

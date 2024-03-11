@@ -33,7 +33,7 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
     }()
     private let skipButton = CustomButton(text: "Skip", type: .medium, strokeColor: .mainPurple)
     private let continueButton = CustomButton(text: "Continue", type: .medium, strokeColor: .mainPurple)
-
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
-
+    
     
     //MARK: - Setup UI
     private func setupUI() {
@@ -85,7 +85,7 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
             
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             subTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
+            
             skipButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 40),
             skipButton.centerXAnchor.constraint(equalTo: subTitleLabel.centerXAnchor),
             skipButton.heightAnchor.constraint(equalToConstant: 50),
@@ -108,7 +108,7 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
     }
     
     @objc private func skipButtonTapped() {
-        
+        vm.goToHomePage()
     }
     
     @objc private func continueButtonTapped() {
