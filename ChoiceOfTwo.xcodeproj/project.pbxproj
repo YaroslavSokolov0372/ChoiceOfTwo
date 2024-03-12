@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB5D2B9F90C10048330C /* RecievedCellView.swift */; };
+		D100BB602BA09B1C0048330C /* InteractFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB5F2BA09B1C0048330C /* InteractFriendView.swift */; };
+		D100BB622BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB612BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift */; };
 		D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */; };
 		D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */; };
 		D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */; };
@@ -127,6 +129,8 @@
 
 /* Begin PBXFileReference section */
 		D100BB5D2B9F90C10048330C /* RecievedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedCellView.swift; sourceTree = "<group>"; };
+		D100BB5F2BA09B1C0048330C /* InteractFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractFriendView.swift; sourceTree = "<group>"; };
+		D100BB612BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatedMessageWithButtons.swift; sourceTree = "<group>"; };
 		D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCropImageController.swift; sourceTree = "<group>"; };
 		D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Ext.swift"; sourceTree = "<group>"; };
@@ -256,6 +260,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D100BB632BA0BCAB0048330C /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				D167422E2B95266D00730962 /* CustomAnimatedMessageLabel.swift */,
+				D100BB612BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		D12AE7DD2B7E7A89004511B5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +411,7 @@
 		D17807922B6AB12C003B84F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D100BB632BA0BCAB0048330C /* Animation */,
 				D1332ADD2B850C7D00F34C51 /* CollectionViewCells */,
 				D1D753942B72677C00ADF274 /* CustomTextField.swift */,
 				D1D753982B726AE200ADF274 /* CustomButton.swift */,
@@ -410,7 +424,7 @@
 				D199BE582B81267D000EBA02 /* Devider.swift */,
 				D199BE5C2B81293C000EBA02 /* SkeletonHistoryCard.swift */,
 				D199BE662B829809000EBA02 /* CustomTabBar.swift */,
-				D167422E2B95266D00730962 /* CustomAnimatedMessageLabel.swift */,
+				D100BB5F2BA09B1C0048330C /* InteractFriendView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -811,6 +825,7 @@
 				D12CC0BD2B866D8800B141E8 /* SearchFriendsController+UITextFIeldDelegate.swift in Sources */,
 				D1D753CE2B73F2BE00ADF274 /* AuthService.swift in Sources */,
 				D19D6F282B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift in Sources */,
+				D100BB622BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift in Sources */,
 				D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */,
 				D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */,
 				D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */,
@@ -838,6 +853,7 @@
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
 				D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */,
+				D100BB602BA09B1C0048330C /* InteractFriendView.swift in Sources */,
 				D1D753DA2B74297700ADF274 /* CustomCircleButton.swift in Sources */,
 				D1D754122B79753600ADF274 /* AuthCoordinator+Ext.swift in Sources */,
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,

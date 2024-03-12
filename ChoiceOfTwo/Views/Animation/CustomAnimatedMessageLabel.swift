@@ -16,7 +16,7 @@ class CustomAnimatedMessageLabel: UILabel {
     //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.textColor = .white
+        //        self.textColor = .white
         self.font = .nunitoFont(size: 14, type: .medium)
         self.clipsToBounds = true
         self.numberOfLines = 0
@@ -32,8 +32,8 @@ class CustomAnimatedMessageLabel: UILabel {
     //MARK: - Animations
     private func showLabel(completionHandler: @escaping (_ onFinish: Bool) -> () ) {
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut) {
-
-//        UIView.animate(withDuration: 0.3) {
+            
+            //        UIView.animate(withDuration: 0.3) {
             guard let superview = self.superview else {
                 print("Havent found superview")
                 return
@@ -70,9 +70,11 @@ class CustomAnimatedMessageLabel: UILabel {
     }
     
     
-    func configure(message: String, strokeColor: UIColor) {
+    func configure(message: String, strokeColor: UIColor, customFont: UIFont? = nil) {
+        if customFont != nil {
+            self.font = customFont
+        }
         self.text = message
-        
         self.layer.borderColor = strokeColor.cgColor
         self.textColor = strokeColor
         self.layer.borderWidth = 1

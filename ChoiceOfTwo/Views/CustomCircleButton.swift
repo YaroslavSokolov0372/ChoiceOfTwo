@@ -13,7 +13,7 @@ class CustomCircleButton: UIButton {
     
         
     //MARK: - Lifecycle
-    init(customImage: String? = nil, rotate: CGFloat? = nil, resized: CGSize? = nil, imageColor: UIColor? = nil, stroke: Bool = false, cornerRadius: CGFloat? = nil) {
+    init(customImage: String? = nil, rotate: CGFloat? = nil, resized: CGSize? = nil, imageColor: UIColor? = nil, backgroundColor: UIColor? = nil, stroke: Bool = false, cornerRadius: CGFloat? = nil) {
         super.init(frame: .zero)
         
 //        self.contentMode = .scaleAspectFill
@@ -48,8 +48,11 @@ class CustomCircleButton: UIButton {
             }
             self.tintColor = .mainPurple
         }
-        
-        self.backgroundColor = .white
+        if backgroundColor != nil {
+            self.backgroundColor = backgroundColor
+        } else {
+            self.backgroundColor = .white
+        }
 //        self.clipsToBounds = true
         if cornerRadius != nil {
             self.layer.cornerRadius = cornerRadius!

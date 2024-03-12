@@ -39,9 +39,9 @@ class AuthService {
                 .document(userResult.uid)
                 .setData([
                     "uid": userResult.uid,
-                    "username": username,
+                    "username": username as Any,
                     "email": email,
-                    "keywordsForLookUp": username?.generateStringSequence()
+                    "keywordsForLookUp": username?.generateStringSequence() as Any
                 ]) { error in
                     if let error = error {
                         completion(false, error)

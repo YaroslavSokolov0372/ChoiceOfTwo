@@ -84,6 +84,11 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate, Recieve
                 self?.recievedInvUsersCollView.reloadData()
             }
         }
+        vm.onFetchWhomSentFriendshipAction = { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self?.usersSearchCollView.reloadData()
+            }
+        }
         vm.onSearchChange = { [weak self] in
             DispatchQueue.main.async {
                 self?.usersSearchCollView.reloadData()

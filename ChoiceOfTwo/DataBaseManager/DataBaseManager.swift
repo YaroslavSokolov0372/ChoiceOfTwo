@@ -21,6 +21,98 @@ class DataBaseManager {
     
     private let dataBase = Firestore.firestore()
     
+    
+    func addGameInvListener(completion: @escaping ([User]?, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(currentUser)
+            .collection("GameInvFrom")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
+                
+                guard let snapshot = snapshot  else {
+                    completion(nil, FireBaseError.couldntGetDocument(""))
+                    return
+                }
+                
+                do {
+                    let users = try snapshot.documents.map({ try $0.data(as: User.self)})
+                    completion(users, nil)
+                } catch {
+                    completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+                }
+            }
+    }
+    
+    func sendGameInv(to user: User, completion: @escaping (Bool, Error?) -> Void) {
+        
+        AuthService().getCurrentUserData { currentU, error in
+            if let error = error {
+                completion(false, error)
+            }
+            
+            if let currentU = currentU {
+                
+                self.dataBase
+                    .collection("users")
+                    .document(user.uid)
+                    .collection("GameInvFrom")
+                    .document(currentU.uid)
+                    .delete() { error in
+                        if let _ = error {
+                            completion(false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+                        }
+                    }
+                
+                
+                self.dataBase
+                    .collection("users")
+                    .document(user.uid)
+                    .collection("GameInvFrom")
+                    .document(currentU.uid)
+                    .setData([
+                        "uid" : currentU.uid,
+                        "username" : currentU.username,
+                        "email" : currentU.email,
+                        "keywordsForLookUp": currentU.username.generateStringSequence()
+                    ]) { error in
+                        if let _ = error {
+                            completion(false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+                        }
+                    }
+            }
+        }
+        completion(true, nil)
+    }
+    
+    func deleteFriend(_ friend: User, completion: @escaping (User?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        dataBase.collection("users").document(userId).collection("friends").document(friend.uid).delete { error in
+            if let error = error {
+                completion(nil, error)
+            }
+        }
+        
+        dataBase.collection("users").document(friend.uid).collection("friends").document(userId).delete { error in
+            if let error = error {
+                completion(nil, error)
+            }
+        }
+        completion(friend, nil)
+    }
+    
     func fetchFriends(completion: @escaping ([User]?, Error?) -> Void) {
         
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -28,7 +120,10 @@ class DataBaseManager {
             return
         }
         
-        dataBase.collection("users").document(userId).collection("friends").getDocuments { snapshot, error in
+        dataBase.collection("users").document(userId).collection("friends")
+//            .getDocuments
+            .addSnapshotListener
+        { snapshot, error in
             
             if let _ = error {
                 completion(nil, FireBaseError.couldntGetDocument(""))
@@ -54,7 +149,35 @@ class DataBaseManager {
             return
         }
         
-        dataBase.collection("users").document(userId).collection("friendshipRequestsTo").getDocuments { snapshot, error in
+        dataBase.collection("users").document(userId).collection("friendshipRequestsTo")
+//            .getDocuments
+            .addSnapshotListener
+        { snapshot, error in
+            
+            if let _ = error {
+                completion(nil, FireBaseError.couldntGetDocument(""))
+            }
+            guard let snapshot = snapshot  else {
+                completion(nil, FireBaseError.couldntGetDocument(""))
+                return
+            }
+            
+            do {
+                let users = try snapshot.documents.map({ try $0.data(as: User.self)})
+                completion(users, nil)
+            } catch {
+                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+            }
+        }
+    }
+    
+    func fetchUsersWhoSentFriendshipListener(completion: @escaping ([User]?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        dataBase.collection("users").document(userId).collection("friendshipRequestFrom").addSnapshotListener { snapshot, error in
             
             if let _ = error {
                 completion(nil, FireBaseError.couldntGetDocument(""))
@@ -66,6 +189,7 @@ class DataBaseManager {
             
             do {
                 let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
+                print(friends.count)
                 completion(friends, nil)
             } catch {
                 completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
@@ -73,30 +197,30 @@ class DataBaseManager {
         }
     }
     
-    func fetchUsersWhoSentFriendship(completion: @escaping ([User]?, Error?) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-            return
-        }
-        
-        dataBase.collection("users").document(userId).collection("friendshipRequestFrom").getDocuments { snapshot, error in
-            
-            if let _ = error {
-                completion(nil, FireBaseError.couldntGetDocument(""))
-            }
-            guard let snapshot = snapshot  else {
-                completion(nil, FireBaseError.couldntGetDocument(""))
-                return
-            }
-            
-            do {
-                let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
-                completion(friends, nil)
-            } catch {
-                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
-            }
-        }
-    }
+//    func fetchUsersWhoSentFriendship(completion: @escaping ([User]?, Error?) -> Void) {
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+//            return
+//        }
+//        
+//        dataBase.collection("users").document(userId).collection("friendshipRequestFrom").getDocuments { snapshot, error in
+//            
+//            if let _ = error {
+//                completion(nil, FireBaseError.couldntGetDocument(""))
+//            }
+//            guard let snapshot = snapshot  else {
+//                completion(nil, FireBaseError.couldntGetDocument(""))
+//                return
+//            }
+//            
+//            do {
+//                let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
+//                completion(friends, nil)
+//            } catch {
+//                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+//            }
+//        }
+//    }
     
     func searchInRecievedInv(with string: String, completion: @escaping ([User]?, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
@@ -127,12 +251,7 @@ class DataBaseManager {
             return
         }
         
-        dataBase.collection("users").whereField("keywordsForLookUp", arrayContainsAny: [string])
-        /*dataBase.collection("users").whereField("username", arrayContains: string)*/.getDocuments { snapshot, error in
-            
-            //            if let _ = error {
-            //                completion(nil, FireBaseError.couldntGetDocument(""))
-            //            }
+        dataBase.collection("users").whereField("keywordsForLookUp", arrayContainsAny: [string]).getDocuments { snapshot, error in
             guard let snapshot = snapshot?.documents, error == nil else {
                 completion(nil, FireBaseError.couldntGetDocument(""))
                 return
@@ -178,6 +297,7 @@ class DataBaseManager {
     }
     
     func sendFriendRequest(to user: User, completion: @escaping (Bool, Error?) -> Void) {
+        
         guard let currentUser = Auth.auth().currentUser else {
             completion(false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
             return
@@ -235,7 +355,9 @@ class DataBaseManager {
         dataBase
             .collection("users")
             .document(currentUser.uid)
-            .collection("friendshipRequestsTo")
+//        friendshipRequestFrom
+//            .collection("friendshipRequestsTo")
+            .collection("friendshipRequestFrom")
             .document(user.uid)
             .delete { error in
                 if let error = error {
@@ -246,7 +368,8 @@ class DataBaseManager {
         dataBase
             .collection("users")
             .document(user.uid)
-            .collection("friendshipRequestFrom")
+            .collection("friendshipRequestsTo")
+//            .collection("friendshipRequestFrom")
             .document(currentUser.uid)
             .delete { error in
                 if let error = error {

@@ -24,6 +24,7 @@ class SearchFriendsVM {
     var onWhomSentReqDeclineError: ((Error) -> Void)?
     var onUsersWhoSentFriendshipAction: (() -> Void)?
     var onUsersWhoSentFriendShipError: ((Error) -> Void)?
+    var onFetchWhomSentFriendshipAction: (() -> Void)?
     
     
     @Published var searchText = ""
@@ -32,8 +33,6 @@ class SearchFriendsVM {
     private (set) var whomSentInvUsers = [User]()
     
     var subscriptions = Set<AnyCancellable>()
-    
-    
     
     public func searchInRecievedInv(with string: String) {
         self.dBManager.searchInRecievedInv(with: string) { users, error in
@@ -61,7 +60,11 @@ class SearchFriendsVM {
                 print("DEBUG: Successfully made for search request")
                 print("DEBUG: Found users by search:", users.count)
                 self.searchUsers = users.filter({ user in
-                    return self.friends.contains(where: { $0.uid != user.uid })
+                    if self.friends.isEmpty {
+                        return true
+                    } else {
+                        return self.friends.contains(where: { $0.uid != user.uid })
+                    }
                 })
                 self.onSearchChange?()
             }
@@ -83,7 +86,8 @@ class SearchFriendsVM {
     }
     
     public func declineWhomSentReq(from user: User, completion: @escaping (Bool) -> Void) {
-        self.dBManager.declineFriendship(from: user) { success, error in
+//        self.dBManager.declineFriendship(from: user) { success, error in
+        self.dBManager.declineSentFriendShipReq(from: user) { success, error in
             if let error = error {
                 print("DEBUG: Error happend while sending friend request", error)
                 self.onWhomSentReqDeclineError?(error)
@@ -96,22 +100,23 @@ class SearchFriendsVM {
         }
     }
     
-    
     public func fetchWhomSentFriendship() {
         self.dBManager.fetchWhomSentFriendship { users, error in
             if let error = error {
                 print("DEBUG: Error happend while requesting users who sent friendship request", error)
             }
             if let users = users {
-//                print("DEBUG: Successfully fetched users who sent friendship inv")
-//                print("DEBUG: Found users who sent friendship inv:", users.count)
+                print("DEBUG: Successfully fetched users who sent friendship inv")
+                print("DEBUG: Found users who sent friendship inv:", users.count)
                 self.whomSentInvUsers = users
+                self.onFetchWhomSentFriendshipAction?()
             }
         }
     }
     
     public func fetchUsersSentFriendship() {
-        self.dBManager.fetchUsersWhoSentFriendship { users, error in
+//        self.dBManager.fetchUsersWhoSentFriendship { users, error in
+        self.dBManager.fetchUsersWhoSentFriendshipListener { users, error in
             if let error = error {
                 print("DEBUG: Error happend while requesting users who sent friendship request", error)
                 self.onUsersWhoSentFriendShipError?(error)

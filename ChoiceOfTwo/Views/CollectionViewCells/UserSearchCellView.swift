@@ -189,10 +189,12 @@ class UserSearchCellView: UICollectionViewCell {
             if alrdSentInv != nil, alrdSentInv == true {
                 self.alrdSentInv = true
                 sendRequestButton.alpha = 0.0
+                declineButton.alpha = 1.0
                 setupButtonWhomSent()
             } else {
                 self.alrdSentInv = false
                 declineButton.alpha = 0.0
+                sendRequestButton.alpha = 1.0
                 setupButtonsForSearch()
             }
             sendRequestButton.addTarget(self, action: #selector(sendRequestTapped), for: .touchUpInside)

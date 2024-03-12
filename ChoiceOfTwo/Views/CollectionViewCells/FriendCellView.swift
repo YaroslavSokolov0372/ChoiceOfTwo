@@ -9,7 +9,7 @@ import UIKit
 
 protocol FriendCellDelegate {
     
-    func friendProfileTapped()
+    func friendProfileTapped(friend: User, cell: UICollectionViewCell)
 }
 
 protocol AddFriendDelegate {
@@ -21,34 +21,15 @@ class FriendCellView: UICollectionViewCell {
     //MARK: - Variables
     var friendsDelegate: FriendCellDelegate?
     var addFriendsDelegate: AddFriendDelegate?
+    var friend: User!
     
     //MARK: UI Components
-//    private let image: UIImageView = {
-//        let iv = UIImageView()
-//        let im = UIImage(named: "Plus")!
-//            .withRenderingMode(.alwaysTemplate)
-//            .resize(targetSize: CGSize(width: 40, height: 40))
-//        //            .resizeUI(size: CGSize(width: 100, height: 100))
-//        iv.backgroundColor = .white
-//        iv.layer.borderColor = UIColor.mainPurple.cgColor
-//        iv.layer.borderWidth = 1
-//        iv.layer.cornerRadius = 30
-//        iv.image = im
-////        iv.contentMode = .scaleToFill
-//        
-//        //        iv.image = iv.image?.resize(targetSize: CGSize(width: 20, height: 20))
-//        return iv
-//    }()
-    
-    
     private let profileImageButton: UIButton = {
         let button = UIButton()
         var configuration = UIButton.Configuration.plain()
-//        let im = UIImage(named: image)!.withRenderingMode(.alwaysTemplate)
         configuration.background.strokeColor = .mainPurple
         configuration.baseForegroundColor = .mainPurple
         configuration.background.cornerRadius = 30
-//        configuration.image = im
         button.configuration = configuration
         button.clipsToBounds = true
         button.tintColor = .mainPurple
@@ -69,7 +50,6 @@ class FriendCellView: UICollectionViewCell {
     //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.layer.cornerRadius = 30
         setupUI()
         profileImageButton.addTarget(self, action: #selector(profilleImageTapped), for: .touchUpInside)
         profileImageButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
@@ -101,7 +81,7 @@ class FriendCellView: UICollectionViewCell {
     
     //MARK: - Selectors
     @objc private func profilleImageTapped() {
-        friendsDelegate?.friendProfileTapped()
+        friendsDelegate?.friendProfileTapped(friend: friend, cell: self)
     }
     
     @objc private func plusButtonTapped() {
@@ -118,6 +98,7 @@ class FriendCellView: UICollectionViewCell {
         if let user = user {
             let im = UIImage(named: "Profile")!.withRenderingMode(.alwaysTemplate)
             profileImageButton.setImage(im, for: .normal)
+            friend = user
             name.text = user.username
         }
     }
