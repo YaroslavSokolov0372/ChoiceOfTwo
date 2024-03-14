@@ -21,6 +21,78 @@ class DataBaseManager {
     
     private let dataBase = Firestore.firestore()
     
+    func addStartGameListener(completion: @escaping (_ isGameStarted: Bool, _ justAdddedListener: Bool, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("currentGames")
+            .document(userId)
+            .collection("players")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    completion(false, false, error)
+                }
+                
+                guard let snapshot = snapshot else {
+                    completion(false, false, error)
+                    return
+                }
+                
+                
+                do {
+                    let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
+                    if friends.count == 0 {
+                        completion(false, true, nil)
+                    }
+                    if friends.count == 2{
+                        completion(true, false, nil)
+                    }
+                } catch {
+                    completion(false, false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+                }
+            }
+    }
+    
+    func clearInvsInMenu(completion: @escaping (Bool, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(userId)
+            .collection("GameInvFrom")
+            .getDocuments { snapshot, error in
+                
+                guard let snapshot = snapshot else {
+                    completion(false, FireBaseError.couldntGetDocument(""))
+                    return
+                }
+                
+                do {
+                    let users = try snapshot.documents.map({ try $0.data(as: User.self)})
+                    for user in  users {
+                        self.dataBase
+                            .collection("users")
+                            .document(userId)
+                            .collection("GameInvFrom")
+                            .document(user.uid)
+                            .delete() { error in
+                                if let error = error {
+                                    completion(false, error)
+                                }
+                            }
+                    }
+                    completion(true, nil)
+                } catch {
+                    completion(false, error)
+                }
+            }
+    }
     
     func addGameInvListener(completion: @escaping ([User]?, Error?) -> Void) {
         
@@ -91,6 +163,81 @@ class DataBaseManager {
             }
         }
         completion(true, nil)
+    }
+    
+//    func declineGameInv(of user: User, completion: @escaping (Bool, Error?) -> Void) {
+//        
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+//            return
+//        }
+//        
+//        self.dataBase
+//            .collection("users")
+//            .document(user.uid)
+//            .collection("GameInvFrom")
+//            .document(userId)
+//            .delete() { error in
+//                if let _ = error {
+//                    completion(false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+//                } else {
+//                    completion(true, nil)
+//                }
+//            }
+//    }
+    
+    func acceptGameInv(of friend: User, completion: @escaping (Bool, Error?) -> Void) {
+        
+        AuthService().getCurrentUserData { currentU, error in
+            if let error = error {
+                completion(false, error)
+            }
+            
+            if let currentU = currentU {
+                
+                self.dataBase.collection("users").document(currentU.uid).collection("GameInvFrom").document(friend.uid).delete { error in
+                    if let error = error {
+                        completion(false, error)
+                    }
+                }
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(friend.uid)
+                    .collection("players")
+                    .document(friend.uid)
+                    .setData([
+                        "uid" : friend.uid,
+                        "username" : friend.username,
+                        "email" : friend.email,
+                        "keywordsForLookUp": friend.username.generateStringSequence()
+                    ]) { error in
+                        if let error = error {
+                            completion(false, error)
+                        }
+                    }
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(friend.uid)
+                    .collection("players")
+                    .document(currentU.uid)
+                    .setData([
+                        "uid" : currentU.uid,
+                        "username" : currentU.username,
+                        "email" : currentU.email,
+                        "keywordsForLookUp": currentU.username.generateStringSequence()
+                    ]) { error in
+                        if let error = error {
+                            completion(false, error)
+                        } else {
+                            completion(true, nil)
+                        }
+                    }
+            } else {
+                completion(false, error)
+            }
+        }
     }
     
     func deleteFriend(_ friend: User, completion: @escaping (User?, Error?) -> Void) {

@@ -11,9 +11,9 @@ import UIKit
 protocol AnimatedMessageWithButtonsViewDelegate {
     
     
-    func declineInvite()
+    func declineInvite(of friend: User)
     
-    func accpetInvite()
+    func accpetInvite(of friend: User)
     
     func deleteFriend(_ friend: User)
     
@@ -109,10 +109,11 @@ class CustomAnimatedMessageWithButtons: UIView {
     
     //MARK: Selectors
     @objc private func declineButtonTapped() {
+        delegate?.declineInvite(of: self.users[played - 1])
     }
     
     @objc private func acceptButtonTapped() {
-        
+        delegate?.accpetInvite(of: self.users[played - 1])
     }
     
     @objc private func keepFriendTapped() {

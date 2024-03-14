@@ -24,9 +24,7 @@ class HomeCoordinator: ParentCoordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-    func start() {
-    }
+
     
     func dismissHomeScreens() {
         for item in children.reversed() {

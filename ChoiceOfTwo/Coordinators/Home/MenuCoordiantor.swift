@@ -46,5 +46,9 @@ class MenuCoordiantor: ChildCoordinator {
     func dismissHomeScreens() {
         parent?.dismissHomeScreens()
     }
+    
+    func game() {
+        parent?.game()
+    }
 }
 

@@ -26,7 +26,55 @@ class MenuVM {
     var onDeletingFriendError: (() -> Void)?
     var onDeletingFriendSuccess: ((User) -> Void)?
     
+    init() {
+        self.prepareGameInv()
+        self.getFriends()
+        self.setupGameListener()
+    }
     
+    private func startGame() {
+        coordinator.game()
+    }
+    
+    private func setupGameListener() {
+        self.dBManager.addStartGameListener { isGameStarted, justAdddedListener, error in
+            if let error = error {
+                print("Failed to create snapshot listener", error)
+            } else {
+                if isGameStarted {
+                    print("Should start game")
+                    self.startGame()
+                }
+                if justAdddedListener {
+                    print("Added setup game listener")
+                }
+            }
+        }
+    }
+    
+    private func addGameInvListener() {
+        dBManager.addGameInvListener { users, error in
+            if let _ = error { } else {
+                if let users = users {
+                    self.onGameInvListenerChange?(users)
+                }
+            }
+        }
+    }
+    
+    
+    private func prepareGameInv() {
+        self.dBManager.clearInvsInMenu { success, error in
+            if let error = error {
+                print("DEBUG: - Error while cleaning game inv", error)
+            } else {
+                if success {
+                    print("DEBUD: - Successfully cleaned game inv")
+                    self.addGameInvListener()
+                }
+            }
+        }
+    }
     
     public func getFriends() {
         dBManager.fetchFriends { friends, error in
@@ -43,16 +91,6 @@ class MenuVM {
         }
     }
     
-    public func addGameInvListener() {
-        dBManager.addGameInvListener { users, error in
-            if let _ = error { } else {
-                if let users = users {
-                    self.onGameInvListenerChange?(users)
-                    print("DEBUG: Users count on GameInvListener", users.count)
-                }
-            }
-        }
-    }
     
     public func sendInv(to user: User) {
         dBManager.sendGameInv(to: user) { success, error in
@@ -70,34 +108,28 @@ class MenuVM {
     
     public func deleteFriend(friend: User) {
         
-        //MARK: - To really delete friends just bring back thi code
-//        self.dBManager.deleteFriend(friend) { deletedFriend, errror in
-//            if let error = errror {
-//                print("Failed to delete friend")
-//                self.onDeletingFriendError?()
-//                
-//            } else {
-//                if let user = deletedFriend {
-//                    print("Successfully deleted friend")
-//                    self.onDeletingFriendSuccess?(user)
-//                }
-//            }
-//        }
         print("Successfully deleted friend")
         self.onDeletingFriendSuccess?(friend)
     }
     
-    
-    
-    init() {
-        self.getFriends()
-        self.addGameInvListener()
+    public func acceptGameInv(of friend: User) {
+        self.dBManager.acceptGameInv(of: friend) { accepted, error in
+            if let error = error {
+                print("Failed to accept invite", error)
+            } else {
+                if accepted {
+                    print("accepted game invite")
+                    self.coordinator.game()
+                }
+            }
+        }
     }
     
     //MARK: - Coordination
     public func searchFirends() {
         coordinator.searchFriends(friends: friends)
     }
+    
     public func profile() {
         coordinator.profile()
     }

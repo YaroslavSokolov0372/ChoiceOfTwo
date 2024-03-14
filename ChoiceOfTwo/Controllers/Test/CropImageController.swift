@@ -190,7 +190,7 @@ class CropImageController: UIViewController, UIGestureRecognizerDelegate {
         
         if gesture.state == .began || gesture.state == .changed {
             
-            var scale = gesture.scale
+            let scale = gesture.scale
             imageView.transform = imageView.transform.scaledBy(x: scale, y: scale)
             print(imageView.frame.width)
             gesture.scale = 1

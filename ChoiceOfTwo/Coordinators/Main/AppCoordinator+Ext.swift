@@ -25,4 +25,11 @@ extension AppCoordinator {
         navigationController.setNavigationBarHidden(true, animated: false)
         homeCoordinator.menu(navigationController: navigationController, animated: true)
     }
+    
+    func game() {
+        let gameCoordinator = GameCoordinator(navigationController: self.navigationController)
+        gameCoordinator.parent = self
+        navigationController.setNavigationBarHidden(true, animated: false)
+        gameCoordinator.setupGame(navigationController: navigationController, animated: true)
+    }
 }

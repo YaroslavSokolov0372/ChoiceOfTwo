@@ -47,6 +47,7 @@ extension AuthCoordinator {
         profImageCoordinator.start(image: image)
     }
     
+    
     func home() {
         parent?.home()
     }

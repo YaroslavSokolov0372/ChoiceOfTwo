@@ -3,13 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB5D2B9F90C10048330C /* RecievedCellView.swift */; };
 		D100BB602BA09B1C0048330C /* InteractFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB5F2BA09B1C0048330C /* InteractFriendView.swift */; };
 		D100BB622BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB612BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift */; };
+		D100BB6A2BA317FD0048330C /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB692BA317FD0048330C /* GameCoordinator.swift */; };
+		D100BB6C2BA318360048330C /* SetupGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB6B2BA318360048330C /* SetupGameCoordinator.swift */; };
+		D100BB6F2BA318A70048330C /* SetupGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB6E2BA318A70048330C /* SetupGameController.swift */; };
+		D100BB722BA318BB0048330C /* SetupGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB712BA318BB0048330C /* SetupGameVM.swift */; };
+		D100BB742BA32D430048330C /* GameCoordinator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB732BA32D430048330C /* GameCoordinator+Extension.swift */; };
+		D100BB772BA342210048330C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = D100BB762BA342210048330C /* Apollo */; };
+		D100BB792BA345960048330C /* GraphQL in Resources */ = {isa = PBXBuildFile; fileRef = D100BB782BA345960048330C /* GraphQL */; };
+		D100BB7E2BA3487C0048330C /* AnimeAPI in Frameworks */ = {isa = PBXBuildFile; productRef = D100BB7D2BA3487C0048330C /* AnimeAPI */; };
+		D100BB812BA34A2D0048330C /* AnimeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB802BA34A2D0048330C /* AnimeApiService.swift */; };
+		D100BB832BA34C0D0048330C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB822BA34C0D0048330C /* Genre.swift */; };
+		D100BB852BA34C7A0048330C /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB842BA34C7A0048330C /* Season.swift */; };
+		D100BB872BA34CB30048330C /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB862BA34CB30048330C /* Format.swift */; };
+		D100BB8B2BA350FA0048330C /* ProposedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB8A2BA350FA0048330C /* ProposedCellView.swift */; };
+		D100BB902BA37A650048330C /* CustomTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB8F2BA37A650048330C /* CustomTagView.swift */; };
+		D100BB922BA37B6A0048330C /* CustomTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB912BA37B6A0048330C /* CustomTagsView.swift */; };
 		D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */; };
 		D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */; };
 		D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */; };
@@ -131,6 +146,19 @@
 		D100BB5D2B9F90C10048330C /* RecievedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedCellView.swift; sourceTree = "<group>"; };
 		D100BB5F2BA09B1C0048330C /* InteractFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractFriendView.swift; sourceTree = "<group>"; };
 		D100BB612BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimatedMessageWithButtons.swift; sourceTree = "<group>"; };
+		D100BB692BA317FD0048330C /* GameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoordinator.swift; sourceTree = "<group>"; };
+		D100BB6B2BA318360048330C /* SetupGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameCoordinator.swift; sourceTree = "<group>"; };
+		D100BB6E2BA318A70048330C /* SetupGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameController.swift; sourceTree = "<group>"; };
+		D100BB712BA318BB0048330C /* SetupGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameVM.swift; sourceTree = "<group>"; };
+		D100BB732BA32D430048330C /* GameCoordinator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameCoordinator+Extension.swift"; sourceTree = "<group>"; };
+		D100BB782BA345960048330C /* GraphQL */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GraphQL; sourceTree = "<group>"; };
+		D100BB802BA34A2D0048330C /* AnimeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeApiService.swift; sourceTree = "<group>"; };
+		D100BB822BA34C0D0048330C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		D100BB842BA34C7A0048330C /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		D100BB862BA34CB30048330C /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		D100BB8A2BA350FA0048330C /* ProposedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedCellView.swift; sourceTree = "<group>"; };
+		D100BB8F2BA37A650048330C /* CustomTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagView.swift; sourceTree = "<group>"; };
+		D100BB912BA37B6A0048330C /* CustomTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagsView.swift; sourceTree = "<group>"; };
 		D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCropImageController.swift; sourceTree = "<group>"; };
 		D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Ext.swift"; sourceTree = "<group>"; };
@@ -238,6 +266,8 @@
 				D19D6F332B8BBA1800E2B907 /* TOCropViewController in Frameworks */,
 				D1D753DD2B7662D500ADF274 /* GoogleSignIn in Frameworks */,
 				D1D753C62B73F0A700ADF274 /* FirebaseAuth in Frameworks */,
+				D100BB772BA342210048330C /* Apollo in Frameworks */,
+				D100BB7E2BA3487C0048330C /* AnimeAPI in Frameworks */,
 				D1D753CA2B73F0A700ADF274 /* FirebaseFirestore in Frameworks */,
 				D19D6F312B8BBA1800E2B907 /* CropViewController in Frameworks */,
 			);
@@ -269,6 +299,68 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		D100BB642BA1035A0048330C /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D1D753E72B7689FD00ADF274 /* MenuController.swift */,
+				D199BE542B8102AA000EBA02 /* MenuController+UICollectionView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		D100BB652BA103610048330C /* SearchFriends */ = {
+			isa = PBXGroup;
+			children = (
+				D1332ADB2B84D0CD00F34C51 /* SearchFriendsController.swift */,
+				D1332AEB2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift */,
+				D12CC0BC2B866D8800B141E8 /* SearchFriendsController+UITextFIeldDelegate.swift */,
+				D19D6F272B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift */,
+			);
+			path = SearchFriends;
+			sourceTree = "<group>";
+		};
+		D100BB662BA1036C0048330C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D199BE622B824C8F000EBA02 /* ProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D100BB672BA317E00048330C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D100BB692BA317FD0048330C /* GameCoordinator.swift */,
+				D100BB732BA32D430048330C /* GameCoordinator+Extension.swift */,
+				D100BB6B2BA318360048330C /* SetupGameCoordinator.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D100BB6D2BA318920048330C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D100BB6E2BA318A70048330C /* SetupGameController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D100BB702BA318B10048330C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D100BB712BA318BB0048330C /* SetupGameVM.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D100BB7F2BA34A070048330C /* AnimeApiService */ = {
+			isa = PBXGroup;
+			children = (
+				D100BB802BA34A2D0048330C /* AnimeApiService.swift */,
+			);
+			path = AnimeApiService;
+			sourceTree = "<group>";
+		};
 		D12AE7DD2B7E7A89004511B5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +380,7 @@
 				D199BE5A2B81289A000EBA02 /* HistoryCellView.swift */,
 				D1332AE92B855CE600F34C51 /* UserSearchCellView.swift */,
 				D100BB5D2B9F90C10048330C /* RecievedCellView.swift */,
+				D100BB8A2BA350FA0048330C /* ProposedCellView.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -342,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				D178076D2B6AB0FB003B84F7 /* Info.plist */,
+				D100BB782BA345960048330C /* GraphQL */,
 				D1D753A12B728A9E00ADF274 /* Fonts */,
 				D1D753E42B7674EE00ADF274 /* Extensions */,
 				D17807912B6AB126003B84F7 /* Model */,
@@ -350,6 +444,7 @@
 				D17807902B6AB11F003B84F7 /* Controllers */,
 				D1D754002B795BC600ADF274 /* Coordinators */,
 				D1332AE42B85285A00F34C51 /* DataBaseManager */,
+				D100BB7F2BA34A070048330C /* AnimeApiService */,
 				D1D753CC2B73F2B000ADF274 /* AuthService */,
 				D178078F2B6AB10B003B84F7 /* Supporting */,
 				D1D7541B2B7A518D00ADF274 /* ConsoleLogger.swift */,
@@ -389,9 +484,10 @@
 		D17807902B6AB11F003B84F7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D1F587552B927F350072CFAA /* Other */,
+				D100BB6D2BA318920048330C /* Game */,
 				D199BE692B829FC3000EBA02 /* Menu */,
 				D199BE682B829FB8000EBA02 /* Auth */,
+				D1F587552B927F350072CFAA /* Other */,
 				D1F587542B927F190072CFAA /* Test */,
 			);
 			path = Controllers;
@@ -400,10 +496,13 @@
 		D17807912B6AB126003B84F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D1D7542D2B7BE94500ADF274 /* Protocol */,
+				D100BB862BA34CB30048330C /* Format.swift */,
+				D100BB842BA34C7A0048330C /* Season.swift */,
+				D100BB822BA34C0D0048330C /* Genre.swift */,
+				D1332AE72B852C8400F34C51 /* UserModel.swift */,
 				D1D753CF2B73F2FF00ADF274 /* RegisterUserRequest.swift */,
 				D1D7541F2B7A69EE00ADF274 /* TextFieldValidation.swift */,
-				D1332AE72B852C8400F34C51 /* UserModel.swift */,
+				D1D7542D2B7BE94500ADF274 /* Protocol */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,6 +510,8 @@
 		D17807922B6AB12C003B84F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D100BB8F2BA37A650048330C /* CustomTagView.swift */,
+				D100BB912BA37B6A0048330C /* CustomTagsView.swift */,
 				D100BB632BA0BCAB0048330C /* Animation */,
 				D1332ADD2B850C7D00F34C51 /* CollectionViewCells */,
 				D1D753942B72677C00ADF274 /* CustomTextField.swift */,
@@ -443,13 +544,9 @@
 		D199BE692B829FC3000EBA02 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D1D753E72B7689FD00ADF274 /* MenuController.swift */,
-				D199BE542B8102AA000EBA02 /* MenuController+UICollectionView.swift */,
-				D199BE622B824C8F000EBA02 /* ProfileController.swift */,
-				D1332ADB2B84D0CD00F34C51 /* SearchFriendsController.swift */,
-				D1332AEB2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift */,
-				D12CC0BC2B866D8800B141E8 /* SearchFriendsController+UITextFIeldDelegate.swift */,
-				D19D6F272B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift */,
+				D100BB662BA1036C0048330C /* Profile */,
+				D100BB652BA103610048330C /* SearchFriends */,
+				D100BB642BA1035A0048330C /* Menu */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -457,9 +554,10 @@
 		D1D7538E2B7264C400ADF274 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D1F587562B9281090072CFAA /* Other */,
+				D100BB702BA318B10048330C /* Game */,
 				D1D9A3B32B86AE5B00D8DE25 /* Menu */,
 				D1D9A3B22B86AE4A00D8DE25 /* Auth */,
+				D1F587562B9281090072CFAA /* Other */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -504,12 +602,13 @@
 		D1D754002B795BC600ADF274 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				D1F587532B927EE80072CFAA /* Other */,
+				D100BB672BA317E00048330C /* Game */,
 				D12AE7DD2B7E7A89004511B5 /* Home */,
 				D1D7540C2B7972A000ADF274 /* Auth */,
 				D1D7540B2B79726300ADF274 /* Instructor */,
 				D1D7540A2B79725900ADF274 /* Main */,
 				D1D754072B795C3400ADF274 /* Protocol */,
+				D1F587532B927EE80072CFAA /* Other */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -660,6 +759,8 @@
 				D1D753DE2B7662D500ADF274 /* GoogleSignInSwift */,
 				D19D6F302B8BBA1800E2B907 /* CropViewController */,
 				D19D6F322B8BBA1800E2B907 /* TOCropViewController */,
+				D100BB762BA342210048330C /* Apollo */,
+				D100BB7D2BA3487C0048330C /* AnimeAPI */,
 			);
 			productName = ChoiceOfTwo;
 			productReference = D178075C2B6AB0FA003B84F7 /* ChoiceOfTwo.app */;
@@ -737,6 +838,8 @@
 				D1D753C42B73F0A700ADF274 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D1D753DB2B7662D500ADF274 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				D19D6F2F2B8BBA1800E2B907 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+				D100BB752BA342200048330C /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				D100BB7C2BA3487C0048330C /* XCLocalSwiftPackageReference "AnimeAPI" */,
 			);
 			productRefGroup = D178075D2B6AB0FA003B84F7 /* Products */;
 			projectDirPath = "";
@@ -759,6 +862,7 @@
 				D1D753BA2B72924E00ADF274 /* Nunito-SemiBold.ttf in Resources */,
 				D178076C2B6AB0FB003B84F7 /* LaunchScreen.storyboard in Resources */,
 				D17807692B6AB0FB003B84F7 /* Assets.xcassets in Resources */,
+				D100BB792BA345960048330C /* GraphQL in Resources */,
 				D1D753BD2B72924E00ADF274 /* Nunito-Bold.ttf in Resources */,
 				D1D753B82B72924E00ADF274 /* Nunito-Regular.ttf in Resources */,
 				D1D753B72B72924E00ADF274 /* Nunito-Light.ttf in Resources */,
@@ -788,6 +892,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D100BB812BA34A2D0048330C /* AnimeApiService.swift in Sources */,
 				D17807602B6AB0FA003B84F7 /* AppDelegate.swift in Sources */,
 				D199BE512B7FD7BE000EBA02 /* CustomSectionHeaderView.swift in Sources */,
 				D1D7541C2B7A518D00ADF274 /* ConsoleLogger.swift in Sources */,
@@ -800,11 +905,13 @@
 				D1D753F62B79526F00ADF274 /* UINavigationController+Ext.swift in Sources */,
 				D1D754242B7A8CFD00ADF274 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				D1D753E82B7689FD00ADF274 /* MenuController.swift in Sources */,
+				D100BB6F2BA318A70048330C /* SetupGameController.swift in Sources */,
 				D1D754182B79781E00ADF274 /* AppCoordinator+Ext.swift in Sources */,
 				D1D754262B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift in Sources */,
 				D1D753AF2B728CCD00ADF274 /* Font+Extension.swift in Sources */,
 				D1332AE32B85267300F34C51 /* ProfileCoordinator.swift in Sources */,
 				D1332AEA2B855CE600F34C51 /* UserSearchCellView.swift in Sources */,
+				D100BB6C2BA318360048330C /* SetupGameCoordinator.swift in Sources */,
 				D1D753E62B76750100ADF274 /* UIImage+CGSize.swift in Sources */,
 				D1F587522B927EAF0072CFAA /* CropImageCoordinator.swift in Sources */,
 				D1D7540E2B7972BF00ADF274 /* EntryCoordinator.swift in Sources */,
@@ -817,6 +924,7 @@
 				D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */,
 				D1D753D42B73F68D00ADF274 /* RegisterController.swift in Sources */,
 				D199BE532B80F364000EBA02 /* friendProfileImageButton.swift in Sources */,
+				D100BB872BA34CB30048330C /* Format.swift in Sources */,
 				D19D6F2C2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift in Sources */,
 				D19D6F392B8D029800E2B907 /* UIImageView+Extension.swift in Sources */,
 				D1332AE12B8515B700F34C51 /* SearchFriendsCoordinator.swift in Sources */,
@@ -832,10 +940,12 @@
 				D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
 				D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */,
+				D100BB832BA34C0D0048330C /* Genre.swift in Sources */,
 				D1332AEC2B855D7700F34C51 /* SearchFriendsController+UICollectionView.swift in Sources */,
 				D1332ADF2B8514E000F34C51 /* SearchFriendsVM.swift in Sources */,
 				D1F587582B9281120072CFAA /* CropImageVM.swift in Sources */,
 				D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */,
+				D100BB852BA34C7A0048330C /* Season.swift in Sources */,
 				D199BE592B81267D000EBA02 /* Devider.swift in Sources */,
 				D199BE632B824C8F000EBA02 /* ProfileController.swift in Sources */,
 				D17807622B6AB0FA003B84F7 /* SceneDelegate.swift in Sources */,
@@ -846,8 +956,10 @@
 				D1D754062B795C0500ADF274 /* CoordinatorProtocol.swift in Sources */,
 				D1D754092B79708600ADF274 /* ParentCoordinatorProtocol+Ex.swift in Sources */,
 				D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */,
+				D100BB902BA37A650048330C /* CustomTagView.swift in Sources */,
 				D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */,
 				D1D753E32B766F8F00ADF274 /* CustomImageAuthButton.swift in Sources */,
+				D100BB742BA32D430048330C /* GameCoordinator+Extension.swift in Sources */,
 				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
@@ -855,14 +967,18 @@
 				D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */,
 				D100BB602BA09B1C0048330C /* InteractFriendView.swift in Sources */,
 				D1D753DA2B74297700ADF274 /* CustomCircleButton.swift in Sources */,
+				D100BB922BA37B6A0048330C /* CustomTagsView.swift in Sources */,
 				D1D754122B79753600ADF274 /* AuthCoordinator+Ext.swift in Sources */,
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,
 				D12AE7E52B7E7C0F004511B5 /* MenuVM.swift in Sources */,
 				D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */,
 				D1D754042B795BF300ADF274 /* LaunchInstructor.swift in Sources */,
+				D100BB8B2BA350FA0048330C /* ProposedCellView.swift in Sources */,
+				D100BB6A2BA317FD0048330C /* GameCoordinator.swift in Sources */,
 				D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */,
 				D1D753912B7265EF00ADF274 /* LoginController.swift in Sources */,
 				D1D753D02B73F2FF00ADF274 /* RegisterUserRequest.swift in Sources */,
+				D100BB722BA318BB0048330C /* SetupGameVM.swift in Sources */,
 				D12AE7E32B7E7B74004511B5 /* MenuCoordiantor.swift in Sources */,
 				D199BE552B8102AA000EBA02 /* MenuController+UICollectionView.swift in Sources */,
 				D167422F2B95266D00730962 /* CustomAnimatedMessageLabel.swift in Sources */,
@@ -1210,7 +1326,22 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		D100BB7C2BA3487C0048330C /* XCLocalSwiftPackageReference "AnimeAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AnimeAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
+		D100BB752BA342200048330C /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.2;
+			};
+		};
 		D19D6F2F2B8BBA1800E2B907 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
@@ -1238,6 +1369,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D100BB762BA342210048330C /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D100BB752BA342200048330C /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		D100BB7D2BA3487C0048330C /* AnimeAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnimeAPI;
+		};
 		D19D6F302B8BBA1800E2B907 /* CropViewController */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D19D6F2F2B8BBA1800E2B907 /* XCRemoteSwiftPackageReference "TOCropViewController" */;

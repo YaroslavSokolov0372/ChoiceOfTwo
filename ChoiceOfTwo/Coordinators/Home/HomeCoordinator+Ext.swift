@@ -30,4 +30,8 @@ extension HomeCoordinator {
         addChild(searchFriendsCoordinator)
         searchFriendsCoordinator.start(friends: friends)
     }
+    
+    func game() {
+        parent?.game()
+    }
 }
