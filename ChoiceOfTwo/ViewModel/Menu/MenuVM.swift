@@ -59,7 +59,7 @@ class MenuVM {
                 print("Failed to get info from current game listener", error)
             } else {
                 if hasGame {
-                    print("THere is an active game")
+                    print("There is an active game")
                     self.startGame()
                 } else {
                     print("Added setup game listener")

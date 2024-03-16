@@ -14,8 +14,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "fetchWhomSentFriendship(completion:)"
             landmarkType = "7">
          </BreakpointContent>

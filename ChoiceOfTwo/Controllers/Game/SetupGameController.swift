@@ -70,17 +70,13 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
         readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
         
         vm.onGenresChanges = { genres in
-            for genre in genres {
-                let index = self.proposedGenres.tagViews.firstIndex { tv in
-                    return tv.text == genre
+            
+            for tv in self.proposedGenres.tagViews  {
+                if genres.contains(tv.enumType.rawValue) {
+                    tv.selected = true
+                } else {
+                    tv.selected = false
                 }
-
-                
-                UIView.animate(withDuration: 0.5) {
-                    self.proposedGenres.tagViews[index!].selected.toggle()
-                }
-                    
-                
             }
         }
     }
@@ -178,10 +174,5 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
     }
      
     func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int) {
-//        print("bye bye")
-        
-//        if enumType is Genre {
-//            print(enumType.rawValue)
-//        }
     }
 }

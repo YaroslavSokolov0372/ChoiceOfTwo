@@ -17,10 +17,18 @@ class SetupGameVM {
     private(set) var genres: [Genre.RawValue] = [] {
         didSet {
             self.addGenreTag(genres)
+//            self.onGenresChanges?(genres)
         }
     }
     var onGenresChanges: (([Genre.RawValue]) -> Void)?
-    
+    var listenerCheck: Int = 0
+//    {
+//        didSet {
+//            if listenerCheck % 2 == 0 {
+//                
+//            }
+//        }
+//    }
     
     init() {
         gameInfoListener()
@@ -28,12 +36,19 @@ class SetupGameVM {
     
     private func gameInfoListener() {
         self.dBManager.addGameInfoListener { info, error in
+            
             if let error = error {
                 print("DEBUG: Error with gameInfo Listener", error)
             } else {
                 if let info = info {
-                    self.genres = info.genres.map({ $0.rawValue })
-                    print(info.genres)
+//                    self.listenerCheck += 1
+//                    print("listener check", self.listenerCheck)
+//                    if self.listenerCheck % 2 == 0 {
+//                        self.genres = info.genres.map({ $0.rawValue })
+                    self.onGenresChanges?(self.genres)
+                        print(info.genres)
+//                    }
+
                 }
             }
         }
@@ -46,7 +61,7 @@ class SetupGameVM {
             } else {
                 if success {
                     print("Successfully changed genre tag")
-                    self.onGenresChanges?(genres)
+//                    self.onGenresChanges?(genres)
                 }
             }
         }
