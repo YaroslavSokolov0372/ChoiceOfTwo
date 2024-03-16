@@ -18,23 +18,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-//        let navC = UINavigationController()
-//        let coordinator = AppCoordinator(navigationController: navC)
-//        
-//        let window = UIWindow(windowScene: windowScene)
-//        window.rootViewController = navC
-//        self.window = window
-//        self.window?.makeKeyAndVisible()
-//        
-//        coordinator.start()
+        let navC = UINavigationController()
+        let coordinator = AppCoordinator(navigationController: navC)
+        
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = navC
+        self.window = window
+        self.window?.makeKeyAndVisible()
+        
+        coordinator.start()
         
         
-        window = UIWindow(windowScene: windowScene)
-        window?.windowScene = windowScene
-//        let viewController = CropImageController()
-        let viewController = SetupGameController()
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+//        window = UIWindow(windowScene: windowScene)
+//        window?.windowScene = windowScene
+////        let viewController = CropImageController()
+//        let viewController = SetupGameController()
+//        window?.rootViewController = viewController
+//        window?.makeKeyAndVisible()
+        
+        
         //        let viewController = ChooseProfPictureController()
         //        let viewController = FinalCropImageController()
         //        let viewController = RegisterProfImageController()

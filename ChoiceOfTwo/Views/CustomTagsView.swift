@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol CustomTagsViewDelegate {
+    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didSelectItemAt index: Int)
+    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int)
+}
+
 class CustomTagsView: UIView {
 
     //MARK: Variables
+    public var delegate: CustomTagsViewDelegate?
     var tagViews: [CustomTagView] = []
     var numberOfRows = 2
-    var tags: [String] = [] {
+    var tags: [StringRepresentable] = [] {
         didSet {
             stackView.arrangedSubviews.forEach { view in
                 view.removeFromSuperview()
@@ -21,29 +27,36 @@ class CustomTagsView: UIView {
             var totalWidth: CGFloat = 0
             tags.forEach { str in
                 let tagV = CustomTagView()
-                tagV.text = str
-//                let size = tagV.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-                let size = str.size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                tagV.text = str.rawValue
+                tagV.enumType = str
+                let size = str.rawValue.size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
                 tagV.setupUI(textSize: size)
                 totalWidth += size.width
                 tagViews.append(tagV)
             }
-            let rowWidth: CGFloat = totalWidth / CGFloat(numberOfRows)
             
+            let rowWidth: CGFloat = totalWidth / CGFloat(numberOfRows)
             var iTag: Int = 0
             while iTag < tagViews.count {
-                // create a new "row" horizontal stack view
                 let vSV = UIStackView()
                 vSV.spacing = 8
                 stackView.addArrangedSubview(vSV)
                 var cw: CGFloat = 0
-                // add tag views
                 while cw < rowWidth, iTag < tagViews.count {
                     let t = tagViews[iTag]
                     let sz = t.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
                     vSV.addArrangedSubview(t)
                     cw += sz.width
                     iTag += 1
+                }
+            }
+            
+            tagViews.forEach { tv in
+                tv.selectChanged = { [weak self] theTagView in
+                    guard let self = self,
+                          let idx = self.tagViews.firstIndex(of: theTagView)
+                    else { return }
+                    self.delegate?.customTagsView(self, enumType: tv.enumType, didSelectItemAt: idx)
                 }
             }
         }
@@ -73,25 +86,11 @@ class CustomTagsView: UIView {
     
     //MARK: - Setup UI
     private func setupUI() {
-//        self.addSubview(scrollView)
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        scrollView.addSubview(stackView)
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(equalTo: self.topAnchor),
-//            scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-//            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-//            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-//            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-//            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
-            
             stackView.topAnchor.constraint(equalTo: self.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),

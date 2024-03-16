@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SetupGameController: UIViewController {
+class SetupGameController: UIViewController, CustomTagsViewDelegate {
+    
+    
     
     //MARK: - Variables
     var vm = SetupGameVM()
@@ -19,38 +21,42 @@ class SetupGameController: UIViewController {
     let proposedGenres: CustomTagsView = {
         let tagsView = CustomTagsView()
         
-            tagsView.numberOfRows = (Genre.allCases.count / 4)
+        tagsView.numberOfRows = (Genre.allCases.count / 4)
         
         
-        var genreTags: [String] = []
-        Genre.allCases.forEach { genre in
-            genreTags.append(genre.rawValue)
-        }
-        tagsView.tags = genreTags
+//        var genreTags: [String] = []
+//        Genre.allCases.forEach { genre in
+//            genreTags.append(genre.rawValue)
+//        }
+//        tagsView.tags = genreTags
+        tagsView.tags = Genre.allCases
+        
         return tagsView
     }()
     let seasonsHeader = CustomSectionHeaderView(headerName: "Choose Season")
     let proposedSeasons: CustomTagsView = {
         let tagsView = CustomTagsView()
-//        tagsView.numberOfRows = (Season.allCases.count / 4)
+        //        tagsView.numberOfRows = (Season.allCases.count / 4)
         tagsView.numberOfRows = 0
-        var seasonTags: [String] = []
-        Season.allCases.forEach { genre in
-            seasonTags.append(genre.rawValue)
-        }
-        tagsView.tags = seasonTags
+//        var seasonTags: [String] = []
+//        Season.allCases.forEach { genre in
+//            seasonTags.append(genre.rawValue)
+//        }
+//        tagsView.tags = seasonTags
+        tagsView.tags = Season.allCases
         return tagsView
     }()
     let formatHeader = CustomSectionHeaderView(headerName: "Choose Format")
     let proposedFormats: CustomTagsView = {
         let tagsView = CustomTagsView()
         tagsView.numberOfRows = (Format.allCases.count / 4) + 1
-//        tagsView.numberOfRows = 0
-        var seasonTags: [String] = []
-        Format.allCases.forEach { genre in
-            seasonTags.append(genre.rawValue)
-        }
-        tagsView.tags = seasonTags
+        //        tagsView.numberOfRows = 0
+//        var seasonTags: [String] = []
+//        Format.allCases.forEach { genre in
+//            seasonTags.append(genre.rawValue)
+//        }
+//        tagsView.tags = seasonTags
+        tagsView.tags = Format.allCases
         return tagsView
     }()
     
@@ -58,8 +64,25 @@ class SetupGameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        proposedGenres.delegate = self
         setupUI()
         backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
+        readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
+        
+        vm.onGenresChanges = { genres in
+            for genre in genres {
+                let index = self.proposedGenres.tagViews.firstIndex { tv in
+                    return tv.text == genre
+                }
+
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.proposedGenres.tagViews[index!].selected.toggle()
+                }
+                    
+                
+            }
+        }
     }
     
     //MARK: - Setup UI
@@ -67,7 +90,6 @@ class SetupGameController: UIViewController {
         
         self.view.addSubview(readyButton)
         readyButton.translatesAutoresizingMaskIntoConstraints = false
-        
         
         self.view.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -91,19 +113,18 @@ class SetupGameController: UIViewController {
         proposedFormats.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
             self.backButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
             self.backButton.heightAnchor.constraint(equalToConstant: 50),
             self.backButton.widthAnchor.constraint(equalToConstant: 50),
             self.backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             
-//            self.readyButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10),
+            //            self.readyButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10),
             self.readyButton.heightAnchor.constraint(equalToConstant: 50),
             self.readyButton.widthAnchor.constraint(equalToConstant: 130),
             self.readyButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             self.readyButton.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10),
             
-//            self.genresHeader.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
+            //            self.genresHeader.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
             self.genresHeader.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 10),
             self.genresHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.genresHeader.heightAnchor.constraint(equalToConstant: 30),
@@ -121,7 +142,7 @@ class SetupGameController: UIViewController {
             self.proposedSeasons.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             self.proposedSeasons.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.proposedSeasons.heightAnchor.constraint(equalToConstant: (CGFloat((Season.allCases.count) / 4)) * 50),
-
+            
             self.formatHeader.topAnchor.constraint(equalTo: proposedSeasons.bottomAnchor, constant: 20),
             self.formatHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.formatHeader.heightAnchor.constraint(equalToConstant: 20),
@@ -132,10 +153,35 @@ class SetupGameController: UIViewController {
             self.proposedFormats.heightAnchor.constraint(equalToConstant: (CGFloat((Format.allCases.count) / 4)) * 50),
         ])
     }
-    
-    
+     
+     
     //MARK: - Selectors
     @objc private func dismissButtonTapped() {
+    }
+     
+    @objc private func readyButtonTapped() {
+        UIView.animate(withDuration: 0.2) {
+            self.readyButton.backgroundColor = .mainPurple
+            self.readyButton.setTitleColor(.white, for: .normal)
+        }
+    }
+     
+    //MARK: - Delegates
+    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didSelectItemAt index: Int) {
+
+        if enumType is Genre {
+            print(enumType.rawValue)
+            self.vm.preformGenresChanges(enumType as! Genre)
+//            self.vm.addGenreTag(enumType as! Genre)
+        }
         
+    }
+     
+    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int) {
+//        print("bye bye")
+        
+//        if enumType is Genre {
+//            print(enumType.rawValue)
+//        }
     }
 }

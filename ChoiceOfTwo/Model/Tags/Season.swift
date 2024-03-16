@@ -9,7 +9,8 @@ import Foundation
 import AnimeAPI
 
 
-enum Season: String, CaseIterable {
+enum Season: String, CaseIterable, Codable, StringRepresentable {
+    
     case winter = "Winter"
     case summer = "Summer"
     case spring = "Spring"

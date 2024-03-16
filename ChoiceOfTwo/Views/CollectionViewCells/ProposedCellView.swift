@@ -8,7 +8,7 @@
 import UIKit
 
 class ProposedCellView: UICollectionViewCell {
-        
+    
     //MARK: - UI Components
     private let label: UILabel = {
         let label = UILabel()
@@ -30,9 +30,9 @@ class ProposedCellView: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         
         contentView.autoresizingMask = [.flexibleWidth]
     }

@@ -123,6 +123,12 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         view.addSubview(animatedDeleteView)
     }
     
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        vm.removeListeners()
+    }
+    
     //MARK: Setup UI
     private func setupUI() {
         

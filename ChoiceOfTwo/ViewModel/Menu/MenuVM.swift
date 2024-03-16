@@ -29,23 +29,39 @@ class MenuVM {
     init() {
         self.prepareGameInv()
         self.getFriends()
-        self.setupGameListener()
+        self.addCurrentGameListener()
+//        self.setupGameListener()
     }
     
     private func startGame() {
         coordinator.game()
     }
     
-    private func setupGameListener() {
-        self.dBManager.addStartGameListener { isGameStarted, justAdddedListener, error in
+//    private func setupGameListener() {
+//        self.dBManager.addStartGameListener { isGameStarted, justAdddedListener, error in
+//            if let error = error {
+//                print("Failed to create snapshot listener", error)
+//            } else {
+//                if isGameStarted {
+//                    print("Should start game")
+//                    self.startGame()
+//                }
+//                if justAdddedListener {
+//                    print("Added setup game listener")
+//                }
+//            }
+//        }
+//    }
+    
+    private func addCurrentGameListener() {
+        self.dBManager.addCurrentGameListener { hasGame, error in
             if let error = error {
-                print("Failed to create snapshot listener", error)
+                print("Failed to get info from current game listener", error)
             } else {
-                if isGameStarted {
-                    print("Should start game")
+                if hasGame {
+                    print("THere is an active game")
                     self.startGame()
-                }
-                if justAdddedListener {
+                } else {
                     print("Added setup game listener")
                 }
             }
@@ -61,7 +77,6 @@ class MenuVM {
             }
         }
     }
-    
     
     private func prepareGameInv() {
         self.dBManager.clearInvsInMenu { success, error in
@@ -91,7 +106,6 @@ class MenuVM {
         }
     }
     
-    
     public func sendInv(to user: User) {
         dBManager.sendGameInv(to: user) { success, error in
             if let _ = error {
@@ -119,7 +133,7 @@ class MenuVM {
             } else {
                 if accepted {
                     print("accepted game invite")
-                    self.coordinator.game()
+//                    self.coordinator.game()
                 }
             }
         }
@@ -140,5 +154,10 @@ class MenuVM {
     
     public func removeFriend(at index: Int) {
         self.friends.remove(at: index)
+    }
+    
+    public func removeListeners() {
+        self.dBManager.removeInvListener()
+        self.dBManager.removeCurrentGameListener()
     }
 }

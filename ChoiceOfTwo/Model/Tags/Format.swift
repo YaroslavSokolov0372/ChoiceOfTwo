@@ -8,7 +8,10 @@
 import Foundation
 import AnimeAPI
 
-enum Format: String, CaseIterable {
+enum Format: String, CaseIterable, Codable, StringRepresentable {
+    
+//    typealias StringEnumType = Genre
+    
     case tvShow = "TV Show"
     case movie = "Movie"
     case tvShort = "TV Short"
@@ -16,8 +19,6 @@ enum Format: String, CaseIterable {
     case ova = "OVA"
     case ona = "ONA"
     case music = "Music"
-    
-    
 }
 
 extension Format {
