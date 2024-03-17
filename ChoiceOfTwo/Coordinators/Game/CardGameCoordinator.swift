@@ -1,14 +1,14 @@
 //
-//  SetupGameCoordinator.swift
+//  CardGameCoordinator.swift
 //  ChoiceOfTwo
 //
-//  Created by Yaroslav Sokolov on 14/03/2024.
+//  Created by Yaroslav Sokolov on 17/03/2024.
 //
 
 import Foundation
 import UIKit
 
-class SetupGameCoordinator: ChildCoordinator {
+class CardGameCoordinator: ChildCoordinator {
 
     
     
@@ -27,18 +27,16 @@ class SetupGameCoordinator: ChildCoordinator {
     }
     
     func start() {
-        let setupGameController = SetupGameController()
-        viewControllerRef = setupGameController
-        let vm = SetupGameVM()
+        let cardGameController = CardGameController()
+        viewControllerRef = cardGameController
+        let vm = CardGameVM()
         vm.coordinator = self
-        setupGameController.vm = vm
+        cardGameController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.pushViewController(setupGameController, animated: true)
+        navigationController.pushViewController(cardGameController, animated: true)
     }
     
-    func cardGame() {
-        parent?.cardGame(navigationControlle: navigationController, animated: true)
-    }
+
     
     func dismiss() {
         parent?.popLastChildren()

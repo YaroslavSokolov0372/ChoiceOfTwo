@@ -9,7 +9,7 @@ import UIKit
 
 protocol CustomTagsViewDelegate {
     func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didSelectItemAt index: Int)
-    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int)
+//    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int)
 }
 
 class CustomTagsView: UIView {
@@ -25,11 +25,11 @@ class CustomTagsView: UIView {
             }
             tagViews = []
             var totalWidth: CGFloat = 0
-            tags.forEach { str in
+            tags.forEach { enumType in
                 let tagV = CustomTagView()
-                tagV.text = str.rawValue
-                tagV.enumType = str
-                let size = str.rawValue.size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                tagV.text = enumType.rawValue
+                tagV.enumType = enumType
+                let size = enumType.rawValue.size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
                 tagV.setupUI(textSize: size)
                 totalWidth += size.width
                 tagViews.append(tagV)

@@ -24,6 +24,7 @@ class DataBaseManager {
     private var invListener: ListenerRegistration? = nil
     private var currentGameListener: ListenerRegistration? = nil
     private var gameInfoListener: ListenerRegistration? = nil
+    private var gamePlayersCountListener: ListenerRegistration? = nil
     
     public func removeInvListener() {
         self.invListener?.remove()
@@ -37,41 +38,45 @@ class DataBaseManager {
         self.gameInfoListener?.remove()
     }
     
+    public func removePlayerCountListener() {
+        self.gamePlayersCountListener?.remove()
+    }
     
-//    func addStartGameListener(completion: @escaping (_ addedListener: Bool, _ justAdddedListener: Bool, Error?) -> Void) {
-//        guard let userId = Auth.auth().currentUser?.uid else {
-//            completion(false, false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-//            return
-//        }
-//        
-//        self.dataBase
-//            .collection("currentGames")
-//            .document(userId)
-//            .collection("players")
-//            .addSnapshotListener { snapshot, error in
-//                if let error = error {
-//                    completion(false, false, error)
-//                }
-//                
-//                guard let snapshot = snapshot else {
-//                    completion(false, false, error)
-//                    return
-//                }
-//                
-//                
-//                do {
-//                    let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
-//                    if friends.count == 0 {
-//                        completion(false, true, nil)
-//                    }
-//                    if friends.count == 2 {
-//                        completion(true, false, nil)
-//                    }
-//                } catch {
-//                    completion(false, false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
-//                }
-//            }
-//    }
+    //    func addStartGameListener(completion: @escaping (_ addedListener: Bool, _ justAdddedListener: Bool, Error?) -> Void) {
+    //        guard let userId = Auth.auth().currentUser?.uid else {
+    //            completion(false, false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+    //            return
+    //        }
+    //
+    //        self.dataBase
+    //            .collection("currentGames")
+    //            .document(userId)
+    //            .collection("players")
+    //            .addSnapshotListener { snapshot, error in
+    //                if let error = error {
+    //                    completion(false, false, error)
+    //                }
+    //
+    //                guard let snapshot = snapshot else {
+    //                    completion(false, false, error)
+    //                    return
+    //                }
+    //
+    //
+    //                do {
+    //                    let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
+    //                    if friends.count == 0 {
+    //                        completion(false, true, nil)
+    //                    }
+    //                    if friends.count == 2 {
+    //                        completion(true, false, nil)
+    //                    }
+    //                } catch {
+    //                    completion(false, false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+    //                }
+    //            }
+    //    }
+    
     
     func addCurrentGameListener(completion: @escaping (_ hasGame: Bool, Error?) -> Void) {
         
@@ -96,65 +101,30 @@ class DataBaseManager {
                 }
                 
                 if snapshot.documents.count != 0 {
-                    print(snapshot.documents.count)
-                    snapshot.documents.forEach { snapshot in
-                        
-                        print(snapshot.data())
-                    }
                     completion(true, nil)
                 } else {
                     completion(false, nil)
                 }
             }
-            
-    }
-    
-    func getCurrentGameUID(completion: @escaping (_ uid: String?, Error?) -> Void) {
         
-        guard let currentUser = Auth.auth().currentUser?.uid else {
-            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-            return
-        }
-        
-        self.dataBase
-            .collection("users")
-            .document(currentUser)
-            .collection("currentGameUID")
-            .getDocuments(source: .server) { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                }
-                
-                guard let snapshot = snapshot?.documents else {
-                    completion(nil, error)
-                    return
-                }
-                
-                let data = snapshot.first!.data()
-                let gameUid = data["uid"] as! String
-                completion(gameUid, nil)
-            }
     }
     
     func addGameInfoListener(completion: @escaping (_ info: GameInfo?, Error?) -> Void) {
         
         
-        guard let currentUser = Auth.auth().currentUser?.uid else {
-            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-            return
-        }
+        //        guard let currentUser = Auth.auth().currentUser?.uid else {
+        //            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+        //            return
+        //        }
         
         self.getCurrentGameUID { uid, error in
             if let error = error {
                 completion(nil, error)
             } else {
                 if let uid = uid {
-                    print("game uid -", uid)
                     self.gameInfoListener = self.dataBase
                         .collection("currentGames")
                         .document(uid)
-                    //            .document("xhT3CLDFFnQaAxxDHbN1hDbhZfo1")
-                    
                         .addSnapshotListener(includeMetadataChanges: false) { snapshot, error in
                             if let error = error {
                                 completion(nil, error)
@@ -166,15 +136,11 @@ class DataBaseManager {
                                 return
                             }
                             
-                            //                let source = snapshot.metadata.hasPendingWrites ? "Local" : "Server"
-                            //                print("\(source) data: \(snapshot.data() ?? [:])")
-//                            print("Is metadata from cashe", snapshot.metadata.isFromCache)
-                            
                             do {
-                                if !snapshot.metadata.isFromCache {
-                                    let gameInfo = try snapshot.data(as: GameInfo.self)
-                                    completion(gameInfo, nil)
-                                }
+                                //                                if !snapshot.metadata.isFromCache {
+                                let gameInfo = try snapshot.data(as: GameInfo.self)
+                                completion(gameInfo, nil)
+                                //                                }
                             } catch {
                                 completion(nil, error)
                             }
@@ -183,31 +149,6 @@ class DataBaseManager {
             }
         }
     }
-        
-
-        
-//        self.dataBase
-//            .collection("currentGames")
-//            .document(currentUser)
-//            .collection("GameInvFrom")
-//            .addSnapshotListener { snapshot, error in
-//                if let error = error {
-//                    completion(nil, error)
-//                }
-//
-//                guard let snapshot = snapshot  else {
-//                    completion(nil, FireBaseError.couldntGetDocument(""))
-//                    return
-//                }
-//
-//                do {
-//                    let users = try snapshot.documents.map({ try $0.data(as: User.self)})
-//                    completion(users, nil)
-//                } catch {
-//                    completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
-//                }
-//            }
-    
     
     func addGameInvListener(completion: @escaping ([User]?, Error?) -> Void) {
         
@@ -239,6 +180,216 @@ class DataBaseManager {
             }
     }
     
+//    func exitFromTheGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
+//        guard let currentUser = Auth.auth().currentUser?.uid else {
+//            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+//            return
+//        }
+//        
+//        
+//        getCurrentGameUID { uid, error in
+//            if let error = error {
+//                completion(false, error)
+//                return
+//            }
+//            if let uid = uid {
+//                self.dataBase
+//                    .collection("currentGames")
+//                    .document(uid)
+//                    .collection("players")
+//                    .document(currentUser)
+//                    .delete { error in
+//                        if let error = error {
+//                            completion(false, error)
+//                        } else {
+//                            completion(true, nil)
+//                        }
+//                    }
+//            }
+//        }
+//    }
+    
+    
+
+    
+    func addPlayersListener(completion: @escaping(_ count: Int?, Error?) -> Void) {
+        
+        //        guard let currentUser = Auth.auth().currentUser?.uid else {
+        //            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+        //            return
+        //        }
+        
+        getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            if let uid = uid {
+                self.gamePlayersCountListener = self.dataBase
+                    .collection("currentGames")
+                    .document(uid)
+                    .collection("players")
+                    .addSnapshotListener { snapshot, error in
+                        if let error = error {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        guard let snapshot = snapshot else {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        completion(snapshot.documents.count, nil)
+                    }
+            }
+        }
+    }
+    
+    func deleteGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(false, error)
+                return
+            }
+            
+            if let uid = uid {
+
+                self.dataBase
+                    .collection("currentGames")
+                    .document(uid)
+                    .collection("players")
+                    .getDocuments(completion: { snapshot, error in
+                        if let error = error {
+                            completion(false, error)
+                        }
+                        guard let snapshot = snapshot else {
+                            completion(false, error)
+                            return
+                        }
+                        
+                        snapshot.documents.forEach { snapshot in
+                            
+                            let data = snapshot.data()
+                            let userUid = data["uid"]
+                            self.dataBase
+                                .collection("currentGames")
+                                .document(uid)
+                                .collection("players")
+                                .document(userUid as! String)
+                                .delete { error in
+                                    if let error = error {
+                                        completion(false, error)
+                                    }
+                                }
+                            
+                            self.dataBase
+                                .collection("users")
+                                .document(userUid as! String)
+                                .collection("currentGameUID")
+                                .document(uid)
+                                .delete { error in
+                                    if let error = error {
+                                        completion(false, error)
+                                    }
+                                }
+                        }
+                    })
+                
+                
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(uid)
+                    .delete { error in
+                        if let error = error {
+                            completion(false, error)
+                        } else {
+                            completion(true, nil)
+                        }
+                    }
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    func getCurrentGameUID(completion: @escaping (_ uid: String?, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(currentUser)
+            .collection("currentGameUID")
+            .getDocuments(source: .server) { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
+                
+                guard let snapshot = snapshot?.documents else {
+                    completion(nil, error)
+                    return
+                }
+                
+                let data = snapshot.first!.data()
+                let gameUid = data["uid"] as! String
+                completion(gameUid, nil)
+            }
+    }
+    
+    func playerReady(_ players: [String: Bool], completion: @escaping (_ success: Bool, _ isCurrentPlayerReady: Bool, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(false, false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(false, false, error)
+                return
+            }
+            
+            
+            var players = players
+            let currentPlayerIndex = players.firstIndex(where: { $0.key == currentUser})
+            let currentPlayer = players[currentPlayerIndex!]
+            
+            if currentPlayer.value == true {
+                players[currentPlayer.key] = false
+            } else {
+                players[currentPlayer.key] = true
+            }
+            
+            if let uid = uid {
+                self.dataBase
+                    .collection("currentGames")
+                    .document(uid)
+                    .updateData(["ready" : players]) { error in
+                        if let error = error {
+                            completion(false, false, error)
+                        } else {
+                            completion(true, players[currentPlayer.key]!, nil)
+                        }
+                    }
+                
+            } else {
+                completion(false, false, error)
+                return
+            }
+        }
+    }
+    
     func addGenres(_ genres: [Genre.RawValue], completion: @escaping (_ success: Bool, Error?) -> Void) {
         
         guard let currentUser = Auth.auth().currentUser?.uid else {
@@ -268,6 +419,82 @@ class DataBaseManager {
                     .collection("currentGames")
                     .document(gameUid)
                     .updateData(["genres" : genres]) { error in
+                        if let error = error {
+                            completion(false, error)
+                        } else {
+                            completion(true, nil)
+                        }
+                    }
+            }
+    }
+    
+    func addFormats(_ formats: [Format.RawValue], completion: @escaping (_ success: Bool, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(currentUser)
+            .collection("currentGameUID")
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(false, error)
+                    return
+                }
+                
+                guard let snapshot = snapshot?.documents else {
+                    completion(false, error)
+                    return
+                }
+                
+                let data = snapshot.first!.data()
+                let gameUid = data["uid"] as! String
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(gameUid)
+                    .updateData(["formats" : formats]) { error in
+                        if let error = error {
+                            completion(false, error)
+                        } else {
+                            completion(true, nil)
+                        }
+                    }
+            }
+
+    }
+    
+    func addSeasons(_ seasons: [Season.RawValue], completion: @escaping (_ success: Bool, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(currentUser)
+            .collection("currentGameUID")
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(false, error)
+                    return
+                }
+                
+                guard let snapshot = snapshot?.documents else {
+                    completion(false, error)
+                    return
+                }
+                
+                let data = snapshot.first!.data()
+                let gameUid = data["uid"] as! String
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(gameUid)
+                    .updateData(["seasons" : seasons]) { error in
                         if let error = error {
                             completion(false, error)
                         } else {
@@ -365,29 +592,15 @@ class DataBaseManager {
             
             if let currentU = currentU {
                 
-                self.dataBase.collection("users").document(currentU.uid).collection("currentGameUID").document(friend.uid).setData(["uid" : friend.uid]) { error in
-                    if let error = error {
-                        completion(false, error)
-                    }
-                }
-                
-                self.dataBase.collection("users").document(friend.uid).collection("currentGameUID").document(friend.uid).setData(["uid": friend.uid]) { error in
-                    if let error = error {
-                        completion(false, error)
-                    }
-                }
-                
-                self.dataBase.collection("users").document(currentU.uid).collection("GameInvFrom").document(friend.uid).delete { error in
-                    if let error = error {
-                        completion(false, error)
-                    }
-                }
                 
                 self.dataBase
                     .collection("currentGames")
                     .document(friend.uid)
                     .setData([
-                        "ready": [:],
+                        "ready": [
+                            friend.uid: false,
+                            currentU.uid: false
+                        ],
                         "genres" : [],
                         "formats": [],
                         "seasons": [],
@@ -424,10 +637,30 @@ class DataBaseManager {
                     ]) { error in
                         if let error = error {
                             completion(false, error)
-                        } else {
-                            completion(true, nil)
                         }
                     }
+                
+                self.dataBase.collection("users").document(currentU.uid).collection("currentGameUID").document(friend.uid).setData(["uid" : friend.uid]) { error in
+                    if let error = error {
+                        completion(false, error)
+                    }
+                }
+                
+                self.dataBase.collection("users").document(friend.uid).collection("currentGameUID").document(friend.uid).setData(["uid": friend.uid]) { error in
+                    if let error = error {
+                        completion(false, error)
+                    }
+                }
+                
+                self.dataBase.collection("users").document(currentU.uid).collection("GameInvFrom").document(friend.uid).delete { error in
+                    if let error = error {
+                        completion(false, error)
+                    }  else {
+                        completion(true, nil)
+                    }
+                }
+                
+
             } else {
                 completion(false, error)
             }

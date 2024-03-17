@@ -119,6 +119,9 @@
 		D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */; };
 		D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */; };
 		D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */; };
+		D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5872BA7595B00676679 /* CardGameController.swift */; };
+		D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5892BA7597300676679 /* CardGameVM.swift */; };
+		D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */; };
 		D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */; };
 		D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */; };
 		D1F587502B927CE10072CFAA /* RegisterProfImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */; };
@@ -252,6 +255,9 @@
 		D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateProtocol+Ext.swift"; sourceTree = "<group>"; };
 		D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorLabelView.swift; sourceTree = "<group>"; };
 		D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		D1EDB5872BA7595B00676679 /* CardGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameController.swift; sourceTree = "<group>"; };
+		D1EDB5892BA7597300676679 /* CardGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameVM.swift; sourceTree = "<group>"; };
+		D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameCoordinator.swift; sourceTree = "<group>"; };
 		D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageCoordinator.swift; sourceTree = "<group>"; };
 		D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageVM.swift; sourceTree = "<group>"; };
 		D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageController.swift; sourceTree = "<group>"; };
@@ -337,6 +343,7 @@
 				D100BB692BA317FD0048330C /* GameCoordinator.swift */,
 				D100BB732BA32D430048330C /* GameCoordinator+Extension.swift */,
 				D100BB6B2BA318360048330C /* SetupGameCoordinator.swift */,
+				D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -345,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				D100BB6E2BA318A70048330C /* SetupGameController.swift */,
+				D1EDB5872BA7595B00676679 /* CardGameController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				D100BB712BA318BB0048330C /* SetupGameVM.swift */,
+				D1EDB5892BA7597300676679 /* CardGameVM.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -973,8 +982,10 @@
 				D12CC0BD2B866D8800B141E8 /* SearchFriendsController+UITextFIeldDelegate.swift in Sources */,
 				D1D753CE2B73F2BE00ADF274 /* AuthService.swift in Sources */,
 				D19D6F282B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift in Sources */,
+				D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */,
 				D100BB622BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift in Sources */,
 				D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */,
+				D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */,
 				D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */,
 				D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */,
 				D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */,
@@ -1004,6 +1015,7 @@
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
+				D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */,
 				D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */,
 				D100BB602BA09B1C0048330C /* InteractFriendView.swift in Sources */,
 				D1D753DA2B74297700ADF274 /* CustomCircleButton.swift in Sources */,

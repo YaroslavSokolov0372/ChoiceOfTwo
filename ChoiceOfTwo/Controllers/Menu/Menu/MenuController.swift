@@ -126,7 +126,7 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        vm.removeListeners()
+        //        vm.removeListeners()
     }
     
     //MARK: Setup UI
@@ -189,7 +189,6 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     //MARK: - Selectors
     @objc private func profileButtonTapped() {
         vm.profile()
-        
     }
     
     //MARK: - Delegate
