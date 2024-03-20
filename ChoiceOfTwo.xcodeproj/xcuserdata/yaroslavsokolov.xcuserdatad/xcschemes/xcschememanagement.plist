@@ -6,8 +6,10 @@
 	<dict>
 		<key>ChoiceOfTwo.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Promises (Playground) 1.xcscheme</key>
 		<dict>
@@ -50,6 +52,24 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>D178075B2B6AB0FA003B84F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D17807712B6AB0FB003B84F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D178077B2B6AB0FB003B84F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

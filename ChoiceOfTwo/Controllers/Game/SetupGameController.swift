@@ -113,7 +113,6 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
         }
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         vm.removePlayerCountListener()
         vm.removeGameInfoListener()
@@ -217,18 +216,15 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
     //MARK: - Delegates
     func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didSelectItemAt index: Int) {
         
-        print(enumType)
         if enumType is Genre {
             print(enumType.rawValue)
             self.vm.preformGenresChanges(enumType as! Genre)
         }
         if enumType is Season {
-            print("I am in seasons")
             self.vm.performSeasonChanges(enumType as! Season)
         }
         
         if enumType is Format {
-            print("I am in formats")
             self.vm.performFormatChanges(enumType as! Format)
         }
     }
