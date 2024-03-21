@@ -26,11 +26,13 @@ class CardGameCoordinator: ChildCoordinator {
         parent?.childDidFinish(self)
     }
     
-    func start() {
+    func start(genres: [Genre.RawValue], formats: [Format.RawValue]) {
         let cardGameController = CardGameController()
         viewControllerRef = cardGameController
         let vm = CardGameVM()
         vm.coordinator = self
+        vm.formats = formats
+        vm.genres = genres
         cardGameController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(cardGameController, animated: true)

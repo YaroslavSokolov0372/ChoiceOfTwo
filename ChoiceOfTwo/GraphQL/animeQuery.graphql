@@ -1,16 +1,3 @@
-query Test($page: Int, $perPage: Int, $genre: String) {
-  Page(page: $page, perPage: $perPage) {
-    media(genre: $genre) {
-      coverImage {
-        color
-        extraLarge
-        large
-        medium
-      }
-    }
-  }
-}
-
 
 query getAnimeBy($page: Int, $perPage: Int, $sort: [MediaSort], $type: MediaType, $season: MediaSeason, $seasonYear: Int, $search: String, $asHtml: Boolean, $formatIn: [MediaFormat], $genreIn: [String]) {
   Page(page: $page, perPage: $perPage) {
@@ -140,6 +127,37 @@ query getAnimeBy($page: Int, $perPage: Int, $sort: [MediaSort], $type: MediaType
       lastPage
       hasNextPage
       currentPage
+    }
+  }
+}
+
+
+query getAnime($page: Int, $perPage: Int, $genreIn: [String], $sort: [MediaSort], $formatIn: [MediaFormat], $asHtml: Boolean) {
+  Page(page: $page, perPage: $perPage) {
+    media(genre_in: $genreIn, sort: $sort, format_in: $formatIn) {
+      coverImage {
+        color
+        extraLarge
+        large
+        medium
+      }
+      description(asHtml: $asHtml)
+      duration
+      episodes
+      startDate {
+        month
+        day
+        year
+      }
+      title {
+        userPreferred
+      }
+      meanScore
+      genres
+      format
+      countryOfOrigin
+      averageScore
+      bannerImage
     }
   }
 }

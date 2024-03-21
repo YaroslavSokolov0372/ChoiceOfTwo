@@ -60,8 +60,8 @@ class SwipeableCardViewContainer: UIView, SwipeableViewDelegate {
         }
         
         if let emptyView = dataSource.viewForEmptyCards() {
-//            addEdgeConstrainedSubView(view: emptyView)
-        //MARK: - DO SOMTH
+            //            addEdgeConstrainedSubView(view: emptyView)
+            //MARK: - DO SOMTH
         }
 
         setNeedsLayout()

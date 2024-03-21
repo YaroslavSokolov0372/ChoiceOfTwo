@@ -12,8 +12,57 @@ import AnimeAPI
 
 class AnimeApiService {
     
-    //    static let shared = AnimeApiService()
-    
+    var mediaSeason: [MediaSeason] = []
     private(set) var apollo = ApolloClient(url: URL(string: "https://graphql.anilist.co")!)
+
     
+    public func fetchAnimeWith(currentPage: Int, genres: [Genre.RawValue], formats: [Format], completion: @escaping ([Anime]?, Error?) -> Void) {
+        
+        
+        apollo.fetch(query: GetAnimeQuery(
+            page: GraphQLNullable<Int>(integerLiteral: currentPage),
+            perPage: 15,
+//            genreIn: .some(genres),
+            genreIn: nil,
+            sort: .some([.case(.popularityDesc)]),
+//            sort: nil,
+//            formatIn: .some(formats.convertToGraphQL()),
+            formatIn: nil,
+            asHtml: true)) { result in
+                switch result {
+                case .success(let success):
+                    let anime = success.data?.page?.media?.compactMap({ $0 }) ?? []
+                    var animeList: [Anime] = []
+                    anime.forEach { anime in
+                        let anime = Anime(
+                            coverImage: CoverImage(
+                                extraLarge: anime.coverImage?.extraLarge,
+                                large: anime.coverImage?.large,
+                                medium: anime.coverImage?.medium
+                            ),
+                            description: anime.description,
+                            duration: anime.duration,
+                            episodes: anime.episodes,
+                            title: anime.title?.userPreferred,
+                            startDay: FuzzyDate(
+                                day: anime.startDate?.day,
+                                month: anime.startDate?.month,
+                                year: anime.startDate?.year
+                            ),
+                            meanScrore: anime.meanScore,
+                            genres: anime.genres,
+                            format: anime.format?.rawValue,
+                            countryOfOrigin: anime.countryOfOrigin,
+                            averageScore: anime.averageScore,
+                            bannerImage: anime.bannerImage
+                        )
+                        animeList.append(anime)
+                    }
+                    completion(animeList, nil)
+                    
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
+    }
 }

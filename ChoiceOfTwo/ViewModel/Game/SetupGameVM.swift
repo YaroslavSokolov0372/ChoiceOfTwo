@@ -121,7 +121,6 @@ class SetupGameVM {
         self.dBManager.removeGameInfoListener()
     }
     
-    
     //MARK: Firestore&Coordinator
     private func addGenreTag(_ genres: [Genre.RawValue]) {
         self.dBManager.addGenres(genres) { success, error in
@@ -213,6 +212,6 @@ class SetupGameVM {
     }
     
     public func goCardGame() {
-        self.coordinator.cardGame()
+        self.coordinator.cardGame(genres: genres, formats: formats)
     }
 }

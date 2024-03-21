@@ -109,6 +109,7 @@ class DataBaseManager {
         
     }
     
+    
     func addGameInfoListener(completion: @escaping (_ info: GameInfo?, Error?) -> Void) {
         
         
@@ -180,37 +181,37 @@ class DataBaseManager {
             }
     }
     
-//    func exitFromTheGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
-//        guard let currentUser = Auth.auth().currentUser?.uid else {
-//            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-//            return
-//        }
-//        
-//        
-//        getCurrentGameUID { uid, error in
-//            if let error = error {
-//                completion(false, error)
-//                return
-//            }
-//            if let uid = uid {
-//                self.dataBase
-//                    .collection("currentGames")
-//                    .document(uid)
-//                    .collection("players")
-//                    .document(currentUser)
-//                    .delete { error in
-//                        if let error = error {
-//                            completion(false, error)
-//                        } else {
-//                            completion(true, nil)
-//                        }
-//                    }
-//            }
-//        }
-//    }
+    //    func exitFromTheGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
+    //        guard let currentUser = Auth.auth().currentUser?.uid else {
+    //            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+    //            return
+    //        }
+    //
+    //
+    //        getCurrentGameUID { uid, error in
+    //            if let error = error {
+    //                completion(false, error)
+    //                return
+    //            }
+    //            if let uid = uid {
+    //                self.dataBase
+    //                    .collection("currentGames")
+    //                    .document(uid)
+    //                    .collection("players")
+    //                    .document(currentUser)
+    //                    .delete { error in
+    //                        if let error = error {
+    //                            completion(false, error)
+    //                        } else {
+    //                            completion(true, nil)
+    //                        }
+    //                    }
+    //            }
+    //        }
+    //    }
     
     
-
+    
     
     func addPlayersListener(completion: @escaping(_ count: Int?, Error?) -> Void) {
         
@@ -260,7 +261,7 @@ class DataBaseManager {
             }
             
             if let uid = uid {
-
+                
                 self.dataBase
                     .collection("currentGames")
                     .document(uid)

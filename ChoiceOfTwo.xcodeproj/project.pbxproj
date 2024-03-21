@@ -128,6 +128,14 @@
 		D1EDB59C2BAA245800676679 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB59B2BAA245800676679 /* SwipeDirection.swift */; };
 		D1EDB59F2BAA261A00676679 /* CGPoint+SwipeableAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB59E2BAA261A00676679 /* CGPoint+SwipeableAdditions.swift */; };
 		D1EDB5A12BAA264E00676679 /* CGRect+SwipeAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5A02BAA264E00676679 /* CGRect+SwipeAdditions.swift */; };
+		D1EDB5BA2BAC5CA600676679 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5B92BAC5CA600676679 /* SwipeCardsDataSource.swift */; };
+		D1EDB5BC2BAC5D0F00676679 /* SwipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5BB2BAC5D0F00676679 /* SwipeCardView.swift */; };
+		D1EDB5BE2BAC5D9900676679 /* StackViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5BD2BAC5D9900676679 /* StackViewContainer.swift */; };
+		D1EDB5C02BAC810200676679 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5BF2BAC810100676679 /* Anime.swift */; };
+		D1EDB5C32BAC9B4A00676679 /* CoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5C22BAC9B4A00676679 /* CoverImage.swift */; };
+		D1EDB5C52BAC9B5800676679 /* FuzzyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5C42BAC9B5800676679 /* FuzzyDate.swift */; };
+		D1EDB5C72BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5C62BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift */; };
+		D1EDB5C92BACB42C00676679 /* SwipeCardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5C82BACB42C00676679 /* SwipeCardInfoView.swift */; };
 		D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */; };
 		D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */; };
 		D1F587502B927CE10072CFAA /* RegisterProfImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */; };
@@ -254,6 +262,14 @@
 		D1EDB59B2BAA245800676679 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
 		D1EDB59E2BAA261A00676679 /* CGPoint+SwipeableAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+SwipeableAdditions.swift"; sourceTree = "<group>"; };
 		D1EDB5A02BAA264E00676679 /* CGRect+SwipeAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+SwipeAdditions.swift"; sourceTree = "<group>"; };
+		D1EDB5B92BAC5CA600676679 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
+		D1EDB5BB2BAC5D0F00676679 /* SwipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardView.swift; sourceTree = "<group>"; };
+		D1EDB5BD2BAC5D9900676679 /* StackViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewContainer.swift; sourceTree = "<group>"; };
+		D1EDB5BF2BAC810100676679 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
+		D1EDB5C22BAC9B4A00676679 /* CoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImage.swift; sourceTree = "<group>"; };
+		D1EDB5C42BAC9B5800676679 /* FuzzyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzzyDate.swift; sourceTree = "<group>"; };
+		D1EDB5C62BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsynImageFetching.swift"; sourceTree = "<group>"; };
+		D1EDB5C82BACB42C00676679 /* SwipeCardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardInfoView.swift; sourceTree = "<group>"; };
 		D1F5874B2B927C320072CFAA /* RegisterProfImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageCoordinator.swift; sourceTree = "<group>"; };
 		D1F5874D2B927CAE0072CFAA /* RegisterProfImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageVM.swift; sourceTree = "<group>"; };
 		D1F5874F2B927CE10072CFAA /* RegisterProfImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProfImageController.swift; sourceTree = "<group>"; };
@@ -526,6 +542,7 @@
 		D17807912B6AB126003B84F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1EDB5C12BAC811500676679 /* Anime */,
 				D100BB9A2BA611790048330C /* TextFieldValidation */,
 				D100BB992BA611670048330C /* Registration */,
 				D100BB952BA5F5370048330C /* Tags */,
@@ -538,6 +555,7 @@
 		D17807922B6AB12C003B84F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D1EDB5B82BAC5C8000676679 /* Card */,
 				D1EDB58E2BA9E07500676679 /* CardGame */,
 				D1EDB58D2BA9E06300676679 /* Tags */,
 				D100BB632BA0BCAB0048330C /* Animation */,
@@ -625,6 +643,7 @@
 				D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */,
 				D1EDB59E2BAA261A00676679 /* CGPoint+SwipeableAdditions.swift */,
 				D1EDB5A02BAA264E00676679 /* CGRect+SwipeAdditions.swift */,
+				D1EDB5C62BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -752,6 +771,27 @@
 				D1EDB5912BAA0DE500676679 /* SwipeableView.swift */,
 			);
 			path = CardGame;
+			sourceTree = "<group>";
+		};
+		D1EDB5B82BAC5C8000676679 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDB5B92BAC5CA600676679 /* SwipeCardsDataSource.swift */,
+				D1EDB5BB2BAC5D0F00676679 /* SwipeCardView.swift */,
+				D1EDB5BD2BAC5D9900676679 /* StackViewContainer.swift */,
+				D1EDB5C82BACB42C00676679 /* SwipeCardInfoView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		D1EDB5C12BAC811500676679 /* Anime */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDB5BF2BAC810100676679 /* Anime.swift */,
+				D1EDB5C42BAC9B5800676679 /* FuzzyDate.swift */,
+				D1EDB5C22BAC9B4A00676679 /* CoverImage.swift */,
+			);
+			path = Anime;
 			sourceTree = "<group>";
 		};
 		D1F587532B927EE80072CFAA /* Other */ = {
@@ -889,9 +929,11 @@
 				D199BE512B7FD7BE000EBA02 /* CustomSectionHeaderView.swift in Sources */,
 				D1D7541C2B7A518D00ADF274 /* ConsoleLogger.swift in Sources */,
 				D1D754102B79736D00ADF274 /* ChildrenCoordinatorProtocool.swift in Sources */,
+				D1EDB5BA2BAC5CA600676679 /* SwipeCardsDataSource.swift in Sources */,
 				D1332AE62B85286800F34C51 /* DataBaseManager.swift in Sources */,
 				D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */,
 				D1D754162B7976EE00ADF274 /* RegisterCoordinator.swift in Sources */,
+				D1EDB5C92BACB42C00676679 /* SwipeCardInfoView.swift in Sources */,
 				D1D754142B7975BA00ADF274 /* LoginCoordinator.swift in Sources */,
 				D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */,
 				D1D753F62B79526F00ADF274 /* UINavigationController+Ext.swift in Sources */,
@@ -903,6 +945,7 @@
 				D1D754262B7A8D2F00ADF274 /* RegisterController+UITextFieldDelegate.swift in Sources */,
 				D1D753AF2B728CCD00ADF274 /* Font+Extension.swift in Sources */,
 				D1EDB5922BAA0DE500676679 /* SwipeableView.swift in Sources */,
+				D1EDB5BC2BAC5D0F00676679 /* SwipeCardView.swift in Sources */,
 				D1332AE32B85267300F34C51 /* ProfileCoordinator.swift in Sources */,
 				D1332AEA2B855CE600F34C51 /* UserSearchCellView.swift in Sources */,
 				D100BB6C2BA318360048330C /* SetupGameCoordinator.swift in Sources */,
@@ -914,6 +957,7 @@
 				D199BE5B2B81289A000EBA02 /* HistoryCellView.swift in Sources */,
 				D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */,
 				D1F587502B927CE10072CFAA /* RegisterProfImageController.swift in Sources */,
+				D1EDB5C02BAC810200676679 /* Anime.swift in Sources */,
 				D199BE572B810A7E000EBA02 /* FriendCellView.swift in Sources */,
 				D1D754022B795BD900ADF274 /* AppCoordinator.swift in Sources */,
 				D100BB942BA5D8A90048330C /* GameInfo.swift in Sources */,
@@ -926,6 +970,7 @@
 				D19D6F2C2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift in Sources */,
 				D19D6F392B8D029800E2B907 /* UIImageView+Extension.swift in Sources */,
 				D1332AE12B8515B700F34C51 /* SearchFriendsCoordinator.swift in Sources */,
+				D1EDB5C32BAC9B4A00676679 /* CoverImage.swift in Sources */,
 				D1D753D62B73F77300ADF274 /* AuthHeaderView.swift in Sources */,
 				D1EDB5962BAA145100676679 /* SwipeableCardDelegate.swift in Sources */,
 				D1D753A02B72856800ADF274 /* EntryVM.swift in Sources */,
@@ -963,8 +1008,10 @@
 				D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */,
 				D1D753E32B766F8F00ADF274 /* CustomImageAuthButton.swift in Sources */,
 				D100BB742BA32D430048330C /* GameCoordinator+Extension.swift in Sources */,
+				D1EDB5BE2BAC5D9900676679 /* StackViewContainer.swift in Sources */,
 				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
+				D1EDB5C72BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift in Sources */,
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
 				D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */,
@@ -973,6 +1020,7 @@
 				D1D753DA2B74297700ADF274 /* CustomCircleButton.swift in Sources */,
 				D100BB922BA37B6A0048330C /* CustomTagsView.swift in Sources */,
 				D1D754122B79753600ADF274 /* AuthCoordinator+Ext.swift in Sources */,
+				D1EDB5C52BAC9B5800676679 /* FuzzyDate.swift in Sources */,
 				D1EDB59C2BAA245800676679 /* SwipeDirection.swift in Sources */,
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,
 				D12AE7E52B7E7C0F004511B5 /* MenuVM.swift in Sources */,
