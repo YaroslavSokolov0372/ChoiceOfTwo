@@ -7,12 +7,15 @@
 
 import UIKit
 
+
+
 class SetupGameController: UIViewController, CustomTagsViewDelegate {
     
     
     
     //MARK: - Variables
     var vm: SetupGameVM!
+    
     
     //MARK: - UI Components
     let readyButton = CustomButton(text: "Ready", type: .medium, backgroundColor: .mainLightGray)
@@ -220,9 +223,9 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
             print(enumType.rawValue)
             self.vm.preformGenresChanges(enumType as! Genre)
         }
-//        if enumType is Season {
-//            self.vm.performSeasonChanges(enumType as! Season)
-//        }
+        //        if enumType is Season {
+        //            self.vm.performSeasonChanges(enumType as! Season)
+        //        }
         
         if enumType is Format {
             self.vm.performFormatChanges(enumType as! Format)

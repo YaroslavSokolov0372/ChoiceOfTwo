@@ -17,15 +17,16 @@ class SwipeCardView: UIView {
     
     //MARK: - Variables
     var delegate: SwipeCardsDelegate?
+    var anime: Anime!
     
-    private let coverImage: UIImageView = {
+    let coverImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
         iv.layer.cornerRadius = 30
-
         return iv
     }()
+    
     private let name: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 20, type: .regular)
@@ -52,6 +53,9 @@ class SwipeCardView: UIView {
 //        layer.cornerRadius = 30
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         addGestureRecognizer(panGestureRecognizer)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
+        addGestureRecognizer(tapGestureRecognizer)
 
     }
     
@@ -84,13 +88,16 @@ class SwipeCardView: UIView {
     }
     
     func configure(with anime: Anime) {
+        self.anime = anime
         self.coverImage.setImageFromStringrURL(stringUrl: anime.coverImage?.extraLarge ?? "")
-        
         self.name.text = anime.title
         
     }
     
     //MARK: - Selectors
+    @objc private func tapRecognized(sender: UITapGestureRecognizer) {
+        self.delegate?.didTap(view: self)
+    }
     
     @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
         let card = sender.view as! SwipeCardView
@@ -134,5 +141,9 @@ class SwipeCardView: UIView {
 
 
 protocol SwipeCardsDelegate {
+    
     func swipeDidEnd(on view: SwipeCardView, direction: Direction)
+    
+    func didTap(view: SwipeCardView)
+    
 }

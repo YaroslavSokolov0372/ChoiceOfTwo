@@ -27,6 +27,10 @@ class CardGameVM {
         }
     }
     
+    func detailView(anime: Anime) {
+        self.coordinator.detailView(anime: anime)
+    }
+    
     func fetchAnimes() {
         animeApi.fetchAnimeWith(currentPage: currentPage, genres: genres, formats: formats.conertFromRawValue()) { animeList, error in
             if let error = error {

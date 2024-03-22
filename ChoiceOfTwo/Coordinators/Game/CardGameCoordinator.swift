@@ -43,4 +43,8 @@ class CardGameCoordinator: ChildCoordinator {
     func dismiss() {
         parent?.popLastChildren()
     }
+    
+    func detailView(anime: Anime) {
+        parent?.detailView(gameCardControllerRef: viewControllerRef!, anime: anime, navigationController: navigationController, animeted: true)
+    }
 }

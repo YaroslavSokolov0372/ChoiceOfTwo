@@ -10,12 +10,9 @@ import UIKit
 
 
 class CardGameController: UIViewController {
-    
-    
+        
     //MARK: Variables
     var vm: CardGameVM!
-    
-    var colors: [UIColor] = [.black, .purple, .green, .blue, .mainPurple, .red]
     
     
     //MARK: UI Components
@@ -28,6 +25,7 @@ class CardGameController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         stackView.dataSource = self
+        stackView.delegate = self
         setupUI()
         vm.onAnimeListChange = {
             self.stackView.reloadData()
@@ -72,7 +70,19 @@ class CardGameController: UIViewController {
     }
 }
 
+extension CardGameController: StackViewDelegate {
+    
+    func tappedView(anime: Anime) {
+        self.vm.detailView(anime: anime)
+    }
+}
+
 extension CardGameController: SwipeCardDataSource {
+    
+    func selectedCard() -> SwipeCardView {
+        return self.stackView.selectedCard!
+    }
+    
         
     func numberOfCardsToShow() -> Int {
         vm.animeList.count
@@ -80,6 +90,7 @@ extension CardGameController: SwipeCardDataSource {
     
     func card(at index: Int) -> SwipeCardView {
         let card = SwipeCardView()
+        
         card.configure(with: vm.animeList[index])
         return card
     }

@@ -9,9 +9,8 @@ import UIKit
 
 class SwipeCardInfoView: UIView {
     
+    
     //MARK: - UI Components
-    
-    
     private let animeName: UILabel = {
       let label = UILabel()
         label.textAlignment = .left

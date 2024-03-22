@@ -116,6 +116,11 @@
 		D1D7542B2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */; };
 		D1D754312B7BFD9000ADF274 /* CustomErrorLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */; };
 		D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */; };
+		D1E9008F2BADFC2A00D54353 /* CardTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E9008E2BADFC2A00D54353 /* CardTransitionManager.swift */; };
+		D1E900912BADFF1E00D54353 /* DetailAnimeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900902BADFF1E00D54353 /* DetailAnimeViewCoordinator.swift */; };
+		D1E900952BADFFE200D54353 /* DetailInfoAnimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900942BADFFE200D54353 /* DetailInfoAnimeController.swift */; };
+		D1E900972BADFFEB00D54353 /* DetailInfoAnimeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900962BADFFEB00D54353 /* DetailInfoAnimeVM.swift */; };
+		D1E900992BAE3B5E00D54353 /* UIView+NSLayoutConstaintExtansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900982BAE3B5E00D54353 /* UIView+NSLayoutConstaintExtansion.swift */; };
 		D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5872BA7595B00676679 /* CardGameController.swift */; };
 		D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5892BA7597300676679 /* CardGameVM.swift */; };
 		D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */; };
@@ -250,6 +255,11 @@
 		D1D7542A2B7AA7B100ADF274 /* ValidateProtocol+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidateProtocol+Ext.swift"; sourceTree = "<group>"; };
 		D1D754302B7BFD9000ADF274 /* CustomErrorLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorLabelView.swift; sourceTree = "<group>"; };
 		D1E687D82B93F78D006BD6CD /* RegisterController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		D1E9008E2BADFC2A00D54353 /* CardTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransitionManager.swift; sourceTree = "<group>"; };
+		D1E900902BADFF1E00D54353 /* DetailAnimeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimeViewCoordinator.swift; sourceTree = "<group>"; };
+		D1E900942BADFFE200D54353 /* DetailInfoAnimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoAnimeController.swift; sourceTree = "<group>"; };
+		D1E900962BADFFEB00D54353 /* DetailInfoAnimeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoAnimeVM.swift; sourceTree = "<group>"; };
+		D1E900982BAE3B5E00D54353 /* UIView+NSLayoutConstaintExtansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutConstaintExtansion.swift"; sourceTree = "<group>"; };
 		D1EDB5872BA7595B00676679 /* CardGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameController.swift; sourceTree = "<group>"; };
 		D1EDB5892BA7597300676679 /* CardGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameVM.swift; sourceTree = "<group>"; };
 		D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameCoordinator.swift; sourceTree = "<group>"; };
@@ -342,6 +352,7 @@
 				D100BB732BA32D430048330C /* GameCoordinator+Extension.swift */,
 				D100BB6B2BA318360048330C /* SetupGameCoordinator.swift */,
 				D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */,
+				D1E900902BADFF1E00D54353 /* DetailAnimeViewCoordinator.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -351,6 +362,7 @@
 			children = (
 				D100BB6E2BA318A70048330C /* SetupGameController.swift */,
 				D1EDB5872BA7595B00676679 /* CardGameController.swift */,
+				D1E900942BADFFE200D54353 /* DetailInfoAnimeController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -360,6 +372,7 @@
 			children = (
 				D100BB712BA318BB0048330C /* SetupGameVM.swift */,
 				D1EDB5892BA7597300676679 /* CardGameVM.swift */,
+				D1E900962BADFFEB00D54353 /* DetailInfoAnimeVM.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -483,6 +496,7 @@
 				D178076D2B6AB0FB003B84F7 /* Info.plist */,
 				D100BB782BA345960048330C /* GraphQL */,
 				D1D753A12B728A9E00ADF274 /* Fonts */,
+				D1E9008D2BADFBEA00D54353 /* Transitions */,
 				D1D753E42B7674EE00ADF274 /* Extensions */,
 				D17807912B6AB126003B84F7 /* Model */,
 				D17807922B6AB12C003B84F7 /* Views */,
@@ -644,6 +658,7 @@
 				D1EDB59E2BAA261A00676679 /* CGPoint+SwipeableAdditions.swift */,
 				D1EDB5A02BAA264E00676679 /* CGRect+SwipeAdditions.swift */,
 				D1EDB5C62BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift */,
+				D1E900982BAE3B5E00D54353 /* UIView+NSLayoutConstaintExtansion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +764,14 @@
 				D1F587592B928B0B0072CFAA /* RegisterProfImage+Extension.swift */,
 			);
 			path = RegisterProfileImage;
+			sourceTree = "<group>";
+		};
+		D1E9008D2BADFBEA00D54353 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				D1E9008E2BADFC2A00D54353 /* CardTransitionManager.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		D1EDB58D2BA9E06300676679 /* Tags */ = {
@@ -934,6 +957,7 @@
 				D199BE672B829809000EBA02 /* CustomTabBar.swift in Sources */,
 				D1D754162B7976EE00ADF274 /* RegisterCoordinator.swift in Sources */,
 				D1EDB5C92BACB42C00676679 /* SwipeCardInfoView.swift in Sources */,
+				D1E9008F2BADFC2A00D54353 /* CardTransitionManager.swift in Sources */,
 				D1D754142B7975BA00ADF274 /* LoginCoordinator.swift in Sources */,
 				D100BB5E2B9F90C10048330C /* RecievedCellView.swift in Sources */,
 				D1D753F62B79526F00ADF274 /* UINavigationController+Ext.swift in Sources */,
@@ -950,6 +974,7 @@
 				D1332AEA2B855CE600F34C51 /* UserSearchCellView.swift in Sources */,
 				D100BB6C2BA318360048330C /* SetupGameCoordinator.swift in Sources */,
 				D1D753E62B76750100ADF274 /* UIImage+CGSize.swift in Sources */,
+				D1E900952BADFFE200D54353 /* DetailInfoAnimeController.swift in Sources */,
 				D100BB972BA5F54B0048330C /* StringRepresentable.swift in Sources */,
 				D1F587522B927EAF0072CFAA /* CropImageCoordinator.swift in Sources */,
 				D1D7540E2B7972BF00ADF274 /* EntryCoordinator.swift in Sources */,
@@ -983,6 +1008,7 @@
 				D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */,
 				D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */,
 				D1EDB5902BA9E08300676679 /* SwipeableCardViewCard.swift in Sources */,
+				D1E900912BADFF1E00D54353 /* DetailAnimeViewCoordinator.swift in Sources */,
 				D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */,
 				D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */,
 				D1D753992B726AE200ADF274 /* CustomButton.swift in Sources */,
@@ -1011,6 +1037,7 @@
 				D1EDB5BE2BAC5D9900676679 /* StackViewContainer.swift in Sources */,
 				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
+				D1E900972BADFFEB00D54353 /* DetailInfoAnimeVM.swift in Sources */,
 				D1EDB5C72BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift in Sources */,
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
@@ -1025,6 +1052,7 @@
 				D1D754222B7A6A9300ADF274 /* UITextField+Ext.swift in Sources */,
 				D12AE7E52B7E7C0F004511B5 /* MenuVM.swift in Sources */,
 				D1E687D92B93F78D006BD6CD /* RegisterController+NotificationCenter.swift in Sources */,
+				D1E900992BAE3B5E00D54353 /* UIView+NSLayoutConstaintExtansion.swift in Sources */,
 				D1D754042B795BF300ADF274 /* LaunchInstructor.swift in Sources */,
 				D100BB8B2BA350FA0048330C /* ProposedCellView.swift in Sources */,
 				D100BB6A2BA317FD0048330C /* GameCoordinator.swift in Sources */,

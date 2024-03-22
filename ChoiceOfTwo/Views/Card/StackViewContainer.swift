@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol StackViewDelegate {
+    func tappedView(anime: Anime)
+    
+}
+
 class StackViewContainer: UIView {
     
     
     
     //MARK: - Variables
+    var delegate: StackViewDelegate?
     
     let horizontalInset: CGFloat = 10.0
     let verticalInset: CGFloat = 10.0
+    
+    var selectedCard: SwipeCardView? = nil
     
     var dataSource: SwipeCardDataSource? {
         didSet {
@@ -109,6 +117,13 @@ class StackViewContainer: UIView {
 }
 
 extension StackViewContainer: SwipeCardsDelegate {
+    
+    func didTap(view: SwipeCardView) {
+        print("Tapped")
+        self.selectedCard = view
+        self.delegate?.tappedView(anime: view.anime)
+    }
+    
     
     func swipeDidEnd(on view: SwipeCardView, direction: Direction) {
         guard let datasource = dataSource else { return }

@@ -23,5 +23,13 @@ extension GameCoordinator {
         addChild(cardGameCoordinator)
         cardGameCoordinator.start(genres: genres, formats: formats)
     }
+    
+    func detailView(gameCardControllerRef: UIViewController, anime: Anime, navigationController: UINavigationController, animeted: Bool) {
+        let detailCoordinator =  DetailAnimeViewCoordinator(navigationController: navigationController)
+        detailCoordinator.parent = self
+        addChild(detailCoordinator)
+        detailCoordinator.start(gameCardControllerRef: gameCardControllerRef, anime: anime)
+    }
+    
 }
 

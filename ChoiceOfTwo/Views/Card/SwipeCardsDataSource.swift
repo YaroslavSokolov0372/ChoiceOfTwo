@@ -14,6 +14,7 @@ protocol SwipeCardDataSource {
     func card(at index: Int) -> SwipeCardView
     func cardInfo(at index: Int) -> SwipeCardInfoView
     func emptyView() -> UIView?
+    func selectedCard() -> SwipeCardView
     
 }
 
