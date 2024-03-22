@@ -16,31 +16,39 @@ class SetupGameVM {
     
     private(set) var genres: [Genre.RawValue] = [] {
         didSet {
-            self.addGenreTag(genres)
+//            self.addGenreTag(genres)
+            self.onGenresChanges?(genres)
         }
     }
-    private(set) var seasons: [Season.RawValue] = [] {
-        didSet {
-            self.addSeasonTag(seasons)
-        }
-    }
+    
+//    private(set) var seasons: [Season.RawValue] = [] {
+//        didSet {
+////            self.addSeasonTag(seasons)
+//            self.onSeasonsChanges?(seasons)
+//        }
+//    }
+    
     private(set) var formats: [Format.RawValue] = [] {
         didSet {
-            self.addFormatTag(formats)
+            self.onFormatsChanges?(formats)
+//            self.addFormatTag(formats)
+            
         }
     }
+    
     private(set) var playersReady = [String: Bool]() {
         didSet {
             onPlayersReadyChanges?(playersReady)
         }
     }
+    
     var onPlayersReadyChanges: (([String: Bool]) -> Void)?
     var onGenresChanges: (([Genre.RawValue]) -> Void)?
     var onSeasonsChanges: (([Season.RawValue]) -> Void)?
     var onFormatsChanges: (([Format.RawValue]) -> Void)?
-    var isGenresFirstTimeFetching = true
-    var isSeasonsFirstTimeFetching = true    
-    var isFormatsFirstTimeFetching = true
+    //    var isGenresFirstTimeFetching = true
+    //    var isSeasonsFirstTimeFetching = true    
+    //    var isFormatsFirstTimeFetching = true
     var isPlayersCountFirstTimeFetching = true
     
     init() {
@@ -52,44 +60,46 @@ class SetupGameVM {
     //MARK: - Firestore Listeners
     private func gameInfoListener() {
         self.dBManager.addGameInfoListener { info, error in
-            
             if let error = error {
                 print("DEBUG: Error with gameInfo Listener", error)
                 
             } else {
                 if let info = info {
                     self.playersReady = info.ready
-                    
-                    var seasons = [Season.RawValue]()
-                    info.seasons.forEach { season in
-                        seasons.append(season.rawValue)
-                    }
-                    if self.isSeasonsFirstTimeFetching {
-                        self.seasons = seasons
-                        self.isSeasonsFirstTimeFetching = false
-                    }
-                    self.onSeasonsChanges?(seasons)
+//                    
+//                    var seasons = [Season.RawValue]()
+//                    info.seasons.forEach { season in
+//                        seasons.append(season.rawValue)
+//                    }
+//                    if self.isSeasonsFirstTimeFetching {
+//                        self.seasons = seasons
+//                        self.isSeasonsFirstTimeFetching = false
+//                    }
+//                    self.onSeasonsChanges?(seasons)
                     
                     var formats = [Format.RawValue]()
                     info.formats.forEach { format in
                         formats.append(format.rawValue)
                     }
-                    if self.isFormatsFirstTimeFetching {
-                        self.formats = formats
-                        self.isFormatsFirstTimeFetching = false
-                    }
-                    self.onFormatsChanges?(formats)
+                    self.formats = formats
+//                    if self.isFormatsFirstTimeFetching {
+//                        self.formats = formats
+//                        self.isFormatsFirstTimeFetching = false
+//                    }
+//                    self.onFormatsChanges?(formats)
                     
                     var genres = [Genre.RawValue]()
                     info.genres.forEach { genre in
                         genres.append(genre.rawValue)
                     }
+//                    print(genres)
+                    self.genres = genres
                     
-                    if self.isGenresFirstTimeFetching {
-                        self.genres = genres
-                        self.isGenresFirstTimeFetching = false
-                    }
-                    self.onGenresChanges?(genres)
+//                    if self.isGenresFirstTimeFetching {
+//                        self.genres = genres
+//                        self.isGenresFirstTimeFetching = false
+//                    }
+//                    self.onGenresChanges?(genres)
                 }
             }
         }
@@ -120,7 +130,7 @@ class SetupGameVM {
     public func removeGameInfoListener() {
         self.dBManager.removeGameInfoListener()
     }
-    
+     
     //MARK: Firestore&Coordinator
     private func addGenreTag(_ genres: [Genre.RawValue]) {
         self.dBManager.addGenres(genres) { success, error in
@@ -130,19 +140,74 @@ class SetupGameVM {
         }
     }
     
-    private func addSeasonTag(_ seasons: [Season.RawValue]) {
-        self.dBManager.addSeasons(seasons) { seccess, error in
-            if let error = error {
-                print("DEBUG: Erro with season tag", error)
+    public func preformGenresChanges(_ genre: Genre) {
+        var genres = self.genres
+        if !self.genres.contains(where: { string in
+            return string == genre.rawValue
+        }) {
+            genres.append(genre.rawValue)
+            self.addGenreTag(genres)
+//            self.genres.append(genre.rawValue)
+        } else {
+            let index = self.genres.firstIndex { string in
+                return string == genre.rawValue
             }
+//            genres.append(genre.rawValue)
+            genres.remove(at: index!)
+            self.addGenreTag(genres)
+//            self.genres.remove(at: index!)
         }
     }
+    
+//    private func addSeasonTag(_ seasons: [Season.RawValue]) {
+//        self.dBManager.addSeasons(seasons) { seccess, error in
+//            if let error = error {
+//                print("DEBUG: Erro with season tag", error)
+//            }
+//        }
+//    }
+//    
+//    public func performSeasonChanges(_ season: Season) {
+//        var seasons = self.seasons
+//        if !self.seasons.contains(where: { string in
+//            return string == season.rawValue
+//        }) {
+////            self.seasons.append(season.rawValue)
+//            seasons.append(season.rawValue)
+//            self.addSeasonTag(seasons)
+//        } else {
+//            let index = self.seasons.firstIndex { string in
+//                return string == season.rawValue
+//            }
+////            self.seasons.remove(at: index!)
+//            seasons.remove(at: index!)
+//            self.addSeasonTag(seasons)
+//        }
+//    }
     
     private func addFormatTag(_ formats: [Format.RawValue]) {
         self.dBManager.addFormats(formats) { success, error in
             if let error = error {
                 print("DEBUG: Erro with format tag", error)
             }
+        }
+    }
+    
+    public func performFormatChanges(_ format: Format) {
+        var formats = self.formats
+        if !self.formats.contains(where: { string in
+            return string == format.rawValue
+        }) {
+//            self.formats.append(format.rawValue)
+            formats.append(format.rawValue)
+            self.addFormatTag(formats)
+        } else {
+            let index = self.formats.firstIndex { string in
+                return string == format.rawValue
+            }
+//            self.formats.remove(at: index!)
+            formats.remove(at: index!)
+            self.addFormatTag(formats)
         }
     }
     
@@ -169,45 +234,6 @@ class SetupGameVM {
                     print("DEBUG: Successfully deleted current game")
                 }
             }
-        }
-    }
-    
-    public func performSeasonChanges(_ season: Season) {
-        if !self.seasons.contains(where: { string in
-            return string == season.rawValue
-        }) {
-            self.seasons.append(season.rawValue)
-        } else {
-            let index = self.seasons.firstIndex { string in
-                return string == season.rawValue
-            }
-            self.seasons.remove(at: index!)
-        }
-    }
-    
-    public func performFormatChanges(_ format: Format) {
-        if !self.formats.contains(where: { string in
-            return string == format.rawValue
-        }) {
-            self.formats.append(format.rawValue)
-        } else {
-            let index = self.formats.firstIndex { string in
-                return string == format.rawValue
-            }
-            self.formats.remove(at: index!)
-        }
-    }
-    
-    public func preformGenresChanges(_ genre: Genre) {
-        if !self.genres.contains(where: { string in
-            return string == genre.rawValue
-        }) {
-            self.genres.append(genre.rawValue)
-        } else {
-            let index = self.genres.firstIndex { string in
-                return string == genre.rawValue
-            }
-            self.genres.remove(at: index!)
         }
     }
     

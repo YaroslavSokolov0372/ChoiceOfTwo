@@ -33,13 +33,13 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
         
         return tagsView
     }()
-    let seasonsHeader = CustomSectionHeaderView(headerName: "Choose Season")
-    let proposedSeasons: CustomTagsView = {
-        let tagsView = CustomTagsView()
-        tagsView.numberOfRows = 0
-        tagsView.tags = Season.allCases
-        return tagsView
-    }()
+//    let seasonsHeader = CustomSectionHeaderView(headerName: "Choose Season")
+//    let proposedSeasons: CustomTagsView = {
+//        let tagsView = CustomTagsView()
+//        tagsView.numberOfRows = 0
+//        tagsView.tags = Season.allCases
+//        return tagsView
+//    }()
     let formatHeader = CustomSectionHeaderView(headerName: "Choose Format")
     let proposedFormats: CustomTagsView = {
         let tagsView = CustomTagsView()
@@ -62,7 +62,7 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
         view.backgroundColor = .white
         proposedGenres.delegate = self
         proposedFormats.delegate = self
-        proposedSeasons.delegate = self
+//        proposedSeasons.delegate = self
         setupUI()
         backButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
@@ -76,15 +76,15 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
                 }
             }
         }
-        vm.onSeasonsChanges = { seasons in
-            for tv in self.proposedSeasons.tagViews  {
-                if seasons.contains(tv.enumType.rawValue) {
-                    tv.selected = true
-                } else {
-                    tv.selected = false
-                }
-            }
-        }
+//        vm.onSeasonsChanges = { seasons in
+//            for tv in self.proposedSeasons.tagViews  {
+//                if seasons.contains(tv.enumType.rawValue) {
+//                    tv.selected = true
+//                } else {
+//                    tv.selected = false
+//                }
+//            }
+//        }
         vm.onFormatsChanges = { formats in
             for tv in self.proposedFormats.tagViews  {
                 if formats.contains(tv.enumType.rawValue) {
@@ -133,11 +133,11 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
         self.view.addSubview(proposedGenres)
         proposedGenres.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(seasonsHeader)
-        seasonsHeader.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(proposedSeasons)
-        proposedSeasons.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addSubview(seasonsHeader)
+//        seasonsHeader.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        self.view.addSubview(proposedSeasons)
+//        proposedSeasons.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(formatHeader)
         formatHeader.translatesAutoresizingMaskIntoConstraints = false
@@ -171,16 +171,16 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
             self.proposedGenres.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.proposedGenres.heightAnchor.constraint(equalToConstant: (CGFloat((Genre.allCases.count) / 4) + 1) * 50),
             
-            self.seasonsHeader.topAnchor.constraint(equalTo: proposedGenres.bottomAnchor, constant: 20),
-            self.seasonsHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            self.seasonsHeader.heightAnchor.constraint(equalToConstant: 20),
+//            self.seasonsHeader.topAnchor.constraint(equalTo: proposedGenres.bottomAnchor, constant: 20),
+//            self.seasonsHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+//            self.seasonsHeader.heightAnchor.constraint(equalToConstant: 20),
+//            
+//            self.proposedSeasons.topAnchor.constraint(equalTo: seasonsHeader.bottomAnchor, constant: 10),
+//            self.proposedSeasons.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            self.proposedSeasons.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            self.proposedSeasons.heightAnchor.constraint(equalToConstant: (CGFloat((Season.allCases.count) / 4)) * 50),
             
-            self.proposedSeasons.topAnchor.constraint(equalTo: seasonsHeader.bottomAnchor, constant: 10),
-            self.proposedSeasons.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            self.proposedSeasons.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            self.proposedSeasons.heightAnchor.constraint(equalToConstant: (CGFloat((Season.allCases.count) / 4)) * 50),
-            
-            self.formatHeader.topAnchor.constraint(equalTo: proposedSeasons.bottomAnchor, constant: 20),
+            self.formatHeader.topAnchor.constraint(equalTo: proposedGenres.bottomAnchor, constant: 20),
             self.formatHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.formatHeader.heightAnchor.constraint(equalToConstant: 20),
             
@@ -220,9 +220,9 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
             print(enumType.rawValue)
             self.vm.preformGenresChanges(enumType as! Genre)
         }
-        if enumType is Season {
-            self.vm.performSeasonChanges(enumType as! Season)
-        }
+//        if enumType is Season {
+//            self.vm.performSeasonChanges(enumType as! Season)
+//        }
         
         if enumType is Format {
             self.vm.performFormatChanges(enumType as! Format)
