@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FuzzyDate {
+struct FuzzyDate: Codable, Hashable {
     var day: Int?
     var month: Int?
     var year: Int?

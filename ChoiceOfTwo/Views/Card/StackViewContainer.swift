@@ -9,7 +9,7 @@ import UIKit
 
 protocol StackViewDelegate {
     func tappedView(anime: Anime)
-    
+    func swipped(direction: Direction, anime: Anime)
 }
 
 class StackViewContainer: UIView {
@@ -24,10 +24,20 @@ class StackViewContainer: UIView {
     
     var selectedCard: SwipeCardView? = nil
     
+    var onZeroRemaining: (() -> ())?
+    
     var dataSource: SwipeCardDataSource? {
         didSet {
             reloadData()
-            print("Anime count -", visibleCardViews.count)
+        }
+    }
+    
+    var leftToShow: Int? = nil {
+        didSet {
+            print("left to show -", leftToShow)
+            if leftToShow == 0 {
+                self.onZeroRemaining?()
+            }
         }
     }
     
@@ -63,6 +73,7 @@ class StackViewContainer: UIView {
         guard let dataSource = dataSource else { return }
         
         remainingCards = dataSource.numberOfCardsToShow()
+        leftToShow = dataSource.numberOfCardsToShow()
         
         for i in 0..<min(remainingCards, StackViewContainer.numberOfVisibleCards) {
             addCardView(cardView: dataSource.card(at: i), atIndex: i )
@@ -91,27 +102,11 @@ class StackViewContainer: UIView {
         
         
         let infoViewFrame = CGRect(x: 0, y: 460, width: 350, height: 250)
-//        let horizontalInset = (CGFloat(index) * self.horizontalInset)
-//        
-//        infoViewFrame.size.width -= 2 * horizontalInset
-//        infoViewFrame.origin.x += horizontalInset
         infoView.frame = infoViewFrame
     }
     
     func addCardFrame(index: Int, cardView: SwipeCardView) {
-        //        var cardViewFrame = self.bounds
         let cardViewFrame = CGRect(x: 0, y: 0, width: 350, height: 450)
-        //        var cardViewFrame = CGRect(x: 0, y: 0, width: 350, height: 700)
-//        let horizontalInset = (CGFloat(index) * self.horizontalInset)
-        //        let verticalInset = CGFloat(index) * self.verticalInset
-        
-//        cardViewFrame.size.width -= 2 * horizontalInset
-//        cardViewFrame.origin.x += horizontalInset
-        //        cardViewFrame.origin.y += verticalInset
-        
-        //        print(cardViewFrame)
-        //        cardView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        //        cardView.frame = bounds
         cardView.frame = cardViewFrame
     }
 }
@@ -119,7 +114,6 @@ class StackViewContainer: UIView {
 extension StackViewContainer: SwipeCardsDelegate {
     
     func didTap(view: SwipeCardView) {
-        print("Tapped")
         self.selectedCard = view
         self.delegate?.tappedView(anime: view.anime)
     }
@@ -135,10 +129,14 @@ extension StackViewContainer: SwipeCardsDelegate {
             switch direction {
             case .left:
                 self.cardInfoViews[index!].frame.origin.x -= parent.frame.width
+                self.delegate?.swipped(direction: direction, anime: view.anime)
+                
             case .right:
                 self.cardInfoViews[index!].frame.origin.x += parent.frame.width
+                self.delegate?.swipped(direction: direction, anime: view.anime)
             }
         }
+        leftToShow? -= 1
         
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
@@ -158,6 +156,7 @@ extension StackViewContainer: SwipeCardsDelegate {
                     cardView.center = self.center
                     self.addCardFrame(index: cardIndex, cardView: cardView)
                     self.layoutIfNeeded()
+                    
                 })
             }
         }

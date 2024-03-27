@@ -66,15 +66,15 @@ class SwipeCardInfoView: UIView {
         label.layer.borderWidth = 1
         return label
     }()
-    private let statusHeader: UILabel = {
+    private let formatHeader: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "Status"
+        label.text = "Format"
         label.textColor = .mainPurple
         label.font = .nunitoFont(size: 17, type: .bold)
         return label
     }()
-    private let status: UILabel = {
+    private let format: UILabel = {
         let label = UILabel()
         label.textColor = .mainPurple
         label.textAlignment = .center
@@ -123,11 +123,11 @@ class SwipeCardInfoView: UIView {
         sideInfoView.addSubview(meanScoreHeader)
         meanScoreHeader.translatesAutoresizingMaskIntoConstraints = false
         
-        sideInfoView.addSubview(status)
-        status.translatesAutoresizingMaskIntoConstraints = false
+        sideInfoView.addSubview(format)
+        format.translatesAutoresizingMaskIntoConstraints = false
         
-        sideInfoView.addSubview(statusHeader)
-        statusHeader.translatesAutoresizingMaskIntoConstraints = false
+        sideInfoView.addSubview(formatHeader)
+        formatHeader.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
@@ -166,17 +166,17 @@ class SwipeCardInfoView: UIView {
 //            meanScore.leadingAnchor.constraint(equalTo: self.episodesHeader.leadingAnchor),
             meanScore.heightAnchor.constraint(equalToConstant: 60),
             
-            statusHeader.topAnchor.constraint(equalTo: sideInfoView.topAnchor, constant: 10),
-            statusHeader.heightAnchor.constraint(equalToConstant: 30),
-            statusHeader.leadingAnchor.constraint(equalTo: self.meanScoreHeader.trailingAnchor),
-            statusHeader.widthAnchor.constraint(equalToConstant: 115),
+            formatHeader.topAnchor.constraint(equalTo: sideInfoView.topAnchor, constant: 10),
+            formatHeader.heightAnchor.constraint(equalToConstant: 30),
+            formatHeader.leadingAnchor.constraint(equalTo: self.meanScoreHeader.trailingAnchor),
+            formatHeader.widthAnchor.constraint(equalToConstant: 115),
             
             
-            status.topAnchor.constraint(equalTo: self.statusHeader.bottomAnchor, constant: 10),
-            status.widthAnchor.constraint(equalToConstant: 60),
+            format.topAnchor.constraint(equalTo: self.formatHeader.bottomAnchor, constant: 10),
+            format.widthAnchor.constraint(equalToConstant: 60),
 //            status.leadingAnchor.constraint(equalTo: self.meanScoreHeader.leadingAnchor),
-            status.centerXAnchor.constraint(equalTo: self.statusHeader.centerXAnchor),
-            status.heightAnchor.constraint(equalToConstant: 60),
+            format.centerXAnchor.constraint(equalTo: self.formatHeader.centerXAnchor),
+            format.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
     
@@ -199,9 +199,9 @@ class SwipeCardInfoView: UIView {
         }
         
         if let format = anime.format {
-            self.status.text = format
+            self.format.text = format
         } else {
-            self.status.text = "-"
+            self.format.text = "-"
         }
     }
 }

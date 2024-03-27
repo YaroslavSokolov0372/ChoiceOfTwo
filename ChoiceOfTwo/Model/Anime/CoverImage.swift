@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct CoverImage {
+struct CoverImage: Codable, Hashable {
     var extraLarge: String?
     var large: String?
     var medium: String?

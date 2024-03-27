@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Anime {
+struct Anime: Codable, Hashable {
     var coverImage: CoverImage?
     var description: String?
     var duration: Int?

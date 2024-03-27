@@ -109,7 +109,6 @@ class DataBaseManager {
         
     }
     
-    
     func addGameInfoListener(completion: @escaping (_ info: GameInfo?, Error?) -> Void) {
         
         
@@ -181,6 +180,33 @@ class DataBaseManager {
             }
     }
     
+    func addFinishGameListener(completion: @escaping (_ numOfGames: Int?, Error?) -> Void) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.dataBase
+            .collection("users")
+            .document(currentUser)
+            .collection("history")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let snapshot = snapshot else {
+                    completion(nil, error)
+                    return
+                }
+                
+                let finishedGamesCount = snapshot.documents.count
+                completion(finishedGamesCount, nil)
+            }
+    }
+    
     //    func exitFromTheGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
     //        guard let currentUser = Auth.auth().currentUser?.uid else {
     //            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
@@ -206,12 +232,7 @@ class DataBaseManager {
     //                            completion(true, nil)
     //                        }
     //                    }
-    //            }
-    //        }
-    //    }
-    
-    
-    
+    //      f
     
     func addPlayersListener(completion: @escaping(_ count: Int?, Error?) -> Void) {
         
@@ -249,10 +270,10 @@ class DataBaseManager {
     
     func deleteGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
         
-        guard let currentUser = Auth.auth().currentUser?.uid else {
-            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-            return
-        }
+//        guard let currentUser = Auth.auth().currentUser?.uid else {
+//            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+//            return
+//        }
         
         getCurrentGameUID { uid, error in
             if let error = error {
@@ -289,7 +310,7 @@ class DataBaseManager {
                                         completion(false, error)
                                     }
                                 }
-                            
+                                
                             self.dataBase
                                 .collection("users")
                                 .document(userUid as! String)
@@ -302,7 +323,6 @@ class DataBaseManager {
                                 }
                         }
                     })
-                
                 
                 
                 self.dataBase
@@ -320,6 +340,44 @@ class DataBaseManager {
             }
         }
     }
+    
+    
+    func fetchTags(completion: @escaping (_ succes: ([Genre.RawValue], [Format.RawValue])?, Error?) -> Void) {
+        getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            if let uid = uid {
+                
+                self.dataBase
+                    .collection("currentGames")
+                    .document(uid)
+                    .getDocument(completion: { snapshot, error in
+                        
+                        if let error = error {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        guard let data = snapshot?.data() else {
+                            completion(nil, error)
+                            return
+                        }
+                        
+                        let genres = data["genres"] as! [Genre.RawValue]
+                        let formats = data["formats"] as! [Format.RawValue]
+                        
+                        completion((genres, formats), nil)
+                    })
+            } else {
+                completion(nil, error)
+                return
+            }
+        }
+    }
+
     
     func getCurrentGameUID(completion: @escaping (_ uid: String?, Error?) -> Void) {
         
@@ -464,7 +522,7 @@ class DataBaseManager {
                         }
                     }
             }
-
+        
     }
     
     func addSeasons(_ seasons: [Season.RawValue], completion: @escaping (_ success: Bool, Error?) -> Void) {
@@ -504,6 +562,358 @@ class DataBaseManager {
                     }
             }
     }
+    
+    
+    func finishGame(
+//        genres: [Genre.RawValue],
+//        formats: [Format.RawValue],
+        matchedAnimes: [Anime],
+        completion: @escaping (Bool, Error?) -> Void) {
+            
+            self.addMatchToHistory(matchedAnimes: matchedAnimes) { saved, error in
+                
+                if let error = error {
+                    completion(false, error)
+                    return
+                }
+                
+                if saved != nil {
+                    self.getCurrentGameUID { uid, error in
+                        if let error = error {
+                            completion(false, error)
+                            return
+                        }
+                        
+                        if let uid = uid {
+                            
+                            self.dataBase
+                                .collection("currentGames")
+                                .document(uid)
+                                .collection("players")
+                                .getDocuments(completion: { snapshot, error in
+                                    if let error = error {
+                                        completion(false, error)
+                                    }
+                                    guard let snapshot = snapshot else {
+                                        completion(false, error)
+                                        return
+                                    }
+                                    
+                                    var users: [String] = []
+                                    
+                                    snapshot.documents.forEach { snapshot in
+                                        
+                                        let data = snapshot.data()
+                                        let userUid = data["uid"]
+                                        users.append(userUid as! String)
+                                    }
+                                    
+                                    users.forEach { uid in
+                                        self.dataBase
+                                            .collection("users")
+                                            .document(uid)
+                                            .collection("currentGameUID")
+                                            .document(users[0])
+                                            .delete { error in
+                                                if let error = error {
+                                                    completion(false, error)
+                                                }
+                                            }
+                                        
+                                        self.dataBase
+                                            .collection("users")
+                                            .document(uid)
+                                            .collection("currentGameUID")
+                                            .document(users[1])
+                                            .delete { error in
+                                                if let error = error {
+                                                    completion(false, error)
+                                                }
+                                            }
+                                    }
+                                    
+                                    completion(true, nil)
+                                })
+                            
+                        } else {
+                            completion(false, error)
+                        }
+                    }
+                }
+            }
+        }
+    
+
+    func addMatchToHistory(
+//        genres: [Genre.RawValue],
+//        formats: [Format.RawValue],
+        matchedAnimes: [Anime],
+//        skippedAnime: [Anime],
+        completion: @escaping (_ saved: Bool?, Error?) -> Void) {
+            
+            guard let userId = Auth.auth().currentUser?.uid else {
+                completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+                return
+            }
+            
+            self.getCurrentGameUID { uid, error in
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    if let uid = uid {
+                        self.dataBase
+                            .collection("currentGames")
+                            .document(uid)
+                            .collection("players")
+                            .getDocuments { snapshot, error in
+                                if let error = error {
+                                    completion(nil, error)
+                                    return
+                                }
+                                
+                                guard let documents = snapshot?.documents else {
+                                    completion(nil, error)
+                                    return
+                                }
+                                
+                                var users: [String] = []
+                                
+                                documents.forEach { snapshot in
+                                    let user = snapshot.data()
+                                    let uid = user["uid"] as! String
+                                    users.append(uid)
+                                }
+                                
+                                users.forEach { userUID in
+                                    
+                                    self.dataBase
+                                        .collection("currentGames")
+                                        .document(uid)
+                                        .getDocument { snapshot, error in
+                                            if let error = error {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            guard let data = snapshot?.data() else {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            self.dataBase
+                                                .collection("users")
+                                                .document(userUID)
+                                                .collection("history")
+                                                .document(uid)
+                                                .setData([
+                                                    "genres": data["genres"],
+                                                    "formats": data["formats"]
+                                                ])
+                                        }
+                                    
+                                    self.dataBase
+                                        .collection("currentGames")
+                                        .document(uid)
+                                        .collection("playersChoices")
+                                        .document(userUID)
+                                        .collection("skipped")
+                                        .getDocuments { snapshot, error in
+                                            if let error = error {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            guard let documents = snapshot?.documents else {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            documents.forEach { document in
+                                                do {
+                                                    let skippedAnime = try document.data(as: Anime.self)
+                                                    try self.dataBase
+                                                        .collection("users")
+                                                        .document(userUID)
+                                                        .collection("history")
+                                                        .document(uid)
+                                                        .collection("skipped")
+                                                        .document()
+                                                        .setData(from: skippedAnime)
+                                                } catch {
+                                                    completion(nil, error)
+                                                    return
+                                                }
+                                            }
+                                        }
+                                    
+//                                    
+//                                    
+//                                    skippedAnime.forEach { anime in
+//                                        do {
+//                                            try self.dataBase
+//                                                .collection("users")
+//                                                .document(userUID)
+//                                                .collection("history")
+//                                                .document(uid)
+//                                                .collection("skipped")
+//                                                .addDocument(from: anime)
+//                                        } catch {
+//                                            completion(nil, error)
+//                                        }
+//                                    }
+                                    
+                                    matchedAnimes.forEach { anime in
+                                        do {
+                                            try self.dataBase
+                                                .collection("users")
+                                                .document(userUID)
+                                                .collection("history")
+                                                .document(uid)
+                                                .collection("matched")
+                                                .addDocument(from: anime)
+                                        } catch {
+                                            completion(nil, error)
+                                        }
+                                    }
+                                }
+                                
+                                completion(true, nil)
+                            }
+                    }
+                }
+            }
+        }
+    
+    func likedAnime(_ anime: Anime, completion: @escaping (_ success: Bool?, Error?) -> Void) {
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                if let uid = uid {
+                    do {
+                        try self.dataBase
+                            .collection("currentGames")
+                            .document(uid)
+                            .collection("playersChoices")
+                            .document(userId)
+                            .collection("liked")
+                            .addDocument(from: anime)
+                        
+                        completion(true, nil)
+                    } catch {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func skippedAnime(_ anime: Anime, completion: @escaping (_ success: Bool?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                if let uid = uid {
+                    do {
+                        try self.dataBase
+                            .collection("currentGames")
+                            .document(uid)
+                            .collection("playersChoices")
+                            .document(userId)
+                            .collection("skipped")
+                            .addDocument(from: anime)
+                        
+                        completion(true, nil)
+                    } catch {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func addFriendsLikedListener(completion: @escaping (_ liked: [Anime]?, Error?) -> Void) {
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                if let uid = uid {
+                    self.dataBase
+                        .collection("currentGames")
+                        .document(uid)
+                        .collection("players")
+                        .getDocuments { snapshot, error in
+                            if let error = error {
+                                completion(nil, error)
+                                return
+                            }
+                            
+                            guard let documents = snapshot?.documents else {
+                                completion(nil, error)
+                                return
+                            }
+                            
+                            documents.forEach { document in
+                                let data = document.data()
+                                let userUID = data["uid"] as! String
+                                if userId != userUID {
+                                    self.dataBase
+                                        .collection("currentGames")
+                                        .document(uid)
+                                        .collection("playersChoices")
+                                        .document(userUID)
+                                        .collection("liked")
+                                        .addSnapshotListener { snapshot, error in
+                                            if let error = error {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            guard let snapshot = snapshot?.documents else {
+                                                completion(nil, error)
+                                                return
+                                            }
+                                            
+                                            var animes: [Anime] = []
+                                            
+                                            snapshot.forEach { snapshot in
+                                                do {
+                                                    let anime = try snapshot.data(as: Anime.self)
+                                                    animes.append(anime)
+                                                    
+                                                    
+                                                } catch {
+                                                    completion(nil, error)
+                                                }
+                                            }
+                                            completion(animes, nil)
+                                        }
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
+    
     
     func clearInvsInMenu(completion: @escaping (Bool, Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -593,10 +1003,11 @@ class DataBaseManager {
             
             if let currentU = currentU {
                 
+                let gameUID = UUID().uuidString
                 
                 self.dataBase
                     .collection("currentGames")
-                    .document(friend.uid)
+                    .document(gameUID)
                     .setData([
                         "ready": [
                             friend.uid: false,
@@ -611,7 +1022,7 @@ class DataBaseManager {
                 
                 self.dataBase
                     .collection("currentGames")
-                    .document(friend.uid)
+                    .document(gameUID)
                     .collection("players")
                     .document(friend.uid)
                     .setData([
@@ -627,7 +1038,7 @@ class DataBaseManager {
                 
                 self.dataBase
                     .collection("currentGames")
-                    .document(friend.uid)
+                    .document(gameUID)
                     .collection("players")
                     .document(currentU.uid)
                     .setData([
@@ -641,13 +1052,15 @@ class DataBaseManager {
                         }
                     }
                 
-                self.dataBase.collection("users").document(currentU.uid).collection("currentGameUID").document(friend.uid).setData(["uid" : friend.uid]) { error in
+                
+                
+                self.dataBase.collection("users").document(currentU.uid).collection("currentGameUID").document(friend.uid).setData(["uid" : gameUID]) { error in
                     if let error = error {
                         completion(false, error)
                     }
                 }
                 
-                self.dataBase.collection("users").document(friend.uid).collection("currentGameUID").document(friend.uid).setData(["uid": friend.uid]) { error in
+                self.dataBase.collection("users").document(friend.uid).collection("currentGameUID").document(friend.uid).setData(["uid": gameUID]) { error in
                     if let error = error {
                         completion(false, error)
                     }

@@ -22,12 +22,10 @@ class AnimeApiService {
         apollo.fetch(query: GetAnimeQuery(
             page: GraphQLNullable<Int>(integerLiteral: currentPage),
             perPage: 15,
-//            genreIn: .some(genres),
-            genreIn: nil,
-            sort: .some([.case(.popularityDesc)]),
-//            sort: nil,
-//            formatIn: .some(formats.convertToGraphQL()),
-            formatIn: nil,
+            genreIn: genres.isEmpty ? .none : genres.count == Genre.allCases.count ? .none : .some(genres),
+            sort:  .some([.case(.favouritesDesc)]),
+//            formatIn: nil,
+            formatIn: formats.isEmpty ? .none : formats.count == Format.allCases.count ? .none : .some(formats.convertToGraphQL()),
             asHtml: true)) { result in
                 switch result {
                 case .success(let success):

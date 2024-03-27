@@ -17,11 +17,13 @@ extension GameCoordinator {
         setupCoordinator.start()
     }
     
-    func cardGame(navigationControlle: UINavigationController, animated: Bool, genres: [Genre.RawValue], formats: [Format.RawValue]) {
+//    func cardGame(navigationControlle: UINavigationController, animated: Bool, genres: [Genre.RawValue], formats: [Format.RawValue]) {
+    func cardGame(navigationControlle: UINavigationController, animated: Bool) {
         let cardGameCoordinator =  CardGameCoordinator(navigationController: navigationController)
         cardGameCoordinator.parent = self
         addChild(cardGameCoordinator)
-        cardGameCoordinator.start(genres: genres, formats: formats)
+//        cardGameCoordinator.start(genres: genres, formats: formats)
+        cardGameCoordinator.start()
     }
     
     func detailView(gameCardControllerRef: UIViewController, anime: Anime, navigationController: UINavigationController, animeted: Bool) {
@@ -31,5 +33,11 @@ extension GameCoordinator {
         detailCoordinator.start(gameCardControllerRef: gameCardControllerRef, anime: anime)
     }
     
+    func matched(navigationController: UINavigationController, animated: Bool, matched: [Anime]) {
+        let matchedCoordinator = MatchedCoordinator(navigationController: navigationController)
+        matchedCoordinator.parent = self
+        addChild(matchedCoordinator)
+        matchedCoordinator.start()
+    }
 }
 

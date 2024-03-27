@@ -41,7 +41,7 @@ class DetailAnimeViewCoordinator: ChildCoordinator {
 
     
     func dismiss() {
-        parent?.popLastChildren()
+        parent?.popLastAsSheet()
     }
 }
 

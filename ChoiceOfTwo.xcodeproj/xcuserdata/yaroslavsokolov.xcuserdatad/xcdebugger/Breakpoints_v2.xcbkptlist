@@ -14,8 +14,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "1155"
+            endingLineNumber = "1155"
             landmarkName = "fetchWhomSentFriendship(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -177,6 +177,341 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "gameInfoListener()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D42AFFF-1219-4D89-8030-53A4B57F3B6C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/ViewModel/Game/CardGameVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "addFriendLikedListener()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "974B23EC-9148-4CB2-B543-63D2ADC0957A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A412D7D5-813A-4BCB-9938-9C575E1D73DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "888"
+            endingLineNumber = "888"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "327275F2-BEC4-469C-A456-12D88317C764"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "894"
+            endingLineNumber = "894"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72C7C170-48DB-451C-A728-646E36B98011"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "906"
+            endingLineNumber = "906"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "72C7C170-48DB-451C-A728-646E36B98011 - 85d5b5c4ff33c734"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.FIRQueryDocumentSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "624"
+                  endingLineNumber = "624"
+                  offsetFromSymbolStart = "744">
+               </Location>
+               <Location
+                  uuid = "72C7C170-48DB-451C-A728-646E36B98011 - 85d5b5c4ff33c734"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.FIRQueryDocumentSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "624"
+                  endingLineNumber = "624"
+                  offsetFromSymbolStart = "680">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AE6EACF-6522-4140-A790-31484B6E4FDD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "863"
+            endingLineNumber = "863"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7AE6EACF-6522-4140-A790-31484B6E4FDD - df9f532a1f70c46e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "581"
+                  endingLineNumber = "581"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "7AE6EACF-6522-4140-A790-31484B6E4FDD - df9f532a1f70c46e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "581"
+                  endingLineNumber = "581"
+                  offsetFromSymbolStart = "280">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF6B1FDA-DBC5-4A3D-9B3F-93DAEB9D000C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "868"
+            endingLineNumber = "868"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF6B1FDA-DBC5-4A3D-9B3F-93DAEB9D000C - df9f532a1f70c705"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "586"
+                  endingLineNumber = "586"
+                  offsetFromSymbolStart = "540">
+               </Location>
+               <Location
+                  uuid = "BF6B1FDA-DBC5-4A3D-9B3F-93DAEB9D000C - df9f532a1f70c705"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "586"
+                  endingLineNumber = "586"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68319F08-677D-4FB2-89A4-4D130AD7E5D9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "873"
+            endingLineNumber = "873"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "68319F08-677D-4FB2-89A4-4D130AD7E5D9 - 9e0843d84f85963e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRQueryDocumentSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "591"
+                  endingLineNumber = "591"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "68319F08-677D-4FB2-89A4-4D130AD7E5D9 - df9f532a1f70c6b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "591"
+                  endingLineNumber = "591"
+                  offsetFromSymbolStart = "608">
+               </Location>
+               <Location
+                  uuid = "68319F08-677D-4FB2-89A4-4D130AD7E5D9 - 9e0843d84f85963e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRQueryDocumentSnapshot) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.addFriendsLikedListener(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Anime&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "591"
+                  endingLineNumber = "591"
+                  offsetFromSymbolStart = "208">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F58FDEF3-E5E3-4658-BE93-232911C72531"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "876"
+            endingLineNumber = "876"
+            landmarkName = "addFriendsLikedListener(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6CA32B4-6773-4891-9A8C-6FF9CD2E8FB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Coordinators/Game/CardGameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "start()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94201754-697A-4DE4-B4F5-EC50504C4130"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Coordinators/Game/CardGameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "start()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31114D67-AB80-4B64-B4D7-84AB4A0AF2B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Coordinators/Game/CardGameCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

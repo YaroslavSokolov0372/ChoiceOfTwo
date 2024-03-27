@@ -16,4 +16,8 @@ class DetailInfoAnimeVM {
     init(anime: Anime) {
         self.anime = anime
     }
+    
+    func dismiss() {
+        coordinator?.dismiss()
+    }
 }

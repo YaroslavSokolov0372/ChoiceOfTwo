@@ -36,8 +36,10 @@ class SetupGameCoordinator: ChildCoordinator {
         navigationController.pushViewController(setupGameController, animated: true)
     }
     
-    func cardGame(genres: [Genre.RawValue], formats: [Genre.RawValue]) {
-        parent?.cardGame(navigationControlle: navigationController, animated: true, genres: genres, formats: formats)
+//    func cardGame(genres: [Genre.RawValue], formats: [Genre.RawValue]) {
+    func cardGame() {
+//        parent?.cardGame(navigationControlle: navigationController, animated: true, genres: genres, formats: formats)
+        parent?.cardGame(navigationControlle: navigationController, animated: true)
     }
     
     func dismiss() {

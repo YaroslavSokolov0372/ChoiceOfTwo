@@ -20,8 +20,7 @@ class LoginController: UIViewController {
 //        y: (view.frame.maxY - 200),
         y: view.frame.maxY,
         width: (view.frame.width * 0.85),
-        height: 65)
-    )
+        height: 65))
     let scrollView: UIScrollView = {
         let scrollV = UIScrollView()
         scrollV.isScrollEnabled = false

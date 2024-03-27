@@ -29,3 +29,16 @@ enum Genre: String, CaseIterable, Codable, StringRepresentable {
     case superNatural = "Supernatural"
     case thriller = "Thriller"
 }
+
+extension [Genre.RawValue] {
+    func getStringArray() -> [String] {
+        
+        var values = [String]()
+        for genre in self {
+            values.append(genre)
+        }
+        
+        return values
+    }
+}
+

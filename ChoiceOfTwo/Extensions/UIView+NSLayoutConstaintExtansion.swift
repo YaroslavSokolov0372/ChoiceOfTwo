@@ -21,4 +21,7 @@ extension UIView {
             self.widthAnchor.constraint(equalToConstant: 275)
         ])
     }
+    
+    func setupForSwipeCardView() {
+    }
 }

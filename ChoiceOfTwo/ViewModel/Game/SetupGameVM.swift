@@ -238,6 +238,7 @@ class SetupGameVM {
     }
     
     public func goCardGame() {
-        self.coordinator.cardGame(genres: genres, formats: formats)
+        //        self.coordinator.cardGame(genres: genres, formats: formats)
+        self.coordinator.cardGame()
     }
 }
