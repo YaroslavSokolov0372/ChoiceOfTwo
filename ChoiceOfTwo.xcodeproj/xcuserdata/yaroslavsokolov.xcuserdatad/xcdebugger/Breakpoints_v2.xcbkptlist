@@ -14,8 +14,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1155"
-            endingLineNumber = "1155"
+            startingLineNumber = "1200"
+            endingLineNumber = "1200"
             landmarkName = "fetchWhomSentFriendship(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "ChoiceOfTwo/ViewModel/Game/CardGameVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "addFriendLikedListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "848"
-            endingLineNumber = "848"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "888"
-            endingLineNumber = "888"
+            startingLineNumber = "933"
+            endingLineNumber = "933"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "894"
-            endingLineNumber = "894"
+            startingLineNumber = "939"
+            endingLineNumber = "939"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "906"
-            endingLineNumber = "906"
+            startingLineNumber = "951"
+            endingLineNumber = "951"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -302,8 +302,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "908"
+            endingLineNumber = "908"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -350,8 +350,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "868"
-            endingLineNumber = "868"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -398,8 +398,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "873"
-            endingLineNumber = "873"
+            startingLineNumber = "918"
+            endingLineNumber = "918"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -461,8 +461,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "876"
-            endingLineNumber = "876"
+            startingLineNumber = "921"
+            endingLineNumber = "921"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>

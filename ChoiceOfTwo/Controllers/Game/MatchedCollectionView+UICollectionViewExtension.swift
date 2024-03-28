@@ -16,11 +16,15 @@ extension MatchedController: UICollectionViewDelegateFlowLayout, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 350)
+        return CGSize(width: collectionView.frame.width * 0.99, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
     }
     
     
@@ -29,6 +33,8 @@ extension MatchedController: UICollectionViewDelegateFlowLayout, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? MatchedAnimeCell else {
             fatalError("Failed to dequeue MatchedAnime Cell")
         }
+        
+        cell.configure(with: vm.matched[indexPath.row])
         return cell
     }
 }

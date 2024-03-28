@@ -13,6 +13,10 @@ class HistoryCellView: UICollectionViewCell {
     //MARK: - UI Components
     private let skeletonView = SkeletonHistoryCard()
     
+    
+    
+    
+    
     //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -40,5 +44,4 @@ class HistoryCellView: UICollectionViewCell {
     public func configure() {
         
     }
-    
 }

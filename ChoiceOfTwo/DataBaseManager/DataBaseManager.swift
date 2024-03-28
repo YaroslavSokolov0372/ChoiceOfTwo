@@ -784,6 +784,51 @@ class DataBaseManager {
             }
         }
     
+    func fetchLiked(completion: @escaping ([Anime]?, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        self.getCurrentGameUID { uid, error in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                if let uid = uid {
+                    self.dataBase
+                        .collection("currentGames")
+                        .document(uid)
+                        .collection("playersChoices")
+                        .document(userId)
+                        .collection("liked")
+                        .getDocuments { snapshot, error in
+                            if let error = error {
+                                completion(nil, error)
+                                return
+                            }
+                            
+                            guard let documents = snapshot?.documents else {
+                                completion(nil, error)
+                                return
+                            }
+                            
+                            var animes: [Anime] = []
+                            documents.forEach { document in
+                                do {
+                                    let anime = try document.data(as: Anime.self)
+                                    animes.append(anime)
+                                } catch {
+                                    completion(nil, error)
+                                }
+                            }
+                            
+                            completion(animes, nil)
+                        }
+                }
+            }
+        }
+    }
+    
     func likedAnime(_ anime: Anime, completion: @escaping (_ success: Bool?, Error?) -> Void) {
         
         guard let userId = Auth.auth().currentUser?.uid else {

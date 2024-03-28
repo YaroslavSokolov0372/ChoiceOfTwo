@@ -37,7 +37,7 @@ extension GameCoordinator {
         let matchedCoordinator = MatchedCoordinator(navigationController: navigationController)
         matchedCoordinator.parent = self
         addChild(matchedCoordinator)
-        matchedCoordinator.start()
+        matchedCoordinator.start(matched: matched)
     }
 }
 

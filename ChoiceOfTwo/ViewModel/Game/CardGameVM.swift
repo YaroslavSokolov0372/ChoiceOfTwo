@@ -68,6 +68,7 @@ class CardGameVM {
         addFriendLikedListener()
         addFinishListener()
         fetchTags()
+        fetchLiked()
     }
     
     var onAnimeListChange: ((Int) -> Void)?
@@ -108,13 +109,25 @@ class CardGameVM {
                                     print("Coordinator is nil")
                                     return
                                 }
-//                                self.coordinator.removeAllChildrens()
+                                //                                self.coordinator.removeAllChildrens()
                                 coordinator.removeAllChildrens()
                             }
                         }
                     }
                 }
             }
+    }
+    
+    private func fetchLiked() {
+        self.dBManager.fetchLiked { animes, error in
+            if let error = error {
+                print("DEBUG: Error while fetching liked", error)
+            } else {
+                if let animes = animes {
+                    self.likedAnimes = animes
+                }
+            }
+        }
     }
     
     private func fetchTags() {
@@ -158,9 +171,8 @@ class CardGameVM {
                     
                     print("Error", error)
                     if onceAgainOnFailed {
-                        self.onAnimeListError?(error)
+//                        self.onAnimeListError?(error)
                         self.fetchAnimes(onceAgainOnFailed: false)
-                        print("I am here")
                     } else {
                         self.onAnimeListError?(error)
                         //TODO: - Show message to recreate a game

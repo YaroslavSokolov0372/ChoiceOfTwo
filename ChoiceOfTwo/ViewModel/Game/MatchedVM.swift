@@ -9,6 +9,7 @@ import Foundation
 
 
 class MatchedVM {
+    
     weak var coordinator: MatchedCoordinator!
     
     
@@ -16,9 +17,13 @@ class MatchedVM {
         coordinator.dismiss()
     }
     
-    private(set) var matched: [Anime] = []
     
-    init(matched: [Anime]) {
-        self.matched = matched
+    var onMatchedChanges: (() -> Void)?
+    
+    var matched: [Anime] = [] {
+        didSet {
+            print("Matched count -", matched.count)
+            onMatchedChanges?()
+        }
     }
 }

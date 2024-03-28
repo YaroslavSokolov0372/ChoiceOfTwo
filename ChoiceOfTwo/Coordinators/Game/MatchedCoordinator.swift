@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class MatchedCoordinator: ChildCoordinator {
-
+    
     
     var viewControllerRef: UIViewController?
     var parent: GameCoordinator?
@@ -28,7 +28,9 @@ class MatchedCoordinator: ChildCoordinator {
     func start(matched: [Anime]) {
         let matchedController = MatchedController()
         viewControllerRef = matchedController
-        let vm = MatchedVM(matched: matched)
+        //        let vm = MatchedVM(matched: matched)
+        let vm = MatchedVM()
+        vm.matched = matched
         vm.coordinator = self
         matchedController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)

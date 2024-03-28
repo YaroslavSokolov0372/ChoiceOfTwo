@@ -533,7 +533,6 @@
 				D100BB7F2BA34A070048330C /* AnimeApiService */,
 				D1D753CC2B73F2B000ADF274 /* AuthService */,
 				D178078F2B6AB10B003B84F7 /* Supporting */,
-				D1D7541B2B7A518D00ADF274 /* ConsoleLogger.swift */,
 			);
 			path = ChoiceOfTwo;
 			sourceTree = "<group>";
@@ -582,12 +581,13 @@
 		D17807912B6AB126003B84F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1EDB59B2BAA245800676679 /* SwipeDirection.swift */,
+				D1E900B22BB5E82A00D54353 /* UserModel */,
+				D1E900B12BB5E81400D54353 /* ConsoleLogger */,
 				D1EDB5C12BAC811500676679 /* Anime */,
 				D100BB9A2BA611790048330C /* TextFieldValidation */,
 				D100BB992BA611670048330C /* Registration */,
 				D100BB952BA5F5370048330C /* Tags */,
-				D1332AE72B852C8400F34C51 /* UserModel.swift */,
-				D1EDB59B2BAA245800676679 /* SwipeDirection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -801,6 +801,22 @@
 				D1E9008E2BADFC2A00D54353 /* CardTransitionManager.swift */,
 			);
 			path = Transitions;
+			sourceTree = "<group>";
+		};
+		D1E900B12BB5E81400D54353 /* ConsoleLogger */ = {
+			isa = PBXGroup;
+			children = (
+				D1D7541B2B7A518D00ADF274 /* ConsoleLogger.swift */,
+			);
+			path = ConsoleLogger;
+			sourceTree = "<group>";
+		};
+		D1E900B22BB5E82A00D54353 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1332AE72B852C8400F34C51 /* UserModel.swift */,
+			);
+			path = UserModel;
 			sourceTree = "<group>";
 		};
 		D1EDB58D2BA9E06300676679 /* Tags */ = {
