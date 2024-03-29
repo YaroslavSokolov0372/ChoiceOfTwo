@@ -707,7 +707,8 @@ class DataBaseManager {
                                                 .document(uid)
                                                 .setData([
                                                     "genres": data["genres"],
-                                                    "formats": data["formats"]
+                                                    "formats": data["formats"],
+                                                    "gameUID": uid
                                                 ])
                                         }
                                     
@@ -826,6 +827,75 @@ class DataBaseManager {
                         }
                 }
             }
+        }
+    }
+    
+    func fetchHistory(completion: @escaping ([Match]?, Error?) -> Void) async {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        var history: [Match] = []
+        
+        do {
+            let snapshot = try await self.dataBase
+                .collection("users")
+                .document(userId)
+                .collection("history")
+                .getDocuments()
+                    
+            for document in snapshot.documents {
+                let data = document.data()
+                let genres = data["genres"] as! [Genre.RawValue]
+                let formats = data["formats"] as! [Format.RawValue]
+                var matchedAnimes: [Anime] = []
+                var skippedAnimes: [Anime] = []
+                
+                let id = data["gameUID"]
+                
+                let matchedDocuments = try await dataBase
+                    .collection("users")
+                    .document(userId)
+                    .collection("history")
+                    .document(id as! String)
+                    .collection("matched")
+                    .getDocuments()
+                
+                for matchedDocument in matchedDocuments.documents {
+                    do {
+                        let anime = try matchedDocument.data(as: Anime.self)
+                        matchedAnimes.append(anime)
+                    } catch {
+                        completion(nil, error)
+                        return
+                    }
+                }
+                
+                let skippedDocuments = try await dataBase
+                    .collection("users")
+                    .document(userId)
+                    .collection("history")
+                    .document(id as! String)
+                    .collection("skipped")
+                    .getDocuments()
+                
+                for matchedDocument in skippedDocuments.documents {
+                    do {
+                        let anime = try matchedDocument.data(as: Anime.self)
+                        skippedAnimes.append(anime)
+                    } catch {
+                        completion(nil, error)
+                        return
+                    }
+                }
+                
+                history.append(Match(skipped: skippedAnimes, matched: matchedAnimes, genres: genres, formats: formats))
+            }
+            
+            completion(history, nil)
+        } catch {
+            completion(nil, error)
         }
     }
     

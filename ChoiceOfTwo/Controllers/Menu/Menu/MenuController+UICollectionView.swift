@@ -40,7 +40,7 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.historyCollView {
-            return 6
+            return vm.matches.count
         } else {
             if self.vm.friends.isEmpty {
                 return 1
@@ -58,7 +58,8 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                     HistoryCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
             }
-            cell.configure()
+            cell.configure(with: vm.matches[indexPath.row])
+            cell.delegate = self
             return cell
             
         } else {

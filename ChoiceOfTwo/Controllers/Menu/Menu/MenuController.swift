@@ -7,9 +7,8 @@
 
 import UIKit
 
-class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, InteractFriendDelegate, AnimatedMessageWithButtonsViewDelegate {
-    
-    
+class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, InteractFriendDelegate, AnimatedMessageWithButtonsViewDelegate, HistoryCellDelegate {
+
     //MARK: - Variable
     var vm: MenuVM!
     
@@ -83,6 +82,12 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
                 self?.friendsCollView.reloadData()
             }
         }
+        vm.onMatchesUpadated = {
+            DispatchQueue.main.async { [weak self] in
+                self?.historyCollView.reloadData()
+            }
+        }
+        
         vm.onSendInvUpdated = {
             self.animatedMessageLabel.configure(message: "Invite sent!", strokeColor: .mainPurple, customFont: .nunitoFont(size: 18, type: .medium))
             self.animatedMessageLabel.playAnimation()
@@ -121,6 +126,12 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         view.addSubview(animatedMessageLabel)
         view.addSubview(animatedGameInvView)
         view.addSubview(animatedDeleteView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Task {
+            await vm.getHistory()
+        }
     }
     
     
@@ -192,6 +203,10 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     }
     
     //MARK: - Delegate
+    func matchTapped(match: Match) {
+        vm.matchDetail(match: match)
+    }
+    
     func friendProfileTapped(friend: User, cell: UICollectionViewCell) {
         friendInteractView.configure(with: friend) { isTheSame, isOpened in
             if !isTheSame {

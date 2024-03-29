@@ -31,6 +31,13 @@ extension HomeCoordinator {
         searchFriendsCoordinator.start(friends: friends)
     }
     
+    func matchDetail(navigationController: UINavigationController, animated: Bool, match: Match) {
+        let matchDetailCoordinator = MatchDetailCoordinator(navigationController: navigationController)
+        matchDetailCoordinator.parent = self
+        addChild(matchDetailCoordinator)
+        matchDetailCoordinator.start(match: match)
+    }
+    
     func game() {
         parent?.game()
     }

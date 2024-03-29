@@ -47,6 +47,10 @@ class MenuCoordiantor: ChildCoordinator {
         parent?.dismissHomeScreens()
     }
     
+    func matcDetail(match: Match) {
+        parent?.matchDetail(navigationController: navigationController, animated: true, match: match)
+    }
+    
     func game() {
         parent?.game()
     }

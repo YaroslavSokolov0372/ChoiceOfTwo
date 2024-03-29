@@ -131,6 +131,11 @@
 		D1E900AA2BB4B64400D54353 /* MatchedCollectionView+UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900A92BB4B64400D54353 /* MatchedCollectionView+UICollectionViewExtension.swift */; };
 		D1E900AC2BB4B69400D54353 /* MatchedAnimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900AB2BB4B69400D54353 /* MatchedAnimeCell.swift */; };
 		D1E900B02BB4BA4600D54353 /* String+Height+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900AF2BB4BA4600D54353 /* String+Height+Extension.swift */; };
+		D1E900B42BB71D1F00D54353 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900B32BB71D1F00D54353 /* Match.swift */; };
+		D1E900B62BB7570000D54353 /* AnimeCardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900B52BB7570000D54353 /* AnimeCardCellView.swift */; };
+		D1E900B92BB76BF400D54353 /* MatchDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900B82BB76BF400D54353 /* MatchDetailController.swift */; };
+		D1E900BB2BB76C0C00D54353 /* MatchDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900BA2BB76C0C00D54353 /* MatchDetailCoordinator.swift */; };
+		D1E900BD2BB76CBD00D54353 /* MatchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900BC2BB76CBD00D54353 /* MatchDetail.swift */; };
 		D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5872BA7595B00676679 /* CardGameController.swift */; };
 		D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5892BA7597300676679 /* CardGameVM.swift */; };
 		D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */; };
@@ -279,6 +284,11 @@
 		D1E900A92BB4B64400D54353 /* MatchedCollectionView+UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MatchedCollectionView+UICollectionViewExtension.swift"; sourceTree = "<group>"; };
 		D1E900AB2BB4B69400D54353 /* MatchedAnimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedAnimeCell.swift; sourceTree = "<group>"; };
 		D1E900AF2BB4BA4600D54353 /* String+Height+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height+Extension.swift"; sourceTree = "<group>"; };
+		D1E900B32BB71D1F00D54353 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		D1E900B52BB7570000D54353 /* AnimeCardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCardCellView.swift; sourceTree = "<group>"; };
+		D1E900B82BB76BF400D54353 /* MatchDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailController.swift; sourceTree = "<group>"; };
+		D1E900BA2BB76C0C00D54353 /* MatchDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailCoordinator.swift; sourceTree = "<group>"; };
+		D1E900BC2BB76CBD00D54353 /* MatchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetail.swift; sourceTree = "<group>"; };
 		D1EDB5872BA7595B00676679 /* CardGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameController.swift; sourceTree = "<group>"; };
 		D1EDB5892BA7597300676679 /* CardGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameVM.swift; sourceTree = "<group>"; };
 		D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameCoordinator.swift; sourceTree = "<group>"; };
@@ -455,6 +465,7 @@
 				D12AE7E22B7E7B74004511B5 /* MenuCoordiantor.swift */,
 				D1332AE02B8515B700F34C51 /* SearchFriendsCoordinator.swift */,
 				D1332AE22B85267300F34C51 /* ProfileCoordinator.swift */,
+				D1E900BA2BB76C0C00D54353 /* MatchDetailCoordinator.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -468,6 +479,7 @@
 				D100BB5D2B9F90C10048330C /* RecievedCellView.swift */,
 				D100BB8A2BA350FA0048330C /* ProposedCellView.swift */,
 				D1E900AB2BB4B69400D54353 /* MatchedAnimeCell.swift */,
+				D1E900B52BB7570000D54353 /* AnimeCardCellView.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -588,6 +600,7 @@
 				D100BB9A2BA611790048330C /* TextFieldValidation */,
 				D100BB992BA611670048330C /* Registration */,
 				D100BB952BA5F5370048330C /* Tags */,
+				D1E900B32BB71D1F00D54353 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,6 +643,7 @@
 		D199BE692B829FC3000EBA02 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				D1E900B72BB76BD600D54353 /* MatchDetail */,
 				D100BB662BA1036C0048330C /* Profile */,
 				D100BB652BA103610048330C /* SearchFriends */,
 				D100BB642BA1035A0048330C /* Menu */,
@@ -772,6 +786,7 @@
 				D12AE7E42B7E7C0F004511B5 /* MenuVM.swift */,
 				D199BE642B824CD1000EBA02 /* ProfileVM.swift */,
 				D1332ADE2B8514E000F34C51 /* SearchFriendsVM.swift */,
+				D1E900BC2BB76CBD00D54353 /* MatchDetail.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -817,6 +832,14 @@
 				D1332AE72B852C8400F34C51 /* UserModel.swift */,
 			);
 			path = UserModel;
+			sourceTree = "<group>";
+		};
+		D1E900B72BB76BD600D54353 /* MatchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D1E900B82BB76BF400D54353 /* MatchDetailController.swift */,
+			);
+			path = MatchDetail;
 			sourceTree = "<group>";
 		};
 		D1EDB58D2BA9E06300676679 /* Tags */ = {
@@ -994,6 +1017,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E900B42BB71D1F00D54353 /* Match.swift in Sources */,
 				D100BB812BA34A2D0048330C /* AnimeApiService.swift in Sources */,
 				D17807602B6AB0FA003B84F7 /* AppDelegate.swift in Sources */,
 				D199BE512B7FD7BE000EBA02 /* CustomSectionHeaderView.swift in Sources */,
@@ -1041,8 +1065,10 @@
 				D1E9009F2BB0CB3F00D54353 /* MatchedCoordinator.swift in Sources */,
 				D1D754022B795BD900ADF274 /* AppCoordinator.swift in Sources */,
 				D100BB942BA5D8A90048330C /* GameInfo.swift in Sources */,
+				D1E900BB2BB76C0C00D54353 /* MatchDetailCoordinator.swift in Sources */,
 				D1EDB5942BAA11F300676679 /* SwipeableCardViewContainer.swift in Sources */,
 				D1E900A12BB0CBF800D54353 /* MatchedVM.swift in Sources */,
+				D1E900B92BB76BF400D54353 /* MatchDetailController.swift in Sources */,
 				D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */,
 				D1D753D42B73F68D00ADF274 /* RegisterController.swift in Sources */,
 				D199BE532B80F364000EBA02 /* friendProfileImageButton.swift in Sources */,
@@ -1061,6 +1087,7 @@
 				D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */,
 				D100BB622BA0BA460048330C /* CustomAnimatedMessageWithButtons.swift in Sources */,
 				D199BE5D2B81293C000EBA02 /* SkeletonHistoryCard.swift in Sources */,
+				D1E900B62BB7570000D54353 /* AnimeCardCellView.swift in Sources */,
 				D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */,
 				D1F5874C2B927C320072CFAA /* RegisterProfImageCoordinator.swift in Sources */,
 				D1EDB5902BA9E08300676679 /* SwipeableCardViewCard.swift in Sources */,
@@ -1122,6 +1149,7 @@
 				D167422F2B95266D00730962 /* CustomAnimatedMessageLabel.swift in Sources */,
 				D19D6F2E2B8BB97700E2B907 /* ChooseProfPictureController.swift in Sources */,
 				D1332AE82B852C8400F34C51 /* UserModel.swift in Sources */,
+				D1E900BD2BB76CBD00D54353 /* MatchDetail.swift in Sources */,
 				D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

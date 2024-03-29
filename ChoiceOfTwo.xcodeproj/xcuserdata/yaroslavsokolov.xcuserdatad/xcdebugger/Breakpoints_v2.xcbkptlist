@@ -14,8 +14,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1200"
-            endingLineNumber = "1200"
+            startingLineNumber = "1270"
+            endingLineNumber = "1270"
             landmarkName = "fetchWhomSentFriendship(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893"
+            startingLineNumber = "963"
+            endingLineNumber = "963"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "933"
-            endingLineNumber = "933"
+            startingLineNumber = "1003"
+            endingLineNumber = "1003"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
+            startingLineNumber = "1009"
+            endingLineNumber = "1009"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "951"
-            endingLineNumber = "951"
+            startingLineNumber = "1021"
+            endingLineNumber = "1021"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -302,8 +302,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "908"
-            endingLineNumber = "908"
+            startingLineNumber = "978"
+            endingLineNumber = "978"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -350,8 +350,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "913"
-            endingLineNumber = "913"
+            startingLineNumber = "983"
+            endingLineNumber = "983"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -398,8 +398,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "988"
+            endingLineNumber = "988"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
             <Locations>
@@ -461,8 +461,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "921"
-            endingLineNumber = "921"
+            startingLineNumber = "991"
+            endingLineNumber = "991"
             landmarkName = "addFriendsLikedListener(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -512,6 +512,596 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "start()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "896"
+            endingLineNumber = "896"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - 5ef2f3a0c46df6f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "933"
+                  endingLineNumber = "933"
+                  offsetFromSymbolStart = "600">
+               </Location>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - 3bde9fdbdce9fa01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "877"
+                  endingLineNumber = "877"
+                  offsetFromSymbolStart = "2452">
+               </Location>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - 4648b3bfb6c30607"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "877"
+                  endingLineNumber = "877"
+                  offsetFromSymbolStart = "4064">
+               </Location>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - 3bde9fdbdce9f88c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "896"
+                  endingLineNumber = "896"
+                  offsetFromSymbolStart = "2452">
+               </Location>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - d23a666208a44088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "896"
+                  endingLineNumber = "896"
+                  offsetFromSymbolStart = "4116">
+               </Location>
+               <Location
+                  uuid = "D1BD34E8-C6F6-4659-8DD4-E77A91EBFA09 - d23a666208a44088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "896"
+                  endingLineNumber = "896"
+                  offsetFromSymbolStart = "4108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 5ef2f3a0c46d8dc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "849"
+                  endingLineNumber = "849"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 3bde9fdbdce9865c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 3bde9fdbdce9865c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "608">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 4648b3bfb6c37a5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 4648b3bfb6c37a5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "3684">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - 4648b3bfb6c37a5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "2732">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - d23a666208a43e58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "644">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - d23a666208a43e58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "3716">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - d23a666208a43e58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "636">
+               </Location>
+               <Location
+                  uuid = "B3FBD2F7-ABD8-482C-AFA3-F47B791630B3 - d23a666208a43e58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "3708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C64603F9-7F84-436F-BC46-016628E12D3A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "842"
+            endingLineNumber = "842"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C64603F9-7F84-436F-BC46-016628E12D3A - efb73254d6274a77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "842"
+                  endingLineNumber = "842"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "C64603F9-7F84-436F-BC46-016628E12D3A - af6ceb777a30c580"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "842"
+                  endingLineNumber = "842"
+                  offsetFromSymbolStart = "432">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4920EB6-C558-4C83-9E29-EC53E4335CEB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D3A2B4C-7D37-430B-BA2B-A66D4DBE0ACB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "857"
+            endingLineNumber = "857"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2D3A2B4C-7D37-430B-BA2B-A66D4DBE0ACB - 3bde9fdbdce98775"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "857"
+                  endingLineNumber = "857"
+                  offsetFromSymbolStart = "1508">
+               </Location>
+               <Location
+                  uuid = "2D3A2B4C-7D37-430B-BA2B-A66D4DBE0ACB - 4648b3bfb6c37b73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "857"
+                  endingLineNumber = "857"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  uuid = "2D3A2B4C-7D37-430B-BA2B-A66D4DBE0ACB - d23a666208a43f71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "857"
+                  endingLineNumber = "857"
+                  offsetFromSymbolStart = "1552">
+               </Location>
+               <Location
+                  uuid = "2D3A2B4C-7D37-430B-BA2B-A66D4DBE0ACB - d23a666208a43f71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "857"
+                  endingLineNumber = "857"
+                  offsetFromSymbolStart = "1544">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C681E623-42E2-43BF-A29A-81D2C9754576"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "865"
+            endingLineNumber = "865"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C681E623-42E2-43BF-A29A-81D2C9754576 - 4648b3bfb6c3788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "865"
+                  endingLineNumber = "865"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "C681E623-42E2-43BF-A29A-81D2C9754576 - 4648b3bfb6c3788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "865"
+                  endingLineNumber = "865"
+                  offsetFromSymbolStart = "2572">
+               </Location>
+               <Location
+                  uuid = "C681E623-42E2-43BF-A29A-81D2C9754576 - 4648b3bfb6c3788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "865"
+                  endingLineNumber = "865"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "C681E623-42E2-43BF-A29A-81D2C9754576 - 4648b3bfb6c3788b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "865"
+                  endingLineNumber = "865"
+                  offsetFromSymbolStart = "596">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9522BD9A-E1BE-44EA-92B3-87D2E0168028"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9522BD9A-E1BE-44EA-92B3-87D2E0168028 - d23a666208a442df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "883"
+                  endingLineNumber = "883"
+                  offsetFromSymbolStart = "512">
+               </Location>
+               <Location
+                  uuid = "9522BD9A-E1BE-44EA-92B3-87D2E0168028 - d23a666208a442df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "883"
+                  endingLineNumber = "883"
+                  offsetFromSymbolStart = "2596">
+               </Location>
+               <Location
+                  uuid = "9522BD9A-E1BE-44EA-92B3-87D2E0168028 - d23a666208a442df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "883"
+                  endingLineNumber = "883"
+                  offsetFromSymbolStart = "504">
+               </Location>
+               <Location
+                  uuid = "9522BD9A-E1BE-44EA-92B3-87D2E0168028 - d23a666208a442df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for ChoiceOfTwo.DataBaseManager.fetchHistory(completion: (Swift.Optional&lt;Swift.Array&lt;ChoiceOfTwo.Match&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "883"
+                  endingLineNumber = "883"
+                  offsetFromSymbolStart = "2588">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C3BC21B-CE7C-4442-AF87-EF9714C46812"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "875"
+            endingLineNumber = "875"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

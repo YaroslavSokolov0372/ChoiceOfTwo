@@ -17,7 +17,13 @@ class MenuVM {
             onFriendsUpdated?()
         }
     }
+    private (set) var matches = [Match]() {
+        didSet {
+            onMatchesUpadated?()
+        }
+    }
     
+    var onMatchesUpadated: (() -> Void)?
     var onFriendsUpdated: (() -> Void)?
     var onFriendsError: ((Error) -> Void)?
     var onSendInvUpdated: (() -> Void)?
@@ -106,6 +112,19 @@ class MenuVM {
         }
     }
     
+    public func getHistory() async {
+        await dBManager.fetchHistory { matches, error in
+            if let error = error {
+                print("Failed to load history", error)
+            } else {
+                if let matches = matches {
+                    self.matches = matches
+                    print("Matches count -", matches.count)
+                }
+            }
+        }
+    }
+    
     public func sendInv(to user: User) {
         dBManager.sendGameInv(to: user) { success, error in
             if let _ = error {
@@ -146,6 +165,10 @@ class MenuVM {
     
     public func profile() {
         coordinator.profile()
+    }
+    
+    public func matchDetail(match: Match) {
+        coordinator.matcDetail(match: match)
     }
     
     public func dismissHomeScreens() {
