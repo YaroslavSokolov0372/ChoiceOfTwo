@@ -14,7 +14,18 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
     
     //MARK: - UI Components
     private let backButton = CustomCircleButton(rotate: 1, stroke: true)
-    private let imageButton = CustomCircleButton(customImage: "Profile", resized: CGSize(width: 120, height: 120))
+//    private let imageButton = CustomCircleButton(customImage: "Profile", resized: CGSize(width: 120, height: 120))
+    private let circleImage: UIImageView = {
+      let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.image = UIImage(named: "Profile")
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 100
+        iv.alpha = 1.0
+        iv.isUserInteractionEnabled = true
+        
+        return iv
+    }()
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .mainPurple
@@ -41,11 +52,17 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
         
         view.backgroundColor = .white
         
-        imageButton.addTarget(self, action: #selector(imageButtonTapped), for: .touchUpInside)
+        //        imageButton.addTarget(self, action: #selector(imageButtonTapped), for: .touchUpInside)
         skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(imageButtonTapped))
+        circleImage.addGestureRecognizer(gesture)
     }
+    
+    
+    
     
     
     //MARK: - Setup UI
@@ -53,8 +70,11 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
         view.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(imageButton)
-        imageButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(imageButton)
+//        imageButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(circleImage)
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -75,12 +95,19 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
             backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             
             
-            imageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageButton.widthAnchor.constraint(equalToConstant: 100),
-            imageButton.heightAnchor.constraint(equalToConstant: 100),
-            imageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -195),
+//            imageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            imageButton.widthAnchor.constraint(equalToConstant: 100),
+//            imageButton.heightAnchor.constraint(equalToConstant: 100),
+//            imageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -195),
             
-            titleLabel.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 10),
+            
+            circleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            circleImage.widthAnchor.constraint(equalToConstant: 200),
+            circleImage.heightAnchor.constraint(equalToConstant: 200),
+            circleImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -195),
+            
+//            titleLabel.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: circleImage.bottomAnchor, constant: 10),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
@@ -98,6 +125,12 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
         ])
     }
     
+    func setupImage(image: UIImage?) {
+        print("Image size -", image?.size)
+        circleImage.image = image
+        circleImage.alpha = 1.0
+    }
+    
     
     //MARK: - Selectors
     @objc private func imageButtonTapped() {
@@ -108,11 +141,10 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
     }
     
     @objc private func skipButtonTapped() {
-        vm.goToHomePage()
+//        vm.goToHomePage()
     }
     
     @objc private func continueButtonTapped() {
-        
     }
     
     @objc private func backButtonTapped() {

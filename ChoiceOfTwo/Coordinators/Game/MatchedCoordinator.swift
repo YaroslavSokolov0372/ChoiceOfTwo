@@ -40,4 +40,8 @@ class MatchedCoordinator: ChildCoordinator {
     func dismiss() {
         parent?.popLastChildren()
     }
+    
+    func goToDetail(anime: Anime) {
+        parent?.detailView(gameCardControllerRef: nil, anime: anime, navigationController: navigationController, animeted: true)
+    }
 }

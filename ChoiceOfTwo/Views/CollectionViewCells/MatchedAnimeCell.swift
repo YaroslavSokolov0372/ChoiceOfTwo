@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol MatchedAnimeCellProtocol {
+    func didTapCell(with anime: Anime)
+}
+
+
 class MatchedAnimeCell: UICollectionViewCell {
     
+    //MARK: - Variables
+    var anime: Anime!
+    var delegate: MatchedAnimeCellProtocol?
     
     //MARK: - UI Components
     private let coverImage: UIImageView = {
@@ -110,6 +118,9 @@ class MatchedAnimeCell: UICollectionViewCell {
         super.init(frame: .zero)
         self.backgroundColor = .white
         setupUI()
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.addGestureRecognizer(gesture)
     }
     
     required init?(coder: NSCoder) {
@@ -119,6 +130,7 @@ class MatchedAnimeCell: UICollectionViewCell {
     
     //MARK: - Configure
     public func configure(with anime: Anime) {
+        self.anime = anime
         
         self.coverImage.setImageFromStringrURL(stringUrl: anime.coverImage?.extraLarge ?? "")
         
@@ -240,5 +252,10 @@ class MatchedAnimeCell: UICollectionViewCell {
         self.activeNameConstraints = [
             self.animeName.heightAnchor.constraint(equalToConstant: 20),
         ]
+    }
+    
+    //MARK: - Selectors
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        self.delegate?.didTapCell(with: anime)
     }
 }

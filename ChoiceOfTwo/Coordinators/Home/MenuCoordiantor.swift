@@ -51,6 +51,7 @@ class MenuCoordiantor: ChildCoordinator {
         parent?.matchDetail(navigationController: navigationController, animated: true, match: match)
     }
     
+    
     func game() {
         parent?.game()
     }

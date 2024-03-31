@@ -472,7 +472,7 @@ class RegisterController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
-        
+
 //        if vm.email.textState == .success
 //        && vm.username.textState == .success
 //        && vm.password.textState == .success {

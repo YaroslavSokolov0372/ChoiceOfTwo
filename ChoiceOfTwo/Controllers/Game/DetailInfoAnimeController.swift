@@ -222,7 +222,7 @@ class DetailInfoAnimeController: UIViewController {
 //        print(lastViewYPos)
 //        print(lastViewHeight)
         
-        height = lastViewYPos + lastViewHeight - 20
+        height = lastViewYPos + lastViewHeight /*- 20*/
         
 //        print("setting scroll height: \(height)")
         
@@ -358,7 +358,11 @@ class DetailInfoAnimeController: UIViewController {
     
     //MARK: - Selectors
     @objc private func dismissButtonTapped() {
-        vm.dismiss()
+        if vm.isSheet {
+            vm.dismissAsSheet()
+        } else {
+            vm.dismiss()
+        }
     }
     
     deinit {

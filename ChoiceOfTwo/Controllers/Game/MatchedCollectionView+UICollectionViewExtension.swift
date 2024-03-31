@@ -35,6 +35,7 @@ extension MatchedController: UICollectionViewDelegateFlowLayout, UICollectionVie
         }
         
         cell.configure(with: vm.matched[indexPath.row])
+        cell.delegate = self
         return cell
     }
 }

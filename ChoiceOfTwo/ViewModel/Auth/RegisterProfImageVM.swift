@@ -13,6 +13,7 @@ class RegisterProfImageVM {
     
     weak var coordinator: RegisterProfImageCoordinator!
     
+    var image: UIImage?
     
     func goToCropImage(image: UIImage) {
         coordinator.goToCropImage(image: image)
@@ -21,8 +22,6 @@ class RegisterProfImageVM {
     func dismiss() {
         coordinator.dismissScreen()
     }
-    
-    
     
     func goToHomePage() {
         coordinator.parent?.home()

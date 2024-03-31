@@ -10,11 +10,17 @@ import Foundation
 class DetailInfoAnimeVM {
     
     weak var coordinator: DetailAnimeViewCoordinator!
+    var isSheet: Bool
     
     private(set) var anime: Anime
     
-    init(anime: Anime) {
+    init(isSheet: Bool, anime: Anime) {
         self.anime = anime
+        self.isSheet = isSheet
+    }
+    
+    func dismissAsSheet() {
+        coordinator?.dismissAsSheet()
     }
     
     func dismiss() {

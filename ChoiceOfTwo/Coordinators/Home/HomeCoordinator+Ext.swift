@@ -38,6 +38,13 @@ extension HomeCoordinator {
         matchDetailCoordinator.start(match: match)
     }
     
+    func animeDetail(navigationController: UINavigationController, animated: Bool, anime: Anime) {
+        let detailCoordinator =  DetailAnimeViewCoordinator(navigationController: navigationController)
+        detailCoordinator.parent = self
+        addChild(detailCoordinator)
+        detailCoordinator.start(gameCardControllerRef: nil, anime: anime)
+    }
+    
     func game() {
         parent?.game()
     }

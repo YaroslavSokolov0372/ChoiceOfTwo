@@ -28,6 +28,7 @@ class MatchDetailCoordinator: ChildCoordinator {
         viewControllerRef = matchController
         let vm = MatchDetailVM()
         vm.coordinaator = self
+        vm.match = match
         matchController.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(matchController, animated: true)
@@ -35,5 +36,9 @@ class MatchDetailCoordinator: ChildCoordinator {
     
     func dismissScreen() {
         parent?.popLastChildren()
+    }
+    
+    func goToDetail(anime: Anime) {
+        parent?.animeDetail(navigationController: navigationController, animated: true, anime: anime)
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchedController: UIViewController {
+class MatchedController: UIViewController, MatchedAnimeCellProtocol {
     
     //MARK: - Variables
     var vm: MatchedVM!
@@ -74,6 +74,11 @@ class MatchedController: UIViewController {
     //MARK: - Selectors
     @objc private func dismissButtonTapped() {
         vm.dimiss()
+    }
+    
+    //MARK: - Delegate
+    func didTapCell(with anime: Anime) {
+        vm.goToDetail(anime: anime)
     }
     
     deinit {

@@ -30,4 +30,19 @@ class CropImageCoordinator: ChildCoordinator {
         registerController.vm = vm
         navigationController.pushViewController(registerController, animated: true)
     }
+    
+    func dismiss(image: UIImage) {
+        guard let parent = parent as? AuthCoordinator else {
+            return
+        }
+        
+        for child in parent.children {
+            if child is RegisterProfImageCoordinator {
+                let child = child as! RegisterProfImageCoordinator
+                child.setupImage(image: image)
+            }
+        }
+        
+        parent.popLastChildren()
+    }
 }

@@ -13,4 +13,13 @@ class MatchDetailVM {
     weak var coordinaator: MatchDetailCoordinator!
     var match: Match!
     
+    
+    
+    func goToDetail(anime: Anime) {
+        coordinaator.goToDetail(anime: anime)
+    }
+    
+    func dismiss() {
+        coordinaator.dismissScreen()
+    }
 }

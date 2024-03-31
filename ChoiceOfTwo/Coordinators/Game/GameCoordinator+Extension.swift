@@ -26,7 +26,7 @@ extension GameCoordinator {
         cardGameCoordinator.start()
     }
     
-    func detailView(gameCardControllerRef: UIViewController, anime: Anime, navigationController: UINavigationController, animeted: Bool) {
+    func detailView(gameCardControllerRef: UIViewController?, anime: Anime, navigationController: UINavigationController, animeted: Bool) {
         let detailCoordinator =  DetailAnimeViewCoordinator(navigationController: navigationController)
         detailCoordinator.parent = self
         addChild(detailCoordinator)

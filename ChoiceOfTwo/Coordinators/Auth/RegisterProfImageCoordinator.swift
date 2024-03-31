@@ -19,6 +19,14 @@ class RegisterProfImageCoordinator: ChildCoordinator {
     }
     
     
+    func setupImage(image: UIImage) {
+        guard let viewControllerRef = viewControllerRef as? RegisterProfImageController else {
+            return
+        }
+        viewControllerRef.setupImage(image: image)
+    }
+    
+    
     func start() {
         let registerController = RegisterProfImageController()
         viewControllerRef = registerController

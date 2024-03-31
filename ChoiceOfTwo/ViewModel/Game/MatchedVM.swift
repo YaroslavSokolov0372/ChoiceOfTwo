@@ -17,6 +17,10 @@ class MatchedVM {
         coordinator.dismiss()
     }
     
+    func goToDetail(anime: Anime) {
+        coordinator.goToDetail(anime: anime)
+    }
+    
     
     var onMatchedChanges: (() -> Void)?
     
