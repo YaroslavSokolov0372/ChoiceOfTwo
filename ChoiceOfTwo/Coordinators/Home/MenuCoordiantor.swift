@@ -35,8 +35,8 @@ class MenuCoordiantor: ChildCoordinator {
         parent?.searchFriends(navigationController: navigationController, animated: true, friends: friends)
     }
     
-    func profile() {
-        parent?.profile(navigationController: navigationController, animated: true)
+    func profile(image: UIImage) {
+        parent?.profile(navigationController: navigationController, animated: true, image: image)
     }
     
     func coordinatorDidFinish() {

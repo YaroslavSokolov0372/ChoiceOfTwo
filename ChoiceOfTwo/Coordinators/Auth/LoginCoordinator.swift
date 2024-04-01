@@ -20,6 +20,10 @@ class LoginCoordinator: ChildCoordinator {
     }
     
     
+    func goHome() {
+        parent?.home()
+    }
+    
     func start() {
         let loginController = LoginController()
         viewControllerRef = loginController

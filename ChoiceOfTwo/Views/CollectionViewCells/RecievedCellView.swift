@@ -23,12 +23,22 @@ class RecievedCellView: UICollectionViewCell {
     var index: Int!
     
     //MARK: - UI Components
-    private var profileImage: UIImageView = {
-        let im = UIImage(named: "Profile")
-        let iv = UIImageView()
-        iv.image = im
-        return iv
-    }()
+//    private var profileImage: UIImageView = {
+//        let im = UIImage(named: "Profile")
+//        let iv = UIImageView()
+//        iv.image = im
+//        return iv
+//    }()
+    let circleImage: UIImageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 25
+    iv.backgroundColor = .mainLightGray
+    iv.alpha = 1.0
+    iv.isUserInteractionEnabled = true
+    return iv
+}()
     private var username: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 17, type: .regular)
@@ -53,8 +63,11 @@ class RecievedCellView: UICollectionViewCell {
     
     //MARK: - Setup UI
     private func setupUI() {
-        self.addSubview(profileImage)
-        profileImage.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(profileImage)
+//        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(circleImage)
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(username)
         username.translatesAutoresizingMaskIntoConstraints = false
@@ -66,21 +79,25 @@ class RecievedCellView: UICollectionViewCell {
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            profileImage.widthAnchor.constraint(equalToConstant: 50),
-            profileImage.heightAnchor.constraint(equalToConstant: 50),
+//            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+//            profileImage.widthAnchor.constraint(equalToConstant: 50),
+//            profileImage.heightAnchor.constraint(equalToConstant: 50),
             
-            username.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 10),
-            username.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            circleImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            circleImage.widthAnchor.constraint(equalToConstant: 50),
+            circleImage.heightAnchor.constraint(equalToConstant: 50),
+            
+            username.leadingAnchor.constraint(equalTo: circleImage.trailingAnchor, constant: 10),
+            username.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             username.heightAnchor.constraint(equalToConstant: 20),
             
             declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-            declineButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            declineButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             declineButton.widthAnchor.constraint(equalToConstant: 45),
             declineButton.heightAnchor.constraint(equalToConstant: 45),
             
             acceptButton.trailingAnchor.constraint(equalTo: declineButton.leadingAnchor, constant: -15),
-            acceptButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            acceptButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             acceptButton.widthAnchor.constraint(equalToConstant: 45),
             acceptButton.heightAnchor.constraint(equalToConstant: 45),
         ])

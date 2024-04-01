@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 
 
@@ -20,6 +21,7 @@ class DataBaseManager {
     }
     
     private let dataBase = Firestore.firestore()
+    private let storage = Storage.storage().reference()
     
     private var invListener: ListenerRegistration? = nil
     private var currentGameListener: ListenerRegistration? = nil
@@ -42,41 +44,66 @@ class DataBaseManager {
         self.gamePlayersCountListener?.remove()
     }
     
-    //    func addStartGameListener(completion: @escaping (_ addedListener: Bool, _ justAdddedListener: Bool, Error?) -> Void) {
-    //        guard let userId = Auth.auth().currentUser?.uid else {
-    //            completion(false, false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-    //            return
-    //        }
-    //
-    //        self.dataBase
-    //            .collection("currentGames")
-    //            .document(userId)
-    //            .collection("players")
-    //            .addSnapshotListener { snapshot, error in
-    //                if let error = error {
-    //                    completion(false, false, error)
-    //                }
-    //
-    //                guard let snapshot = snapshot else {
-    //                    completion(false, false, error)
-    //                    return
-    //                }
-    //
-    //
-    //                do {
-    //                    let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
-    //                    if friends.count == 0 {
-    //                        completion(false, true, nil)
-    //                    }
-    //                    if friends.count == 2 {
-    //                        completion(true, false, nil)
-    //                    }
-    //                } catch {
-    //                    completion(false, false, FireBaseError.couldntGetDocument("Couldn't get Documents"))
-    //                }
-    //            }
-    //    }
     
+    func fetchProfileImage(forCurrentUser: Bool = false, for uid: String? = nil, completion: @escaping (/*_ urlStr: String?*/ _ data: Data?, Error?) -> Void) {
+        
+        if forCurrentUser == true {
+            guard let currentUser = Auth.auth().currentUser else {
+                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
+                return
+            }
+            
+            storage.child("ProfImages/\(currentUser.uid).png").getData(maxSize: (1 * 10240 * 10240)) { data, error in
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(data, nil)
+                }
+            }
+        } else {
+            guard let uid = uid else {
+                completion(nil, nil)
+                print("Couldn't fetch prof image bcs no uid found")
+                return
+            }
+
+            
+            storage.child("ProfImages/\(uid).png").getData(maxSize: (1 * 10240 * 10240)) { data, error in
+                if let error = error {
+                    completion(nil, error)
+                } else {
+                    completion(data, nil)
+                }
+            }
+//            storage.child("ProfImages/\(uid).png").downloadURL { url, error in
+//                if let error = error {
+////                    completion(nil, error)
+//                } else {
+////                    completion(url?.absoluteString, nil)
+//                }
+//            }
+        }
+    }
+
+    func writeProfImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
+        
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
+            return
+        }
+        
+        let ref = storage.child("ProfImages/\(userId).png")
+        
+        if let imageData = image.pngData() {
+            ref.putData(imageData, metadata: nil) { _, error in
+                if let error {
+                    completion(false, error)
+                } else {
+                    completion(true, nil)
+                }
+            }
+        }
+    }
     
     func addCurrentGameListener(completion: @escaping (_ hasGame: Bool, Error?) -> Void) {
         
@@ -110,12 +137,6 @@ class DataBaseManager {
     }
     
     func addGameInfoListener(completion: @escaping (_ info: GameInfo?, Error?) -> Void) {
-        
-        
-        //        guard let currentUser = Auth.auth().currentUser?.uid else {
-        //            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-        //            return
-        //        }
         
         self.getCurrentGameUID { uid, error in
             if let error = error {
@@ -207,39 +228,7 @@ class DataBaseManager {
             }
     }
     
-    //    func exitFromTheGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
-    //        guard let currentUser = Auth.auth().currentUser?.uid else {
-    //            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-    //            return
-    //        }
-    //
-    //
-    //        getCurrentGameUID { uid, error in
-    //            if let error = error {
-    //                completion(false, error)
-    //                return
-    //            }
-    //            if let uid = uid {
-    //                self.dataBase
-    //                    .collection("currentGames")
-    //                    .document(uid)
-    //                    .collection("players")
-    //                    .document(currentUser)
-    //                    .delete { error in
-    //                        if let error = error {
-    //                            completion(false, error)
-    //                        } else {
-    //                            completion(true, nil)
-    //                        }
-    //                    }
-    //      f
-    
     func addPlayersListener(completion: @escaping(_ count: Int?, Error?) -> Void) {
-        
-        //        guard let currentUser = Auth.auth().currentUser?.uid else {
-        //            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-        //            return
-        //        }
         
         getCurrentGameUID { uid, error in
             if let error = error {
@@ -269,11 +258,6 @@ class DataBaseManager {
     }
     
     func deleteGame(completion: @escaping (_ success: Bool, Error?) -> Void) {
-        
-//        guard let currentUser = Auth.auth().currentUser?.uid else {
-//            completion(false, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-//            return
-//        }
         
         getCurrentGameUID { uid, error in
             if let error = error {
@@ -341,7 +325,6 @@ class DataBaseManager {
         }
     }
     
-    
     func fetchTags(completion: @escaping (_ succes: ([Genre.RawValue], [Format.RawValue])?, Error?) -> Void) {
         getCurrentGameUID { uid, error in
             if let error = error {
@@ -378,7 +361,6 @@ class DataBaseManager {
         }
     }
 
-    
     func getCurrentGameUID(completion: @escaping (_ uid: String?, Error?) -> Void) {
         
         guard let currentUser = Auth.auth().currentUser?.uid else {
@@ -565,8 +547,6 @@ class DataBaseManager {
     
     
     func finishGame(
-//        genres: [Genre.RawValue],
-//        formats: [Format.RawValue],
         matchedAnimes: [Anime],
         completion: @escaping (Bool, Error?) -> Void) {
             
@@ -645,10 +625,7 @@ class DataBaseManager {
     
 
     func addMatchToHistory(
-//        genres: [Genre.RawValue],
-//        formats: [Format.RawValue],
         matchedAnimes: [Anime],
-//        skippedAnime: [Anime],
         completion: @escaping (_ saved: Bool?, Error?) -> Void) {
             
             guard let userId = Auth.auth().currentUser?.uid else {
@@ -676,15 +653,23 @@ class DataBaseManager {
                                     return
                                 }
                                 
-                                var users: [String] = []
+                                var users: [User] = []
+                                
                                 
                                 documents.forEach { snapshot in
-                                    let user = snapshot.data()
-                                    let uid = user["uid"] as! String
-                                    users.append(uid)
+                                    do {
+                                        let user = try snapshot.data(as: User.self)
+                                        users.append(user)
+                                    } catch {
+                                        completion(nil, error)
+                                    }
+//                                    let uid = user["uid"] as! String
+//                                    users.append(uid)
                                 }
                                 
-                                users.forEach { userUID in
+                                users.forEach { user in
+                                    
+                                    let indexInArray = users.firstIndex(where: { $0.uid == user.uid })
                                     
                                     self.dataBase
                                         .collection("currentGames")
@@ -702,13 +687,15 @@ class DataBaseManager {
                                             
                                             self.dataBase
                                                 .collection("users")
-                                                .document(userUID)
+                                                .document(user.uid)
                                                 .collection("history")
                                                 .document(uid)
                                                 .setData([
                                                     "genres": data["genres"],
                                                     "formats": data["formats"],
-                                                    "gameUID": uid
+                                                    "gameUID": uid,
+                                                    "playedWith": indexInArray == 0 ? users[1].uid : users[0].uid,
+                                                    "playersName": indexInArray == 0 ? users[1].username : users[0].username
                                                 ])
                                         }
                                     
@@ -716,7 +703,7 @@ class DataBaseManager {
                                         .collection("currentGames")
                                         .document(uid)
                                         .collection("playersChoices")
-                                        .document(userUID)
+                                        .document(user.uid)
                                         .collection("skipped")
                                         .getDocuments { snapshot, error in
                                             if let error = error {
@@ -734,7 +721,7 @@ class DataBaseManager {
                                                     let skippedAnime = try document.data(as: Anime.self)
                                                     try self.dataBase
                                                         .collection("users")
-                                                        .document(userUID)
+                                                        .document(user.uid)
                                                         .collection("history")
                                                         .document(uid)
                                                         .collection("skipped")
@@ -767,7 +754,7 @@ class DataBaseManager {
                                         do {
                                             try self.dataBase
                                                 .collection("users")
-                                                .document(userUID)
+                                                .document(user.uid)
                                                 .collection("history")
                                                 .document(uid)
                                                 .collection("matched")
@@ -849,6 +836,8 @@ class DataBaseManager {
                 let data = document.data()
                 let genres = data["genres"] as! [Genre.RawValue]
                 let formats = data["formats"] as! [Format.RawValue]
+                let playedWithUID = data["playedWith"] as! String
+                let playersName = data["playersName"] as! String
                 var matchedAnimes: [Anime] = []
                 var skippedAnimes: [Anime] = []
                 
@@ -890,7 +879,7 @@ class DataBaseManager {
                     }
                 }
                 
-                history.append(Match(skipped: skippedAnimes, matched: matchedAnimes, genres: genres, formats: formats))
+                history.append(Match(skipped: skippedAnimes, matched: matchedAnimes, genres: genres, formats: formats, playedWithUID: playedWithUID, playersName: playersName))
             }
             
             completion(history, nil)
@@ -1027,8 +1016,6 @@ class DataBaseManager {
             }
         }
     }
-    
-    
     
     func clearInvsInMenu(completion: @escaping (Bool, Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -1300,31 +1287,6 @@ class DataBaseManager {
         }
     }
     
-//    func fetchUsersWhoSentFriendship(completion: @escaping ([User]?, Error?) -> Void) {
-//        guard let userId = Auth.auth().currentUser?.uid else {
-//            completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
-//            return
-//        }
-//        
-//        dataBase.collection("users").document(userId).collection("friendshipRequestFrom").getDocuments { snapshot, error in
-//            
-//            if let _ = error {
-//                completion(nil, FireBaseError.couldntGetDocument(""))
-//            }
-//            guard let snapshot = snapshot  else {
-//                completion(nil, FireBaseError.couldntGetDocument(""))
-//                return
-//            }
-//            
-//            do {
-//                let friends = try snapshot.documents.map({ try $0.data(as: User.self)})
-//                completion(friends, nil)
-//            } catch {
-//                completion(nil, FireBaseError.couldntGetDocument("Couldn't get Documents"))
-//            }
-//        }
-//    }
-    
     func searchInRecievedInv(with string: String, completion: @escaping ([User]?, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             completion(nil, FireBaseError.didntFindCurrentUser("Didn't find current user"))
@@ -1552,4 +1514,5 @@ class DataBaseManager {
         
         completion(true, nil)
     }
+    
 }

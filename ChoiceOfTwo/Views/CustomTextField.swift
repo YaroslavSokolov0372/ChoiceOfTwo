@@ -50,7 +50,8 @@ class CustomTextField: UITextField {
         case .password:
             self.placeholder = "Password"
             self.textContentType = .password
-            self.isSecureTextEntry = true
+//            self.isSecureTextEntry = true
+            
         }
         
         if strokeColor != nil {

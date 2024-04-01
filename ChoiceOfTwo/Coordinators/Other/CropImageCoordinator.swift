@@ -22,7 +22,7 @@ class CropImageCoordinator: ChildCoordinator {
     }
     
     func start(image: UIImage) {
-        let registerController = FinalCropImageController()
+        let registerController = CropImageController()
         viewControllerRef = registerController
         let vm = CropImageVM()
         vm.coordinator = self
@@ -42,7 +42,10 @@ class CropImageCoordinator: ChildCoordinator {
                 child.setupImage(image: image)
             }
         }
-        
         parent.popLastChildren()
+    }
+    
+    func dismissScreen() {
+        parent?.popLastChildren()
     }
 }

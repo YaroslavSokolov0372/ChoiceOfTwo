@@ -57,7 +57,7 @@ class MatchDetailController: UIViewController, AnimeCardWithLabelPotocol {
         cv.register(AnimeCardWithLabelViewCell.self, forCellWithReuseIdentifier: "Cell")
         return cv
     }()
-    private let skippedHeader = CustomSectionHeaderView(headerName: "skippedHeader")
+    private let skippedHeader = CustomSectionHeaderView(headerName: "Skipped")
     private let skippedAnimeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -229,7 +229,6 @@ extension MatchDetailController: UICollectionViewDelegateFlowLayout, UICollectio
             let size: CGSize = vm.match.formats[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
             return CGSize(width: size.width + 20, height: size.height + 20)
         } else {
-//            let size = CGSize(width: collectionView.frame.width * 0.44, height: 290)
             let size = CGSize(width: view.frame.width * 0.44, height: 290)
             return size
         }

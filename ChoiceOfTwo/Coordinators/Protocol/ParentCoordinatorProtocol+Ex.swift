@@ -48,6 +48,16 @@ extension ParentCoordinator {
         }
     }
     
+    func popToViewRoot() {
+        if !children.isEmpty {
+            let lastCoordinator = children.last as! ChildCoordinator
+            lastCoordinator.viewControllerRef?.navigationController?.popToRootViewController(animated: true)
+            self.childDidFinish(lastCoordinator)
+        }
+    }
+    
+    
+    
     func popLastAsSheet() {
         if !children.isEmpty {
             let lastCoordinator = children.last as! ChildCoordinator

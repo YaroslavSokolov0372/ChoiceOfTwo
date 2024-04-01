@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MenuVM {
     weak var coordinator: MenuCoordiantor!
@@ -32,16 +33,54 @@ class MenuVM {
     var onDeletingFriendError: (() -> Void)?
     var onDeletingFriendSuccess: ((User) -> Void)?
     
+    
+    var onProfileImageChanges: ((Data) -> Void)?
+    var onProfileImageError: ((Error?, String?) -> Void)?
+    
     init() {
         self.prepareGameInv()
         self.getFriends()
         self.addCurrentGameListener()
-//        self.setupGameListener()
+        self.fetchCurrentUserProfImage()
     }
     
     private func startGame() {
         coordinator.game()
     }
+    
+    private func fetchCurrentUserProfImage() {
+        self.dBManager
+            .fetchProfileImage(forCurrentUser: true) { data, error in
+                if let error = error {
+                    print("Failed current user prof image url", error)
+                    self.onProfileImageError?(error, nil)
+                } else {
+                    if let data = data {
+                        print("Fetched current user prof image url")
+                        self.onProfileImageChanges?(data)
+                    } else {
+                        self.onProfileImageError?(nil, "No data in absolut str")
+                    }
+                }
+            }
+    }
+    
+    func fetchProfImage(for uid: String, completion: @escaping (Data) -> () ) {
+        self.dBManager
+            .fetchProfileImage(forCurrentUser: false, for: uid) { data, error in
+                if let error = error {
+                    print("Failed current user prof image url", error)
+                } else {
+                    if let data = data {
+                        completion(data)
+                    } else {
+                        print("No data found for friend's prof image")
+                    }
+                }
+            }
+    }
+    
+    
     
 //    private func setupGameListener() {
 //        self.dBManager.addStartGameListener { isGameStarted, justAdddedListener, error in
@@ -163,8 +202,8 @@ class MenuVM {
         coordinator.searchFriends(friends: friends)
     }
     
-    public func profile() {
-        coordinator.profile()
+    public func profile(image: UIImage) {
+        coordinator.profile(image: image)
     }
     
     public func matchDetail(match: Match) {

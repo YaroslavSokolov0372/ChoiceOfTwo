@@ -19,15 +19,15 @@ class ProfileCoordinator: ChildCoordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        let searchFController = ProfileController()
-        viewControllerRef = searchFController
+    func start(image: UIImage) {
+        let profileCoorinator = ProfileController()
+        profileCoorinator.circleImage.image = image
+        viewControllerRef = profileCoorinator
         let vm = ProfileVM()
         vm.coordinator = self
-        searchFController.vm = vm
+        profileCoorinator.vm = vm
         navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.present(searchFController, animated: true)
-        
+        navigationController.present(profileCoorinator, animated: true)
     }
     
     func coordinatorDidFinish() {

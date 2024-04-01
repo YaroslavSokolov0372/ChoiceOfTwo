@@ -13,15 +13,22 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     var vm: MenuVM!
     
     //MARK: - UI Components
-    let profileImageButton = CustomCircleButton(customImage: "Profile")
+    let circleImage: UIImageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 25
+    iv.backgroundColor = .mainLightGray
+    iv.alpha = 1.0
+    iv.isUserInteractionEnabled = true
+    return iv
+}()
     let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
     let friendsCollView: UICollectionView = {
-        //        let layout = UICollectionViewFlowLayout()
         let layout = MyCollectionFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.showsHorizontalScrollIndicator = false
-        //        collectionV.backgroundColor = .mainPurple
         collectionV.register(FriendCellView.self, forCellWithReuseIdentifier: "Cell")
         return collectionV
     }()
@@ -52,6 +59,7 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         width: (view.frame.width * 0.85),
         height: 55
     ))
+    
     lazy var animatedDeleteView = CustomAnimatedMessageWithButtons(frame: CGRect(
         x: view.frame.minX - 350,
         //        y: profileImageButton.frame.minY,
@@ -67,8 +75,13 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        profileImageButton.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
-        //        profileImageButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        animatedGameInvView.alpha = 0.0
+        animatedDeleteView.alpha = 0.0
+        
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(profileButtonTapped))
+        self.circleImage.addGestureRecognizer(gesture)
+        
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
         historyCollView.dataSource = self
@@ -77,6 +90,11 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         animatedDeleteView.delegate = self
         animatedGameInvView.delegate = self
         
+        vm.onProfileImageChanges = { str in
+            let image = UIImage(data: str)
+            self.circleImage.image = image
+        }
+        
         vm.onFriendsUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.friendsCollView.reloadData()
@@ -84,7 +102,9 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         }
         vm.onMatchesUpadated = {
             DispatchQueue.main.async { [weak self] in
-                self?.historyCollView.reloadData()
+                
+                //                self?.historyCollView.reloadData()
+                self?.historyCollView.reloadSections(IndexSet(integer: 0))
             }
         }
         
@@ -138,13 +158,13 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     
     override func viewWillDisappear(_ animated: Bool) {
         //        vm.removeListeners()
+        
     }
     
     //MARK: Setup UI
     private func setupUI() {
-        
-        view.addSubview(profileImageButton)
-        profileImageButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(circleImage)
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(friendsHeaderLabel)
         friendsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -163,16 +183,14 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         
         view.addSubview(friendInteractView)
         
-        //        view.addSubview(animatedMessageLabel)
-        
         NSLayoutConstraint.activate([
             
-            self.profileImageButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.profileImageButton.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
-            self.profileImageButton.heightAnchor.constraint(equalToConstant: 50),
-            self.profileImageButton.widthAnchor.constraint(equalToConstant: 50),
+            self.circleImage.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+            self.circleImage.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
+            self.circleImage.heightAnchor.constraint(equalToConstant: 50),
+            self.circleImage.widthAnchor.constraint(equalToConstant: 50),
             
-            self.friendsHeaderLabel.topAnchor.constraint(equalTo: self.profileImageButton.bottomAnchor, constant: 10),
+            self.friendsHeaderLabel.topAnchor.constraint(equalTo: self.circleImage.bottomAnchor, constant: 10),
             self.friendsHeaderLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.friendsHeaderLabel.heightAnchor.constraint(equalToConstant: 30),
             
@@ -199,7 +217,7 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     
     //MARK: - Selectors
     @objc private func profileButtonTapped() {
-        vm.profile()
+        vm.profile(image: circleImage.image!)
     }
     
     //MARK: - Delegate

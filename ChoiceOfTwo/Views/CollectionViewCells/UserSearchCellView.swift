@@ -31,12 +31,22 @@ class UserSearchCellView: UICollectionViewCell {
     }
 
     //MARK: - UI Components
-    private var profileImage: UIImageView = {
-      let im = UIImage(named: "Profile")
-      let iv = UIImageView()
-        iv.image = im
-        return iv
-    }()
+//    private var profileImage: UIImageView = {
+//      let im = UIImage(named: "Profile")
+//      let iv = UIImageView()
+//        iv.image = im
+//        return iv
+//    }()
+    let circleImage: UIImageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 25
+    iv.backgroundColor = .mainLightGray
+    iv.alpha = 1.0
+    iv.isUserInteractionEnabled = true
+    return iv
+}()
     private var username: UILabel = {
       let label = UILabel()
         label.font = .nunitoFont(size: 17, type: .regular)
@@ -59,19 +69,26 @@ class UserSearchCellView: UICollectionViewCell {
     
     //MARK: - SetupUI
     private func setupUI() {
-        self.addSubview(profileImage)
-        profileImage.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(profileImage)
+//        profileImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(circleImage)
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(username)
         username.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            profileImage.widthAnchor.constraint(equalToConstant: 50),
-            profileImage.heightAnchor.constraint(equalToConstant: 50),
+//            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+//            profileImage.widthAnchor.constraint(equalToConstant: 50),
+//            profileImage.heightAnchor.constraint(equalToConstant: 50),
             
-            username.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 10),
-            username.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            circleImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            circleImage.widthAnchor.constraint(equalToConstant: 50),
+            circleImage.heightAnchor.constraint(equalToConstant: 50),
+            
+            username.leadingAnchor.constraint(equalTo: circleImage.trailingAnchor, constant: 10),
+            username.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             username.heightAnchor.constraint(equalToConstant: 20),
             
 
@@ -101,7 +118,7 @@ class UserSearchCellView: UICollectionViewCell {
         
         activeButtonsConstraints = [
             declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-            declineButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            declineButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             sendRequestButton.leadingAnchor.constraint(equalTo: declineButton.trailingAnchor, constant: 40),
             sendRequestButton.centerYAnchor.constraint(equalTo: declineButton.centerYAnchor),
         ]
@@ -129,7 +146,7 @@ class UserSearchCellView: UICollectionViewCell {
         
         activeButtonsConstraints = [
             sendRequestButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            sendRequestButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            sendRequestButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
             declineButton.leadingAnchor.constraint(equalTo: sendRequestButton.trailingAnchor, constant: 40),
             declineButton.centerYAnchor.constraint(equalTo: sendRequestButton.centerYAnchor),
         ]
@@ -139,7 +156,7 @@ class UserSearchCellView: UICollectionViewCell {
         if alrdSentInv != nil, alrdSentInv == true {
             activeButtonsConstraints = [
                 declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-                declineButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+                declineButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
                 sendRequestButton.leadingAnchor.constraint(equalTo: declineButton.trailingAnchor, constant: 40),
                 sendRequestButton.centerYAnchor.constraint(equalTo: declineButton.centerYAnchor),
             ]
@@ -152,7 +169,7 @@ class UserSearchCellView: UICollectionViewCell {
         } else {
             activeButtonsConstraints = [
                     sendRequestButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-                    sendRequestButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+                    sendRequestButton.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
                     declineButton.leadingAnchor.constraint(equalTo: sendRequestButton.trailingAnchor, constant: 40),
                     declineButton.centerYAnchor.constraint(equalTo: sendRequestButton.centerYAnchor),
             ]

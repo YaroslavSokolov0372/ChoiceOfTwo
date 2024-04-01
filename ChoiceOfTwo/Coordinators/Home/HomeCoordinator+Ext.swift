@@ -17,11 +17,11 @@ extension HomeCoordinator {
         menuCoordinator.start()
     }
     
-    func profile(navigationController: UINavigationController, animated: Bool) {
+    func profile(navigationController: UINavigationController, animated: Bool, image: UIImage) {
         let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
         profileCoordinator.parent = self
         addChild(profileCoordinator)
-        profileCoordinator.start()
+        profileCoordinator.start(image: image)
     }
     
     func searchFriends(navigationController: UINavigationController, animated: Bool, friends: [User]) {

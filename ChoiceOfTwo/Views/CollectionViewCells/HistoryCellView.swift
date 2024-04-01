@@ -43,7 +43,21 @@ class HistoryCellView: UICollectionViewCell {
         label.backgroundColor = .white
         return label
     }()
-    private let profileImageButton = CustomCircleButton(customImage: "Profile")
+    
+    
+//    private let profileImageButton = CustomCircleButton(customImage: "Profile")
+    
+    let circleImage: UIImageView = {
+        let iv = UIImageView()
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 20
+        iv.backgroundColor = .mainLightGray
+        iv.alpha = 1.0
+        iv.isUserInteractionEnabled = true
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
+    
     private let playedWithName: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 14, type: .regular)
@@ -151,8 +165,11 @@ class HistoryCellView: UICollectionViewCell {
         content.addSubview(playedWithHeader)
         playedWithHeader.translatesAutoresizingMaskIntoConstraints = false
         
-        content.addSubview(profileImageButton)
-        profileImageButton.translatesAutoresizingMaskIntoConstraints = false
+//        content.addSubview(profileImageButton)
+//        profileImageButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        content.addSubview(circleImage)
+        circleImage.translatesAutoresizingMaskIntoConstraints = false
         
         content.addSubview(playedWithName)
         playedWithName.translatesAutoresizingMaskIntoConstraints = false
@@ -193,18 +210,24 @@ class HistoryCellView: UICollectionViewCell {
             //            playedWithHeader.widthAnchor.constraint(equalToConstant: 150),
             playedWithHeader.widthAnchor.constraint(equalToConstant: 130),
             
-            profileImageButton.topAnchor.constraint(equalTo: playedWithHeader.bottomAnchor, constant: 5),
-            profileImageButton.leadingAnchor.constraint(equalTo: playedWithHeader.leadingAnchor),
-            profileImageButton.heightAnchor.constraint(equalToConstant: 40),
-            profileImageButton.widthAnchor.constraint(equalToConstant: 40),
+//            profileImageButton.topAnchor.constraint(equalTo: playedWithHeader.bottomAnchor, constant: 5),
+//            profileImageButton.leadingAnchor.constraint(equalTo: playedWithHeader.leadingAnchor),
+//            profileImageButton.heightAnchor.constraint(equalToConstant: 40),
+//            profileImageButton.widthAnchor.constraint(equalToConstant: 40),
             
-            playedWithName.centerYAnchor.constraint(equalTo: profileImageButton.centerYAnchor),
-            playedWithName.leadingAnchor.constraint(equalTo: profileImageButton.trailingAnchor, constant: 5),
+            
+            circleImage.topAnchor.constraint(equalTo: playedWithHeader.bottomAnchor, constant: 5),
+            circleImage.leadingAnchor.constraint(equalTo: playedWithHeader.leadingAnchor),
+            circleImage.heightAnchor.constraint(equalToConstant: 40),
+            circleImage.widthAnchor.constraint(equalToConstant: 40),
+            
+            playedWithName.centerYAnchor.constraint(equalTo: circleImage.centerYAnchor),
+            playedWithName.leadingAnchor.constraint(equalTo: circleImage.trailingAnchor, constant: 5),
             playedWithName.heightAnchor.constraint(equalToConstant: 50),
             playedWithName.trailingAnchor.constraint(equalTo: playedWithHeader.trailingAnchor),
             
             genresHeader.leadingAnchor.constraint(equalTo: content.leadingAnchor, constant: 20),
-            genresHeader.topAnchor.constraint(equalTo: profileImageButton.bottomAnchor, constant: 10),
+            genresHeader.topAnchor.constraint(equalTo: circleImage.bottomAnchor, constant: 10),
             genresHeader.heightAnchor.constraint(equalToConstant: 15),
             genresHeader.widthAnchor.constraint(equalToConstant: 150),
             
@@ -254,6 +277,7 @@ class HistoryCellView: UICollectionViewCell {
         self.matchedCollectionView.reloadData()
         self.skipped = match.skipped
         self.skippedCollectionView.reloadData()
+        self.playedWithName.text = match.playersName
         self.genresCount.text = match.genres.count == 0 ? "All" : String(match.genres.count)
         self.formatsCount.text = match.formats.count == 0 ? "All" : String(match.formats.count)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))

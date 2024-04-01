@@ -35,15 +35,29 @@ extension SearchFriendsController: UICollectionViewDelegateFlowLayout, UICollect
             }
             
             if vm.whomSentInvUsers.contains(where: { $0.uid == vm.searchUsers[indexPath.row].uid }) {
+                
+                vm.fetchProfImage(for: vm.searchUsers[indexPath.row].uid) { data in
+                    cell.circleImage.image = UIImage(data: data)
+                }
+                
                 cell.configure(with: vm.searchUsers[indexPath.row], alrdSentInv: true)
             } else {
+                
+                vm.fetchProfImage(for: vm.searchUsers[indexPath.row].uid) { data in
+                    cell.circleImage.image = UIImage(data: data)
+                }
+                
                 cell.configure(with: vm.searchUsers[indexPath.row], alrdSentInv: false)
             }
+            
             cell.delegate = self
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? RecievedCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
+            }
+            vm.fetchProfImage(for: vm.sentInvUsers[indexPath.row].uid) { data in
+                cell.circleImage.image = UIImage(data: data)
             }
             cell.configure(with: vm.sentInvUsers[indexPath.row], index: indexPath.row)
             cell.delegate = self

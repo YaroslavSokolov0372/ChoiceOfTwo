@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FinalCropImageController: UIViewController {
+class CropImageController: UIViewController {
     
     //MARK: - Variables
     var vm: CropImageVM!
@@ -42,8 +42,8 @@ class FinalCropImageController: UIViewController {
         view.backgroundColor = .mainLightGray
         return view
     }()
-    private let continueButton: UIButton = CustomCircleButton(customImage: "CheckMark", imageColor: .mainPurple, stroke: true)
-    private let cancelButton: UIButton = CustomCircleButton(customImage: "Plus", imageColor: .mainPurple, stroke: true)
+    private let continueButton: UIButton = CustomCircleButton(customImage: "CheckMark", imageColor: .mainPurple, stroke: true, cornerRadius: 25)
+    private let cancelButton: UIButton = CustomCircleButton(customImage: "Plus", rotate: 4, imageColor: .mainPurple, stroke: true, cornerRadius: 25)
     
 
     
@@ -58,7 +58,10 @@ class FinalCropImageController: UIViewController {
         overlay.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(wasDragged)))
         frontImageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(wasZoomed)))
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
     }
+    
+
     
     override func viewDidLayoutSubviews() {
         configureFrontImageView()
@@ -179,21 +182,11 @@ class FinalCropImageController: UIViewController {
             gesture.setTranslation(CGPoint.zero, in: frontImageView)
         } 
         else if gesture.state == .ended {
-//            let p = frontImageView.convert(frontImageView.center, to: overlay)
-            //MARK: - Це те що потрбно. Тут даться інфа сентру кола відносно картинки. Тобто потрібно взяти ці данні і вирізати по ним картунку.
-            let p = view.convert(view.center, to: frontImageView)
-            centrOverlayRelToImage = p
-            print(p)
-            
-//            print("I am here")
-//            let p = overlay.convert(overlay.center, to: overlay)
-            //MARK: - Тут мається на увазі те, що водносно центра овелрею сам оверлей має такі координати які вказуються в прінті(типу якзо взяти x та y з прінту, то це є центр)
             
             let maxY = frontImageView.frame.maxY
             let minY = frontImageView.frame.minY
             let minX = frontImageView.frame.minX
             let maxX = frontImageView.frame.maxX
-//            let halfOfScreenH = self.view.frame.height / 2
             let halfOfScreenH = view.frame.height / 2
             let halfOfScreenW = view.frame.width / 2
             let circleMaxY = halfOfScreenH + (rect.width / 2)
@@ -230,14 +223,6 @@ class FinalCropImageController: UIViewController {
             UIView.animate(withDuration: 0.2, delay: 1.0) {
                 self.blurView.alpha = 1.0
             }
-            
-//            let newRect = CGRect(
-                //                x: rect.minX + centrOverlayRelToImage.x,
-                //                y: rect.minY + centrOverlayRelToImage.y,
-//                x: centrOverlayRelToImage.x * calculateMultiply,
-//                y: centrOverlayRelToImage.y * calculateMultiply,
-//                width: rect.width * calculateMultiply,
-//                height: rect.height * calculateMultiply)
         }
     }
     
@@ -253,78 +238,26 @@ class FinalCropImageController: UIViewController {
     }
     
     @objc private func continueTapped() {
-        let imageMinX = frontImageView.frame.minX
-        let imageMinY = frontImageView.frame.minY
-        let halfOfScreenH = view.frame.height / 2
-        let halfOfScreenW = view.frame.width / 2
-        let circleMinY = halfOfScreenH - (rect.width / 2)
-        let circleMinX = halfOfScreenW - (rect.width / 2)
-        let difference = imageMinY - circleMinY
-        
         
         let p = view.convert(view.center, to: frontImageView)
         
         centrOverlayRelToImage = p
         
         var newRect: CGRect = .zero
-        //        if frontImageView.frame.width == view.frame.width {
-        //            let calculateMultiply = originalImageSize.width / rect.width
-        //            newRect = CGRect(
-        //                x: rect.minX,
-        //                y: rect.minY,
-        //                x: centrOverlayRelToImage.x,
-        //                y: centrOverlayRelToImage.y,
-        //                width: rect.width * calculateMultiply,
-        //                height: rect.height * calculateMultiply)
-        //        } else {
-        
-//        let calculateMultiply = originalImageSize.height / rect.height
-        
         let calculateMultiply = originalImageSize.height / frontImageView.frame.height
         let widthMultiply = originalImageSize.width / frontImageView.frame.width
         
-        print("Multiply width -", widthMultiply, "height -", calculateMultiply)
-        
-//        print("Calculated multiply", calculateMultiply, "The height - :", (rect.height * calculateMultiply))
-        print("Center x to centerX of an image -", centrOverlayRelToImage.x)
-//        newRect = CGRect(
-//            //                x: rect.minX + centrOverlayRelToImage.x,
-//            //                y: rect.minY + centrOverlayRelToImage.y,
-        
-////            x: centrOverlayRelToImage.x * calculateMultiply,
-////            y: centrOverlayRelToImage.y * calculateMultiply,
-        ///
-//            x: centrOverlayRelToImage.x * calculateMultiply,
-//            y: centrOverlayRelToImage.y * calculateMultiply,
-//            width: rect.width * calculateMultiply,
-//            height: rect.height * calculateMultiply)
-        
-        print("x to cropp -", widthMultiply * p.x)
-        
                 newRect = CGRect(
                     x: widthMultiply * (p.x - radius),
-//                    y: rect.minY,
                     y: calculateMultiply * (p.y - radius),
                     width: widthMultiply * rect.width,
                     height: calculateMultiply * rect.height)
         
-//        print(frontImageView.image?.cgImage)
         let croppedImage = frontImageView.image?.cgImage?.cropping(to: newRect)
-        
-        print("new image size -", croppedImage?.width, croppedImage?.height)
-        
-        //        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 350))
-        //        imageView.contentMode = .scaleAspectFit
-        //        imageView.image = UIImage(cgImage: croppedImage!)
-        
         let image = UIImage(cgImage: croppedImage!)
 
-//        vm.coordinator.dismiss(image: frontImageView.image!)
-        
         vm.coordinator.dismiss(image: image)
-        
-        //        imageView.image = imageWithImage(image: frontImageView.image!, croppedTo: newRect)
-        //        overlay.addSubview(imageView)
+        self.frontImageView.frame.origin.x = self.view.frame.minX
     }
     
     //MARK: - Side Func
@@ -342,6 +275,12 @@ class FinalCropImageController: UIViewController {
             maskLayer.fillRule = .evenOdd
         }
         viewToMask.layer.mask = maskLayer
+    }
+    
+    
+    @objc private func cancelButtonTapped() {
+        vm.coordinator.dismissScreen()
+        self.frontImageView.frame.origin.x = self.view.frame.minX
     }
     
     func imageWithImage(image: UIImage, croppedTo rect: CGRect) -> UIImage {
@@ -365,10 +304,7 @@ class FinalCropImageController: UIViewController {
     
     func setupFrontImageSize(image: UIImageView, rect: CGRect, center: CGPoint) {
         if rect.height > image.frameForImageInImageViewAspectFit().height {
-//            print(image.frameForImageInImageViewAspectFit().height)
             let difference = rect.height - image.frameForImageInImageViewAspectFit().height
-            let procent = rect.height / 100
-            let toAddProcent = difference / procent
             
             image.frame = CGRect(x: 0, y: 0, width: image.frameForImageInImageViewAspectFit().width + difference, height: image.frameForImageInImageViewAspectFit().height + difference)
             image.center = center

@@ -10,8 +10,7 @@ import UIKit
 
 protocol ChildCoordinator: Coordinator {
     
-    func coordinatorDidFinish()
-    
+    func coordinatorDidFinish() 
     var viewControllerRef: UIViewController? {get set}
 }
 

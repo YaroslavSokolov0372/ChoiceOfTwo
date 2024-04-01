@@ -167,6 +167,22 @@ class SearchFriendsVM {
         self.sentInvUsers.remove(at: index)
     }
     
+    func fetchProfImage(for uid: String, completion: @escaping (Data) -> () ) {
+        self.dBManager
+            .fetchProfileImage(forCurrentUser: false, for: uid) { data, error in
+                if let error = error {
+                    print("Failed current user prof image url", error)
+                } else {
+                    if let data = data {
+                        completion(data)
+                    } else {
+                        print("No data found for friend's prof image")
+                    }
+                }
+            }
+    }
+
+    
     
  
     //MARK: - Coordinator

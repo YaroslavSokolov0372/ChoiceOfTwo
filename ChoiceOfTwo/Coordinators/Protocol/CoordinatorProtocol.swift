@@ -21,8 +21,4 @@ extension Coordinator {
     func start(image: UIImage? = nil) {
         
     }
-    
-//    func start(match: Match? = nil) {
-//        
-//    }
 }

@@ -23,7 +23,8 @@ class ProfileVM {
             if let error = error {
                 completion(error)
             } else {
-                self.coordinator.dismissHomeScreens()
+//                self.coordinator.dismissHomeScreens()
+                self.coordinator.parent?.popToViewRoot()
             }
         }
     }

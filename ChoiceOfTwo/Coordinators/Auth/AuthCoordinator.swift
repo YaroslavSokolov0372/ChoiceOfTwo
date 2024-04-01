@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 class AuthCoordinator: ParentCoordinator {
-        
+    
     var parent: AppCoordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -21,23 +21,24 @@ class AuthCoordinator: ParentCoordinator {
     func start() {
     }
     
-    func dismissAuthScreens() {
-        /// Making sure BaseTabBarViewController's navigation controller is hidden
-//        parent?.hideNavigationController()
+    func dismissAuthScreens(except: Int? = nil, reversed: Bool = true) {
+        var index = children.count
         
-//        let lastCoordinator = children.popLast()
-        for item in children.reversed() {
+        for item in children {
             if item is ChildCoordinator {
                 let childCoordinator = item as! ChildCoordinator
-//                if let viewController = childCoordinator.viewControllerRef as? DisposableViewController {
-//                    viewController.cleanUp()
-//                }
-                childCoordinator.viewControllerRef?.navigationController?.popViewController(animated: false)
-                self.childDidFinish(childCoordinator)
+                
+                if except != nil, let except = except {
+                    index -= 1
+                    if index != except {
+                        childCoordinator.viewControllerRef?.navigationController?.popViewController(animated: false)
+                        self.childDidFinish(childCoordinator)
+                    }
+                } else {
+                    childCoordinator.viewControllerRef?.navigationController?.popViewController(animated: false)
+                    self.childDidFinish(childCoordinator)
+                }
             }
         }
-//        lastCoordinator?.popViewController(animated: true, useCustomAnimation: true)
-//        navigationController.customPopToRootViewController()
     }
-
 }

@@ -14,9 +14,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1270"
-            endingLineNumber = "1270"
-            landmarkName = "fetchWhomSentFriendship(completion:)"
+            startingLineNumber = "1257"
+            endingLineNumber = "1257"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -206,9 +206,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "963"
-            endingLineNumber = "963"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "952"
+            endingLineNumber = "952"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,9 +222,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1003"
-            endingLineNumber = "1003"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "992"
+            endingLineNumber = "992"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,9 +238,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1009"
-            endingLineNumber = "1009"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "998"
+            endingLineNumber = "998"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -254,9 +254,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1021"
-            endingLineNumber = "1021"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "1010"
+            endingLineNumber = "1010"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -302,9 +302,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "978"
-            endingLineNumber = "978"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "967"
+            endingLineNumber = "967"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -350,9 +350,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "983"
-            endingLineNumber = "983"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "972"
+            endingLineNumber = "972"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -398,9 +398,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "988"
-            endingLineNumber = "988"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "977"
+            endingLineNumber = "977"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -461,9 +461,9 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "991"
-            endingLineNumber = "991"
-            landmarkName = "addFriendsLikedListener(completion:)"
+            startingLineNumber = "980"
+            endingLineNumber = "980"
+            landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -525,8 +525,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
+            startingLineNumber = "885"
+            endingLineNumber = "885"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -633,8 +633,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "848"
-            endingLineNumber = "848"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -801,8 +801,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "842"
-            endingLineNumber = "842"
+            startingLineNumber = "829"
+            endingLineNumber = "829"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -849,8 +849,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -865,8 +865,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "857"
-            endingLineNumber = "857"
+            startingLineNumber = "846"
+            endingLineNumber = "846"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -943,8 +943,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "865"
-            endingLineNumber = "865"
+            startingLineNumber = "854"
+            endingLineNumber = "854"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -1021,8 +1021,8 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "883"
-            endingLineNumber = "883"
+            startingLineNumber = "872"
+            endingLineNumber = "872"
             landmarkName = "fetchHistory(completion:)"
             landmarkType = "7">
             <Locations>
@@ -1099,9 +1099,356 @@
             filePath = "ChoiceOfTwo/DataBaseManager/DataBaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "875"
-            endingLineNumber = "875"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
             landmarkName = "fetchHistory(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24A53366-C664-46D8-8BA8-E64E320C0A5A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "fetchCurrentUserProfImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "24A53366-C664-46D8-8BA8-E64E320C0A5A - f8920254257df4f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "24A53366-C664-46D8-8BA8-E64E320C0A5A - 500d0a82603c4795"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "24A53366-C664-46D8-8BA8-E64E320C0A5A - 34ef694c4fb75003"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EB83037-70F1-49D4-94C3-FDDEA25F8B13"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "fetchCurrentUserProfImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EB83037-70F1-49D4-94C3-FDDEA25F8B13 - 500d0a82603c4476"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "6EB83037-70F1-49D4-94C3-FDDEA25F8B13 - 500d0a82603c4476"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "6EB83037-70F1-49D4-94C3-FDDEA25F8B13 - 34ef694c4fb753e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "6EB83037-70F1-49D4-94C3-FDDEA25F8B13 - 34ef694c4fb753e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCAA7D16-5C9F-473D-A14E-091CA27EF34E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "fetchCurrentUserProfImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FCAA7D16-5C9F-473D-A14E-091CA27EF34E - 500d0a82603c4411"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "FCAA7D16-5C9F-473D-A14E-091CA27EF34E - 34ef694c4fb75387"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "644">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D3F0855-8A65-44BD-BF19-7151DFFF1A8E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "fetchCurrentUserProfImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2D3F0855-8A65-44BD-BF19-7151DFFF1A8E - 500d0a82603c44f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "2D3F0855-8A65-44BD-BF19-7151DFFF1A8E - 500d0a82603c44f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "644">
+               </Location>
+               <Location
+                  uuid = "2D3F0855-8A65-44BD-BF19-7151DFFF1A8E - 34ef694c4fb75364"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "2D3F0855-8A65-44BD-BF19-7151DFFF1A8E - 34ef694c4fb75364"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ChoiceOfTwo.MenuVM.fetchCurrentUserProfImage() -&gt; ()"
+                  moduleName = "ChoiceOfTwo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yaroslavsokolov/Developer/ChoiceOfTwoApp/ChoiceOfTwo/ChoiceOfTwo/ViewModel/Menu/MenuVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "732">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84159C44-5FDA-4126-BB8A-7F1FA11E1DF0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Controllers/Auth/Register/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
+            landmarkName = "signUpButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48AC4A5C-2F17-46DC-9BAC-D55B2F37C8E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Controllers/Auth/Register/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "signUpButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DCF29BA6-D08A-4197-B5E1-C2C58DBF6ABA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Controllers/Auth/Register/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
+            landmarkName = "signUpButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7138E721-23B9-4BC6-BD94-A9EEE83AD722"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Controllers/Auth/Register/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
+            landmarkName = "signUpButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA3858A0-AD59-4418-B4C3-75BC38D8C339"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChoiceOfTwo/Controllers/Auth/Register/RegisterController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
+            landmarkName = "signUpButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

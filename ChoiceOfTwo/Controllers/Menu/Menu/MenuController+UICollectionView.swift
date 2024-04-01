@@ -60,8 +60,11 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             }
             cell.configure(with: vm.matches[indexPath.row])
             cell.delegate = self
-            return cell
+            vm.fetchProfImage(for: vm.matches[indexPath.row].playedWithUID) { data in
+                cell.circleImage.image = UIImage(data: data)
+            }
             
+            return cell
         } else {
             guard let cell = friendsCollView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FriendCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
@@ -72,6 +75,10 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
             } else {
                 cell.configure(isFirst: false, with: vm.friends[indexPath.row - 1])
                 cell.friendsDelegate = self
+                
+                vm.fetchProfImage(for: vm.friends[indexPath.row - 1].uid) { data in
+                    cell.circleImage.image = UIImage(data: data)
+                }
             }
             
             return cell

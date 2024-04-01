@@ -13,4 +13,6 @@ struct Match {
     let matched: [Anime]
     let genres: [Genre.RawValue]
     let formats: [Format.RawValue]
+    let playedWithUID: String
+    let playersName: String
 }

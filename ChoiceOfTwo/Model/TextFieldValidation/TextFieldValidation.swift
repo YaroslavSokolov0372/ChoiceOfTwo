@@ -43,14 +43,15 @@ class TextFieldValidation: Validatable {
                 return FieldState.success
             }.eraseToAnyPublisher()
         case .email:
-            Publishers.CombineLatest3(
+            Publishers.CombineLatest(
                 isEmpty(publisher: publisher),
-                isEmailAvailable(publisher: publisher),
-                isEmail(with: publisher)
+                isEmailAvailable(publisher: publisher)
+//                ,
+//                isEmail(with: publisher)
             ).map {
                 if $0.0 { return FieldState.error(.empty)}
                 if !$0.1 { return FieldState.error(.emailAlreadyExist)}
-                if !$0.2 { return FieldState.error(.invalidEmail)}
+//                if !$0.2 { return FieldState.error(.invalidEmail)}
                 return FieldState.success
             }.eraseToAnyPublisher()
 

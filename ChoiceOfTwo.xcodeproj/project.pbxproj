@@ -27,7 +27,7 @@
 		D100BB922BA37B6A0048330C /* CustomTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB912BA37B6A0048330C /* CustomTagsView.swift */; };
 		D100BB942BA5D8A90048330C /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB932BA5D8A90048330C /* GameInfo.swift */; };
 		D100BB972BA5F54B0048330C /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100BB962BA5F54B0048330C /* StringRepresentable.swift */; };
-		D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */; };
+		D11A8B772B8FD96D006ED938 /* CropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A8B762B8FD96D006ED938 /* CropImageController.swift */; };
 		D12AE7DF2B7E7A9D004511B5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */; };
 		D12AE7E12B7E7B0E004511B5 /* HomeCoordinator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */; };
 		D12AE7E32B7E7B74004511B5 /* MenuCoordiantor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AE7E22B7E7B74004511B5 /* MenuCoordiantor.swift */; };
@@ -60,11 +60,9 @@
 		D19D6F282B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F272B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift */; };
 		D19D6F2A2B8B8CF700E2B907 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F292B8B8CF700E2B907 /* UIScrollView+Extension.swift */; };
 		D19D6F2C2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F2B2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift */; };
-		D19D6F2E2B8BB97700E2B907 /* ChooseProfPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */; };
 		D19D6F312B8BBA1800E2B907 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = D19D6F302B8BBA1800E2B907 /* CropViewController */; };
 		D19D6F332B8BBA1800E2B907 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = D19D6F322B8BBA1800E2B907 /* TOCropViewController */; };
 		D19D6F352B8BBB9900E2B907 /* ChooseProfPictureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F342B8BBB9900E2B907 /* ChooseProfPictureVM.swift */; };
-		D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */; };
 		D19D6F392B8D029800E2B907 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */; };
 		D1D753912B7265EF00ADF274 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753902B7265EF00ADF274 /* LoginController.swift */; };
 		D1D753952B72677C00ADF274 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D753942B72677C00ADF274 /* CustomTextField.swift */; };
@@ -138,6 +136,8 @@
 		D1E900BD2BB76CBD00D54353 /* MatchDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900BC2BB76CBD00D54353 /* MatchDetailVM.swift */; };
 		D1E900BF2BB9644600D54353 /* TagCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900BE2BB9644600D54353 /* TagCellView.swift */; };
 		D1E900C12BB97C9400D54353 /* AnimeCardWithLabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900C02BB97C9400D54353 /* AnimeCardWithLabelViewCell.swift */; };
+		D1E900C42BB9D74700D54353 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D1E900C32BB9D74700D54353 /* FirebaseStorage */; };
+		D1E900C62BBB4D2400D54353 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E900C52BBB4D2400D54353 /* UINavigationController+Extension.swift */; };
 		D1EDB5882BA7595B00676679 /* CardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5872BA7595B00676679 /* CardGameController.swift */; };
 		D1EDB58A2BA7597300676679 /* CardGameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB5892BA7597300676679 /* CardGameVM.swift */; };
 		D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */; };
@@ -185,7 +185,7 @@
 		D100BB912BA37B6A0048330C /* CustomTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagsView.swift; sourceTree = "<group>"; };
 		D100BB932BA5D8A90048330C /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		D100BB962BA5F54B0048330C /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
-		D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCropImageController.swift; sourceTree = "<group>"; };
+		D11A8B762B8FD96D006ED938 /* CropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageController.swift; sourceTree = "<group>"; };
 		D12AE7DE2B7E7A9D004511B5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D12AE7E02B7E7B0E004511B5 /* HomeCoordinator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Ext.swift"; sourceTree = "<group>"; };
 		D12AE7E22B7E7B74004511B5 /* MenuCoordiantor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordiantor.swift; sourceTree = "<group>"; };
@@ -223,9 +223,7 @@
 		D19D6F272B8B866100E2B907 /* SearchFriendsController+ScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchFriendsController+ScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		D19D6F292B8B8CF700E2B907 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		D19D6F2B2B8BA9C300E2B907 /* UICollectionView+UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+UICollectionViewFlowLayout.swift"; sourceTree = "<group>"; };
-		D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfPictureController.swift; sourceTree = "<group>"; };
 		D19D6F342B8BBB9900E2B907 /* ChooseProfPictureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProfPictureVM.swift; sourceTree = "<group>"; };
-		D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageController.swift; sourceTree = "<group>"; };
 		D19D6F382B8D029800E2B907 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D1D753902B7265EF00ADF274 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D1D753942B72677C00ADF274 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -293,6 +291,7 @@
 		D1E900BC2BB76CBD00D54353 /* MatchDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailVM.swift; sourceTree = "<group>"; };
 		D1E900BE2BB9644600D54353 /* TagCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellView.swift; sourceTree = "<group>"; };
 		D1E900C02BB97C9400D54353 /* AnimeCardWithLabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCardWithLabelViewCell.swift; sourceTree = "<group>"; };
+		D1E900C52BBB4D2400D54353 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		D1EDB5872BA7595B00676679 /* CardGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameController.swift; sourceTree = "<group>"; };
 		D1EDB5892BA7597300676679 /* CardGameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameVM.swift; sourceTree = "<group>"; };
 		D1EDB58B2BA7599400676679 /* CardGameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameCoordinator.swift; sourceTree = "<group>"; };
@@ -334,6 +333,7 @@
 				D100BB772BA342210048330C /* Apollo in Frameworks */,
 				D100BB7E2BA3487C0048330C /* AnimeAPI in Frameworks */,
 				D1D753CA2B73F0A700ADF274 /* FirebaseFirestore in Frameworks */,
+				D1E900C42BB9D74700D54353 /* FirebaseStorage in Frameworks */,
 				D19D6F312B8BBA1800E2B907 /* CropViewController in Frameworks */,
 				D1E900A82BB4B1EB00D54353 /* SwiftSoup in Frameworks */,
 			);
@@ -523,6 +523,7 @@
 				D17807752B6AB0FB003B84F7 /* ChoiceOfTwoTests */,
 				D178077F2B6AB0FB003B84F7 /* ChoiceOfTwoUITests */,
 				D178075D2B6AB0FA003B84F7 /* Products */,
+				D1E900C22BB9D74700D54353 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -591,7 +592,6 @@
 				D199BE692B829FC3000EBA02 /* Menu */,
 				D199BE682B829FB8000EBA02 /* Auth */,
 				D1F587552B927F350072CFAA /* Other */,
-				D1F587542B927F190072CFAA /* Test */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -695,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				D1D753E52B76750100ADF274 /* UIImage+CGSize.swift */,
-				D1D753F52B79526F00ADF274 /* UINavigationController+Ext.swift */,
 				D1D7541D2B7A69C300ADF274 /* String+Ext.swift */,
 				D1D754212B7A6A9300ADF274 /* UITextField+Ext.swift */,
 				D19D6F292B8B8CF700E2B907 /* UIScrollView+Extension.swift */,
@@ -708,6 +707,8 @@
 				D1E9009A2BB0C3EA00D54353 /* UIButton+CheckPoint+Extension.swift */,
 				D1E900A42BB4B1CF00D54353 /* HTML+String+Extansion.swift */,
 				D1E900AF2BB4BA4600D54353 /* String+Height+Extension.swift */,
+				D1D753F52B79526F00ADF274 /* UINavigationController+Ext.swift */,
+				D1E900C52BBB4D2400D54353 /* UINavigationController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -848,6 +849,13 @@
 			path = MatchDetail;
 			sourceTree = "<group>";
 		};
+		D1E900C22BB9D74700D54353 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1EDB58D2BA9E06300676679 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,19 +907,10 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		D1F587542B927F190072CFAA /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				D19D6F362B8BCC3F00E2B907 /* CropImageController.swift */,
-				D19D6F2D2B8BB97700E2B907 /* ChooseProfPictureController.swift */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		D1F587552B927F350072CFAA /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				D11A8B762B8FD96D006ED938 /* FinalCropImageController.swift */,
+				D11A8B762B8FD96D006ED938 /* CropImageController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -951,6 +950,7 @@
 				D100BB762BA342210048330C /* Apollo */,
 				D100BB7D2BA3487C0048330C /* AnimeAPI */,
 				D1E900A72BB4B1EB00D54353 /* SwiftSoup */,
+				D1E900C32BB9D74700D54353 /* FirebaseStorage */,
 			);
 			productName = ChoiceOfTwo;
 			productReference = D178075C2B6AB0FA003B84F7 /* ChoiceOfTwo.app */;
@@ -1119,18 +1119,18 @@
 				D1D753D82B73FDFB00ADF274 /* RegisterVM.swift in Sources */,
 				D1D754062B795C0500ADF274 /* CoordinatorProtocol.swift in Sources */,
 				D1D754092B79708600ADF274 /* ParentCoordinatorProtocol+Ex.swift in Sources */,
-				D11A8B772B8FD96D006ED938 /* FinalCropImageController.swift in Sources */,
+				D11A8B772B8FD96D006ED938 /* CropImageController.swift in Sources */,
 				D100BB902BA37A650048330C /* CustomTagView.swift in Sources */,
 				D1D7541A2B7979A100ADF274 /* AuthCoordinator.swift in Sources */,
 				D1D753E32B766F8F00ADF274 /* CustomImageAuthButton.swift in Sources */,
 				D100BB742BA32D430048330C /* GameCoordinator+Extension.swift in Sources */,
 				D1EDB5BE2BAC5D9900676679 /* StackViewContainer.swift in Sources */,
-				D19D6F372B8BCC3F00E2B907 /* CropImageController.swift in Sources */,
 				D1D754202B7A69EE00ADF274 /* TextFieldValidation.swift in Sources */,
 				D1E900972BADFFEB00D54353 /* DetailInfoAnimeVM.swift in Sources */,
 				D1EDB5C72BAC9C5A00676679 /* UIImageView+AsynImageFetching.swift in Sources */,
 				D167422C2B94A6B100730962 /* LoginController+NotificationCenter.swift in Sources */,
 				D1332ADC2B84D0CD00F34C51 /* SearchFriendsController.swift in Sources */,
+				D1E900C62BBB4D2400D54353 /* UINavigationController+Extension.swift in Sources */,
 				D1E900C12BB97C9400D54353 /* AnimeCardWithLabelViewCell.swift in Sources */,
 				D1EDB58C2BA7599400676679 /* CardGameCoordinator.swift in Sources */,
 				D1F5875A2B928B0B0072CFAA /* RegisterProfImage+Extension.swift in Sources */,
@@ -1155,7 +1155,6 @@
 				D12AE7E32B7E7B74004511B5 /* MenuCoordiantor.swift in Sources */,
 				D199BE552B8102AA000EBA02 /* MenuController+UICollectionView.swift in Sources */,
 				D167422F2B95266D00730962 /* CustomAnimatedMessageLabel.swift in Sources */,
-				D19D6F2E2B8BB97700E2B907 /* ChooseProfPictureController.swift in Sources */,
 				D1332AE82B852C8400F34C51 /* UserModel.swift in Sources */,
 				D1E900BD2BB76CBD00D54353 /* MatchDetailVM.swift in Sources */,
 				D1F5874E2B927CAE0072CFAA /* RegisterProfImageVM.swift in Sources */,
@@ -1479,6 +1478,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D1E900A62BB4B1EB00D54353 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		D1E900C32BB9D74700D54353 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1D753C42B73F0A700ADF274 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

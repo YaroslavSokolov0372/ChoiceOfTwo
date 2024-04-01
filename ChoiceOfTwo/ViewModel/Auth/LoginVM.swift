@@ -18,17 +18,12 @@ class LoginVM {
     
     var subscriptions = Set<AnyCancellable>()
     
-    //    @Published var email: String = ""
-    //    @Published var emailState: FieldState = .idle
-    //    @Published var password: String = ""
-    //    @Published var passwordState: FieldState = .idle
-    
     func dismiss() {
         coordinator.dismissScreen()
     }
     
     func goToHome() {
-        coordinator.parent?.home()
+        coordinator.goHome()
     }
     
     func signIn(completion: @escaping (_ error: Error?) -> Void) {

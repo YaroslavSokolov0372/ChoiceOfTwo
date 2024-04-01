@@ -37,12 +37,6 @@ class CustomAnimatedMessageWithButtons: UIView {
     public var hideAnimation = UIViewPropertyAnimator()
     
     //MARK: - UI Components
-    private let profileImage: UIImageView = {
-        let im = UIImage(named: "Profile")
-        let iv = UIImageView()
-        iv.image = im
-        return iv
-    }()
     private let text: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 14, type: .medium)
@@ -71,8 +65,6 @@ class CustomAnimatedMessageWithButtons: UIView {
     
     //MARK: - Setup UI
     private func setupUI() {
-        self.addSubview(profileImage)
-        profileImage.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(text)
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -84,25 +76,20 @@ class CustomAnimatedMessageWithButtons: UIView {
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            profileImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            profileImage.widthAnchor.constraint(equalToConstant: 40),
-            profileImage.heightAnchor.constraint(equalToConstant: 40),
-            
-            text.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 10),
-            text.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            text.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
+            text.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             text.widthAnchor.constraint(equalToConstant: 160),
             text.heightAnchor.constraint(equalToConstant: 40),
             
-            acceptButton.leadingAnchor.constraint(equalTo: text.trailingAnchor, constant: 10),
-            acceptButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
-            acceptButton.widthAnchor.constraint(equalToConstant: 35),
-            acceptButton.heightAnchor.constraint(equalToConstant: 35),
-            
-            declineButton.leadingAnchor.constraint(equalTo: acceptButton.trailingAnchor, constant: 10),
-            declineButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
+            declineButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             declineButton.widthAnchor.constraint(equalToConstant: 35),
             declineButton.heightAnchor.constraint(equalToConstant: 35),
+            declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            
+            acceptButton.trailingAnchor.constraint(equalTo: declineButton.leadingAnchor, constant: -10),
+            acceptButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            acceptButton.widthAnchor.constraint(equalToConstant: 35),
+            acceptButton.heightAnchor.constraint(equalToConstant: 35),
             
         ])
     }
@@ -121,9 +108,7 @@ class CustomAnimatedMessageWithButtons: UIView {
     }
     
     @objc private func deleteFriendTapped() {
-//        print("I am here")
         delegate?.deleteFriend(self.users[played - 1])
-//        self.hideAnimation.startAnimation()
     }
     
     //MARK: Configure
@@ -148,20 +133,6 @@ class CustomAnimatedMessageWithButtons: UIView {
     
     //MARK: - Animations
      func showLabel(completionHandler: @escaping (_ onFinish: Bool) -> () ) {
-         
-//         showAnimation = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut) {
-//             guard let superview = self.superview else {
-//                 print("Havent found superview")
-//                 return
-//             }
-//             self.frame.origin.x = superview.frame.minX - 10
-//         }
-//         
-//         showAnimation.addCompletion { finish in
-//             completionHandler(true)
-//         }
-//         
-//         showAnimation.startAnimation()
          
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut) {
             guard let superview = self.superview else {
@@ -189,6 +160,7 @@ class CustomAnimatedMessageWithButtons: UIView {
         }
         self.hideAnimation.addCompletion { finished in
             completion()
+            self.alpha = 0.0
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -196,26 +168,13 @@ class CustomAnimatedMessageWithButtons: UIView {
                 self.hideAnimation.startAnimation()
             }
         }
-        
-//        UIView.animate(withDuration: 1.0, delay: 5.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn) {
-//            guard let superview = self.superview else {
-//                print("Havent found superview")
-//                return
-//            }
-////            self.frame.origin.x = superview.frame.minX - 350
-//            self.frame.origin.x = superview.frame.minX
-//        } completion: { finished in
-//            if finished {
-//                completion()
-//            }
-//        }
     }
     
     func playAnimation(users: [User], type: MessageType) {
         self.users.append(contentsOf: users)
-        
         if !isPlaying {
             isPlaying = true
+            self.alpha = 1.0
             configure(with: self.users[played], type: type)
             played += 1
             showLabel { [weak self] onFinish in

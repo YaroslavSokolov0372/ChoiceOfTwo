@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
      
 class RegisterVM  {
     
@@ -17,7 +18,7 @@ class RegisterVM  {
     @Published var password = TextFieldValidation(textFieldType: .password)
     @Published var username = TextFieldValidation(textFieldType: .username)
     
-    var subscriptions = Set<AnyCancellable>()    
+    var subscriptions = Set<AnyCancellable>()
     
     func dismiss() {
         coordinator.dismissScreen()
@@ -37,12 +38,15 @@ class RegisterVM  {
             if let error = error {
                 completion(error)
             }
-             
+            
             if authrized {
-                self.goToHome()
+                self.goToRegisterProImage()
+//                self.goToHome()
             }
         }
     }
+    
+        
 }
 
 
