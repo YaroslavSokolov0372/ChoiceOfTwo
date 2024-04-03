@@ -21,21 +21,11 @@ class AuthHeaderView: UIView {
         return iv
     }()
     
-//    private let appName: UILabel = {
-//        let label = UILabel()
-//        label.font = .nunitoFont(size: 30, type: .bold)
-//        label.text = "CHOICE OF TWO"
-//        label.textColor = .white
-//        return label
-//    }()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.textAlignment = .center
-//        label.textColor = .white
         label.textColor = .mainPurple
-//        label.font = .systemFont(ofSize: 26, weight: .bold)
         label.font = .nunitoFont(size: 26, type: .bold)
         return label
     }()
@@ -43,10 +33,7 @@ class AuthHeaderView: UIView {
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
-//        label.textColor = .white
-        
         label.textAlignment = .center
-//        label.font = .systemFont(ofSize: 18, weight: .regular)
         label.font = .nunitoFont(size: 16, type: .regular)
         return label
     }()
@@ -79,8 +66,6 @@ class AuthHeaderView: UIView {
         
         NSLayoutConstraint.activate([
             self.imageLogoView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            self.imageLogoView.widthAnchor.constraint(equalToConstant: 100),
-//            self.imageLogoView.heightAnchor.constraint(equalToConstant: 100),
             self.imageLogoView.widthAnchor.constraint(equalToConstant: 140),
             self.imageLogoView.heightAnchor.constraint(equalToConstant: 140),
             

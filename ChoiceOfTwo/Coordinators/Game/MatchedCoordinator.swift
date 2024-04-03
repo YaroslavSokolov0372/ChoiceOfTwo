@@ -30,7 +30,6 @@ class MatchedCoordinator: ChildCoordinator {
     func start(matched: [Anime]) {
         let matchedController = MatchedController()
         viewControllerRef = matchedController
-        //        let vm = MatchedVM(matched: matched)
         let vm = MatchedVM()
         vm.matched = matched
         vm.coordinator = self

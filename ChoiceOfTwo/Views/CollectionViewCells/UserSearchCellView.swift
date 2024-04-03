@@ -31,12 +31,6 @@ class UserSearchCellView: UICollectionViewCell {
     }
 
     //MARK: - UI Components
-//    private var profileImage: UIImageView = {
-//      let im = UIImage(named: "Profile")
-//      let iv = UIImageView()
-//        iv.image = im
-//        return iv
-//    }()
     let circleImage: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
@@ -69,9 +63,6 @@ class UserSearchCellView: UICollectionViewCell {
     
     //MARK: - SetupUI
     private func setupUI() {
-//        self.addSubview(profileImage)
-//        profileImage.translatesAutoresizingMaskIntoConstraints = false
-        
         self.addSubview(circleImage)
         circleImage.translatesAutoresizingMaskIntoConstraints = false
         
@@ -79,9 +70,6 @@ class UserSearchCellView: UICollectionViewCell {
         username.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-//            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-//            profileImage.widthAnchor.constraint(equalToConstant: 50),
-//            profileImage.heightAnchor.constraint(equalToConstant: 50),
             
             circleImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             circleImage.widthAnchor.constraint(equalToConstant: 50),
@@ -104,14 +92,8 @@ class UserSearchCellView: UICollectionViewCell {
         declineButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-//            declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-//            declineButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
             declineButton.widthAnchor.constraint(equalToConstant: 45),
             declineButton.heightAnchor.constraint(equalToConstant: 45),
-            
-//            sendRequestButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-//            sendRequestButton.leadingAnchor.constraint(equalTo: declineButton.trailingAnchor, constant: 40),
-//            sendRequestButton.centerYAnchor.constraint(equalTo: declineButton.centerYAnchor),
             sendRequestButton.widthAnchor.constraint(equalToConstant: 120),
             sendRequestButton.heightAnchor.constraint(equalToConstant: 40),
         ])
@@ -133,13 +115,8 @@ class UserSearchCellView: UICollectionViewCell {
         declineButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-//            sendRequestButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-//            sendRequestButton.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
             sendRequestButton.widthAnchor.constraint(equalToConstant: 120),
             sendRequestButton.heightAnchor.constraint(equalToConstant: 40),
-            
-//            declineButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-//            declineButton.centerYAnchor.constraint(equalTo: sendRequestButton.centerYAnchor),
             declineButton.widthAnchor.constraint(equalToConstant: 45),
             declineButton.heightAnchor.constraint(equalToConstant: 45),
         ])
@@ -192,7 +169,6 @@ class UserSearchCellView: UICollectionViewCell {
     }
     
     @objc private func declineButtonTapped() {
-//        delegate?.declineFriendShipReq(from: self.user)
         delegate?.declineWhomSentReq(from: self.user) { success in
             if success {
                 self.alrdSentInv = false

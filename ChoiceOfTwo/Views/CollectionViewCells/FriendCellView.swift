@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 protocol FriendCellDelegate {
     
@@ -39,7 +40,9 @@ class FriendCellView: UICollectionViewCell {
     
     private let name: UILabel = {
       let label = UILabel()
-        label.text = "Yaroslav Sokolov"
+//        label.text = "Yaroslav Sokolov"
+        label.text = "Add Friend"
+        
         label.numberOfLines = 1
         label.textAlignment = .center
         label.font =  .nunitoFont(size: 12, type: .medium)
@@ -51,6 +54,13 @@ class FriendCellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        
+        self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
+        self.circleImage.isSkeletonable = true
+        self.name.isSkeletonable = true
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -60,10 +70,10 @@ class FriendCellView: UICollectionViewCell {
         //MARK: - Setup UI
     private func setupUI() {
 
-        self.addSubview(circleImage)
+        self.contentView.addSubview(circleImage)
         circleImage.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(name)
+        self.contentView.addSubview(name)
         name.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -80,12 +90,10 @@ class FriendCellView: UICollectionViewCell {
     
     //MARK: - Selectors
     @objc private func profilleImageTapped() {
-        print("I am here")
         friendsDelegate?.friendProfileTapped(friend: friend, cell: self)
     }
     
     @objc private func plusButtonTapped() {
-        print("I am here")
         addFriendsDelegate?.plusButtonTapped()
     }
     

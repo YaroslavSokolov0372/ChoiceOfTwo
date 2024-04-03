@@ -115,7 +115,6 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate, Recieve
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        print("DEBUG: Scroll view subviews before set up", scrollView.subviews.count)
         if scrollView.subviews.count == 1 {
             scrollView.contentSize = CGSize(width: self.view.frame.width * 2, height: self.scrollView.frame.height)
             configureCollViews()
@@ -129,9 +128,6 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate, Recieve
         
         view.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        
-//        view.addSubview(searchHeader)
-//        searchHeader.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(usernameField)
         usernameField.translatesAutoresizingMaskIntoConstraints = false
@@ -154,10 +150,6 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate, Recieve
             backButton.heightAnchor.constraint(equalToConstant: 40),
             backButton.widthAnchor.constraint(equalToConstant: 80),
             
-//            searchHeader.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 10),
-//            searchHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-//            searchHeader.heightAnchor.constraint(equalToConstant: 30),
-//            usernameField.topAnchor.constraint(equalTo: self.searchHeader.bottomAnchor, constant: 12),
             usernameField.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: 20),
             usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             usernameField.heightAnchor.constraint(equalToConstant: 50),
@@ -166,8 +158,6 @@ class SearchFriendsController: UIViewController, UserSearchCellDelegate, Recieve
             tabIndicator.topAnchor.constraint(equalTo: self.usernameField.bottomAnchor, constant: 10),
             tabIndicator.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
             tabIndicator.heightAnchor.constraint(equalToConstant: 2),
-//            tabIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            tabIndicator.leadingAnchor.constraint(equalTo: usersSearchTabButton.leadingAnchor),
             
             usersSearchTabButton.topAnchor.constraint(equalTo: self.tabIndicator.topAnchor, constant: 7),
             usersSearchTabButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),

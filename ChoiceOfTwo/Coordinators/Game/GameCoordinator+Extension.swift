@@ -17,12 +17,10 @@ extension GameCoordinator {
         setupCoordinator.start()
     }
     
-//    func cardGame(navigationControlle: UINavigationController, animated: Bool, genres: [Genre.RawValue], formats: [Format.RawValue]) {
     func cardGame(navigationControlle: UINavigationController, animated: Bool) {
         let cardGameCoordinator =  CardGameCoordinator(navigationController: navigationController)
         cardGameCoordinator.parent = self
         addChild(cardGameCoordinator)
-//        cardGameCoordinator.start(genres: genres, formats: formats)
         cardGameCoordinator.start()
     }
     

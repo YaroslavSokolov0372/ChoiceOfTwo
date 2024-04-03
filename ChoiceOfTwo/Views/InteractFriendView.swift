@@ -108,7 +108,6 @@ class InteractFriendView: UIView {
         
         
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut) {
-//        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 3, options: .curveEaseInOut) {
             self.frame = CGRect(x: (frame.midX - 60), y: (frame.maxY), width: 120, height: 100)
             self.alpha = 1.0
         }

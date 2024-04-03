@@ -79,15 +79,7 @@ class SetupGameController: UIViewController, CustomTagsViewDelegate {
                 }
             }
         }
-//        vm.onSeasonsChanges = { seasons in
-//            for tv in self.proposedSeasons.tagViews  {
-//                if seasons.contains(tv.enumType.rawValue) {
-//                    tv.selected = true
-//                } else {
-//                    tv.selected = false
-//                }
-//            }
-//        }
+
         vm.onFormatsChanges = { formats in
             for tv in self.proposedFormats.tagViews  {
                 if formats.contains(tv.enumType.rawValue) {

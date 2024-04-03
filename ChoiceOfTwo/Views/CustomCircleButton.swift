@@ -16,14 +16,11 @@ class CustomCircleButton: UIButton {
     init(customImage: String? = nil, rotate: CGFloat? = nil, resized: CGSize? = nil, imageColor: UIColor? = nil, backgroundColor: UIColor? = nil, stroke: Bool = false, cornerRadius: CGFloat? = nil) {
         super.init(frame: .zero)
         
-//        self.contentMode = .scaleAspectFill
-        
 
         if resized != nil {
             let image = UIImage(
                 named: customImage == nil ? "ArrowImage" : customImage!
             )?.resize(targetSize: resized!).withRenderingMode(.alwaysTemplate)
-//            image?.withTintColor(.mainPurple)
             self.setImage(image, for: .normal)
             self.imageView?.contentMode = .scaleAspectFill
             
@@ -53,7 +50,6 @@ class CustomCircleButton: UIButton {
         } else {
             self.backgroundColor = .white
         }
-//        self.clipsToBounds = true
         if cornerRadius != nil {
             self.layer.cornerRadius = cornerRadius!
         } else {

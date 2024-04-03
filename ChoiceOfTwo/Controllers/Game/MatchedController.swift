@@ -19,8 +19,6 @@ class MatchedController: UIViewController, MatchedAnimeCellProtocol {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-//        collectionV.backgroundColor = .mainRed
         collectionV.backgroundColor = .white
         collectionV.register(MatchedAnimeCell.self, forCellWithReuseIdentifier: "Cell")
         return collectionV

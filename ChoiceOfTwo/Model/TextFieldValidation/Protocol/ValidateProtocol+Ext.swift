@@ -100,29 +100,3 @@ extension Validatable {
             .eraseToAnyPublisher()
     }
 }
-
-//MARK: - Exapmle to use flat map
-//let futureAsyncPublisher = Future<Bool, Error> { promise in
-//    CNContactStore().requestAccess(for: .contacts) { grantedAccess, err in
-//        // err is an optional
-//        if let err = err {
-//            return promise(.failure(err))
-//        }
-//        return promise(.success(grantedAccess))
-//    }
-//}.eraseToAnyPublisher()
-//
-//let futureAsyncUsername = Future<Bool, Error> { promise in
-//    AuthService.shared.canUseNickname("dsads") { canUse, error in
-//        if let error = error {
-//            promise(.failure(error))
-//        } else {
-//            switch canUse {
-//            case true:
-//                promise(.success(true))
-//            case false:
-//                promise(.success(false))
-//            }
-//        }
-//    }
-//}.eraseToAnyPublisher()

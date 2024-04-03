@@ -130,7 +130,6 @@ class RegisterController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .white
         view.backgroundColor = .white
         setupUI()
         
@@ -227,11 +226,9 @@ class RegisterController: UIViewController {
             self.contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             self.contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
-//            self.backButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
             self.backButton.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 10),
             self.backButton.heightAnchor.constraint(equalToConstant: 50),
             self.backButton.widthAnchor.constraint(equalToConstant: 50),
-//            self.backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             self.backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
             self.headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -243,12 +240,9 @@ class RegisterController: UIViewController {
             
             
             self.usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
-//            self.usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             self.usernameField.heightAnchor.constraint(equalToConstant: 55),
             self.usernameField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7),
-//            self.usernameField.leadingAnchor.constraint(equalTo: signUpButton.leadingAnchor),
             self.usernameField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: (view.frame.width * 0.075)),
-//            self.usernameField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             
             self.usernameError.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 5),
             self.usernameError.leadingAnchor.constraint(equalTo: usernameField.leadingAnchor, constant: 3),
@@ -364,7 +358,6 @@ class RegisterController: UIViewController {
                     self?.hideStrokeErrorOn(textField: self?.usernameField)
                     self?.hideIndicator(circleImage: self?.usernameSuccessInd)
                 }
-//                print(text)
             }.store(in: &vm.subscriptions)
     }
     
@@ -372,9 +365,6 @@ class RegisterController: UIViewController {
         vm.username.validate(publisher: usernameField.textPublisher())
             .assign(to: \.username.textState, on: vm)
             .store(in: &vm.subscriptions)
-        
-//        NotificationCenter.default.post(
-//            name:UITextField.textDidChangeNotification, object: usernameField)
     }
     
      func bindEmail() {
@@ -455,7 +445,6 @@ class RegisterController: UIViewController {
                     self?.hideStrokeErrorOn(textField: self?.passwordField)
                     self?.hideIndicator(circleImage: self?.passwordSuccessInd)
                 }
-//                print(text)
             }.store(in: &vm.subscriptions)
     }
     

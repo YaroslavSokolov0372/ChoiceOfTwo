@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
+import SkeletonView
 
-extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return "Cell"
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == self.historyCollView {
@@ -27,7 +32,6 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         if collectionView == historyCollView {
             return CGSize(width: self.view.frame.width * 0.93, height: self.view.frame.height * 0.3)
-            //            return CGSize(width: 100, height: 100)
         } else {
             
             if indexPath.row == 0 {
@@ -40,13 +44,9 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.historyCollView {
-            return vm.matches.count
+            return vm.matches.isEmpty ? 3 : vm.matches.count
         } else {
-            if self.vm.friends.isEmpty {
-                return 1
-            } else {
-                return self.vm.friends.count + 1
-            }
+            return vm.friends.isEmpty ? 4 : vm.friends.count + 1
         }
     }
     
@@ -54,33 +54,51 @@ extension MenuController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
         
         
         if collectionView == self.historyCollView {
+            
             guard let cell = historyCollView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as?
                     HistoryCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
             }
-            cell.configure(with: vm.matches[indexPath.row])
-            cell.delegate = self
-            vm.fetchProfImage(for: vm.matches[indexPath.row].playedWithUID) { data in
-                cell.circleImage.image = UIImage(data: data)
-            }
             
+            if vm.isFetchingMatches == false {
+                if cell.match != nil {
+                    if cell.match.date == vm.matches[indexPath.row].date {
+                        cell.configure(with: vm.matches[indexPath.row], shouldReloadData: false)
+                    }
+                } else {
+                    cell.configure(with: vm.matches[indexPath.row])
+                }
+                
+                cell.delegate = self
+                vm.fetchProfImage(for: vm.matches[indexPath.row].playedWithUID) { data in
+                    cell.circleImage.image = UIImage(data: data)
+                }
+            }
             return cell
         } else {
             guard let cell = friendsCollView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FriendCellView else {
                 fatalError("Unenable to dequeue AnimePreviewCell in MenuCntroller")
             }
-            if indexPath.row == 0 {
-                cell.configure(isFirst: true)
-                cell.addFriendsDelegate = self
+            
+            if vm.isFetchingFriends == false {
+                if indexPath.row == 0 {
+                    cell.configure(isFirst: true)
+                    cell.addFriendsDelegate = self
+                } else {
+                    cell.configure(isFirst: false, with: vm.friends[indexPath.row - 1])
+                    cell.friendsDelegate = self
+                    
+                    vm.fetchProfImage(for: vm.friends[indexPath.row - 1].uid) { data in
+                        cell.circleImage.image = UIImage(data: data)
+                    }
+                }
             } else {
-                cell.configure(isFirst: false, with: vm.friends[indexPath.row - 1])
-                cell.friendsDelegate = self
-                
-                vm.fetchProfImage(for: vm.friends[indexPath.row - 1].uid) { data in
-                    cell.circleImage.image = UIImage(data: data)
+                if indexPath.row == 0 {
+                    cell.configure(isFirst: true)
+                    cell.isSkeletonable = false
+                    cell.addFriendsDelegate = self
                 }
             }
-            
             return cell
         }
     }

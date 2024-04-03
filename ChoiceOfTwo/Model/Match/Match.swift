@@ -6,11 +6,12 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 
 struct Match {
     let skipped: [Anime]
     let matched: [Anime]
+    let date: Timestamp
     let genres: [Genre.RawValue]
     let formats: [Format.RawValue]
     let playedWithUID: String

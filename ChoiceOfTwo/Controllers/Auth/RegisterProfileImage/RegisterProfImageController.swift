@@ -112,14 +112,7 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             subTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-//            skipButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 40),
-//            skipButton.centerXAnchor.constraint(equalTo: subTitleLabel.centerXAnchor),
-//            skipButton.heightAnchor.constraint(equalToConstant: 50),
-//            skipButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
             continueButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 40),
-//            continueButton.topAnchor.constraint(equalTo: skipButton.bottomAnchor, constant: 22),
-//            continueButton.centerXAnchor.constraint(equalTo: skipButton.centerXAnchor),
             continueButton.centerXAnchor.constraint(equalTo: subTitleLabel.centerXAnchor),
             continueButton.heightAnchor.constraint(equalToConstant: 50),
             continueButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -139,10 +132,6 @@ class RegisterProfImageController: UIViewController, UINavigationControllerDeleg
         picker.delegate = self
         present(picker, animated: true)
     }
-    
-//    @objc private func skipButtonTapped() {
-//        vm.goToHomePage()
-//    }
     
     @objc private func continueButtonTapped() {
         if let image = self.circleImage.image {

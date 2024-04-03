@@ -9,7 +9,6 @@ import UIKit
 
 protocol CustomTagsViewDelegate {
     func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didSelectItemAt index: Int)
-//    func customTagsView(_ customTagsView: CustomTagsView, enumType: StringRepresentable, didDeSelectItemAt index: Int)
 }
 
 class CustomTagsView: UIView {

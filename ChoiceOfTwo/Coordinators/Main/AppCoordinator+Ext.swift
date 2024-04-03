@@ -14,8 +14,6 @@ extension AppCoordinator {
         authCoordinator.parent = self
         addChild(authCoordinator)
         navigationController.setNavigationBarHidden(true, animated: false)
-        //        authCoordinator.login(navigationController: navigationController, animated: true)
-        
         authCoordinator.entry(navigationController: navigationController, animated: true)
     }
     

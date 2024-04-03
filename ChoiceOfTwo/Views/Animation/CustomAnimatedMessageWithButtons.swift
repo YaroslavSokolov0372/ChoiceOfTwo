@@ -17,7 +17,6 @@ protocol AnimatedMessageWithButtonsViewDelegate {
     
     func deleteFriend(_ friend: User)
     
-//    func keepFriend()
 }
 
 class CustomAnimatedMessageWithButtons: UIView {

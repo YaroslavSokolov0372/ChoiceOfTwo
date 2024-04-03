@@ -21,7 +21,6 @@ class CardGameController: UIViewController {
     let stackView = StackViewContainer()
     lazy var messageLabel = CustomAnimatedMessageLabel(frame: CGRect(
         x: (view.frame.width * 0.07),
-//        y: (view.frame.maxY - 200),
         y: view.frame.maxY,
         width: (view.frame.width * 0.85),
         height: 65))

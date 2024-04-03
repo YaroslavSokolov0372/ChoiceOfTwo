@@ -31,12 +31,6 @@ class SwipeCardView: UIView {
         let label = UILabel()
         label.font = .nunitoFont(size: 20, type: .regular)
         label.textColor = .mainPurple
-//        label.backgroundColor = .white
-//        label.clipsToBounds = true
-//        label.layer.borderColor = UIColor.mainPurple.cgColor
-//        label.layer.borderWidth = 1
-//        label.layer.cornerRadius = 12
-        //        label.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         return label
     }()
     
@@ -48,9 +42,7 @@ class SwipeCardView: UIView {
         
         layer.masksToBounds = true
         clipsToBounds = true
-//        backgroundColor = .mainLightGray
         layer.cornerRadius = 30
-//        layer.cornerRadius = 30
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         addGestureRecognizer(panGestureRecognizer)
         
@@ -69,20 +61,11 @@ class SwipeCardView: UIView {
         self.addSubview(coverImage)
         coverImage.translatesAutoresizingMaskIntoConstraints = false
         
-//        self.addSubview(name)
-//        name.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             coverImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             coverImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             coverImage.topAnchor.constraint(equalTo: self.topAnchor),
             coverImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-//            coverImage.heightAnchor.constraint(equalToConstant: 500),
-            
-//            name.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 10),
-//            name.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            name.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            name.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
         
     }

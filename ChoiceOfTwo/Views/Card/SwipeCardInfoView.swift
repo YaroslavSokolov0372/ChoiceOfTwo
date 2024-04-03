@@ -90,11 +90,7 @@ class SwipeCardInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-//        clipsToBounds = true
         backgroundColor = .white
-//        layer.borderWidth = 1
-//        layer.borderColor = UIColor.mainPurple.cgColor
-//        layer.cornerRadius = 30
         setupUI()
     }
     
@@ -131,7 +127,7 @@ class SwipeCardInfoView: UIView {
         
         NSLayoutConstraint.activate([
             
-            animeName.topAnchor.constraint(equalTo: self.topAnchor/*, constant: 10*/),
+            animeName.topAnchor.constraint(equalTo: self.topAnchor),
             animeName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             animeName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             animeName.heightAnchor.constraint(equalToConstant: 65),
@@ -149,7 +145,6 @@ class SwipeCardInfoView: UIView {
             
             episodes.topAnchor.constraint(equalTo: self.episodesHeader.bottomAnchor, constant: 10),
             episodes.widthAnchor.constraint(equalToConstant: 60),
-//            episodes.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             episodes.centerXAnchor.constraint(equalTo: episodesHeader.centerXAnchor),
             episodes.heightAnchor.constraint(equalToConstant: 60),
             
@@ -163,7 +158,6 @@ class SwipeCardInfoView: UIView {
             meanScore.topAnchor.constraint(equalTo: self.meanScoreHeader.bottomAnchor, constant: 10),
             meanScore.widthAnchor.constraint(equalToConstant: 60),
             meanScore.centerXAnchor.constraint(equalTo: meanScoreHeader.centerXAnchor),
-//            meanScore.leadingAnchor.constraint(equalTo: self.episodesHeader.leadingAnchor),
             meanScore.heightAnchor.constraint(equalToConstant: 60),
             
             formatHeader.topAnchor.constraint(equalTo: sideInfoView.topAnchor, constant: 10),
@@ -174,7 +168,6 @@ class SwipeCardInfoView: UIView {
             
             format.topAnchor.constraint(equalTo: self.formatHeader.bottomAnchor, constant: 10),
             format.widthAnchor.constraint(equalToConstant: 60),
-//            status.leadingAnchor.constraint(equalTo: self.meanScoreHeader.leadingAnchor),
             format.centerXAnchor.constraint(equalTo: self.formatHeader.centerXAnchor),
             format.heightAnchor.constraint(equalToConstant: 60),
         ])

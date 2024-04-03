@@ -31,8 +31,18 @@ class AnimeCardWithLabelViewCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.layer.masksToBounds = true
+        iv.backgroundColor = .mainLightGray
         iv.layer.cornerRadius = 12
         return iv
+    }()
+    
+    private let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .mainPurple
+        label.textAlignment = .center
+        label.font = .nunitoFont(size: 14, type: .regular)
+        label.text = "None"
+        return label
     }()
     
     private let name: UILabel = {
@@ -81,13 +91,29 @@ class AnimeCardWithLabelViewCell: UICollectionViewCell {
         ]
     }
     
+    private func setupNone() {
+        self.coverImage.addSubview(emptyLabel)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: coverImage.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: coverImage.centerYAnchor),
+        ])
+    }
+    
     //MARK: - Selectors
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         self.delegate?.didTapCell(with: anime)
     }
     
     //MARK: - Configure
+    
+    public func configureAsNone() {
+        setupNone()
+    }
+    
     public func configure(with anime: Anime) {
+        
         self.anime = anime
         self.coverImage.setImageFromStringrURL(stringUrl: anime.coverImage?.extraLarge ?? "")
         self.name.text = anime.title
@@ -106,5 +132,8 @@ class AnimeCardWithLabelViewCell: UICollectionViewCell {
             ]
             self.name.numberOfLines = Int(numberOfRows)
         }
+        
     }
 }
+
+

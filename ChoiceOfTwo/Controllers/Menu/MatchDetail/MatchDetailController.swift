@@ -16,7 +16,6 @@ class MatchDetailController: UIViewController, AnimeCardWithLabelPotocol {
     
     //MARK: - UI Components
     
-    //    private let backButton = CustomButton(text: "Close", type: .medium, strokeColor: .mainPurple)
     private let backButton = CustomCircleButton(rotate: 1, stroke: true)
     private let scrollView: UIScrollView = {
         let scrollV = UIScrollView()
@@ -210,24 +209,49 @@ extension MatchDetailController: UICollectionViewDelegateFlowLayout, UICollectio
                 return vm.match.formats.count
             }
         } else if collectionView == matchedAnimeCollectionView {
-             return vm.match.matched.count
+            return vm.match.matched.isEmpty ? 1 : vm.match.matched.count
         } else {
-            return vm.match.skipped.count
+            return vm.match.skipped.isEmpty ? 1 : vm.match.skipped.count
         }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
+        if collectionView == genresCollectionView {
+            if vm.match.genres.count >= 2 {
+                return UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 15)
+            } else {
+                return UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
+            }
+        } else if collectionView == formatsCollectionView {
+            if vm.match.formats.count >= 2 {
+                return UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 15)
+            } else {
+                return UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
+            }
+        } else {
+            return UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == genresCollectionView {
-            let size: CGSize = vm.match.genres[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
-            return CGSize(width: size.width + 20, height: size.height + 20)
+            if vm.match.genres.isEmpty {
+                let size: CGSize = String("All").size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                return CGSize(width: size.width + 20, height: size.height + 20)
+            } else {
+                let size: CGSize = vm.match.genres[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                print(vm.match.genres[indexPath.row], size)
+                return CGSize(width: size.width + 20, height: size.height + 20)
+            }
         } else if collectionView == formatsCollectionView {
-            let size: CGSize = vm.match.formats[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
-            return CGSize(width: size.width + 20, height: size.height + 20)
+            if vm.match.formats.isEmpty {
+                let size: CGSize = String("All").size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                return CGSize(width: size.width + 20, height: size.height + 20)
+            } else {
+                let size: CGSize = vm.match.formats[indexPath.row].size(withAttributes: [NSAttributedString.Key.font: UIFont.nunitoFont(size: 15, type: .regular)!])
+                return CGSize(width: size.width + 20, height: size.height + 20)
+            }
         } else {
             let size = CGSize(width: view.frame.width * 0.44, height: 290)
             return size
@@ -243,7 +267,7 @@ extension MatchDetailController: UICollectionViewDelegateFlowLayout, UICollectio
             
             if collectionView == genresCollectionView {
                 if vm.match.genres.count == 0 {
-                    cell.configure(with: "None")
+                    cell.configure(with: "All")
                     return cell
                 } else {
                     cell.configure(with: vm.match.genres[indexPath.row])
@@ -251,7 +275,7 @@ extension MatchDetailController: UICollectionViewDelegateFlowLayout, UICollectio
                 }
             } else {
                 if vm.match.formats.count == 0 {
-                    cell.configure(with: "None")
+                    cell.configure(with: "All")
                     return cell
                 } else {
                     cell.configure(with: vm.match.formats[indexPath.row])
@@ -259,17 +283,26 @@ extension MatchDetailController: UICollectionViewDelegateFlowLayout, UICollectio
                 }
             }
         } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? AnimeCardWithLabelViewCell else {
-                    fatalError("Failed to dequeue with AnimeCardWithLabelViewCell")
-                }
-                
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? AnimeCardWithLabelViewCell else {
+                fatalError("Failed to dequeue with AnimeCardWithLabelViewCell")
+            }
+            
             if collectionView == matchedAnimeCollectionView {
-                cell.configure(with: vm.match.matched[indexPath.row])
-                cell.delegate = self
+                if vm.match.matched.isEmpty {
+                    cell.configureAsNone()
+                } else {
+                    cell.configure(with: vm.match.matched[indexPath.row])
+                    cell.delegate = self
+                }
                 return cell
             } else {
-                cell.configure(with: vm.match.skipped[indexPath.row])
-                cell.delegate = self
+                if vm.match.skipped.isEmpty {
+                    print("I am here")
+                    cell.configureAsNone()
+                } else {
+                    cell.configure(with: vm.match.skipped[indexPath.row])
+                    cell.delegate = self
+                }
                 return cell
             }
         }

@@ -12,7 +12,7 @@ class TagCellView: UICollectionViewCell {
     //MARK: - UI Components
     private let tagLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Text"
         label.textColor = .mainPurple
         label.textAlignment = .center
         label.layer.borderColor = UIColor.mainPurple.cgColor
@@ -46,6 +46,7 @@ class TagCellView: UICollectionViewCell {
         NSLayoutConstraint.activate([
             tagLabel.heightAnchor.constraint(equalTo: self.heightAnchor),
             tagLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            tagLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         ])
     }
     

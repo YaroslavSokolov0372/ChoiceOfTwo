@@ -6,23 +6,25 @@
 //
 
 import UIKit
+import SkeletonView
 
 class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, InteractFriendDelegate, AnimatedMessageWithButtonsViewDelegate, HistoryCellDelegate {
-
+    
     //MARK: - Variable
     var vm: MenuVM!
+    var isFriendInteractVisible = false
     
     //MARK: - UI Components
     let circleImage: UIImageView = {
-    let iv = UIImageView()
-    iv.contentMode = .scaleAspectFill
-    iv.clipsToBounds = true
-    iv.layer.cornerRadius = 25
-    iv.backgroundColor = .mainLightGray
-    iv.alpha = 1.0
-    iv.isUserInteractionEnabled = true
-    return iv
-}()
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 25
+        iv.backgroundColor = .mainLightGray
+        iv.alpha = 1.0
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
     let friendsHeaderLabel = CustomSectionHeaderView(headerName: "Friends")
     let friendsCollView: UICollectionView = {
         let layout = MyCollectionFlowLayout()
@@ -59,15 +61,13 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         width: (view.frame.width * 0.85),
         height: 55
     ))
-    
     lazy var animatedDeleteView = CustomAnimatedMessageWithButtons(frame: CGRect(
         x: view.frame.minX - 350,
-        //        y: profileImageButton.frame.minY,
         y: 60,
         width: (view.frame.width * 0.85),
         height: 55
     ))
-    var isFriendInteractVisible = false
+
     
     
     //MARK: - Lifecycle
@@ -78,14 +78,18 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         animatedGameInvView.alpha = 0.0
         animatedDeleteView.alpha = 0.0
         
-
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(profileButtonTapped))
         self.circleImage.addGestureRecognizer(gesture)
         
+        
+        circleImage.isSkeletonable = true
         friendsCollView.dataSource = self
         friendsCollView.delegate = self
+        friendsCollView.isSkeletonable = true
         historyCollView.dataSource = self
         historyCollView.delegate = self
+        historyCollView.isSkeletonable = true
         friendInteractView.delegate = self
         animatedDeleteView.delegate = self
         animatedGameInvView.delegate = self
@@ -94,16 +98,24 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
             let image = UIImage(data: str)
             self.circleImage.image = image
         }
-        
         vm.onFriendsUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.friendsCollView.reloadData()
             }
         }
+        
+        vm.onFinishingFetching = {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.historyCollView.reloadData()
+                self.historyCollView.hideSkeleton()
+                self.friendsCollView.reloadData()
+                self.friendsCollView.hideSkeleton()
+                self.circleImage.hideSkeleton()
+            }
+        }
+        
         vm.onMatchesUpadated = {
             DispatchQueue.main.async { [weak self] in
-                
-                //                self?.historyCollView.reloadData()
                 self?.historyCollView.reloadSections(IndexSet(integer: 0))
             }
         }
@@ -127,7 +139,6 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
             self.animatedDeleteView.hideAnimation.startAnimation()
         }
         vm.onDeletingFriendSuccess = { user in
-            
             let index = self.vm.friends.firstIndex(where: { $0.uid == user.uid })
             let indexPath = IndexPath(row: index! + 1, section: 0)
             
@@ -148,17 +159,23 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
         view.addSubview(animatedDeleteView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+            
+        if !vm.isFetchedOnce {
+            self.historyCollView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .mainLightGray, secondaryColor: .mainLightGray), transition: .crossDissolve(0.25))
+            self.friendsCollView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .mainLightGray, secondaryColor: .mainLightGray), transition: .crossDissolve(0.25))
+            self.circleImage.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .mainLightGray, secondaryColor: .mainLightGray), transition: .crossDissolve(0.25))
+        }
+        
         Task {
             await vm.getHistory()
         }
-    }
-    
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //        vm.removeListeners()
-        
     }
     
     //MARK: Setup UI
@@ -250,10 +267,51 @@ class MenuController: UIViewController, FriendCellDelegate, AddFriendDelegate, I
     
     func inviteFriendTapped(_ friend: User) {
         vm.sendInv(to: friend)
+        
+        let index = vm.friends.firstIndex(where: { $0.uid == friend.uid })!
+        let indexPath = IndexPath(item: index + 1, section: 0)
+        if let customCell = friendsCollView.cellForItem(at: indexPath) as? FriendCellView {
+            friendInteractView.configure(with: friend) { isTheSame, isOpened in
+                if !isTheSame {
+                    self.friendInteractView.hide(cell: customCell) {
+                        self.friendInteractView.showUnder(cell: customCell)
+                    }
+                    return true
+                } else {
+                    if isOpened {
+                        self.friendInteractView.hide(cell: customCell) {}
+                        return false
+                    } else {
+                        self.friendInteractView.showUnder(cell: customCell)
+                        return true
+                    }
+                }
+            }
+        }
     }
     
     func deleteFriendTapped(_ friend: User) {
         animatedDeleteView.playAnimation(users: [friend], type: .delete)
+        let index = vm.friends.firstIndex(where: { $0.uid == friend.uid })!
+        let indexPath = IndexPath(item: index + 1, section: 0)
+        if let customCell = friendsCollView.cellForItem(at: indexPath) as? FriendCellView {
+            friendInteractView.configure(with: friend) { isTheSame, isOpened in
+                if !isTheSame {
+                    self.friendInteractView.hide(cell: customCell) {
+                        self.friendInteractView.showUnder(cell: customCell)
+                    }
+                    return true
+                } else {
+                    if isOpened {
+                        self.friendInteractView.hide(cell: customCell) {}
+                        return false
+                    } else {
+                        self.friendInteractView.showUnder(cell: customCell)
+                        return true
+                    }
+                }
+            }
+        }
     }
     
     func declineInvite(of friend: User) {

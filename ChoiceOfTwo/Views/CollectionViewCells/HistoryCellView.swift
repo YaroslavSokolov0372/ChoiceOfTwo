@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 
 protocol HistoryCellDelegate {
@@ -23,6 +24,7 @@ class HistoryCellView: UICollectionViewCell {
     private var matched: [Anime] = []
     
     //MARK: - UI Components
+    
     private let content: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -33,19 +35,14 @@ class HistoryCellView: UICollectionViewCell {
         return view
     }()
     
-    
     private let playedWithHeader: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 17, type: .regular)
         label.textColor = .mainPurple
         label.text = "Played with"
-        //        label.backgroundColor = .orange
         label.backgroundColor = .white
         return label
     }()
-    
-    
-//    private let profileImageButton = CustomCircleButton(customImage: "Profile")
     
     let circleImage: UIImageView = {
         let iv = UIImageView()
@@ -80,10 +77,6 @@ class HistoryCellView: UICollectionViewCell {
         label.textColor = .mainPurple
         label.textAlignment = .center
         label.text = "0"
-        label.layer.cornerRadius = 10
-        label.clipsToBounds = true
-        label.layer.borderColor = UIColor.mainPurple.cgColor
-        label.layer.borderWidth = 1
         return label
     }()
     
@@ -101,10 +94,6 @@ class HistoryCellView: UICollectionViewCell {
         label.textColor = .mainPurple
         label.textAlignment = .center
         label.text = "0"
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 10
-        label.layer.borderColor = UIColor.mainPurple.cgColor
-        label.layer.borderWidth = 1
         return label
     }()
     
@@ -115,6 +104,7 @@ class HistoryCellView: UICollectionViewCell {
         label.text = "Skipped"
         return label
     }()
+    
     private let skippedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -123,6 +113,7 @@ class HistoryCellView: UICollectionViewCell {
         collectionV.register(AnimeCardCellView.self, forCellWithReuseIdentifier: "Cell")
         return collectionV
     }()
+    
     private let matchedHeader: UILabel = {
         let label = UILabel()
         label.font = .nunitoFont(size: 17, type: .regular)
@@ -143,12 +134,31 @@ class HistoryCellView: UICollectionViewCell {
     //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        
+        setupUI()
+        
+        self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
+        
+        content.isSkeletonable = true
+        circleImage.isSkeletonable = true
+        playedWithHeader.isSkeletonable = true
+        playedWithName.isSkeletonable = true
+        genresHeader.isSkeletonable = true
+        genresCount.isSkeletonable = true
+        formatsHeader.isSkeletonable = true
+        formatsCount.isSkeletonable = true
+        skippedHeader.isSkeletonable = true
+        skippedCollectionView.isSkeletonable = true
+        matchedHeader.isSkeletonable = true
+        matchedCollectionView.isSkeletonable = true
+        
         matchedCollectionView.delegate = self
         matchedCollectionView.dataSource = self
         skippedCollectionView.delegate = self
         skippedCollectionView.dataSource = self
         
-        setupUI()
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -156,7 +166,7 @@ class HistoryCellView: UICollectionViewCell {
     
     //MARK: - Setup UI
     private func setupUI() {
-        self.addSubview(content)
+        self.contentView.addSubview(content)
         content.translatesAutoresizingMaskIntoConstraints = false
         
         content.addSubview(skippedCollectionView)
@@ -164,9 +174,6 @@ class HistoryCellView: UICollectionViewCell {
         
         content.addSubview(playedWithHeader)
         playedWithHeader.translatesAutoresizingMaskIntoConstraints = false
-        
-//        content.addSubview(profileImageButton)
-//        profileImageButton.translatesAutoresizingMaskIntoConstraints = false
         
         content.addSubview(circleImage)
         circleImage.translatesAutoresizingMaskIntoConstraints = false
@@ -194,9 +201,7 @@ class HistoryCellView: UICollectionViewCell {
         
         content.addSubview(matchedCollectionView)
         matchedCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //        content.addSubview(matchedCollectionView)
-        //        matchedCollectionView.translatesAutoresizingMaskIntoConstraints = false
+
         
         NSLayoutConstraint.activate([
             content.topAnchor.constraint(equalTo: self.topAnchor),
@@ -207,14 +212,8 @@ class HistoryCellView: UICollectionViewCell {
             playedWithHeader.leadingAnchor.constraint(equalTo: content.leadingAnchor, constant: 20),
             playedWithHeader.topAnchor.constraint(equalTo: content.topAnchor, constant: 20),
             playedWithHeader.heightAnchor.constraint(equalToConstant: 15),
-            //            playedWithHeader.widthAnchor.constraint(equalToConstant: 150),
             playedWithHeader.widthAnchor.constraint(equalToConstant: 130),
-            
-//            profileImageButton.topAnchor.constraint(equalTo: playedWithHeader.bottomAnchor, constant: 5),
-//            profileImageButton.leadingAnchor.constraint(equalTo: playedWithHeader.leadingAnchor),
-//            profileImageButton.heightAnchor.constraint(equalToConstant: 40),
-//            profileImageButton.widthAnchor.constraint(equalToConstant: 40),
-            
+
             
             circleImage.topAnchor.constraint(equalTo: playedWithHeader.bottomAnchor, constant: 5),
             circleImage.leadingAnchor.constraint(equalTo: playedWithHeader.leadingAnchor),
@@ -270,16 +269,36 @@ class HistoryCellView: UICollectionViewCell {
         ])
     }
     
+    
     //MARK: - Configure
-    public func configure(with match: Match) {
+    
+    
+    
+    public func configure(with match: Match, shouldReloadData: Bool = true) {
         self.match = match
         self.matched = match.matched
-        self.matchedCollectionView.reloadData()
         self.skipped = match.skipped
-        self.skippedCollectionView.reloadData()
+        
+        if shouldReloadData {
+            self.matchedCollectionView.reloadData()
+            self.skippedCollectionView.reloadData()
+        }
+        
         self.playedWithName.text = match.playersName
+        
+        
         self.genresCount.text = match.genres.count == 0 ? "All" : String(match.genres.count)
+        self.genresCount.layer.cornerRadius = 10
+        self.genresCount.clipsToBounds = true
+        self.genresCount.layer.borderColor = UIColor.mainPurple.cgColor
+        self.genresCount.layer.borderWidth = 1
+        
         self.formatsCount.text = match.formats.count == 0 ? "All" : String(match.formats.count)
+        self.formatsCount.clipsToBounds = true
+        self.formatsCount.layer.cornerRadius = 10
+        self.formatsCount.layer.borderColor = UIColor.mainPurple.cgColor
+        self.formatsCount.layer.borderWidth = 1
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.addGestureRecognizer(tapGesture)
     }
@@ -294,16 +313,24 @@ extension HistoryCellView: UICollectionViewDelegateFlowLayout, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == matchedCollectionView {
-            if matched.count > 5 {
-                return 5
+            if matched.isEmpty {
+                return 1
             } else {
-                return matched.count
+                if matched.count > 5 {
+                    return 5
+                } else {
+                    return matched.count
+                }
             }
         } else {
-            if skipped.count > 5 {
-                return 5
+            if skipped.isEmpty {
+                return 1
             } else {
-                return skipped.count
+                if skipped.count > 5 {
+                    return 5
+                } else {
+                    return skipped.count
+                }
             }
         }
     }
@@ -323,10 +350,19 @@ extension HistoryCellView: UICollectionViewDelegateFlowLayout, UICollectionViewD
         }
         
         if collectionView == matchedCollectionView {
-            cell.configure(withImageString: matched[indexPath.row].coverImage?.extraLarge)
+            if matched.isEmpty {
+                
+                cell.configureAsNone()
+            } else {
+                cell.configure(withImageString: matched[indexPath.row].coverImage?.extraLarge)
+            }
             return cell
         } else {
-            cell.configure(withImageString: skipped[indexPath.row].coverImage?.extraLarge)
+            if skipped.isEmpty {
+                cell.configureAsNone()
+            } else {
+                cell.configure(withImageString: skipped[indexPath.row].coverImage?.extraLarge)
+            }
             return cell
         }
     }

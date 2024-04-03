@@ -13,15 +13,8 @@ class NewMatchesPointView: UIView {
     var visible: Bool = false {
         didSet {
             if visible == true {
-//                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5) {
-//                    
-//                    self.alpha = 1.0
-//                }
                 show { }
             } else {
-//                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5) {
-//                    self.alpha = 0.0
-//                }
                 hide { }
             }
         }

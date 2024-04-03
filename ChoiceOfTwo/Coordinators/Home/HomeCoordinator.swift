@@ -12,12 +12,6 @@ class HomeCoordinator: ParentCoordinator {
     
     var parent: AppCoordinator?
     var children: [Coordinator] = []
-//    {
-        //        didSet {
-        //            print("Children count -", children.count)
-        //        }
-//    }
-    
     
     var navigationController: UINavigationController
     

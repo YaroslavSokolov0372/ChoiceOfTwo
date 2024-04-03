@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 protocol MatchedAnimeCellProtocol {
     func didTapCell(with anime: Anime)
 }

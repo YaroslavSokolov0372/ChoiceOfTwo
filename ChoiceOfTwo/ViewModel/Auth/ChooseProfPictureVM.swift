@@ -11,9 +11,4 @@ import UIKit
 class ChooseProfPictureVM {
         
     
-    
-//    var coordinator:
-    
-    
-    
 }

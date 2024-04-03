@@ -23,12 +23,6 @@ class RecievedCellView: UICollectionViewCell {
     var index: Int!
     
     //MARK: - UI Components
-//    private var profileImage: UIImageView = {
-//        let im = UIImage(named: "Profile")
-//        let iv = UIImageView()
-//        iv.image = im
-//        return iv
-//    }()
     let circleImage: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
@@ -63,9 +57,6 @@ class RecievedCellView: UICollectionViewCell {
     
     //MARK: - Setup UI
     private func setupUI() {
-//        self.addSubview(profileImage)
-//        profileImage.translatesAutoresizingMaskIntoConstraints = false
-        
         self.addSubview(circleImage)
         circleImage.translatesAutoresizingMaskIntoConstraints = false
         
@@ -79,10 +70,6 @@ class RecievedCellView: UICollectionViewCell {
         acceptButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-//            profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-//            profileImage.widthAnchor.constraint(equalToConstant: 50),
-//            profileImage.heightAnchor.constraint(equalToConstant: 50),
-            
             circleImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             circleImage.widthAnchor.constraint(equalToConstant: 50),
             circleImage.heightAnchor.constraint(equalToConstant: 50),

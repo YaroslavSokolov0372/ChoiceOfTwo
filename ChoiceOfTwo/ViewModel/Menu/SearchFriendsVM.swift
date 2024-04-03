@@ -86,7 +86,6 @@ class SearchFriendsVM {
     }
     
     public func declineWhomSentReq(from user: User, completion: @escaping (Bool) -> Void) {
-//        self.dBManager.declineFriendship(from: user) { success, error in
         self.dBManager.declineSentFriendShipReq(from: user) { success, error in
             if let error = error {
                 print("DEBUG: Error happend while sending friend request", error)
@@ -115,7 +114,6 @@ class SearchFriendsVM {
     }
     
     public func fetchUsersSentFriendship() {
-//        self.dBManager.fetchUsersWhoSentFriendship { users, error in
         self.dBManager.fetchUsersWhoSentFriendshipListener { users, error in
             if let error = error {
                 print("DEBUG: Error happend while requesting users who sent friendship request", error)
@@ -134,11 +132,11 @@ class SearchFriendsVM {
         self.dBManager.declineFriendship(from: user) { declined, error in
             if let error = error {
                 print("DEBUG: Error happend while declining the user who sent friendship request", error)
-//                self.onUsersWhoSentFriendShipError?(error)
+                self.onUsersWhoSentFriendShipError?(error)
             }
             if declined {
                 print("DEBUG: Successfully declined inv")
-//                self.onUsersWhoSentFriendshipAction?()
+                self.onUsersWhoSentFriendshipAction?()
                 completion(true)
             }
         }
@@ -148,11 +146,11 @@ class SearchFriendsVM {
         self.dBManager.acceptFriendship(from: user) { accepted, error in
             if let error = error {
                 print("DEBUG: Error happend while accepting the user who sent friendship request", error)
-//                self.onUsersWhoSentFriendShipError?(error)
+                self.onUsersWhoSentFriendShipError?(error)
             }
             if accepted {
                 print("DEBUG: Successfully accepted inv")
-//                self.onUsersWhoSentFriendshipAction?()
+                self.onUsersWhoSentFriendshipAction?()
                 completion(true)
             }
         }

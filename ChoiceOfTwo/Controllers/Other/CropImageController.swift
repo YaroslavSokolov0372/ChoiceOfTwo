@@ -14,7 +14,6 @@ class CropImageController: UIViewController {
     
     private var originalImageSize: CGSize = .zero
     private var centrOverlayRelToImage: CGPoint = .zero
-//    private lazy var center: CGPoint = self.view.center
     private lazy var radius: CGFloat = min(view.bounds.width, view.bounds.height) * 0.45
     private lazy var rect = CGRectMake(
         CGRectGetMidX(self.view.bounds) - radius,

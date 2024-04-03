@@ -217,15 +217,8 @@ class DetailInfoAnimeController: UIViewController {
         let lastView = self.animeDescription
         let lastViewYPos = lastView.frame.origin.y
         let lastViewHeight = lastView.frame.size.height
-        
-        // sanity check on these
-//        print(lastViewYPos)
-//        print(lastViewHeight)
-        
-        height = lastViewYPos + lastViewHeight /*- 20*/
-        
-//        print("setting scroll height: \(height)")
-        
+
+        height = lastViewYPos + lastViewHeight
         self.activeContentViewConstraints = [
             self.contentView.heightAnchor.constraint(equalToConstant: height)
         ]

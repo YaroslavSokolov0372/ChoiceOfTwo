@@ -50,7 +50,6 @@ class CardGameVM {
     var onMatchedChanged: (() -> Void)?
     private(set) var matched: [Anime] = [] {
         didSet {
-//            print("DEBUG: - Match Animes:", matched.count)
             if !matched.isEmpty {
                 onMatchedChanged?()
             }
@@ -109,7 +108,6 @@ class CardGameVM {
                                     print("Coordinator is nil")
                                     return
                                 }
-                                //                                self.coordinator.removeAllChildrens()
                                 coordinator.removeAllChildrens()
                             }
                         }
@@ -138,7 +136,6 @@ class CardGameVM {
             } else {
                 if let tags = tags {
                     print("DEBUG: - Genres array -", tags.0)
-//                    print("DEBUG: - Formats array -", tags.1)
                     self.genres = tags.0
                     self.formats = tags.1
                     self.fetchAnimes(onceAgainOnFailed: true, genres: tags.0, formats: tags.1)
@@ -160,18 +157,14 @@ class CardGameVM {
     }
     
     func fetchAnimes(onceAgainOnFailed: Bool, genres: [Genre.RawValue]? = nil, formats: [Format.RawValue]? = nil) {
-        //        print("Genres -", genres)
-        //        print(formats)
         animeApi.fetchAnimeWith(
             currentPage: currentPage,
             genres: genres == nil ? self.genres! : genres!,
             formats: formats == nil ? self.formats!.conertFromRawValue() : formats!.conertFromRawValue()) { animeList, error in
                 if let error = error {
-//                    self.onAnimeListError?(error)
-                    
+
                     print("Error", error)
                     if onceAgainOnFailed {
-//                        self.onAnimeListError?(error)
                         self.fetchAnimes(onceAgainOnFailed: false)
                     } else {
                         self.onAnimeListError?(error)
@@ -195,7 +188,6 @@ class CardGameVM {
                 } else {
                     if finished == true {
                         print("Successfully added game to a history and deleted current game")
-//                        self.coordinator.removeAllChildrens()
                     }
                 }
             }

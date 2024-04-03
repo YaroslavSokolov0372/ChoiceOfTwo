@@ -623,7 +623,6 @@ class DataBaseManager {
             }
         }
     
-
     func addMatchToHistory(
         matchedAnimes: [Anime],
         completion: @escaping (_ saved: Bool?, Error?) -> Void) {
@@ -693,6 +692,7 @@ class DataBaseManager {
                                                 .setData([
                                                     "genres": data["genres"],
                                                     "formats": data["formats"],
+                                                    "dateStamp": Date(),
                                                     "gameUID": uid,
                                                     "playedWith": indexInArray == 0 ? users[1].uid : users[0].uid,
                                                     "playersName": indexInArray == 0 ? users[1].username : users[0].username
@@ -836,6 +836,7 @@ class DataBaseManager {
                 let data = document.data()
                 let genres = data["genres"] as! [Genre.RawValue]
                 let formats = data["formats"] as! [Format.RawValue]
+                let date = data["dateStamp"] as! Timestamp
                 let playedWithUID = data["playedWith"] as! String
                 let playersName = data["playersName"] as! String
                 var matchedAnimes: [Anime] = []
@@ -879,9 +880,8 @@ class DataBaseManager {
                     }
                 }
                 
-                history.append(Match(skipped: skippedAnimes, matched: matchedAnimes, genres: genres, formats: formats, playedWithUID: playedWithUID, playersName: playersName))
+                history.append(Match(skipped: skippedAnimes, matched: matchedAnimes, date: date, genres: genres, formats: formats, playedWithUID: playedWithUID, playersName: playersName))
             }
-            
             completion(history, nil)
         } catch {
             completion(nil, error)
@@ -1420,8 +1420,6 @@ class DataBaseManager {
         dataBase
             .collection("users")
             .document(currentUser.uid)
-//        friendshipRequestFrom
-//            .collection("friendshipRequestsTo")
             .collection("friendshipRequestFrom")
             .document(user.uid)
             .delete { error in
@@ -1434,7 +1432,6 @@ class DataBaseManager {
             .collection("users")
             .document(user.uid)
             .collection("friendshipRequestsTo")
-//            .collection("friendshipRequestFrom")
             .document(currentUser.uid)
             .delete { error in
                 if let error = error {

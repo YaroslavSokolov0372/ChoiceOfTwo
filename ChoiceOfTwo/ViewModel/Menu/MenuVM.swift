@@ -20,9 +20,44 @@ class MenuVM {
     }
     private (set) var matches = [Match]() {
         didSet {
-            onMatchesUpadated?()
+            if matches.count != oldValue.count {
+                print("I am here")
+                onMatchesUpadated?()
+            }
         }
     }
+    
+    private (set) var isFetchingFriends = true {
+        didSet {
+            if isFetchingCurrentUserImage == false &&
+                isFetchingFriends == false && isFetchingMatches == false {
+                isFetchedOnce = true
+                onFinishingFetching?()
+            }
+        }
+    }
+    
+    private (set) var isFetchingMatches = true {
+        didSet {
+            if isFetchingCurrentUserImage == false &&
+                isFetchingFriends == false && isFetchingMatches == false {
+                onFinishingFetching?()
+                isFetchedOnce = true
+            }
+        }
+    }
+    private (set) var isFetchingCurrentUserImage = true {
+        didSet {
+            if isFetchingCurrentUserImage == false &&
+                isFetchingFriends == false && isFetchingMatches == false {
+                isFetchedOnce = true
+                onFinishingFetching?()
+            }
+        }
+    }
+    private (set) var isFetchedOnce = false
+    
+    var onFinishingFetching: (() -> ())?
     
     var onMatchesUpadated: (() -> Void)?
     var onFriendsUpdated: (() -> Void)?
@@ -32,6 +67,7 @@ class MenuVM {
     var onGameInvListenerChange: (([User]) -> Void)?
     var onDeletingFriendError: (() -> Void)?
     var onDeletingFriendSuccess: ((User) -> Void)?
+    
     
     
     var onProfileImageChanges: ((Data) -> Void)?
@@ -49,15 +85,18 @@ class MenuVM {
     }
     
     private func fetchCurrentUserProfImage() {
+        self.isFetchingCurrentUserImage = true
         self.dBManager
             .fetchProfileImage(forCurrentUser: true) { data, error in
                 if let error = error {
                     print("Failed current user prof image url", error)
                     self.onProfileImageError?(error, nil)
+                    self.isFetchingCurrentUserImage = false
                 } else {
                     if let data = data {
                         print("Fetched current user prof image url")
                         self.onProfileImageChanges?(data)
+                        self.isFetchingCurrentUserImage = false
                     } else {
                         self.onProfileImageError?(nil, "No data in absolut str")
                     }
@@ -79,24 +118,6 @@ class MenuVM {
                 }
             }
     }
-    
-    
-    
-//    private func setupGameListener() {
-//        self.dBManager.addStartGameListener { isGameStarted, justAdddedListener, error in
-//            if let error = error {
-//                print("Failed to create snapshot listener", error)
-//            } else {
-//                if isGameStarted {
-//                    print("Should start game")
-//                    self.startGame()
-//                }
-//                if justAdddedListener {
-//                    print("Added setup game listener")
-//                }
-//            }
-//        }
-//    }
     
     private func addCurrentGameListener() {
         self.dBManager.addCurrentGameListener { hasGame, error in
@@ -137,13 +158,16 @@ class MenuVM {
     }
     
     public func getFriends() {
+        self.isFetchingFriends = true
         dBManager.fetchFriends { friends, error in
             if let error = error {
                 (self.onFriendsError)?(error)
+                self.isFetchingFriends = false
                 print("DEBUG:", error)
             } else {
                 if let friends = friends {
                     self.friends = friends
+                    self.isFetchingFriends = false
                     self.onFriendsUpdated?()
                     print("DEBUG: Found Friends:", friends.count)
                 }
@@ -152,12 +176,37 @@ class MenuVM {
     }
     
     public func getHistory() async {
+        self.isFetchingMatches = true
         await dBManager.fetchHistory { matches, error in
             if let error = error {
                 print("Failed to load history", error)
+                self.isFetchingMatches = false
             } else {
                 if let matches = matches {
-                    self.matches = matches
+                    
+                    let newMatches = matches.sorted { match1, match2 in
+                        let date1 = match1.date.dateValue()
+                        let date2 = match2.date.dateValue()
+                        return date1 > date2
+                    }
+                    
+                    let isEqual = newMatches.elementsEqual(self.matches) { match, match1 in
+                        match.date == match1.date
+                    }
+                    
+                    
+                    if !isEqual {
+                        self.matches = newMatches
+                    }
+                    
+//                    self.matches = matches.sorted { match1, match2 in
+//                        let date1 = match1.date.dateValue()
+//                        let date2 = match2.date.dateValue()
+//                        return date1 > date2
+//                    }
+                    
+                    
+                    self.isFetchingMatches = false
                     print("Matches count -", matches.count)
                 }
             }
@@ -191,7 +240,6 @@ class MenuVM {
             } else {
                 if accepted {
                     print("accepted game invite")
-//                    self.coordinator.game()
                 }
             }
         }
