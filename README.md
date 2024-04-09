@@ -37,12 +37,7 @@ After the game is finished, it will be saved to history which you can check in a
  * Custom login
     * usign Combine 
 
-## Login
-
-<img src="https://github.com/YaroslavSokolov0372/ChoiceOfTwo/assets/133239761/852cdbd6-f853-4b43-87cd-52b726119acb" width="320" height="600">
-<img src="https://github.com/YaroslavSokolov0372/ChoiceOfTwo/assets/133239761/85aac4d4-f406-43c3-893e-6f60a6a2aa89" width="320" height="600">
-<img src="https://github.com/YaroslavSokolov0372/ChoiceOfTwo/assets/133239761/0b7b21e1-f233-458f-a9b8-442d682b2b95" width="320" height="600">
-
+## Create User
 
 | Video 1  | Video 2 |
 | ------------- | ------------- |
